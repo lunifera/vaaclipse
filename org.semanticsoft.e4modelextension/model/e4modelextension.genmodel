@@ -4,7 +4,7 @@
     modelName="E4modelextension" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
     usedGenPackages="../../org.lunifera.vaaclipse.ui.preferences.model/model/preferences.genmodel#//preferences ../../org.eclipse.e4.ui.model.workbench/model/UIElements.genmodel#//application"
-    operationReflection="true" importOrganizing="true">
+    importOrganizing="true">
   <foreignModel>e4modelextension.ecore</foreignModel>
   <genPackages prefix="E4modelextension" disposableProviderFactory="true" ecorePackage="e4modelextension.ecore#/">
     <genClasses ecoreClass="e4modelextension.ecore#//EditorPartDescriptor">

@@ -31,52 +31,43 @@ import fi.jasoft.dragdroplayouts.client.ui.tabsheet.DDTabsheetConnector;
  * 
  */
 @Connect(StackWidget.class)
-public class StackWidgetConnector extends DDTabsheetConnector
-{
+public class StackWidgetConnector extends DDTabsheetConnector {
 	Logger logger = Logger.getLogger(StackWidgetConnector.class.getName());
-	
+
 	@Override
-	protected Widget createWidget()
-	{
+	protected Widget createWidget() {
 		return GWT.create(VStackWidget.class);
 	}
 
 	@Override
-	public VStackWidget getWidget()
-	{
+	public VStackWidget getWidget() {
 		return (VStackWidget) super.getWidget();
 	}
-
 
 	/**
 	 * Called whenever an update is received from the server
 	 */
-	public void updateFromUIDL(UIDL uidl, ApplicationConnection client)
-	{
+	public void updateFromUIDL(UIDL uidl, ApplicationConnection client) {
 		VStackWidget stackWidget = getWidget();
 
 		stackWidget.id = uidl.getId();
 		stackWidget.client = client;
-		
-		if (uidl.getIntAttribute("svoi") == 5)
-		{
+
+		if (uidl.getIntAttribute("svoi") == 5) {
 			int state = uidl.getIntAttribute("vaadock_tabsheet_state");
 			stackWidget.setState(state);
-			stackWidget.setMinmaxEnabled(uidl.getBooleanAttribute("minmax_enabled"));
+			stackWidget.setMinmaxEnabled(uidl
+					.getBooleanAttribute("minmax_enabled"));
 		}
 
-		if (isRealUpdate(uidl) && !uidl.hasAttribute("hidden"))
-		{
+		if (isRealUpdate(uidl) && !uidl.hasAttribute("hidden")) {
 			UIDL acceptCrit = uidl.getChildByTagName("-ac");
-			if (acceptCrit == null)
-			{
+			if (acceptCrit == null) {
 				getWidget().setDropHandler(null);
-			}
-			else
-			{
-				if (getWidget().getDropHandler() == null)
-				{
-					getWidget().setDropHandler(new VStackWidgetDropHandler(getWidget(), client));
+			} else {
+				if (getWidget().getDropHandler() == null) {
+					getWidget().setDropHandler(
+							new VStackWidgetDropHandler(getWidget(), client));
 					logger.info("updateFromUIDL: VStackWidgetDropHandler installed");
 				}
 				getWidget().getDropHandler().updateAcceptRules(acceptCrit);
@@ -87,23 +78,19 @@ public class StackWidgetConnector extends DDTabsheetConnector
 	}
 
 	@Override
-	public void onStateChanged(StateChangeEvent stateChangeEvent)
-	{
+	public void onStateChanged(StateChangeEvent stateChangeEvent) {
 		super.onStateChanged(stateChangeEvent);
-		getWidget().setDragFilter(new VSWDragFilter(getState()));
+		getWidget().setDragFilter(new VSWDragFilter(getState().dd));
 	}
 
-	private class VSWDragFilter extends VDragFilter
-	{
+	private class VSWDragFilter extends VDragFilter {
 
-		public VSWDragFilter(DDLayoutState state)
-		{
+		public VSWDragFilter(DDLayoutState state) {
 			super(state);
 		}
 
 		@Override
-		public boolean isDraggable(Widget widget)
-		{
+		public boolean isDraggable(Widget widget) {
 			return true;
 		}
 	}

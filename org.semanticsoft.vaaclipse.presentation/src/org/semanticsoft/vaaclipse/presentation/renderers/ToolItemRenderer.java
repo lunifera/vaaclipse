@@ -26,7 +26,6 @@ import org.eclipse.e4.ui.model.application.ui.menu.MDirectToolItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MHandledItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MHandledToolItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MItem;
-import org.eclipse.e4.ui.model.application.ui.menu.MOpaqueToolItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
 import org.eclipse.e4.ui.services.internal.events.EventBroker;
@@ -36,15 +35,14 @@ import org.osgi.service.event.EventHandler;
 import org.semanticsoft.vaaclipse.presentation.utils.Commons;
 import org.semanticsoft.vaaclipse.publicapi.resources.ResourceHelper;
 import org.semanticsoft.vaaclipse.widgets.ToolbarButton;
-import org.semanticsoft.vaaclipse.widgets.ToolbarButtonBase;
 import org.semanticsoft.vaaclipse.widgets.ToolbarButton.Type;
+import org.semanticsoft.vaaclipse.widgets.ToolbarButtonBase;
 import org.semanticsoft.vaaclipse.widgets.TwoStateToolbarButton;
 
 import com.vaadin.server.Resource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.ui.Component;
 
 @SuppressWarnings("restriction")
 public class ToolItemRenderer extends ItemRenderer {
@@ -165,31 +163,30 @@ public class ToolItemRenderer extends ItemRenderer {
 			final MToolItem item = (MToolItem) element;
 
 			ToolbarButtonBase button;
-			if (item.getType() == ItemType.CHECK)
-			{
+			if (item.getType() == ItemType.CHECK) {
 				button = new TwoStateToolbarButton();
-				((TwoStateToolbarButton)button).setCheckedState(item.isSelected());
-			}
-			else if (item.getType() == ItemType.RADIO)
-			{
+				((TwoStateToolbarButton) button).setCheckedState(item
+						.isSelected());
+			} else if (item.getType() == ItemType.RADIO) {
 				button = new TwoStateToolbarButton();
-				((TwoStateToolbarButton)button).setCheckedState(item.isSelected());
-				((TwoStateToolbarButton)button).setSwitchStateByUserClickEnabled(false);
-			}
-			else { //By default - ItemType.PUSH
+				((TwoStateToolbarButton) button).setCheckedState(item
+						.isSelected());
+				((TwoStateToolbarButton) button)
+						.setSwitchStateByUserClickEnabled(false);
+			} else { // By default - ItemType.PUSH
 				ToolbarButton toolbarButton = new ToolbarButton();
 				button = toolbarButton;
-				
-				if (item.getTags().contains("link"))
-				{
+
+				if (item.getTags().contains("link")) {
 					toolbarButton.setType(Type.Link);
 				}
 			}
 
-			//label and icon
-			button.setLabelAndIcon(Commons.trim(item.getLabel()), Commons.trim(item.getIconURI()));
-			
-			//tooltip
+			// label and icon
+			button.setLabelAndIcon(Commons.trim(item.getLabel()),
+					Commons.trim(item.getIconURI()));
+
+			// tooltip
 			if (item.getTooltip() != null)
 				button.setDescription(item.getLocalizedTooltip());
 
@@ -225,17 +222,16 @@ public class ToolItemRenderer extends ItemRenderer {
 		final IEclipseContext eclipseContext = getContext(item);
 		if (eclipseContext == null) // item is not in hierarchy
 			return false;
-		
-		if (item.getObject() == null)
-		{
+
+		if (item.getObject() == null) {
 			item.setObject(contributionFactory.create(
 					item.getContributionURI(), getContext(item)));
 		}
-		
+
 		eclipseContext.set(MItem.class, item);
 		setupContext(eclipseContext, item);
-		return (Boolean) ContextInjectionFactory.invoke(item.getObject(), CanExecute.class,
-				eclipseContext, true);
+		return (Boolean) ContextInjectionFactory.invoke(item.getObject(),
+				CanExecute.class, eclipseContext, true);
 	}
 
 	@Override
@@ -252,14 +248,11 @@ public class ToolItemRenderer extends ItemRenderer {
 					if (item.getType() == ItemType.CHECK) {
 						item.setSelected(((TwoStateToolbarButton) button)
 								.getCheckedState());
-					}
-					else if (item.getType() == ItemType.RADIO)
-					{
-						MElementContainer<? extends MToolItem> parent = (MElementContainer<? extends MToolItem>) item.getParent();
-						for (MToolItem toolItem : parent.getChildren())
-						{
-							if (toolItem.getType() == ItemType.RADIO)
-							{
+					} else if (item.getType() == ItemType.RADIO) {
+						MElementContainer<? extends MToolItem> parent = (MElementContainer<? extends MToolItem>) item
+								.getParent();
+						for (MToolItem toolItem : parent.getChildren()) {
+							if (toolItem.getType() == ItemType.RADIO) {
 								toolItem.setSelected(toolItem != item);
 							}
 						}
@@ -279,14 +272,11 @@ public class ToolItemRenderer extends ItemRenderer {
 					if (item.getType() == ItemType.CHECK) {
 						item.setSelected(((TwoStateToolbarButton) button)
 								.getCheckedState());
-					}
-					else if (item.getType() == ItemType.RADIO)
-					{
-						MElementContainer<? extends MToolItem> parent = (MElementContainer<? extends MToolItem>) item.getParent();
-						for (MToolItem toolItem : parent.getChildren())
-						{
-							if (toolItem.getType() == ItemType.RADIO)
-							{
+					} else if (item.getType() == ItemType.RADIO) {
+						MElementContainer<? extends MToolItem> parent = (MElementContainer<? extends MToolItem>) item
+								.getParent();
+						for (MToolItem toolItem : parent.getChildren()) {
+							if (toolItem.getType() == ItemType.RADIO) {
 								toolItem.setSelected(toolItem != item);
 							}
 						}
@@ -306,7 +296,8 @@ public class ToolItemRenderer extends ItemRenderer {
 			context.set(MDirectToolItem.class, (MDirectToolItem) item);
 		else if (item instanceof MHandledToolItem)
 			context.set(MHandledToolItem.class, (MHandledToolItem) item);
-		else if (item instanceof MOpaqueToolItem)
-			context.set(MOpaqueToolItem.class, (MOpaqueToolItem) item);
+		// TODO luna - check this
+		// else if (item instanceof MOpaqueToolItem)
+		// context.set(MOpaqueToolItem.class, (MOpaqueToolItem) item);
 	}
 }

@@ -6,7 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Rushan R. Gilmullin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .,
- dragdroplayouts-development.jar
+ dragdroplayouts-1.1.jar
 Export-Package: fi.jasoft.dragdroplayouts,
  fi.jasoft.dragdroplayouts.client,
  fi.jasoft.dragdroplayouts.client.ui,
@@ -26,6 +26,8 @@ Export-Package: fi.jasoft.dragdroplayouts,
  fi.jasoft.dragdroplayouts.drophandlers,
  fi.jasoft.dragdroplayouts.events,
  fi.jasoft.dragdroplayouts.interfaces
-Require-Bundle: com.vaadin.server;bundle-version="7.0.0",
- com.vaadin.shared;bundle-version="7.0.0",
- com.vaadin.shared.deps;bundle-version="1.0.2"
+Require-Bundle: com.vaadin.server;bundle-version="7.2.0",
+ com.vaadin.shared;bundle-version="7.2.0",
+ com.vaadin.shared.deps;bundle-version="1.0.2",
+ com.vaadin.client;bundle-version="7.2.0",
+ com.vaadin.themes;bundle-version="7.2.0"

@@ -3,14 +3,11 @@
 package org.lunifera.vaaclipse.ui.preferences.model.metadata;
 
 import org.eclipse.e4.ui.model.application.impl.ApplicationPackageImpl;
-
 import org.eclipse.e4.ui.model.application.ui.impl.UiPackageImpl;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -173,15 +170,6 @@ public interface PreferencesPackage extends EPackage {
 	int PREFERENCES_CATEGORY_FEATURE_COUNT = ApplicationPackageImpl.APPLICATION_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The number of operations of the '<em>Category</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREFERENCES_CATEGORY_OPERATION_COUNT = ApplicationPackageImpl.APPLICATION_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPageImpl <em>Page</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -327,6 +315,15 @@ public interface PreferencesPackage extends EPackage {
 	int PREFERENCES_PAGE__ACCESSIBILITY_PHRASE = UiPackageImpl.ELEMENT_CONTAINER__ACCESSIBILITY_PHRASE;
 
 	/**
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREFERENCES_PAGE__LOCALIZED_ACCESSIBILITY_PHRASE = UiPackageImpl.ELEMENT_CONTAINER__LOCALIZED_ACCESSIBILITY_PHRASE;
+
+	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -388,24 +385,6 @@ public interface PreferencesPackage extends EPackage {
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE_FEATURE_COUNT = UiPackageImpl.ELEMENT_CONTAINER_FEATURE_COUNT + 4;
-
-	/**
-	 * The operation id for the '<em>Get Localized Accessibility Phrase</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREFERENCES_PAGE___GET_LOCALIZED_ACCESSIBILITY_PHRASE = UiPackageImpl.ELEMENT_CONTAINER___GET_LOCALIZED_ACCESSIBILITY_PHRASE;
-
-	/**
-	 * The number of operations of the '<em>Page</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREFERENCES_PAGE_OPERATION_COUNT = UiPackageImpl.ELEMENT_CONTAINER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.FieldEditorImpl <em>Field Editor</em>}' class.
@@ -553,6 +532,15 @@ public interface PreferencesPackage extends EPackage {
 	int FIELD_EDITOR__ACCESSIBILITY_PHRASE = UiPackageImpl.UI_ELEMENT__ACCESSIBILITY_PHRASE;
 
 	/**
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = UiPackageImpl.UI_ELEMENT__LOCALIZED_ACCESSIBILITY_PHRASE;
+
+	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -623,24 +611,6 @@ public interface PreferencesPackage extends EPackage {
 	 * @ordered
 	 */
 	int FIELD_EDITOR_FEATURE_COUNT = UiPackageImpl.UI_ELEMENT_FEATURE_COUNT + 7;
-
-	/**
-	 * The operation id for the '<em>Get Localized Accessibility Phrase</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE = UiPackageImpl.UI_ELEMENT___GET_LOCALIZED_ACCESSIBILITY_PHRASE;
-
-	/**
-	 * The number of operations of the '<em>Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIELD_EDITOR_OPERATION_COUNT = UiPackageImpl.UI_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.BooleanFieldEditorImpl <em>Boolean Field Editor</em>}' class.
@@ -788,6 +758,15 @@ public interface PreferencesPackage extends EPackage {
 	int BOOLEAN_FIELD_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
+
+	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -867,24 +846,6 @@ public interface PreferencesPackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Get Localized Accessibility Phrase</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE;
-
-	/**
-	 * The number of operations of the '<em>Boolean Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_FIELD_EDITOR_OPERATION_COUNT = FIELD_EDITOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListFieldEditorImpl <em>List Field Editor</em>}' class.
@@ -1032,6 +993,15 @@ public interface PreferencesPackage extends EPackage {
 	int LIST_FIELD_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
+
+	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1131,24 +1101,6 @@ public interface PreferencesPackage extends EPackage {
 	int LIST_FIELD_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 3;
 
 	/**
-	 * The operation id for the '<em>Get Localized Accessibility Phrase</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIST_FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE;
-
-	/**
-	 * The number of operations of the '<em>List Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIST_FIELD_EDITOR_OPERATION_COUNT = FIELD_EDITOR_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.EntryImpl <em>Entry</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1184,15 +1136,6 @@ public interface PreferencesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTRY_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Entry</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTRY_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ComboFieldEditorImpl <em>Combo Field Editor</em>}' class.
@@ -1340,6 +1283,15 @@ public interface PreferencesPackage extends EPackage {
 	int COMBO_FIELD_EDITOR__ACCESSIBILITY_PHRASE = LIST_FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBO_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = LIST_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
+
+	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1437,24 +1389,6 @@ public interface PreferencesPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR_FEATURE_COUNT = LIST_FIELD_EDITOR_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Get Localized Accessibility Phrase</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBO_FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE = LIST_FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE;
-
-	/**
-	 * The number of operations of the '<em>Combo Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBO_FIELD_EDITOR_OPERATION_COUNT = LIST_FIELD_EDITOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListEditorImpl <em>List Editor</em>}' class.
@@ -1602,6 +1536,15 @@ public interface PreferencesPackage extends EPackage {
 	int LIST_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
+
+	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1708,24 +1651,6 @@ public interface PreferencesPackage extends EPackage {
 	 * @ordered
 	 */
 	int LIST_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 4;
-
-	/**
-	 * The operation id for the '<em>Get Localized Accessibility Phrase</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIST_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE;
-
-	/**
-	 * The number of operations of the '<em>List Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIST_EDITOR_OPERATION_COUNT = FIELD_EDITOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.RadioGroupFieldEditorImpl <em>Radio Group Field Editor</em>}' class.
@@ -1873,6 +1798,15 @@ public interface PreferencesPackage extends EPackage {
 	int RADIO_GROUP_FIELD_EDITOR__ACCESSIBILITY_PHRASE = LIST_FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RADIO_GROUP_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = LIST_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
+
+	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1970,24 +1904,6 @@ public interface PreferencesPackage extends EPackage {
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR_FEATURE_COUNT = LIST_FIELD_EDITOR_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Get Localized Accessibility Phrase</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RADIO_GROUP_FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE = LIST_FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE;
-
-	/**
-	 * The number of operations of the '<em>Radio Group Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RADIO_GROUP_FIELD_EDITOR_OPERATION_COUNT = LIST_FIELD_EDITOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ScaleFieldEditorImpl <em>Scale Field Editor</em>}' class.
@@ -2135,6 +2051,15 @@ public interface PreferencesPackage extends EPackage {
 	int SCALE_FIELD_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALE_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
+
+	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2232,24 +2157,6 @@ public interface PreferencesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 3;
-
-	/**
-	 * The operation id for the '<em>Get Localized Accessibility Phrase</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCALE_FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE;
-
-	/**
-	 * The number of operations of the '<em>Scale Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCALE_FIELD_EDITOR_OPERATION_COUNT = FIELD_EDITOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.StringFieldEditorImpl <em>String Field Editor</em>}' class.
@@ -2397,6 +2304,15 @@ public interface PreferencesPackage extends EPackage {
 	int STRING_FIELD_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
+
+	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2476,24 +2392,6 @@ public interface PreferencesPackage extends EPackage {
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Get Localized Accessibility Phrase</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE;
-
-	/**
-	 * The number of operations of the '<em>String Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_FIELD_EDITOR_OPERATION_COUNT = FIELD_EDITOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.IntegerFieldEditorImpl <em>Integer Field Editor</em>}' class.
@@ -2641,6 +2539,15 @@ public interface PreferencesPackage extends EPackage {
 	int INTEGER_FIELD_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
+
+	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2729,24 +2636,6 @@ public interface PreferencesPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Get Localized Accessibility Phrase</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE;
-
-	/**
-	 * The number of operations of the '<em>Integer Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_FIELD_EDITOR_OPERATION_COUNT = FIELD_EDITOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.FileFieldEditorImpl <em>File Field Editor</em>}' class.
@@ -2894,6 +2783,15 @@ public interface PreferencesPackage extends EPackage {
 	int FILE_FIELD_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
+
+	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2982,24 +2880,6 @@ public interface PreferencesPackage extends EPackage {
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Get Localized Accessibility Phrase</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FILE_FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE;
-
-	/**
-	 * The number of operations of the '<em>File Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FILE_FIELD_EDITOR_OPERATION_COUNT = FIELD_EDITOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.DirectoryFieldEditorImpl <em>Directory Field Editor</em>}' class.
@@ -3147,6 +3027,15 @@ public interface PreferencesPackage extends EPackage {
 	int DIRECTORY_FIELD_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTORY_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
+
+	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3237,24 +3126,6 @@ public interface PreferencesPackage extends EPackage {
 	int DIRECTORY_FIELD_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Get Localized Accessibility Phrase</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTORY_FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR___GET_LOCALIZED_ACCESSIBILITY_PHRASE;
-
-	/**
-	 * The number of operations of the '<em>Directory Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECTORY_FIELD_EDITOR_OPERATION_COUNT = FIELD_EDITOR_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.ListCrud <em>List Crud</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3274,24 +3145,6 @@ public interface PreferencesPackage extends EPackage {
 	int LIST_CRUD_FEATURE_COUNT = 0;
 
 	/**
-	 * The operation id for the '<em>Add New Value</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIST_CRUD___ADD_NEW_VALUE__STRING = 0;
-
-	/**
-	 * The number of operations of the '<em>List Crud</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIST_CRUD_OPERATION_COUNT = 1;
-
-	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListFoldImpl <em>List Fold</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3309,24 +3162,6 @@ public interface PreferencesPackage extends EPackage {
 	 * @ordered
 	 */
 	int LIST_FOLD_FEATURE_COUNT = 0;
-
-	/**
-	 * The operation id for the '<em>Apply</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIST_FOLD___APPLY__STRING_STRINGBUFFER = 0;
-
-	/**
-	 * The number of operations of the '<em>List Fold</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIST_FOLD_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldStyle <em>Boolean Field Style</em>}' enum.
@@ -3796,16 +3631,6 @@ public interface PreferencesPackage extends EPackage {
 	EClass getListCrud();
 
 	/**
-	 * Returns the meta object for the '{@link org.lunifera.vaaclipse.ui.preferences.model.ListCrud#addNewValue(java.lang.String) <em>Add New Value</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Add New Value</em>' operation.
-	 * @see org.lunifera.vaaclipse.ui.preferences.model.ListCrud#addNewValue(java.lang.String)
-	 * @generated
-	 */
-	EOperation getListCrud__AddNewValue__String();
-
-	/**
 	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.ListFold <em>List Fold</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3814,16 +3639,6 @@ public interface PreferencesPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getListFold();
-
-	/**
-	 * Returns the meta object for the '{@link org.lunifera.vaaclipse.ui.preferences.model.ListFold#apply(java.lang.String, java.lang.StringBuffer) <em>Apply</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Apply</em>' operation.
-	 * @see org.lunifera.vaaclipse.ui.preferences.model.ListFold#apply(java.lang.String, java.lang.StringBuffer)
-	 * @generated
-	 */
-	EOperation getListFold__Apply__String_StringBuffer();
 
 	/**
 	 * Returns the meta object for enum '{@link org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldStyle <em>Boolean Field Style</em>}'.
@@ -4239,14 +4054,6 @@ public interface PreferencesPackage extends EPackage {
 		EClass LIST_CRUD = eINSTANCE.getListCrud();
 
 		/**
-		 * The meta object literal for the '<em><b>Add New Value</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation LIST_CRUD___ADD_NEW_VALUE__STRING = eINSTANCE.getListCrud__AddNewValue__String();
-
-		/**
 		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListFoldImpl <em>List Fold</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4255,14 +4062,6 @@ public interface PreferencesPackage extends EPackage {
 		 * @generated
 		 */
 		EClass LIST_FOLD = eINSTANCE.getListFold();
-
-		/**
-		 * The meta object literal for the '<em><b>Apply</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation LIST_FOLD___APPLY__STRING_STRINGBUFFER = eINSTANCE.getListFold__Apply__String_StringBuffer();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldStyle <em>Boolean Field Style</em>}' enum.

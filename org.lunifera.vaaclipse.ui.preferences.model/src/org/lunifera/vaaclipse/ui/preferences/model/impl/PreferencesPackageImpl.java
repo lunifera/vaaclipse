@@ -619,26 +619,8 @@ public class PreferencesPackageImpl extends EPackageImpl implements PreferencesP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getListCrud__AddNewValue__String() {
-		return listCrudEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getListFold() {
 		return listFoldEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getListFold__Apply__String_StringBuffer() {
-		return listFoldEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -751,10 +733,8 @@ public class PreferencesPackageImpl extends EPackageImpl implements PreferencesP
 		directoryFieldEditorEClass = createEClass(DIRECTORY_FIELD_EDITOR);
 
 		listCrudEClass = createEClass(LIST_CRUD);
-		createEOperation(listCrudEClass, LIST_CRUD___ADD_NEW_VALUE__STRING);
 
 		listFoldEClass = createEClass(LIST_FOLD);
-		createEOperation(listFoldEClass, LIST_FOLD___APPLY__STRING_STRINGBUFFER);
 
 		// Create enums
 		booleanFieldStyleEEnum = createEEnum(BOOLEAN_FIELD_STYLE);
@@ -850,7 +830,7 @@ public class PreferencesPackageImpl extends EPackageImpl implements PreferencesP
 		g1 = createEGenericType(theApplicationPackage.getContribution());
 		directoryFieldEditorEClass.getEGenericSuperTypes().add(g1);
 
-		// Initialize classes, features, and operations; add parameters
+		// Initialize classes and features; add operations and parameters
 		initEClass(preferencesCategoryEClass, PreferencesCategory.class, "PreferencesCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPreferencesCategory_Name(), ecorePackage.getEString(), "name", "No Name", 0, 1, PreferencesCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPreferencesCategory_ChildCategories(), this.getPreferencesCategory(), this.getPreferencesCategory_ParentCategory(), "childCategories", null, 0, -1, PreferencesCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -908,12 +888,12 @@ public class PreferencesPackageImpl extends EPackageImpl implements PreferencesP
 
 		initEClass(listCrudEClass, ListCrud.class, "ListCrud", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = initEOperation(getListCrud__AddNewValue__String(), ecorePackage.getEString(), "addNewValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(listCrudEClass, ecorePackage.getEString(), "addNewValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "values", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(listFoldEClass, ListFold.class, "ListFold", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = initEOperation(getListFold__Apply__String_StringBuffer(), null, "apply", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(listFoldEClass, null, "apply", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getStringBuffer(), "prev", 0, 1, IS_UNIQUE, IS_ORDERED);
 

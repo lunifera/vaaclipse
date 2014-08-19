@@ -143,6 +143,24 @@ public interface E4modelextensionPackage extends EPackage {
 	int EDITOR_PART_DESCRIPTOR__TOOLTIP = BasicPackageImpl.PART_DESCRIPTOR__TOOLTIP;
 
 	/**
+	 * The feature id for the '<em><b>Localized Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITOR_PART_DESCRIPTOR__LOCALIZED_LABEL = BasicPackageImpl.PART_DESCRIPTOR__LOCALIZED_LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Localized Tooltip</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITOR_PART_DESCRIPTOR__LOCALIZED_TOOLTIP = BasicPackageImpl.PART_DESCRIPTOR__LOCALIZED_TOOLTIP;
+
+	/**
 	 * The feature id for the '<em><b>Handlers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -233,6 +251,15 @@ public interface E4modelextensionPackage extends EPackage {
 	int EDITOR_PART_DESCRIPTOR__DESCRIPTION = BasicPackageImpl.PART_DESCRIPTOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Localized Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDITOR_PART_DESCRIPTOR__LOCALIZED_DESCRIPTION = BasicPackageImpl.PART_DESCRIPTOR__LOCALIZED_DESCRIPTION;
+
+	/**
 	 * The feature id for the '<em><b>Uri Filter</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -258,42 +285,6 @@ public interface E4modelextensionPackage extends EPackage {
 	 * @ordered
 	 */
 	int EDITOR_PART_DESCRIPTOR_FEATURE_COUNT = BasicPackageImpl.PART_DESCRIPTOR_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Get Localized Label</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EDITOR_PART_DESCRIPTOR___GET_LOCALIZED_LABEL = BasicPackageImpl.PART_DESCRIPTOR___GET_LOCALIZED_LABEL;
-
-	/**
-	 * The operation id for the '<em>Get Localized Tooltip</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EDITOR_PART_DESCRIPTOR___GET_LOCALIZED_TOOLTIP = BasicPackageImpl.PART_DESCRIPTOR___GET_LOCALIZED_TOOLTIP;
-
-	/**
-	 * The operation id for the '<em>Get Localized Description</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EDITOR_PART_DESCRIPTOR___GET_LOCALIZED_DESCRIPTION = BasicPackageImpl.PART_DESCRIPTOR___GET_LOCALIZED_DESCRIPTION;
-
-	/**
-	 * The number of operations of the '<em>Editor Part Descriptor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EDITOR_PART_DESCRIPTOR_OPERATION_COUNT = BasicPackageImpl.PART_DESCRIPTOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link e4modelextension.impl.VaaclipseApplicationImpl <em>Vaaclipse Application</em>}' class.
@@ -439,6 +430,15 @@ public interface E4modelextensionPackage extends EPackage {
 	 * @ordered
 	 */
 	int VAACLIPSE_APPLICATION__ACCESSIBILITY_PHRASE = ApplicationPackageImpl.APPLICATION__ACCESSIBILITY_PHRASE;
+
+	/**
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VAACLIPSE_APPLICATION__LOCALIZED_ACCESSIBILITY_PHRASE = ApplicationPackageImpl.APPLICATION__LOCALIZED_ACCESSIBILITY_PHRASE;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -594,6 +594,15 @@ public interface E4modelextensionPackage extends EPackage {
 	int VAACLIPSE_APPLICATION__CATEGORIES = ApplicationPackageImpl.APPLICATION__CATEGORIES;
 
 	/**
+	 * The feature id for the '<em><b>Dialogs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VAACLIPSE_APPLICATION__DIALOGS = ApplicationPackageImpl.APPLICATION__DIALOGS;
+
+	/**
 	 * The feature id for the '<em><b>Editor Descriptors</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -628,25 +637,6 @@ public interface E4modelextensionPackage extends EPackage {
 	 * @ordered
 	 */
 	int VAACLIPSE_APPLICATION_FEATURE_COUNT = ApplicationPackageImpl.APPLICATION_FEATURE_COUNT + 3;
-
-	/**
-	 * The operation id for the '<em>Get Localized Accessibility Phrase</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VAACLIPSE_APPLICATION___GET_LOCALIZED_ACCESSIBILITY_PHRASE = ApplicationPackageImpl.APPLICATION___GET_LOCALIZED_ACCESSIBILITY_PHRASE;
-
-	/**
-	 * The number of operations of the '<em>Vaaclipse Application</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VAACLIPSE_APPLICATION_OPERATION_COUNT = ApplicationPackageImpl.APPLICATION_OPERATION_COUNT + 0;
-
 
 	/**
 	 * Returns the meta object for class '{@link e4modelextension.EditorPartDescriptor <em>Editor Part Descriptor</em>}'.

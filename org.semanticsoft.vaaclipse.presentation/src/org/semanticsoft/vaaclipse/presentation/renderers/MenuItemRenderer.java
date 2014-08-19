@@ -27,7 +27,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MHandledItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MHandledMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
-import org.eclipse.e4.ui.model.application.ui.menu.MOpaqueMenuItem;
+//import org.eclipse.e4.ui.model.application.ui.menu.MOpaqueMenuItem;
 import org.eclipse.e4.ui.workbench.UIEvents;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
@@ -198,8 +198,9 @@ public class MenuItemRenderer extends ItemRenderer {
 			context.set(MDirectMenuItem.class, (MDirectMenuItem) item);
 		else if (item instanceof MHandledMenuItem)
 			context.set(MHandledMenuItem.class, (MHandledMenuItem) item);
-		else if (item instanceof MOpaqueMenuItem)
-			context.set(MOpaqueMenuItem.class, (MOpaqueMenuItem) item);
+		// TODO luna - check this
+//		else if (item instanceof MOpaqueMenuItem)
+//			context.set(MOpaqueMenuItem.class, (MOpaqueMenuItem) item);
 	}
 
 	@Override

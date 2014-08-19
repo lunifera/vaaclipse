@@ -6,6 +6,7 @@ import org.eclipse.e4.ui.model.application.MApplicationElement;
 import org.eclipse.e4.ui.model.application.MContribution;
 
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
+import org.eclipse.e4.ui.model.application.ui.MLocalizable;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 
 import org.eclipse.emf.ecore.EObject;
@@ -88,6 +89,7 @@ public class PreferencesSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseContribution(preferencesPage);
 				if (result == null) result = caseUIElement(preferencesPage);
 				if (result == null) result = caseApplicationElement(preferencesPage);
+				if (result == null) result = caseLocalizable(preferencesPage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -96,6 +98,7 @@ public class PreferencesSwitch<T1> extends Switch<T1> {
 				T1 result = caseFieldEditor(fieldEditor);
 				if (result == null) result = caseUIElement(fieldEditor);
 				if (result == null) result = caseApplicationElement(fieldEditor);
+				if (result == null) result = caseLocalizable(fieldEditor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -105,6 +108,7 @@ public class PreferencesSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseFieldEditor(booleanFieldEditor);
 				if (result == null) result = caseUIElement(booleanFieldEditor);
 				if (result == null) result = caseApplicationElement(booleanFieldEditor);
+				if (result == null) result = caseLocalizable(booleanFieldEditor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -115,6 +119,7 @@ public class PreferencesSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseContribution(listFieldEditor);
 				if (result == null) result = caseUIElement(listFieldEditor);
 				if (result == null) result = caseApplicationElement(listFieldEditor);
+				if (result == null) result = caseLocalizable(listFieldEditor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -132,6 +137,7 @@ public class PreferencesSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseContribution(comboFieldEditor);
 				if (result == null) result = caseUIElement(comboFieldEditor);
 				if (result == null) result = caseApplicationElement(comboFieldEditor);
+				if (result == null) result = caseLocalizable(comboFieldEditor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -142,6 +148,7 @@ public class PreferencesSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseContribution(listEditor);
 				if (result == null) result = caseUIElement(listEditor);
 				if (result == null) result = caseApplicationElement(listEditor);
+				if (result == null) result = caseLocalizable(listEditor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -153,6 +160,7 @@ public class PreferencesSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseContribution(radioGroupFieldEditor);
 				if (result == null) result = caseUIElement(radioGroupFieldEditor);
 				if (result == null) result = caseApplicationElement(radioGroupFieldEditor);
+				if (result == null) result = caseLocalizable(radioGroupFieldEditor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -162,6 +170,7 @@ public class PreferencesSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseFieldEditor(scaleFieldEditor);
 				if (result == null) result = caseUIElement(scaleFieldEditor);
 				if (result == null) result = caseApplicationElement(scaleFieldEditor);
+				if (result == null) result = caseLocalizable(scaleFieldEditor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -171,6 +180,7 @@ public class PreferencesSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseFieldEditor(stringFieldEditor);
 				if (result == null) result = caseUIElement(stringFieldEditor);
 				if (result == null) result = caseApplicationElement(stringFieldEditor);
+				if (result == null) result = caseLocalizable(stringFieldEditor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -180,6 +190,7 @@ public class PreferencesSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseFieldEditor(integerFieldEditor);
 				if (result == null) result = caseUIElement(integerFieldEditor);
 				if (result == null) result = caseApplicationElement(integerFieldEditor);
+				if (result == null) result = caseLocalizable(integerFieldEditor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -190,6 +201,7 @@ public class PreferencesSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseContribution(fileFieldEditor);
 				if (result == null) result = caseUIElement(fileFieldEditor);
 				if (result == null) result = caseApplicationElement(fileFieldEditor);
+				if (result == null) result = caseLocalizable(fileFieldEditor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -200,6 +212,7 @@ public class PreferencesSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseContribution(directoryFieldEditor);
 				if (result == null) result = caseUIElement(directoryFieldEditor);
 				if (result == null) result = caseApplicationElement(directoryFieldEditor);
+				if (result == null) result = caseLocalizable(directoryFieldEditor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -471,6 +484,21 @@ public class PreferencesSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseApplicationElement(MApplicationElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Localizable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Localizable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseLocalizable(MLocalizable object) {
 		return null;
 	}
 

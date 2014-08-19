@@ -242,7 +242,7 @@ public class E4modelextensionPackageImpl extends EPackageImpl implements E4model
 		editorPartDescriptorEClass.getESuperTypes().add(theBasicPackage.getPartDescriptor());
 		vaaclipseApplicationEClass.getESuperTypes().add(theApplicationPackage.getApplication());
 
-		// Initialize classes, features, and operations; add parameters
+		// Initialize classes and features; add operations and parameters
 		initEClass(editorPartDescriptorEClass, EditorPartDescriptor.class, "EditorPartDescriptor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEditorPartDescriptor_UriFilter(), ecorePackage.getEString(), "uriFilter", null, 0, 1, EditorPartDescriptor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEditorPartDescriptor_PartAddingLogicUri(), ecorePackage.getEString(), "partAddingLogicUri", "bundleclass://org.semanticsoft.e4extension/org.semanticsoft.e4extension.shared.DefaultPartAddingLogic", 0, 1, EditorPartDescriptor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

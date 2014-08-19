@@ -6,6 +6,7 @@ import org.eclipse.e4.ui.model.application.MApplicationElement;
 import org.eclipse.e4.ui.model.application.MContribution;
 
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
+import org.eclipse.e4.ui.model.application.ui.MLocalizable;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -142,6 +143,10 @@ public class PreferencesAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseApplicationElement(MApplicationElement object) {
 				return createApplicationElementAdapter();
+			}
+			@Override
+			public Adapter caseLocalizable(MLocalizable object) {
+				return createLocalizableAdapter();
 			}
 			@Override
 			public Adapter caseUIElement(MUIElement object) {
@@ -410,6 +415,20 @@ public class PreferencesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createApplicationElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.e4.ui.model.application.ui.MLocalizable <em>Localizable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.e4.ui.model.application.ui.MLocalizable
+	 * @generated
+	 */
+	public Adapter createLocalizableAdapter() {
 		return null;
 	}
 
