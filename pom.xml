@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.semanticsoft</groupId>
 	<artifactId>org.semanticsoft.vaaclipse</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.7.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Vaaclipse :: Parent POM</name>
 
@@ -106,11 +106,11 @@
 
 				<!-- exclusive for P2 -->
 				<module>org.semanticsoft.vaaclipse.p2</module>
-				
+
 				<!-- P2 features -->
 				<module>org.semanticsoft.vaaclipse.feature.runtime.core</module>
 				<!-- end P2 features -->
-				
+
 				<!-- Runtime components -->
 				<module>org.semanticsoft.vaadin</module>
 				<module>org.semanticsoft.vaadin.osgi.staticres</module>
@@ -134,7 +134,7 @@
 				<module>org.semanticsoft.vaaclipse.widgetset.default</module>
 				<module>org.lunifera.vaaclipse.ui.preferences.model</module>
 				<module>org.lunifera.vaaclipse.ui.preferences.addon</module>
-				
+
 				<!-- Addons components -->
 				<module>org.semanticsoft.vaaclipse.vaadin.addon.contextmenu</module>
 				<module>org.semanticsoft.vaaclipse.vaadin.addon.dndlayout</module>
@@ -179,11 +179,11 @@
 
 				<!-- exclusive for P2 -->
 				<module>org.semanticsoft.vaaclipse.p2</module>
-				
+
 				<!-- P2 features -->
 				<module>org.semanticsoft.vaaclipse.feature.runtime.core</module>
 				<!-- end P2 features -->
-				
+
 				<!-- Runtime components -->
 				<module>org.semanticsoft.vaadin</module>
 				<module>org.semanticsoft.vaadin.osgi.staticres</module>
@@ -202,12 +202,12 @@
 				<module>org.semanticsoft.e4.injector.objectsuppliers</module>
 				<module>org.semanticsoft.e4extension</module>
 				<module>org.semanticsoft.e4modelextension</module>
-<!-- 				<module>org.semanticsoft.vaaclipse.p2.service</module> -->
-<!-- 				<module>org.semanticsoft.vaaclipse.p2.ui</module> -->
+				<!-- <module>org.semanticsoft.vaaclipse.p2.service</module> -->
+				<!-- <module>org.semanticsoft.vaaclipse.p2.ui</module> -->
 				<module>org.semanticsoft.vaaclipse.widgetset.default</module>
 				<module>org.lunifera.vaaclipse.ui.preferences.model</module>
 				<module>org.lunifera.vaaclipse.ui.preferences.addon</module>
-				
+
 				<!-- Addons components -->
 				<module>org.semanticsoft.vaaclipse.vaadin.addon.contextmenu</module>
 				<module>org.semanticsoft.vaaclipse.vaadin.addon.dndlayout</module>
@@ -250,7 +250,7 @@
 				<module>org.semanticsoft.vaaclipse.widgetset.default</module>
 			</modules>
 		</profile>
-		
+
 		<profile>
 			<id>client-widgets</id>
 			<activation>
@@ -318,6 +318,40 @@
 				</plugins>
 			</build>
 		</profile>
+
+		<profile>
+			<id>prepare-for-next-release</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>org.eclipse.tycho:tycho-versions-plugin:set-version</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-versions-plugin</artifactId>
+						<version>${tycho-version}</version>
+						<executions>
+							<execution>
+								<id>change-next-release</id>
+								<goals>
+									<goal>set-version</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<newVersion>${next-release}</newVersion>
+							<!-- All parents -->
+							<artifacts>org.semanticsoft.vaaclipse,
+								org.semanticsoft.vaaclipse.p2
+							</artifacts>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+
 	</profiles>
 
 	<build>
@@ -423,17 +457,17 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	
+
 	<distributionManagement>
 		<repository>
-		  <id>archiva.internal</id>
-		  <name>Internal Release Repository</name>
-		  <url>http://semanticsoft.org:8085/archiva/repository/internal/</url>
+			<id>archiva.internal</id>
+			<name>Internal Release Repository</name>
+			<url>http://semanticsoft.org:8085/archiva/repository/internal/</url>
 		</repository>
 		<snapshotRepository>
-		  <id>archiva.snapshots</id>
-		  <name>Internal Snapshot Repository</name>
-		  <url>http://semanticsoft.org:8085/archiva/repository/snapshots/</url>
+			<id>archiva.snapshots</id>
+			<name>Internal Snapshot Repository</name>
+			<url>http://semanticsoft.org:8085/archiva/repository/snapshots/</url>
 		</snapshotRepository>
-  </distributionManagement>
+	</distributionManagement>
 </project>
