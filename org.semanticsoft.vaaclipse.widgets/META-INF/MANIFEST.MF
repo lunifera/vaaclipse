@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Widgets
 Bundle-SymbolicName: org.semanticsoft.vaaclipse.widgets
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 2.7.3.qualifier
 Require-Bundle: com.vaadin.client;bundle-version="7.0.0",
  com.vaadin.server;bundle-version="7.0.0",
  com.vaadin.shared;bundle-version="7.0.0",

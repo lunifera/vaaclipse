@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: E4extension
 Bundle-SymbolicName: org.semanticsoft.e4extension; singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 2.7.3.qualifier
 Bundle-Vendor: Rushan R. Gilmullin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.e4.ui.model.workbench;bundle-version="0.10.1",
