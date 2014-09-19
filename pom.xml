@@ -16,7 +16,6 @@
 		<tychoExtrasVersion>0.20.0</tychoExtrasVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<vaadin-version>7.2.2</vaadin-version>
 		<shiro-version>1.2.1</shiro-version>
 		<vaadin-icepush-version>0.5.4</vaadin-icepush-version>
 		<icepush-version>3.0.1</icepush-version>

@@ -33,25 +33,25 @@
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-server</artifactId>
 			<scope>provided</scope>
-			<version>${vaadin-version}</version>
+			<version>${vaadin.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-client</artifactId>
 			<scope>provided</scope>
-			<version>${vaadin-version}</version>
+			<version>${vaadin.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-client-compiled</artifactId>
 			<scope>provided</scope>
-			<version>${vaadin-version}</version>
+			<version>${vaadin.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-shared</artifactId>
 			<scope>provided</scope>
-			<version>${vaadin-version}</version>
+			<version>${vaadin.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
@@ -63,12 +63,12 @@
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-client-compiler</artifactId>
 			<scope>provided</scope>
-			<version>${vaadin-version}</version>
+			<version>${vaadin.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-themes</artifactId>
-			<version>${vaadin-version}</version>
+			<version>${vaadin.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
