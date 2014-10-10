@@ -73,7 +73,7 @@ public class VaaclipseServerRpcHandler extends ServerRpcHandler {
 			return;
 		}
 
-		RpcRequest rpcRequest = new RpcRequest(changeMessage);
+		RpcRequest rpcRequest = new RpcRequest(changeMessage, request);
 
 		// Security: double cookie submission pattern unless disabled by
 		// property
