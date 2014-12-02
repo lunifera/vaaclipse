@@ -11,36 +11,14 @@
 
 package org.semanticsoft.vaaclipse.app.servlet;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
 import org.semanticsoft.vaaclipse.api.VaadinExecutorService;
-import org.semanticsoft.vaaclipse.app.webapp.VaadinUI;
-import org.semanticsoft.vaaclipse.publicapi.app.ThreadLocals;
-
-import com.vaadin.server.ClientConnector;
-import com.vaadin.server.ClientConnector.ConnectorErrorEvent;
-import com.vaadin.server.ErrorEvent;
-import com.vaadin.server.ErrorHandler;
-import com.vaadin.server.LegacyCommunicationManager;
-import com.vaadin.server.ServerRpcManager;
-import com.vaadin.server.ServerRpcManager.RpcInvocationException;
-import com.vaadin.server.ServerRpcMethodInvocation;
-import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinSession;
-import com.vaadin.server.VariableOwner;
-import com.vaadin.shared.Connector;
-import com.vaadin.shared.communication.LegacyChangeVariablesInvocation;
-import com.vaadin.shared.communication.MethodInvocation;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.ConnectorTracker;
-import com.vaadin.ui.UI;
 
 public class VaadinExecutorServiceImpl implements VaadinExecutorService {
 	private Queue<Runnable> runnables = new LinkedList<Runnable>();

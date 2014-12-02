@@ -59,7 +59,6 @@ import org.semanticsoft.vaaclipse.api.VaadinExecutorService;
 import org.semanticsoft.vaaclipse.app.VaadinE4Application;
 import org.semanticsoft.vaaclipse.app.servlet.OSGiServletService;
 import org.semanticsoft.vaaclipse.app.servlet.VaadinExecutorServiceImpl;
-import org.semanticsoft.vaaclipse.app.servlet.VaadinOSGiServlet;
 import org.semanticsoft.vaaclipse.publicapi.authentication.AuthenticationConstants;
 import org.semanticsoft.vaaclipse.publicapi.theme.Theme;
 import org.semanticsoft.vaaclipse.publicapi.theme.ThemeConstants;

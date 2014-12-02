@@ -12,12 +12,14 @@
 	</prerequisites>
 
 	<properties>
+		<vaaclipse-version>2.7.3-SNAPSHOT</vaaclipse-version>
 		<tycho-version>0.20.0</tycho-version>
 		<tychoExtrasVersion>0.20.0</tychoExtrasVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<shiro-version>1.2.1</shiro-version>
 <!-- 		<vaadin73-version>[7.3.0,7.4.0)</vaadin73-version> -->
+		<vaadin.version>[7.2.5,7.2.6)</vaadin.version>
 		<vaadin-icepush-version>0.5.4</vaadin-icepush-version>
 		<icepush-version>3.0.1</icepush-version>
 		<icepush-gwt-version>1.0.0</icepush-gwt-version>
@@ -68,79 +70,6 @@
 
 	<profiles>
 		<profile>
-			<id>p2-kepler</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<defaultGoal>verify</defaultGoal>
-				<plugins>
-					<plugin>
-						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>target-platform-configuration</artifactId>
-						<version>${tycho-version}</version>
-						<configuration>
-							<!-- <resolver>p2</resolver> -->
-							<!-- <pomDependencies>consider</pomDependencies> -->
-							<ignoreTychoRepositories>true</ignoreTychoRepositories>
-							<target>
-								<artifact>
-									<groupId>org.semanticsoft</groupId>
-									<artifactId>org.semanticsoft.vaaclipse.target.kepler</artifactId>
-									<version>1.0.0-SNAPSHOT</version>
-								</artifact>
-							</target>
-							<environments>
-								<environment>
-									<os>win32</os>
-									<ws>win32</ws>
-									<arch>x86</arch>
-								</environment>
-							</environments>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-			<modules>
-				<module>org.semanticsoft.vaaclipse.target.kepler</module>
-
-				<!-- exclusive for P2 -->
-				<module>org.semanticsoft.vaaclipse.p2</module>
-
-				<!-- P2 features -->
-				<module>org.semanticsoft.vaaclipse.feature.runtime.core</module>
-				<!-- end P2 features -->
-
-				<!-- Runtime components -->
-				<module>org.semanticsoft.vaadin</module>
-				<module>org.semanticsoft.vaadin.osgi.staticres</module>
-				<module>org.semanticsoft.commons</module>
-				<module>org.semanticsoft.vaaclipse.additions</module>
-				<module>org.semanticsoft.vaaclipse.behaviour</module>
-				<module>org.semanticsoft.vaaclipse.api</module>
-				<module>org.semanticsoft.vaaclipse.app</module>
-				<module>org.semanticsoft.vaaclipse.widgets</module>
-				<module>org.semanticsoft.vaaclipse.contributions</module>
-				<module>org.semanticsoft.vaaclipse.presentation</module>
-				<module>org.semanticsoft.vaaclipse.publicapi</module>
-				<module>org.semanticsoft.vaaclipse.resources</module>
-				<module>org.semanticsoft.vaaclipse.theme</module>
-				<module>org.semanticsoft.vaaclipse.util</module>
-				<module>org.semanticsoft.e4.injector.objectsuppliers</module>
-				<module>org.semanticsoft.e4extension</module>
-				<module>org.semanticsoft.e4modelextension</module>
-				<module>org.semanticsoft.vaaclipse.p2.service</module>
-				<module>org.semanticsoft.vaaclipse.p2.ui</module>
-				<module>org.semanticsoft.vaaclipse.widgetset.default</module>
-				<module>org.lunifera.vaaclipse.ui.preferences.model</module>
-				<module>org.lunifera.vaaclipse.ui.preferences.addon</module>
-
-				<!-- Addons components -->
-				<module>org.semanticsoft.vaaclipse.vaadin.addon.contextmenu</module>
-				<module>org.semanticsoft.vaaclipse.vaadin.addon.dndlayout</module>
-			</modules>
-		</profile>
-		<profile>
 			<id>p2-luna</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
@@ -160,7 +89,7 @@
 								<artifact>
 									<groupId>org.semanticsoft</groupId>
 									<artifactId>org.semanticsoft.vaaclipse.target.luna</artifactId>
-									<version>1.0.0-SNAPSHOT</version>
+									<version>${vaaclipse-version}</version>
 								</artifact>
 							</target>
 							<environments>

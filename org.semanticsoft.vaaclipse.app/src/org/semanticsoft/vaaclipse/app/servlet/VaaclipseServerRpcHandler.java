@@ -13,7 +13,6 @@ package org.semanticsoft.vaaclipse.app.servlet;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -61,7 +60,7 @@ public class VaaclipseServerRpcHandler extends ServerRpcHandler {
 	public VaadinExecutorService getExecutorService() {
 		return executorService;
 	}
-
+ 
 	public void handleRpc(UI ui, Reader reader, VaadinRequest request)
 			throws IOException, InvalidUIDLSecurityKeyException, JSONException {
 		ui.getSession().setLastRequestTimestamp(System.currentTimeMillis());
@@ -73,8 +72,7 @@ public class VaaclipseServerRpcHandler extends ServerRpcHandler {
 			return;
 		}
 
-		RpcRequest rpcRequest = new RpcRequest(changeMessage, request);
-
+		RpcRequest rpcRequest = new RpcRequest(changeMessage);
 		// Security: double cookie submission pattern unless disabled by
 		// property
 		if (!VaadinService.isCsrfTokenValid(ui.getSession(),

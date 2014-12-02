@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.semanticsoft.vaaclipse.widgetset.default
 Bundle-Version: 2.7.3.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Vaadin-Resources: resources
-Require-Bundle: com.vaadin.server;bundle-version="[7.3.0,7.4.0)",
- com.vaadin.client;bundle-version="[7.3.0,7.4.0)",
- com.vaadin.shared;bundle-version="[7.3.0,7.4.0)",
+Require-Bundle: com.vaadin.server;bundle-version="[7.2.0,7.3.0)",
+ com.vaadin.client;bundle-version="[7.2.0,7.3.0)",
+ com.vaadin.shared;bundle-version="[7.2.0,7.3.0)",
  com.vaadin.shared.deps;bundle-version="1.0.2"
