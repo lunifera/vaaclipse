@@ -160,4 +160,5 @@
 		<!-- <version>1.16</version> -->
 		<!-- </dependency> -->
 	</dependencies>
+	<version>2.7.3-SNAPSHOT</version>
 </project>
