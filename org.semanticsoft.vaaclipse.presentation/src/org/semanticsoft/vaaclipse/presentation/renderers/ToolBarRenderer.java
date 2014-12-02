@@ -126,8 +126,12 @@ public class ToolBarRenderer extends BasicMenuToolbarTrimbarRenderer {
 				toolBarWidget.addComponent(separator);
 		}
 		else
+		{
 			toolBarWidget = new HorizontalLayout();
-		
+			Component separator = GuiUtils.createSeparator(toolbarModel);
+			if (separator != null)
+				toolBarWidget.addComponent(separator);
+		}
 		toolBarWidget.setSizeUndefined();
 		toolBarWidget.addStyleName("toolbar");
 		
@@ -239,7 +243,7 @@ public class ToolBarRenderer extends BasicMenuToolbarTrimbarRenderer {
 		Component childWidget = (Component) child.getWidget();
 		if (toolbarWidget == null || childWidget == null)
 			return;
-		int index = indexOf(child, element) + 1; //+1 becouse the first element is toolbar drag handler (separator)
+		int index = indexOf(child, element)/* + 1*/; //+1 becouse the first element is toolbar drag handler (separator)
 		if (element instanceof MToolBarSeparator) 
 		{
 			toolbarWidget.addComponent(GuiUtils.createSeparator(toolBar), index);
