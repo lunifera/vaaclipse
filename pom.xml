@@ -67,6 +67,19 @@
 			<url>https://maven.atlassian.com/repository/public</url>
 		</pluginRepository>
 	</pluginRepositories>
+	
+	<distributionManagement>
+		<repository>
+			<id>lunifera-nexus-release</id>
+			<name>Nexus Release Repository</name>
+			<url>http://maven.lunifera.org:8086/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>lunifera-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>http://maven.lunifera.org:8086/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<profiles>
 		<profile>
