@@ -26,8 +26,8 @@ Export-Package: fi.jasoft.dragdroplayouts,
  fi.jasoft.dragdroplayouts.drophandlers,
  fi.jasoft.dragdroplayouts.events,
  fi.jasoft.dragdroplayouts.interfaces
-Require-Bundle: com.vaadin.server;bundle-version="[7.2.0,7.3.0)",
- com.vaadin.shared;bundle-version="[7.2.0,7.3.0)",
+Require-Bundle: com.vaadin.server;bundle-version="[7.3.0,7.4.0)",
+ com.vaadin.shared;bundle-version="[7.3.0,7.4.0)",
  com.vaadin.shared.deps;bundle-version="1.0.2",
- com.vaadin.client;bundle-version="[7.2.0,7.3.0)",
- com.vaadin.themes;bundle-version="[7.2.0,7.3.0)"
+ com.vaadin.client;bundle-version="[7.3.0,7.4.0)",
+ com.vaadin.themes;bundle-version="[7.3.0,7.4.0)"

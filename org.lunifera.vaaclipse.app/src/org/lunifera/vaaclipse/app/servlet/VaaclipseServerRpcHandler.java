@@ -9,7 +9,7 @@
  *     Rushan R. Gilmullin - initial API and implementation
  *******************************************************************************/
 
-package org.semanticsoft.vaaclipse.app.servlet;
+package org.lunifera.vaaclipse.app.servlet;
 
 import java.io.IOException;
 import java.io.Reader;

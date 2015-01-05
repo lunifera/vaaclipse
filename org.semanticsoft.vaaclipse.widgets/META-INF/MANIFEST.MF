@@ -3,11 +3,11 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Widgets
 Bundle-SymbolicName: org.semanticsoft.vaaclipse.widgets
 Bundle-Version: 2.7.3.qualifier
-Require-Bundle: com.vaadin.client;bundle-version="[7.2.0,7.3.0)",
- com.vaadin.server;bundle-version="[7.2.0,7.3.0)",
- com.vaadin.shared;bundle-version="[7.2.0,7.3.0)",
+Require-Bundle: com.vaadin.client;bundle-version="[7.3.0,7.4.0)",
+ com.vaadin.server;bundle-version="[7.3.0,7.4.0)",
+ com.vaadin.shared;bundle-version="[7.3.0,7.4.0)",
  com.vaadin.shared.deps;bundle-version="1.0.2",
- com.vaadin.themes;bundle-version="[7.2.0,7.3.0)",
+ com.vaadin.themes;bundle-version="[7.3.0,7.4.0)",
  org.semanticsoft.vaaclipse.vaadin.addon.dndlayout;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.semanticsoft.vaaclipse.widgets,
