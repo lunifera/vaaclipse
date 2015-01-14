@@ -8,4 +8,4 @@ Vaadin-Resources: resources
 Require-Bundle: com.vaadin.server;bundle-version="[7.3.0,7.4.0)",
  com.vaadin.client;bundle-version="[7.3.0,7.4.0)",
  com.vaadin.shared;bundle-version="[7.3.0,7.4.0)",
- com.vaadin.shared.deps;bundle-version="1.0.2"
+ org.json;bundle-version="0.0.20080701"

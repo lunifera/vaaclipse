@@ -19,7 +19,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<shiro-version>1.2.1</shiro-version>
 <!-- 		<vaadin73-version>[7.3.0,7.4.0)</vaadin73-version> -->
-		<vaadin.version>[7.3.0,7.3.9)</vaadin.version>
+		<vaadin.version>7.3.8</vaadin.version>
 		<vaadin-icepush-version>0.5.4</vaadin-icepush-version>
 		<icepush-version>3.0.1</icepush-version>
 		<icepush-gwt-version>1.0.0</icepush-gwt-version>
@@ -175,8 +175,8 @@
 							<target>
 								<artifact>
 									<groupId>org.semanticsoft</groupId>
-									<artifactId>org.semanticsoft.vaaclipse.target.kepler</artifactId>
-									<version>1.0.0-SNAPSHOT</version>
+									<artifactId>org.semanticsoft.vaaclipse.target.luna</artifactId>
+									<version>2.7.3-SNAPSHOT</version>
 								</artifact>
 							</target>
 						</configuration>
@@ -184,7 +184,6 @@
 				</plugins>
 			</build>
 			<modules>
-				<module>org.semanticsoft.vaaclipse.target.kepler</module>
 				<module>org.semanticsoft.vaaclipse.target.luna</module>
 				<module>org.semanticsoft.vaaclipse.widgets</module>
 				<module>org.semanticsoft.commons</module>

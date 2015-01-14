@@ -11,5 +11,4 @@ Export-Package: org.vaadin.peter.contextmenu,
  org.vaadin.peter.contextmenu.client
 Require-Bundle: com.vaadin.server;bundle-version="[7.3.0,7.4.0)",
  com.vaadin.shared;bundle-version="[7.3.0,7.4.0)",
- com.vaadin.shared.deps;bundle-version="1.0.2",
  com.vaadin.themes;bundle-version="[7.3.0,7.4.0)"

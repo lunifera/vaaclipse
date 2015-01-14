@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="org.semanticsoft.vaaclipse.target.luna" sequenceNumber="25">
+<?pde version="3.8"?><target name="org.semanticsoft.vaaclipse.target.luna" sequenceNumber="32">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.apache.commons.io" version="2.0.1.v201105210651"/>
@@ -20,13 +20,13 @@
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.sdk.feature.group" version="2.10.0.v20140519-0339"/>
-<unit id="org.eclipse.e4.rcp.source.feature.group" version="1.3.100.v20140606-1445"/>
-<unit id="org.eclipse.e4.rcp.feature.group" version="1.3.100.v20140606-1445"/>
+<unit id="org.eclipse.equinox.core.sdk.feature.group" version="3.10.0.v20140606-1445"/>
 <repository location="http://download.eclipse.org/releases/luna"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.equinox.core.sdk.feature.group" version="3.10.0.v20140606-1445"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.10.0.v20140519-0339"/>
+<unit id="org.eclipse.e4.rcp.source.feature.group" version="1.3.100.v20140606-1445"/>
+<unit id="org.eclipse.e4.rcp.feature.group" version="1.3.100.v20140606-1445"/>
 <repository location="http://download.eclipse.org/releases/luna"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
@@ -34,8 +34,8 @@
 <repository location="http://download.eclipse.org/releases/luna"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.lunifera.dependencies.feature.security.shiro.feature.group" version="1.2.3"/>
-<unit id="org.lunifera.dependencies.feature.vaadin.feature.group" version="7.2.5"/>
+<unit id="org.lunifera.dependencies.feature.vaadin.feature.group" version="7.3.7"/>
+<unit id="org.lunifera.dependencies.feature.atmosphere.feature.group" version="2.1.2.vaadin6"/>
 <repository location="http://lun.lunifera.org/downloads/p2/lunifera/luna/latest/"/>
 </location>
 </locations>

@@ -38,7 +38,7 @@ public class VaadinExecutorServiceImpl implements VaadinExecutorService {
 
 	public synchronized void exec() {
 		//System.out.println("exec called!");
-		Runnable runnable;
+		Runnable runnable = null;
 		while ((runnable = runnables.poll()) != null) {
 			try {
 				//System.out.println("Runnable 1");
