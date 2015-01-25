@@ -175,7 +175,7 @@ public class VaadinE4Application implements IApplication, ResourceInfoProvider {
 			port = "8080";
 
 		contextPath = System
-				.getProperty("org.eclipse.equinox.http.jetty.context.path");
+				.getProperty("org.lunifera.ecview.jetty.contextpath");
 
 		if (contextPath == null)
 			contextPath = "/";
