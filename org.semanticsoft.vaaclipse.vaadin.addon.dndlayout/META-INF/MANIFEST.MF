@@ -6,7 +6,7 @@ Bundle-Version: 2.7.3.qualifier
 Bundle-Vendor: Rushan R. Gilmullin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .,
- dragdroplayouts-1.1.jar
+ dragdroplayouts-1.1.1.jar
 Export-Package: fi.jasoft.dragdroplayouts,
  fi.jasoft.dragdroplayouts.client,
  fi.jasoft.dragdroplayouts.client.ui,
