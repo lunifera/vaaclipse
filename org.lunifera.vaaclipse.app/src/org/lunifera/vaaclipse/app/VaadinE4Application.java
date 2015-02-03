@@ -170,7 +170,7 @@ public class VaadinE4Application implements IApplication, ResourceInfoProvider {
 	}
 
 	private void startVaadinWebApplication() throws Exception {
-		String port = System.getProperty("org.osgi.service.http.port");
+		String port = System.getProperty("org.lunifera.ecview.jetty.port");
 		if (port == null)
 			port = "8080";
 

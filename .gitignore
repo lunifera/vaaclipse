@@ -3,12 +3,10 @@ bin/
 .DS_Store
 target
 .settings
-src-gen/
 xtend-gen/
 plugin.xml_gen
 *.tmp
 **/xtend-gen
-**/src-gen
 **/widgetsets
 **/gwt-unitCache
 **/resources
