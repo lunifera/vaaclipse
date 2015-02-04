@@ -67,7 +67,7 @@ public class StackWidgetConnector extends DDTabsheetConnector {
 			} else {
 				if (getWidget().getDropHandler() == null) {
 					getWidget().setDropHandler(
-							new VStackWidgetDropHandler(getWidget(), client));
+							new VStackWidgetDropHandler(getWidget(), this));
 					logger.info("updateFromUIDL: VStackWidgetDropHandler installed");
 				}
 				getWidget().getDropHandler().updateAcceptRules(acceptCrit);
@@ -80,7 +80,7 @@ public class StackWidgetConnector extends DDTabsheetConnector {
 	@Override
 	public void onStateChanged(StateChangeEvent stateChangeEvent) {
 		super.onStateChanged(stateChangeEvent);
-		getWidget().setDragFilter(new VSWDragFilter(getState().dd));
+		getWidget().setDragFilter(new VSWDragFilter(getState().ddState));
 	}
 
 	private class VSWDragFilter extends VDragFilter {

@@ -251,7 +251,7 @@ public class VStackWidget extends VDDTabSheet
 	}
 
 	@Override
-	public void emphasis(Element element, VDragEvent event) {
+	public void emphasis(com.google.gwt.dom.client.Element element, VDragEvent event) {
 		super.emphasis(element, event);
 	}
 

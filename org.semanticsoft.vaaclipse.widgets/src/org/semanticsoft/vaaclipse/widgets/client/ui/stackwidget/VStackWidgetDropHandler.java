@@ -1,6 +1,6 @@
 package org.semanticsoft.vaaclipse.widgets.client.ui.stackwidget;
 
-import com.vaadin.client.ApplicationConnection;
+import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ui.dd.VAcceptCallback;
 import com.vaadin.client.ui.dd.VDragEvent;
 
@@ -12,15 +12,15 @@ public class VStackWidgetDropHandler extends VDDTabsheetDropHandler {
 	private final VStackWidget stackWidget;
 
 	public VStackWidgetDropHandler(VStackWidget stackWidget,
-			ApplicationConnection client) {
-		super(stackWidget, client);
+			ComponentConnector connector) {
+		super(connector);
 		this.stackWidget = stackWidget;
 	}
 
 	@Override
 	public void dragOver(VDragEvent drag) {
 
-		//VConsole.log("Drag Over");
+		// VConsole.log("Drag Over");
 
 		stackWidget.deEmphasis();
 
@@ -44,28 +44,26 @@ public class VStackWidgetDropHandler extends VDDTabsheetDropHandler {
 
 	@Override
 	public void dragLeave(VDragEvent drag) {
-		//VConsole.log("Drag Leave");
+		// VConsole.log("Drag Leave");
 		stackWidget.deEmphasis();
 		stackWidget.updateDropDetails(drag);
 		stackWidget.postLeaveHook(drag);
 
 		stackWidget.removeDockZone();
 	};
-	
+
 	@Override
-	public boolean drop(VDragEvent event) 
-	{
+	public boolean drop(VDragEvent event) {
 		if (!stackWidget.updateRegion(event))
 			return false;
-		
+
 		Object sourceWidget = event.getTransferable().getDragSource();
-		if (sourceWidget instanceof StackWidgetConnector)
-		{
+		if (sourceWidget instanceof StackWidgetConnector) {
 			sourceWidget = ((StackWidgetConnector) sourceWidget).getWidget();
 			VStackWidget stackWidget = (VStackWidget) sourceWidget;
 			stackWidget.restoreLocationOfPartToolbar();
 		}
-		
+
 		return super.drop(event);
 	}
 }
