@@ -1,0 +1,35 @@
+How to enable superDev-Mode:
+
+1) Enable following options in Widgetset:
+	<set-configuration-property name="devModeRedirectEnabled"
+		value="true" />
+
+	<add-linker name="xsiframe" />
+	
+	
+2) Call pom-compileWidgetset.xml to compile widgetset under resources
+
+3) Call pom-superdev.xml - It will download all required depedencies for superDev-Mode under target/superDev-lib
+
+4) Open launchconfig for superDev-Mode and add all jars from target/superDev-lib to classpath
+
+5) Add org.semanticsoft.vaaclipse.widgets and its source folder to class path
+
+6) Add source folder from org.semanticsoft.vaaclipse.widgetset.default to classpath
+
+7) Ensure, that 5) and 6) are located at the beginning of the classpath
+
+8) Start superDev-LaunchConfig
+
+9) Start Vaaclipse Application
+
+10) Open Vaaclipse with {URL}/?superdevmode
+
+11) Open http://localhost:9876/
+	a) Bookmark "Dev Mode on" and "Dev Mode off" in Browser
+	
+12) To reload widgetsets in 10) click on Bookmark "Dev Mode on"
+
+13) To debug java code in browser ensure, that Chrome -> Developertools -> Properties -> Sources -> xyz SourceMaps are checked
+
+14) Open Sources Tab in Chrome and find your java sources there
