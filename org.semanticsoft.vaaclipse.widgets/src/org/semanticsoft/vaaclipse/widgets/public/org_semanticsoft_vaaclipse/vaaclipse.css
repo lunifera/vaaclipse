@@ -63,11 +63,20 @@
 /*
 */
 .v-app .vaadock-tabsheet-button-panel {
-	background-color: transparent;
-    float: right;
-    position: relative;
-    padding: 0 0 0 4px;
-    width: 44px;
+//	background-color: transparent;
+//    float: right;
+//    position: relative;
+//    padding: 0 0 0 4px;
+//    width: 44px;
+		height: 31px;
+		margin-top: -31px;
+		padding: 0 3px 0 4px;
+		position: relative;
+		float: right;
+		background: transparent url(tabsheet/img/framed/tab-bg.png) repeat-x left -1px;
+		width: 44px;
+		white-space: nowrap;
+		text-align: right;
 }
 
 .reindeer .vaadock-tabsheet-button-panel {

@@ -7,4 +7,9 @@
 	<inherits name="fi.jasoft.dragdroplayouts.DragDropLayoutsWidgetSet" />
 	<inherits
 		name="org.semanticsoft.vaaclipse.widgets.Org_semanticsoft_vaaclipse_widgetsWidgetset" />
+
+	<set-configuration-property name="devModeRedirectEnabled"
+		value="true" />
+
+	<add-linker name="xsiframe" />
 </module>
