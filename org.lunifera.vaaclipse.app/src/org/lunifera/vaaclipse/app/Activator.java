@@ -46,6 +46,11 @@ public class Activator implements BundleActivator
 	public void stop(BundleContext context) throws Exception
 	{
 		VaadinE4Application.getInstance().shutdown();
+		
+		if(locationTracker != null){
+			locationTracker.close();
+			locationTracker = null;
+		}
 	}
 
 	public Bundle getBundle()

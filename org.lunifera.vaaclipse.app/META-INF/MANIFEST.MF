@@ -40,6 +40,5 @@ Import-Package: javax.annotation;version="1.0.0",
  javax.servlet.http;version="2.6.0",
  org.eclipse.equinox.http.servlet;version="1.1.0",
  org.slf4j;version="1.7.2"
-Service-Component: OSGI-INF/org.lunifera.vaaclipse.app.eventbroker.separatedeventbroker.xml,
- OSGI-INF/org.lunifera.vaaclipse.app.resources.StaticResources.xml
+Service-Component: OSGI-INF/*.xml
 Bundle-ClassPath: .

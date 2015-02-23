@@ -234,6 +234,8 @@ public class StaticResources extends HttpServlet {
 				}
 			} else if ("vaadinBootstrap.js".equals(segments[1])) {
 				path = "platform:/plugin/com.vaadin.server" + url;
+			} else if ("vaadinPush.debug.js".equals(segments[1])) {
+				path = "platform:/plugin/com.vaadin.push" + url;
 			} else
 				return null;
 		}

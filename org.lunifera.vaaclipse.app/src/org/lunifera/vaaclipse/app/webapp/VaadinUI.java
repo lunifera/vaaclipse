@@ -63,6 +63,7 @@ import org.semanticsoft.vaaclipse.publicapi.authentication.AuthenticationConstan
 import org.semanticsoft.vaaclipse.publicapi.theme.Theme;
 import org.semanticsoft.vaaclipse.publicapi.theme.ThemeConstants;
 
+import com.vaadin.annotations.Push;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.WrappedHttpSession;
 import com.vaadin.ui.ComponentContainer;
@@ -70,6 +71,7 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 @SuppressWarnings("restriction")
+@Push
 public class VaadinUI extends UI {
 	private static final long serialVersionUID = 1L;
 
