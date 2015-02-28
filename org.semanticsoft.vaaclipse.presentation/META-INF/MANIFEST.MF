@@ -30,7 +30,6 @@ Require-Bundle: org.eclipse.e4.ui.model.workbench;bundle-version="0.10.1",
  org.json;bundle-version="0.0.20080701"
 Export-Package: org.semanticsoft.vaaclipse.presentation.engine,
  org.semanticsoft.vaaclipse.presentation.renderers
-Service-Component: OSGI-INF/org.semanticsoft.vaaclipse.presentation.widgetinfo.xml
 Import-Package: javax.inject;version="1.0.0",javax.annotation; version="1.0.0"
 Bundle-Activator: org.semanticsoft.vaaclipse.Activator
 Bundle-ActivationPolicy: lazy

@@ -69,6 +69,7 @@ import com.vaadin.server.WrappedHttpSession;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.themes.ValoTheme;
 
 @SuppressWarnings("restriction")
 @Push
@@ -106,29 +107,28 @@ public class VaadinUI extends UI {
 
 	public VaadinUI() {
 	}
-	
-	public IEclipseContext getRootContext()
-	{
+
+	public IEclipseContext getRootContext() {
 		return appContext;
 	}
 
 	private void setThemeInternal(String themeId) {
-		throw new RuntimeException("The changing theme in runtime is not supported by Vaadin 7");
+		throw new RuntimeException(
+				"The changing theme in runtime is not supported by Vaadin 7");
 	}
-	
+
 	@Override
 	public void init(VaadinRequest request) {
 		context = VaadinE4Application.getInstance().getAppContext();
 		logger = VaadinE4Application.getInstance().getLogger();
-		
+
 		String sessionId = getSession().getSession().getId();
 		Object[] prevUser = tempUserStore.remove(sessionId);
-		if (prevUser != null)
-		{
+		if (prevUser != null) {
 			this.user = prevUser[0];
 			this.userClass = (Class<Object>) prevUser[1];
 		}
-		
+
 		// -------------------------------------
 		prepareEnvironment(context);
 
@@ -149,7 +149,7 @@ public class VaadinUI extends UI {
 						}
 					}
 				});
-		
+
 		String authProvider = VaadinE4Application.getInstance()
 				.getApplicationAuthenticationProvider();
 
@@ -158,7 +158,6 @@ public class VaadinUI extends UI {
 			e4Workbench = createE4Workbench(context);
 			e4Workbench.createAndRunUI(e4Workbench.getApplication());
 		} else {
-			
 
 			IContributionFactory contributionFactory = (IContributionFactory) appContext
 					.get(IContributionFactory.class.getName());
@@ -167,41 +166,41 @@ public class VaadinUI extends UI {
 			VerticalLayout content = new VerticalLayout();
 			content.setSizeFull();
 			setContent(content);
-			
+
 			authConext.set(ComponentContainer.class, content);
 			authConext.set(VerticalLayout.class, content);
 			Object authProviderObj = contributionFactory.create(authProvider,
 					authConext);
 		}
-		
+
 		eventBroker.subscribe(
 				AuthenticationConstants.Events.Authentication.name,
 				new EventHandler() {
 					@SuppressWarnings("unchecked")
 					@Override
-					public void handleEvent(
-							org.osgi.service.event.Event event) {
-						
+					public void handleEvent(org.osgi.service.event.Event event) {
+
 						user = event.getProperty(EventUtils.DATA);
-						userClass = (Class<Object>) event.getProperty(AuthenticationConstants.Events.Authentication.userClass);
-						
-						if (e4Workbench != null)
-						{
-							String sessionId = getSession().getSession().getId();
-							tempUserStore.put(sessionId, new Object[] {user, userClass});
+						userClass = (Class<Object>) event
+								.getProperty(AuthenticationConstants.Events.Authentication.userClass);
+
+						if (e4Workbench != null) {
+							String sessionId = getSession().getSession()
+									.getId();
+							tempUserStore.put(sessionId, new Object[] { user,
+									userClass });
 							e4Workbench.close();
-						}
-						else
-						{
+						} else {
 							e4Workbench = createE4Workbench(context);
 							e4Workbench.createAndRunUI(e4Workbench
-									.getApplication());	
+									.getApplication());
 						}
-						
+
 					}
 				});
-		
-		VaadinExecutorServiceImpl man = (VaadinExecutorServiceImpl) appContext.get(VaadinExecutorService.class);
+
+		VaadinExecutorServiceImpl man = (VaadinExecutorServiceImpl) appContext
+				.get(VaadinExecutorService.class);
 		man.exec();
 	}
 
@@ -214,7 +213,9 @@ public class VaadinUI extends UI {
 		appContext.set("e4ApplicationInstanceId", UUID.randomUUID().toString());
 		appContext.set("vaadinUI", this);
 		appContext.set(UI.class, this);
-		appContext.set(VaadinExecutorService.class, ((OSGiServletService)getSession().getService()).getExecutorService());
+		appContext.set(VaadinExecutorService.class,
+				((OSGiServletService) getSession().getService())
+						.getExecutorService());
 		appContext.set(UISynchronize.class, new UISynchronize() {
 
 			public void syncExec(Runnable runnable) {
@@ -250,7 +251,7 @@ public class VaadinUI extends UI {
 		fixNullElementIds(appModel);
 		appModel.setContext(appContext);
 		appContext.set(MApplication.class.getName(), appModel);
-		
+
 		// ContextInjectionFactory.setDefault(appContext);
 		if (lcManager != null) {
 			ContextInjectionFactory.invoke(lcManager, ProcessAdditions.class,
@@ -405,20 +406,22 @@ public class VaadinUI extends UI {
 		}
 		eclipseContext.set(E4Workbench.PRESENTATION_URI_ARG, presentationURI);
 		eclipseContext.set(UI.class, this);
-		
-		if (user != null)
-		{
+
+		if (user != null) {
 			if (userClass == null)
 				userClass = (Class<Object>) user.getClass();
 			eclipseContext.set(userClass, user);
 			eclipseContext.set("user", user);
 		}
 
-		// eclipseContext.set(EModelService.class, new
-		// ModelServiceImpl(eclipseContext));
-
 		String themeId = getArgValue(THEME_ID, applicationContext, false);
 		eclipseContext.set(THEME_ID, themeId);
+
+//		if (themeId != null && !themeId.equals("")) {
+//			setTheme(themeId);
+//		} else {
+//			setTheme(ValoTheme.THEME_NAME);
+//		}
 
 		String cssURI = getArgValue(E4Workbench.CSS_URI_ARG,
 				applicationContext, false);
@@ -462,7 +465,7 @@ public class VaadinUI extends UI {
 
 		return eclipseContext;
 	}
-	
+
 	@Override
 	public void detach() {
 		if (e4Workbench != null)

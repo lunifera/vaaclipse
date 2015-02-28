@@ -31,7 +31,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.lunifera.vaaclipse.app;x-internal:=true,
  org.lunifera.vaaclipse.app.common,
- org.lunifera.vaaclipse.app.eventbroker;x-internal:=true,
  org.lunifera.vaaclipse.app.servlet;x-internal:=true,
  org.lunifera.vaaclipse.app.webapp;x-internal:=true
 Import-Package: javax.annotation;version="1.0.0",
