@@ -14,23 +14,25 @@ import org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldStyle;
 import org.lunifera.vaaclipse.ui.preferences.model.metadata.PreferencesPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Boolean Field Editor</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Boolean Field Editor</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.vaaclipse.ui.preferences.model.impl.BooleanFieldEditorImpl#getStyle <em>Style</em>}</li>
+ * <li>
+ * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.BooleanFieldEditorImpl#getStyle
+ * <em>Style</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class BooleanFieldEditorImpl extends FieldEditorImpl<Boolean> implements BooleanFieldEditor {
+public class BooleanFieldEditorImpl extends FieldEditorImpl<Boolean> implements
+		BooleanFieldEditor {
 	/**
 	 * The default value of the '{@link #getStyle() <em>Style</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getStyle()
 	 * @generated
 	 * @ordered
@@ -39,8 +41,8 @@ public class BooleanFieldEditorImpl extends FieldEditorImpl<Boolean> implements 
 
 	/**
 	 * The cached value of the '{@link #getStyle() <em>Style</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getStyle()
 	 * @generated
 	 * @ordered
@@ -48,8 +50,8 @@ public class BooleanFieldEditorImpl extends FieldEditorImpl<Boolean> implements 
 	protected BooleanFieldStyle style = STYLE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected BooleanFieldEditorImpl() {
@@ -57,8 +59,8 @@ public class BooleanFieldEditorImpl extends FieldEditorImpl<Boolean> implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -67,9 +69,9 @@ public class BooleanFieldEditorImpl extends FieldEditorImpl<Boolean> implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * This is specialized for the more specific type known in this context.
+	 * <!-- begin-user-doc --> <!-- end-user-doc --> This is specialized for the
+	 * more specific type known in this context.
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -78,8 +80,8 @@ public class BooleanFieldEditorImpl extends FieldEditorImpl<Boolean> implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BooleanFieldStyle getStyle() {
@@ -87,83 +89,86 @@ public class BooleanFieldEditorImpl extends FieldEditorImpl<Boolean> implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setStyle(BooleanFieldStyle newStyle) {
 		BooleanFieldStyle oldStyle = style;
 		style = newStyle == null ? STYLE_EDEFAULT : newStyle;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PreferencesPackage.BOOLEAN_FIELD_EDITOR__STYLE, oldStyle, style));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					PreferencesPackage.BOOLEAN_FIELD_EDITOR__STYLE, oldStyle,
+					style));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PreferencesPackage.BOOLEAN_FIELD_EDITOR__STYLE:
-				return getStyle();
+		case PreferencesPackage.BOOLEAN_FIELD_EDITOR__STYLE:
+			return getStyle();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PreferencesPackage.BOOLEAN_FIELD_EDITOR__STYLE:
-				setStyle((BooleanFieldStyle)newValue);
-				return;
+		case PreferencesPackage.BOOLEAN_FIELD_EDITOR__STYLE:
+			setStyle((BooleanFieldStyle) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PreferencesPackage.BOOLEAN_FIELD_EDITOR__STYLE:
-				setStyle(STYLE_EDEFAULT);
-				return;
+		case PreferencesPackage.BOOLEAN_FIELD_EDITOR__STYLE:
+			setStyle(STYLE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PreferencesPackage.BOOLEAN_FIELD_EDITOR__STYLE:
-				return style != STYLE_EDEFAULT;
+		case PreferencesPackage.BOOLEAN_FIELD_EDITOR__STYLE:
+			return style != STYLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (style: ");
@@ -172,4 +177,4 @@ public class BooleanFieldEditorImpl extends FieldEditorImpl<Boolean> implements 
 		return result.toString();
 	}
 
-} //BooleanFieldEditorImpl
+} // BooleanFieldEditorImpl

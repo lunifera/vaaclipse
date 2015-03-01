@@ -38,18 +38,18 @@ public class PreferencesPageRenderer {
 
 	@Inject
 	VaaclipseApplication app;
-	
+
 	@Inject
 	CssLayout pageLayout;
-	
+
 	@Inject
 	PreferencesPage page;
-	
+
 	@Inject
 	IEclipseContext context;
-	
+
 	Logger logger = LoggerFactory.getLogger(PreferencesPageRenderer.class);
-	
+
 	@PostConstruct
 	public void init() {
 		page.setRenderer(this);
@@ -58,97 +58,105 @@ public class PreferencesPageRenderer {
 	@SuppressWarnings({ "unchecked", "restriction" })
 	public void render() {
 		pageLayout.addStyleName("preferences-page");
-		
+
 		for (FieldEditor<?> editor : page.getChildren()) {
 			Class<? extends FieldEditorRenderer<?>> rendererClass = getRendererClass(editor);
 			if (rendererClass != null) {
 				IEclipseContext rendererContext = context.createChild();
-				
-				Class<?>[] interfaces = editor.getClass().getInterfaces();	
-				PrefHelper.populateInterfaces(editor, rendererContext, interfaces);
-				FieldEditorRenderer<?> fieldRenderer = ContextInjectionFactory.make(rendererClass, rendererContext);
+
+				Class<?>[] interfaces = editor.getClass().getInterfaces();
+				PrefHelper.populateInterfaces(editor, rendererContext,
+						interfaces);
+				FieldEditorRenderer<?> fieldRenderer = ContextInjectionFactory
+						.make(rendererClass, rendererContext);
 				fieldRenderer.render();
 				Component fieldComponent = fieldRenderer.getComponent();
 				editor.setWidget(fieldComponent);
 				editor.setRenderer(fieldRenderer);
-			}
-			else {
-				logger.warn("{} editor has no renderer. It is not rendered.", editor);
+			} else {
+				logger.warn("{} editor has no renderer. It is not rendered.",
+						editor);
 			}
 		}
-		
-		//If there are contribution let it to layout this page
+
+		// If there are contribution let it to layout this page
 		if (page.getContributionURI() != null) {
-			IContributionFactory contributionFactory = (IContributionFactory) context.get(IContributionFactory.class.getName());
-			Object pageContribution = contributionFactory.create(page.getContributionURI(), context);
+			IContributionFactory contributionFactory = (IContributionFactory) context
+					.get(IContributionFactory.class.getName());
+			Object pageContribution = contributionFactory.create(
+					page.getContributionURI(), context);
 			page.setObject(pageContribution);
-		}
-		else {
-			//If there are no contribution class for this page, adding with default layout and style 'field-editor'
+		} else {
+			// If there are no contribution class for this page, adding with
+			// default layout and style 'field-editor'
 			Label pageDesc = new Label(page.getDescription());
 			pageDesc.addStyleName("field-editor");
 			pageLayout.addComponent(pageDesc);
 			for (FieldEditor<?> editor : page.getChildren()) {
 				Component fieldComponent = (Component) editor.getWidget();
 				fieldComponent.addStyleName("field-editor");
-				pageLayout.addComponent(fieldComponent);	
+				pageLayout.addComponent(fieldComponent);
 			}
 		}
 	}
-	
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private Class<? extends FieldEditorRenderer<?>> getRendererClass(FieldEditor<?> editor) {
-		
+	private Class<? extends FieldEditorRenderer<?>> getRendererClass(
+			FieldEditor<?> editor) {
+
 		PreferencesSwitch<?> switcher = new PreferencesSwitch() {
 			@Override
 			public Object caseBooleanFieldEditor(BooleanFieldEditor object) {
 				return BooleanFieldEditorRenderer.class;
 			}
-			
+
 			@Override
 			public Object caseComboFieldEditor(ComboFieldEditor object) {
 				return ComboFieldEditorRenderer.class;
 			}
-			
+
 			@Override
 			public Object caseListEditor(ListEditor object) {
 				return ListEditorRenderer.class;
 			}
-			
+
 			@Override
 			public Object caseScaleFieldEditor(ScaleFieldEditor object) {
 				return ScaleFieldEditorRenderer.class;
 			}
-			
+
 			@Override
 			public Object caseRadioGroupFieldEditor(RadioGroupFieldEditor object) {
 				return RadioGroupFieldEditorRenderer.class;
 			}
-			
+
 			@Override
 			public Object caseStringFieldEditor(StringFieldEditor object) {
 				return StringFieldEditorRenderer.class;
 			}
-			
+
 			@Override
 			public Object caseIntegerFieldEditor(IntegerFieldEditor object) {
 				return IntegerFieldEditorRenderer.class;
 			}
 		};
-		return (Class<? extends FieldEditorRenderer<?>>) switcher.doSwitch(editor);
+		return (Class<? extends FieldEditorRenderer<?>>) switcher
+				.doSwitch(editor);
 	}
-	
+
 	public void save() {
 		for (FieldEditor<?> editor : page.getChildren()) {
-			FieldEditorRenderer<?> renderer = (FieldEditorRenderer<?>) editor.getRenderer();
+			FieldEditorRenderer<?> renderer = (FieldEditorRenderer<?>) editor
+					.getRenderer();
 			renderer.save();
 		}
 	}
-	
+
 	public void validate() throws ValidationFailedException {
 		for (FieldEditor<?> editor : page.getChildren()) {
-			FieldEditorRenderer<?> renderer = (FieldEditorRenderer<?>) editor.getRenderer();
+			FieldEditorRenderer<?> renderer = (FieldEditorRenderer<?>) editor
+					.getRenderer();
 			renderer.validate();
 		}
-	}	
+	}
 }

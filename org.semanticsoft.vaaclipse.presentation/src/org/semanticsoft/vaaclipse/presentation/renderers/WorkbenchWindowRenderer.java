@@ -54,8 +54,7 @@ import com.vaadin.ui.Window;
 import com.vaadin.ui.Window.ResizeEvent;
 
 @SuppressWarnings("restriction")
-public class WorkbenchWindowRenderer extends VaadinRenderer
-{
+public class WorkbenchWindowRenderer extends VaadinRenderer {
 
 	@Inject
 	private IEclipseContext eclipseContext;
@@ -79,33 +78,33 @@ public class WorkbenchWindowRenderer extends VaadinRenderer
 	EventHandler trimHandler = new EventHandler() {
 
 		@Override
-		public void handleEvent(Event event)
-		{
+		public void handleEvent(Event event) {
 			if (!(event.getProperty(UIEvents.EventTags.ELEMENT) instanceof MTrimmedWindow))
 				return;
 
-			MTrimmedWindow window = (MTrimmedWindow) event.getProperty(UIEvents.EventTags.ELEMENT);
+			MTrimmedWindow window = (MTrimmedWindow) event
+					.getProperty(UIEvents.EventTags.ELEMENT);
 			Panel _vWindow = (Panel) window.getWidget();
-			TrimmedWindowContent vWindow = (TrimmedWindowContent) _vWindow.getContent();
-			PresentationEngine engine = (PresentationEngine) context.get(IPresentationEngine.class.getName());
+			TrimmedWindowContent vWindow = (TrimmedWindowContent) _vWindow
+					.getContent();
+			PresentationEngine engine = (PresentationEngine) context
+					.get(IPresentationEngine.class.getName());
 			Object attType = event.getProperty(UIEvents.EventTags.TYPE);
 
 			Component c;
 			MTrimBar trimBar;
-			if (attType.equals("ADD"))
-			{
-				trimBar = (MTrimBar) event.getProperty(UIEvents.EventTags.NEW_VALUE);
-				c = trimBar.getWidget() == null ? (Component) engine.createGui(trimBar) : (Component) trimBar
-						.getWidget();
-			}
-			else
-			{
-				trimBar = (MTrimBar) event.getProperty(UIEvents.EventTags.OLD_VALUE);
+			if (attType.equals("ADD")) {
+				trimBar = (MTrimBar) event
+						.getProperty(UIEvents.EventTags.NEW_VALUE);
+				c = trimBar.getWidget() == null ? (Component) engine
+						.createGui(trimBar) : (Component) trimBar.getWidget();
+			} else {
+				trimBar = (MTrimBar) event
+						.getProperty(UIEvents.EventTags.OLD_VALUE);
 				c = null;
 			}
 
-			switch (trimBar.getSide())
-			{
+			switch (trimBar.getSide()) {
 			case BOTTOM:
 				vWindow.setBottomBar(c);
 				break;
@@ -123,26 +122,23 @@ public class WorkbenchWindowRenderer extends VaadinRenderer
 	};
 
 	@PostConstruct
-	public void init()
-	{
-		eventBroker.subscribe(UIEvents.TrimmedWindow.TOPIC_TRIMBARS, trimHandler);
+	public void init() {
+		eventBroker.subscribe(UIEvents.TrimmedWindow.TOPIC_TRIMBARS,
+				trimHandler);
 	}
 
 	@PreDestroy
-	public void deinit()
-	{
+	public void deinit() {
 		eventBroker.unsubscribe(trimHandler);
 	}
 
 	@Override
-	public void createWidget(MUIElement element, MElementContainer<MUIElement> parent)
-	{
-		if (element instanceof MWindow)
-		{
+	public void createWidget(MUIElement element,
+			MElementContainer<MUIElement> parent) {
+		if (element instanceof MWindow) {
 			final MWindow mWindow = (MWindow) element;
 			Component currentMainWindow = vaadinUI.getContent();
-			if (element.getTags().contains(Tags.MAIN_WINDOW))
-			{
+			if (element.getTags().contains(Tags.MAIN_WINDOW)) {
 				Panel window = new Panel();
 				window.setContent(new TrimmedWindowContent());
 				vaadinUI.getPage().setTitle(mWindow.getLocalizedLabel());
@@ -154,11 +150,8 @@ public class WorkbenchWindowRenderer extends VaadinRenderer
 
 				app.setSelectedElement(mWindow);
 				mWindow.getContext().activate();
-			}
-			else
-			{// case child windows
-				if (currentMainWindow != null)
-				{
+			} else {// case child windows
+				if (currentMainWindow != null) {
 					Window window = new Window();
 					window.setContent(new TrimmedWindowContent());
 					window.setImmediate(true);
@@ -170,39 +163,41 @@ public class WorkbenchWindowRenderer extends VaadinRenderer
 					element.setWidget(window);
 					((MWindow) element).getContext().set(Panel.class, window);
 					vaadinUI.addWindow(window);
-				}
-				else
-				{
-					throw new IllegalStateException("Can not add child window because application has not main window");
+				} else {
+					throw new IllegalStateException(
+							"Can not add child window because application has not main window");
 				}
 			}
 
 			IEclipseContext localContext = getContext(element);
 			localContext.set(ISaveHandler.class, new PartServiceSaveHandler() {
-				public Save promptToSave(MPart dirtyPart)
-				{
-					if (saveCandidate == null)
-					{
+				public Save promptToSave(MPart dirtyPart) {
+					if (saveCandidate == null) {
 						saveCandidate = dirtyPart;
-						
-						PartRenderer partRenderer = (PartRenderer) saveCandidate.getRenderer();
-						SavePromptSetup setup = partRenderer.getSavePromptSetup(saveCandidate);
-						String caption = setup.getCaption() != null ? setup.getCaption() : "Save";
-						String msg = setup.getMessage() != null ? setup.getMessage() :
-							String.format("%s has been modified. Save changes?", saveCandidate instanceof MInputPart && 
-									((MInputPart)saveCandidate).getInputURI() != null ? ((MInputPart)saveCandidate).getInputURI() : "Data");
-						
-						OptionDialog.show(vaadinUI, caption,
-								msg, 
-								new String[] {"Yes", "No", "Cancel"},
-								400, 140, Unit.PIXELS,
+
+						PartRenderer partRenderer = (PartRenderer) saveCandidate
+								.getRenderer();
+						SavePromptSetup setup = partRenderer
+								.getSavePromptSetup(saveCandidate);
+						String caption = setup.getCaption() != null ? setup
+								.getCaption() : "Save";
+						String msg = setup.getMessage() != null ? setup
+								.getMessage()
+								: String.format(
+										"%s has been modified. Save changes?",
+										saveCandidate instanceof MInputPart
+												&& ((MInputPart) saveCandidate)
+														.getInputURI() != null ? ((MInputPart) saveCandidate)
+												.getInputURI() : "Data");
+
+						OptionDialog.show(vaadinUI, caption, msg, new String[] {
+								"Yes", "No", "Cancel" }, 400, 140, Unit.PIXELS,
 								new OptionDialog.OptionListener() {
 
 									@Override
-									public void optionSelected(OptionDialog dlg, int optionId)
-									{
-										switch (optionId)
-										{
+									public void optionSelected(
+											OptionDialog dlg, int optionId) {
+										switch (optionId) {
 										case 0:
 											s = Save.YES;
 											break;
@@ -216,9 +211,9 @@ public class WorkbenchWindowRenderer extends VaadinRenderer
 										default:
 											s = null;
 										}
-										
-										if (partService.savePart(saveCandidate, true))
-										{
+
+										if (partService.savePart(saveCandidate,
+												true)) {
 											partService.hidePart(saveCandidate);
 										}
 										saveCandidate = null;
@@ -227,16 +222,13 @@ public class WorkbenchWindowRenderer extends VaadinRenderer
 								});
 
 						return Save.CANCEL;
-					}
-					else
-					{
+					} else {
 						return s;
 					}
 
 				}
 
-				public Save[] promptToSave(Collection<MPart> dirtyParts)
-				{
+				public Save[] promptToSave(Collection<MPart> dirtyParts) {
 					// List<MPart> parts = new ArrayList<MPart>(dirtyParts);
 					//
 					// Save[] response = new Save[dirtyParts.size()];
@@ -251,28 +243,29 @@ public class WorkbenchWindowRenderer extends VaadinRenderer
 					// }
 					// return response;
 
-					throw new RuntimeException("Multiple saving is not implemented yet");
+					throw new RuntimeException(
+							"Multiple saving is not implemented yet");
 				}
 			});
 		}
 	}
 
 	@Override
-	public void hookControllerLogic(final MUIElement element)
-	{
-		if (element instanceof MWindow)
-		{
+	public void hookControllerLogic(final MUIElement element) {
+		if (element instanceof MWindow) {
 			final MWindow mWindow = (MWindow) element;
 
-			if (!element.getTags().contains(Tags.MAIN_WINDOW))
-			{// only for child windows (main window not need that)
+			if (!element.getTags().contains(Tags.MAIN_WINDOW)) {// only for
+																// child windows
+																// (main window
+																// not need
+																// that)
 				final Window window = (Window) mWindow.getWidget();
 
 				window.addListener(new Window.ResizeListener() {
 
 					@Override
-					public void windowResized(ResizeEvent e)
-					{
+					public void windowResized(ResizeEvent e) {
 						mWindow.setWidth((int) window.getWidth());
 						mWindow.setHeight((int) window.getHeight());
 					}
@@ -285,49 +278,46 @@ public class WorkbenchWindowRenderer extends VaadinRenderer
 	}
 
 	@Override
-	public void processContents(MElementContainer<MUIElement> element)
-	{
-		if ((MUIElement) element instanceof MWindow)
-		{
+	public void processContents(MElementContainer<MUIElement> element) {
+		if ((MUIElement) element instanceof MWindow) {
 			MWindow window = (MWindow) ((MUIElement) element);
 			Panel _vWindow = (Panel) element.getWidget();
-			TrimmedWindowContent vWindow = (TrimmedWindowContent) _vWindow.getContent();
-			PresentationEngine engine = (PresentationEngine) context.get(IPresentationEngine.class.getName());
+			TrimmedWindowContent vWindow = (TrimmedWindowContent) _vWindow
+					.getContent();
+			PresentationEngine engine = (PresentationEngine) context
+					.get(IPresentationEngine.class.getName());
 
-			for (MUIElement e : element.getChildren())
-			{
-				if (e.isToBeRendered() && e.getWidget() != null)
-				{
-					if (e instanceof MPerspectiveStack)
-					{
-						PerspectiveStackRenderer perspectiveStackRenderer = (PerspectiveStackRenderer) e.getRenderer();
-						if (perspectiveStackRenderer.getPerspectiveStackForSwitcher() == e)
-						{
-							final HorizontalLayout perspectiveStackPanel = perspectiveStackRenderer.getPerspectiveSwitcher();
-							vWindow.setPerspectiveStackPanel(perspectiveStackPanel);	
+			for (MUIElement e : element.getChildren()) {
+				if (e.isToBeRendered() && e.getWidget() != null) {
+					if (e instanceof MPerspectiveStack) {
+						PerspectiveStackRenderer perspectiveStackRenderer = (PerspectiveStackRenderer) e
+								.getRenderer();
+						if (perspectiveStackRenderer
+								.getPerspectiveStackForSwitcher() == e) {
+							final HorizontalLayout perspectiveStackPanel = perspectiveStackRenderer
+									.getPerspectiveSwitcher();
+							vWindow.setPerspectiveStackPanel(perspectiveStackPanel);
 						}
 					}
 
-					vWindow.getClientArea().addComponent((com.vaadin.ui.Component) e.getWidget());
+					vWindow.getClientArea().addComponent(
+							(com.vaadin.ui.Component) e.getWidget());
 				}
 			}
 
-			if (window.getMainMenu() != null)
-			{
+			if (window.getMainMenu() != null) {
 				engine.createGui(window.getMainMenu());
 				MenuBar menu = (MenuBar) window.getMainMenu().getWidget();
 				vWindow.setMenuBar(menu);
 			}
 
 			// -------------------------------------------------------------------
-			if (window instanceof MTrimmedWindow)
-			{
+			if (window instanceof MTrimmedWindow) {
 				MTrimmedWindow tWindow = (MTrimmedWindow) window;
-				for (MTrimBar trim : tWindow.getTrimBars())
-				{
-					Component c = (com.vaadin.ui.Component) engine.createGui(trim);
-					switch (trim.getSide())
-					{
+				for (MTrimBar trim : tWindow.getTrimBars()) {
+					Component c = (com.vaadin.ui.Component) engine
+							.createGui(trim);
+					switch (trim.getSide()) {
 					case BOTTOM:
 						vWindow.setBottomBar(c);
 						break;
@@ -347,69 +337,64 @@ public class WorkbenchWindowRenderer extends VaadinRenderer
 	}
 
 	@Override
-	public void addChildGui(MUIElement child, MElementContainer<MUIElement> element)
-	{
+	public void addChildGui(MUIElement child,
+			MElementContainer<MUIElement> element) {
 		if (!(child instanceof MWindowElement))
 			return;
 
 		Panel _vWindow = (Panel) element.getWidget();
-		TrimmedWindowContent vWindow = (TrimmedWindowContent) _vWindow.getContent();
+		TrimmedWindowContent vWindow = (TrimmedWindowContent) _vWindow
+				.getContent();
 
-		if (child instanceof MPerspectiveStack)
-		{
-			PerspectiveStackRenderer perspectiveStackRenderer = (PerspectiveStackRenderer) child.getRenderer();
-			if (perspectiveStackRenderer.getPerspectiveStackForSwitcher() == child)
-			{
-				final HorizontalLayout perspectiveStackPanel = perspectiveStackRenderer.getPerspectiveSwitcher();
-				vWindow.setPerspectiveStackPanel(perspectiveStackPanel);	
+		if (child instanceof MPerspectiveStack) {
+			PerspectiveStackRenderer perspectiveStackRenderer = (PerspectiveStackRenderer) child
+					.getRenderer();
+			if (perspectiveStackRenderer.getPerspectiveStackForSwitcher() == child) {
+				final HorizontalLayout perspectiveStackPanel = perspectiveStackRenderer
+						.getPerspectiveSwitcher();
+				vWindow.setPerspectiveStackPanel(perspectiveStackPanel);
 			}
-		}
-		else
-		{
+		} else {
 			int index = indexOf(child, element, new Condition<MUIElement>() {
 
 				@Override
-				public boolean check(MUIElement child)
-				{
+				public boolean check(MUIElement child) {
 					return !(child instanceof MPerspectiveStack);
 				}
 			});
 
-			vWindow.getClientArea().addComponent((com.vaadin.ui.Component) child.getWidget(), index);
+			vWindow.getClientArea().addComponent(
+					(com.vaadin.ui.Component) child.getWidget(), index);
 		}
 	}
 
 	@Override
-	public void removeChildGui(MUIElement child, MElementContainer<MUIElement> element)
-	{
+	public void removeChildGui(MUIElement child,
+			MElementContainer<MUIElement> element) {
 		if (!(child instanceof MWindowElement))
 			return;
 
 		Panel _vWindow = (Panel) element.getWidget();
-		TrimmedWindowContent vWindow = (TrimmedWindowContent) _vWindow.getContent();
+		TrimmedWindowContent vWindow = (TrimmedWindowContent) _vWindow
+				.getContent();
 
-		if (child instanceof MPerspectiveStack)
-		{
+		if (child instanceof MPerspectiveStack) {
 			vWindow.setPerspectiveStackPanel(null);
-		}
-		else
-		{
-			vWindow.getClientArea().removeComponent((com.vaadin.ui.Component) child.getWidget());
+		} else {
+			vWindow.getClientArea().removeComponent(
+					(com.vaadin.ui.Component) child.getWidget());
 		}
 	}
 
 	@Override
-	public void setVisible(MUIElement changedElement, boolean visible)
-	{
+	public void setVisible(MUIElement changedElement, boolean visible) {
 		if (changedElement instanceof MWindow
-				&& !(changedElement.getTags().contains(Tags.MAIN_WINDOW)))
-		{
+				&& !(changedElement.getTags().contains(Tags.MAIN_WINDOW))) {
 			super.setVisible(changedElement, visible);
 		}
 	}
 
-	private Object[] promptForSave(Collection<MPart> saveableParts)
-	{
+	private Object[] promptForSave(Collection<MPart> saveableParts) {
 		// SaveablePartPromptDialog dialog = new SaveablePartPromptDialog(
 		// parentShell, saveableParts);
 		// if (dialog.open() == Window.CANCEL) {

@@ -13,27 +13,28 @@ import com.vaadin.ui.MenuBar.MenuItem;
  * @author rushan
  *
  */
-public class MenuSeparatorRenderer extends VaadinRenderer
-{
+public class MenuSeparatorRenderer extends VaadinRenderer {
 	@Override
-	public void createWidget(MUIElement element, MElementContainer<MUIElement> parent)
-	{
+	public void createWidget(MUIElement element,
+			MElementContainer<MUIElement> parent) {
 		if (!(element instanceof MMenuSeparator))
 			return;
-		
-		MUIElement nextRenderableAndVisible = findNextRendarableAndVisible(element, parent);
-		
+
+		MUIElement nextRenderableAndVisible = findNextRendarableAndVisible(
+				element, parent);
+
 		MenuItem separator = null;
 		if (nextRenderableAndVisible == null)
-			separator = ((MenuItem)parent.getWidget()).addSeparator();
+			separator = ((MenuItem) parent.getWidget()).addSeparator();
 		else
-			separator = ((MenuItem)parent.getWidget()).addSeparatorBefore((MenuItem)nextRenderableAndVisible.getWidget());
+			separator = ((MenuItem) parent.getWidget())
+					.addSeparatorBefore((MenuItem) nextRenderableAndVisible
+							.getWidget());
 		element.setWidget(separator);
 	}
-	
+
 	@Override
-	public void setVisible(MUIElement changedElement, boolean visible)
-	{
-		((MenuItem)changedElement.getWidget()).setVisible(visible);
+	public void setVisible(MUIElement changedElement, boolean visible) {
+		((MenuItem) changedElement.getWidget()).setVisible(visible);
 	}
 }

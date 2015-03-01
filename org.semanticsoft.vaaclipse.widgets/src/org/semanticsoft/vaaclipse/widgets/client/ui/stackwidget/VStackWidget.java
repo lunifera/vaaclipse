@@ -139,10 +139,10 @@ public class VStackWidget extends VDDTabSheet
 
 		if (this.minmaxEnabled) {
 			DOM.setStyleAttribute(buttonPanel, "display", "");
-//			DOM.setStyleAttribute(scroller, "marginRight", "45px");
+			// DOM.setStyleAttribute(scroller, "marginRight", "45px");
 		} else {
 			DOM.setStyleAttribute(buttonPanel, "display", "none");
-//			DOM.setStyleAttribute(scroller, "marginRight", "0px");
+			// DOM.setStyleAttribute(scroller, "marginRight", "0px");
 		}
 	}
 
@@ -162,9 +162,9 @@ public class VStackWidget extends VDDTabSheet
 		if (isMinmaxEnabled()) {
 			int buttonPanelHeight = tabs.getOffsetHeight();
 			int buttonPanelMarginTop = -buttonPanelHeight;
-//			DOM.setStyleAttribute(buttonPanel, "height", buttonPanelHeight
-//					+ "px");
-//			DOM.setStyleAttribute(buttonPanel, "marginTop", "0px");
+			// DOM.setStyleAttribute(buttonPanel, "height", buttonPanelHeight
+			// + "px");
+			// DOM.setStyleAttribute(buttonPanel, "marginTop", "0px");
 		}
 	}
 
@@ -250,7 +250,8 @@ public class VStackWidget extends VDDTabSheet
 	}
 
 	@Override
-	public void emphasis(com.google.gwt.dom.client.Element element, VDragEvent event) {
+	public void emphasis(com.google.gwt.dom.client.Element element,
+			VDragEvent event) {
 		super.emphasis(element, event);
 	}
 
@@ -657,46 +658,48 @@ public class VStackWidget extends VDDTabSheet
 	// Part toolbar relocate support
 	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	private void updateLocationOfPartToolbar() {
-//		if (!getWidgetIterator().hasNext())
-//			return;
-//
-//		Widget selectedWidget = getCurrentlyDisplayedWidget();
-//
-//		if (selectedWidget == null || selectedWidget.getElement() == null)
-//			return;
-//
-//		List pathToToolbar = findToolbarElement(selectedWidget.getElement(), 12);
-//		if (pathToToolbar.isEmpty())
-//			return;
-//
-//		toolbarElement = (Element) pathToToolbar.get(pathToToolbar.size() - 1);
-//
-//		if (toolbarElement == null)
-//			return;
+		// if (!getWidgetIterator().hasNext())
+		// return;
+		//
+		// Widget selectedWidget = getCurrentlyDisplayedWidget();
+		//
+		// if (selectedWidget == null || selectedWidget.getElement() == null)
+		// return;
+		//
+		// List pathToToolbar = findToolbarElement(selectedWidget.getElement(),
+		// 12);
+		// if (pathToToolbar.isEmpty())
+		// return;
+		//
+		// toolbarElement = (Element) pathToToolbar.get(pathToToolbar.size() -
+		// 1);
+		//
+		// if (toolbarElement == null)
+		// return;
 
-//		String mR, mT;
-//		try {
-//			mR = DOM.getStyleAttribute(toolbarElement, "marginRight");
-//			mT = DOM.getStyleAttribute(toolbarElement, "marginTop");
-//		} catch (Exception e) {
-//			return;
-//		}
-//
-//		if (mR != null && mT != null && !mR.trim().isEmpty()
-//				&& !mT.trim().isEmpty()) {// toolbar is relocated, check is
-//											// there are space in tabs panel and
-//											// if no, restore location of
-//											// toolbar
-//			if (!hasSpace(toolbarElement)) {
-//				restoreLocationOfPartToolbar();
-//			}
-//		} else {// toolbar is not relocated, check is there are space in tabs
-//				// panel and if yes, move toolbar to tabs panel
-//			if (hasSpace(toolbarElement)) {
-//				if (activeTabIndex >= 0 && this.getParent() != null)
-//					changeLocationOfPartToolbar(selectedWidget, pathToToolbar);
-//			}
-//		}
+		// String mR, mT;
+		// try {
+		// mR = DOM.getStyleAttribute(toolbarElement, "marginRight");
+		// mT = DOM.getStyleAttribute(toolbarElement, "marginTop");
+		// } catch (Exception e) {
+		// return;
+		// }
+		//
+		// if (mR != null && mT != null && !mR.trim().isEmpty()
+		// && !mT.trim().isEmpty()) {// toolbar is relocated, check is
+		// // there are space in tabs panel and
+		// // if no, restore location of
+		// // toolbar
+		// if (!hasSpace(toolbarElement)) {
+		// restoreLocationOfPartToolbar();
+		// }
+		// } else {// toolbar is not relocated, check is there are space in tabs
+		// // panel and if yes, move toolbar to tabs panel
+		// if (hasSpace(toolbarElement)) {
+		// if (activeTabIndex >= 0 && this.getParent() != null)
+		// changeLocationOfPartToolbar(selectedWidget, pathToToolbar);
+		// }
+		// }
 	}
 
 	private boolean hasSpace(Element toolbarElement) {
@@ -712,43 +715,48 @@ public class VStackWidget extends VDDTabSheet
 
 	private void changeLocationOfPartToolbar(Widget selectedWidget,
 			List pathToToolbar) {
-//		overflowRewritedElements = new HashMap<Element, String>();
-//		Element selectedElementParent = selectedWidget.getParent().getElement();
-//		// Two DOM-elements of selectedWidget.getParent() should be included to
-//		// overflow rewrite
-//		pathToToolbar.add(0, selectedElementParent.getChild(0));
-//		pathToToolbar.add(0, selectedElementParent);
-//		for (int i = 0; i < pathToToolbar.size(); i++) {
-//			Element element = (Element) pathToToolbar.get(i);
-//			String overflow = DOM.getElementProperty((Element) element,
-//					"overflow");
-//			if (!"".equals(overflow) && !"visible".equals(overflow)
-//					&& !"".equals("inherit")) {
-//				DOM.setStyleAttribute(element, "overflow", "visible");
-//				overflowRewritedElements.put(element, overflow);
-//			}
-//		}
-//
-//		updateGeometry();
+		// overflowRewritedElements = new HashMap<Element, String>();
+		// Element selectedElementParent =
+		// selectedWidget.getParent().getElement();
+		// // Two DOM-elements of selectedWidget.getParent() should be included
+		// to
+		// // overflow rewrite
+		// pathToToolbar.add(0, selectedElementParent.getChild(0));
+		// pathToToolbar.add(0, selectedElementParent);
+		// for (int i = 0; i < pathToToolbar.size(); i++) {
+		// Element element = (Element) pathToToolbar.get(i);
+		// String overflow = DOM.getElementProperty((Element) element,
+		// "overflow");
+		// if (!"".equals(overflow) && !"visible".equals(overflow)
+		// && !"".equals("inherit")) {
+		// DOM.setStyleAttribute(element, "overflow", "visible");
+		// overflowRewritedElements.put(element, overflow);
+		// }
+		// }
+		//
+		// updateGeometry();
 	}
 
 	private void updateGeometry() {
-//		int marginRight = (isMinmaxEnabled() ? buttonPanel.getOffsetWidth() : 0) + 5;
-//		int marginTop = tabs.getAbsoluteTop() - toolbarElement.getAbsoluteTop();
-//
-//		DOM.setStyleAttribute(toolbarElement, "marginRight", marginRight + "px");
-//		DOM.setStyleAttribute(toolbarElement, "marginTop", marginTop + "px");
+		// int marginRight = (isMinmaxEnabled() ? buttonPanel.getOffsetWidth() :
+		// 0) + 5;
+		// int marginTop = tabs.getAbsoluteTop() -
+		// toolbarElement.getAbsoluteTop();
+		//
+		// DOM.setStyleAttribute(toolbarElement, "marginRight", marginRight +
+		// "px");
+		// DOM.setStyleAttribute(toolbarElement, "marginTop", marginTop + "px");
 	}
 
 	void restoreLocationOfPartToolbar() {
-//		if (toolbarElement == null)
-//			return;
-//
-//		DOM.setStyleAttribute(toolbarElement, "marginRight", "");
-//		DOM.setStyleAttribute(toolbarElement, "marginTop", "");
-//
-//		toolbarElement = null;
-//		overflowRewritedElements = null;
+		// if (toolbarElement == null)
+		// return;
+		//
+		// DOM.setStyleAttribute(toolbarElement, "marginRight", "");
+		// DOM.setStyleAttribute(toolbarElement, "marginTop", "");
+		//
+		// toolbarElement = null;
+		// overflowRewritedElements = null;
 	}
 
 	/**

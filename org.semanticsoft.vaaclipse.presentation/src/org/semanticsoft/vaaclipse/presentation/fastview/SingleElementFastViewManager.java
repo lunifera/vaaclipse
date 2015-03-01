@@ -44,32 +44,32 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+
 /**
  * @author rushan
  *
  */
-public class SingleElementFastViewManager
-{
+public class SingleElementFastViewManager {
 
 	@Inject
 	UI vaadinUI;
-	
+
 	@Inject
 	Behaviour behaviour;
-	
+
 	@Inject
 	MUIElement minimizedElement;
 	@Inject
 	MTrimBar trimBar;
 	@Inject
 	MToolBar toolBar;
-	
+
 	private MWindow window;
 	private Panel vaadinWindow;
-	
-	//--------------------------------------------
-	//--------------------------------------------
-	
+
+	// --------------------------------------------
+	// --------------------------------------------
+
 	private static final String STATE_XSIZE = "XSize"; //$NON-NLS-1$
 
 	private static final String STATE_YSIZE = "YSize"; //$NON-NLS-1$
@@ -85,11 +85,11 @@ public class SingleElementFastViewManager
 
 	@Inject
 	protected IEventBroker eventBroker;
-	
+
 	/**
-	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown
-	 * by handleTransientDataEvents() and described in the article at
-	 * http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
+	 * This is the old way to subscribe to UIEvents. You should consider using
+	 * the new way as shown by handleTransientDataEvents() and described in the
+	 * article at http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
 	 */
 	private EventHandler closeHandler = new EventHandler() {
 		public void handleEvent(org.osgi.service.event.Event event) {
@@ -97,7 +97,8 @@ public class SingleElementFastViewManager
 				return;
 
 			// The only time we don't close is if I've selected my tab.
-			MUIElement changedElement = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
+			MUIElement changedElement = (MUIElement) event
+					.getProperty(UIEvents.EventTags.ELEMENT);
 
 			// Perspective changed, close the visible stacks
 			if (changedElement instanceof MPerspectiveStack) {
@@ -115,25 +116,27 @@ public class SingleElementFastViewManager
 	};
 
 	private void fixToolItemSelection(MUIElement element) {
-		//TODO: implement correctly this method
-//		if (trimStackTB == null || trimStackTB.isDisposed())
-//			return;
-//
-//		if (isEditorStack()) {
-//			trimStackTB.getItem(1).setSelection(element != null);
-//			if (element != null)
-//				trimStackTB.getItem(1).setData(element);
-//		} else if (isPerspectiveStack()) {
-//			for (ToolItem item : trimStackTB.getItems()) {
-//				boolean result = item.getData() == null ? false : item.getData() == element;
-//				item.setSelection(result);
-//			}
-//		} else {
-//			for (ToolItem item : trimStackTB.getItems()) {
-//				boolean result = item.getData() == null ? false : item.getData() == element;
-//				item.setSelection(result);
-//			}
-//		}
+		// TODO: implement correctly this method
+		// if (trimStackTB == null || trimStackTB.isDisposed())
+		// return;
+		//
+		// if (isEditorStack()) {
+		// trimStackTB.getItem(1).setSelection(element != null);
+		// if (element != null)
+		// trimStackTB.getItem(1).setData(element);
+		// } else if (isPerspectiveStack()) {
+		// for (ToolItem item : trimStackTB.getItems()) {
+		// boolean result = item.getData() == null ? false : item.getData() ==
+		// element;
+		// item.setSelection(result);
+		// }
+		// } else {
+		// for (ToolItem item : trimStackTB.getItems()) {
+		// boolean result = item.getData() == null ? false : item.getData() ==
+		// element;
+		// item.setSelection(result);
+		// }
+		// }
 
 	}
 
@@ -150,7 +153,8 @@ public class SingleElementFastViewManager
 			return getLeafPart(((MPlaceholder) element).getRef());
 
 		if (element instanceof MElementContainer<?>)
-			return getLeafPart(((MElementContainer<?>) element).getSelectedElement());
+			return getLeafPart(((MElementContainer<?>) element)
+					.getSelectedElement());
 
 		if (element instanceof MPart)
 			return (MPart) element;
@@ -163,15 +167,18 @@ public class SingleElementFastViewManager
 		public void handleEvent(org.osgi.service.event.Event event) {
 			if (isShowing)
 				return;
-			
-			MPerspective currentPerspective = modelService.getPerspectiveFor(minimizedElement);
-			MPerspective activePerspective = modelService.getActivePerspective(window);
-			
+
+			MPerspective currentPerspective = modelService
+					.getPerspectiveFor(minimizedElement);
+			MPerspective activePerspective = modelService
+					.getActivePerspective(window);
+
 			if (currentPerspective != activePerspective)
 				return;
 
-			MPart changedElement = (MPart) event.getProperty(UIEvents.EventTags.ELEMENT);
-			
+			MPart changedElement = (MPart) event
+					.getProperty(UIEvents.EventTags.ELEMENT);
+
 			// Open if shared area
 			if (getLeafPart(minimizedElement) == changedElement) {
 				showStack(true);
@@ -183,7 +190,8 @@ public class SingleElementFastViewManager
 			if (minimizedElement instanceof MPlaceholder) {
 				selectedElement = ((MPlaceholder) minimizedElement).getRef();
 			} else if (minimizedElement instanceof MPartStack) {
-				selectedElement = ((MPartStack) minimizedElement).getSelectedElement();
+				selectedElement = ((MPartStack) minimizedElement)
+						.getSelectedElement();
 			}
 
 			if (selectedElement == null)
@@ -200,19 +208,21 @@ public class SingleElementFastViewManager
 	};
 
 	/**
-	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown
-	 * by handleTransientDataEvents() and described in the article at
-	 * http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
+	 * This is the old way to subscribe to UIEvents. You should consider using
+	 * the new way as shown by handleTransientDataEvents() and described in the
+	 * article at http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
 	 */
 	private EventHandler toBeRenderedHandler = new EventHandler() {
 		public void handleEvent(org.osgi.service.event.Event event) {
 			if (minimizedElement == null || trimBar == null)
 				return;
-			
-			MUIElement changedElement = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
+
+			MUIElement changedElement = (MUIElement) event
+					.getProperty(UIEvents.EventTags.ELEMENT);
 
 			// if our stack is going away, so should we
-			if (changedElement == minimizedElement && !minimizedElement.isToBeRendered()) {
+			if (changedElement == minimizedElement
+					&& !minimizedElement.isToBeRendered()) {
 				if (hostPane != null)
 					vaadinUI.removeWindow(hostPane);
 				hostPane = null;
@@ -223,29 +233,30 @@ public class SingleElementFastViewManager
 
 	@PostConstruct
 	void postConstruct() {
-		
+
 		if (window == null)
-			window = (MWindow) (trimBar.getParent() != null ? (MElementContainer<?>)trimBar.getParent() : ((EObject) trimBar).eContainer());
-		vaadinWindow = (Panel)window.getWidget();
-		
-		eventBroker.subscribe(UIEvents.UIElement.TOPIC_TOBERENDERED, toBeRenderedHandler);
+			window = (MWindow) (trimBar.getParent() != null ? (MElementContainer<?>) trimBar
+					.getParent() : ((EObject) trimBar).eContainer());
+		vaadinWindow = (Panel) window.getWidget();
+
+		eventBroker.subscribe(UIEvents.UIElement.TOPIC_TOBERENDERED,
+				toBeRenderedHandler);
 		eventBroker.subscribe(UIEvents.UILifeCycle.BRINGTOTOP, openHandler);
 		eventBroker.subscribe(UIEvents.UILifeCycle.ACTIVATE, closeHandler);
 	}
-	
-	void dispose()
-	{
+
+	void dispose() {
 		showStack(false);
-		
+
 		eventBroker.unsubscribe(toBeRenderedHandler);
 		eventBroker.unsubscribe(openHandler);
 		eventBroker.unsubscribe(closeHandler);
 	}
 
 	/**
-	 * This is the old way to subscribe to UIEvents. You should consider using the new way as shown
-	 * by handleTransientDataEvents() and described in the article at
-	 * http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
+	 * This is the old way to subscribe to UIEvents. You should consider using
+	 * the new way as shown by handleTransientDataEvents() and described in the
+	 * article at http://wiki.eclipse.org/Eclipse4/RCP/Event_Model
 	 */
 	@PreDestroy
 	void removeListeners() {
@@ -264,7 +275,7 @@ public class SingleElementFastViewManager
 		String string = label.getLabel();
 		return string == null ? "" : string; //$NON-NLS-1$
 	}
-	
+
 	private String getOverrideTitleToolTip(MUIElement element) {
 		String result = null;
 
@@ -284,70 +295,71 @@ public class SingleElementFastViewManager
 	}
 
 	/**
-	 * Create the popup menu that will appear when a minimized part has been selected by the cursor.
+	 * Create the popup menu that will appear when a minimized part has been
+	 * selected by the cursor.
 	 */
-//	private void createPopupMenu() {
-//		trimStackMenu = new Menu(trimStackTB);
-//		trimStackTB.setMenu(trimStackMenu);
-//
-//		MenuItem closeItem = new MenuItem(trimStackMenu, SWT.NONE);
-//		closeItem.setText(Messages.TrimStack_CloseText);
-//		closeItem.addListener(SWT.Selection, new Listener() {
-//			public void handleEvent(Event event) {
-//				partService.hidePart((MPart) selectedToolItem.getData());
-//			}
-//		});
-//	}
-	
+	// private void createPopupMenu() {
+	// trimStackMenu = new Menu(trimStackTB);
+	// trimStackTB.setMenu(trimStackMenu);
+	//
+	// MenuItem closeItem = new MenuItem(trimStackMenu, SWT.NONE);
+	// closeItem.setText(Messages.TrimStack_CloseText);
+	// closeItem.addListener(SWT.Selection, new Listener() {
+	// public void handleEvent(Event event) {
+	// partService.hidePart((MPart) selectedToolItem.getData());
+	// }
+	// });
+	// }
+
 	ClickListener layoutClickListener = new ClickListener() {
-		
+
 		@Override
 		public void click(ClickEvent event) {
 			if (isShowing)
-        		showStack(false);
-        	partService.requestActivation();
+				showStack(false);
+			partService.requestActivation();
 		}
-    };
+	};
 
 	public synchronized void showStack(boolean show) {
 		Component ctf = (Component) minimizedElement.getWidget();
-		
-		if (show && !isShowing) 
-		{
+
+		if (show && !isShowing) {
 			hostPane = getHostPane();
 			VerticalLayout vl = new VerticalLayout();
 			vl.setSizeFull();
 			hostPane.setContent(vl);
 
 			ctf.setVisible(true);
-			
-			TrimmedWindowContent windowContent = (TrimmedWindowContent) vaadinWindow.getContent();
+
+			TrimmedWindowContent windowContent = (TrimmedWindowContent) vaadinWindow
+					.getContent();
 			VerticalLayout clientArea = windowContent.getClientArea();
-			
+
 			hostPane.setTrimmedWindowClientArea(clientArea);
-			//hostPane.setContent(ctf);
+			// hostPane.setContent(ctf);
 			vl.addComponent(ctf);
-			
+
 			vaadinUI.addWindow(hostPane);
 			vaadinWindow.addClickListener(layoutClickListener);
-			
+
 			isShowing = true;
-		} 
-		else if (!show && isShowing) 
-		{
+		} else if (!show && isShowing) {
 			if (hostPane != null) {
 				vaadinUI.removeWindow(hostPane);
 				// capture the current shell's bounds
-				toolBar.getPersistedState().put(STATE_XSIZE, Float.toString(Float.valueOf(hostPane.getWidth())));
-				toolBar.getPersistedState().put(STATE_YSIZE, Float.toString(Float.valueOf(hostPane.getHeight())));
+				toolBar.getPersistedState().put(STATE_XSIZE,
+						Float.toString(Float.valueOf(hostPane.getWidth())));
+				toolBar.getPersistedState().put(STATE_YSIZE,
+						Float.toString(Float.valueOf(hostPane.getHeight())));
 			}
-			
+
 			fixToolItemSelection(null);
-			
+
 			vaadinWindow.removeClickListener(layoutClickListener);
-			
+
 			partService.requestActivation();
-			
+
 			isShowing = false;
 		}
 	}
@@ -363,19 +375,18 @@ public class SingleElementFastViewManager
 		hostPane.setDraggable(false);
 		if (trimBar.getSide() == SideValue.RIGHT)
 			hostPane.setResizable(false);
-		//hostPane.setResizeLazy(true);
+		// hostPane.setResizeLazy(true);
 		hostPane.setStyleName("loading-window");
-		
-		//TODO: implement closing by esc
-//		hostPane.addListener(SWT.Traverse, new Listener() {
-//			public void handleEvent(Event event) {
-//				if (event.character == SWT.ESC) {
-//					partService.requestActivation();
-//				}
-//			}
-//		});
 
-		
+		// TODO: implement closing by esc
+		// hostPane.addListener(SWT.Traverse, new Listener() {
+		// public void handleEvent(Event event) {
+		// if (event.character == SWT.ESC) {
+		// partService.requestActivation();
+		// }
+		// }
+		// });
+
 		return hostPane;
 	}
 

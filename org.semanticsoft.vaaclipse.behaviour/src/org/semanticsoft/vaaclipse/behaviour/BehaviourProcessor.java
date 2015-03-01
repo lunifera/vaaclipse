@@ -22,25 +22,22 @@ import org.semanticsoft.vaaclipse.api.Behaviour;
 public class BehaviourProcessor implements Behaviour {
 	@Execute
 	void execute(IEclipseContext context) {
-		
+
 		context.set(Behaviour.class, this);
 	}
 
 	@Override
-	public MTrimBar getTrimBarForMinimizedElement(MUIElement minimizedElement)
-	{
+	public MTrimBar getTrimBarForMinimizedElement(MUIElement minimizedElement) {
 		throw new RuntimeException("Not implemented yet");
 	}
 
 	@Override
-	public MToolBar getToolBarForMinimizedElement(MUIElement minimizedElement)
-	{
+	public MToolBar getToolBarForMinimizedElement(MUIElement minimizedElement) {
 		throw new RuntimeException("Not implemented yet");
 	}
 
 	@Override
-	public MUIElement getMinimizedParentForPart(MPart part)
-	{
+	public MUIElement getMinimizedParentForPart(MPart part) {
 		throw new RuntimeException("Not implemented yet");
 	}
 }

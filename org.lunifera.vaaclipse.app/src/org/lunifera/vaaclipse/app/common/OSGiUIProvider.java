@@ -36,7 +36,7 @@ public class OSGiUIProvider extends UIProvider {
 	public UI createInstance(UICreateEvent event) {
 		return new VaadinUI();
 	}
-	
+
 	@Override
 	public String getTheme(UICreateEvent event) {
 		return VaadinE4Application.getInstance().getCssTheme();

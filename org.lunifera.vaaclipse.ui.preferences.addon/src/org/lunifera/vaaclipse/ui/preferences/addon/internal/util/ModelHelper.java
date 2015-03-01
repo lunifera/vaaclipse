@@ -13,17 +13,19 @@ import org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory;
  */
 public class ModelHelper {
 
-	public static void buildChildCategoryListIncludeThis(PreferencesCategory category, List<PreferencesCategory> childList) {
+	public static void buildChildCategoryListIncludeThis(
+			PreferencesCategory category, List<PreferencesCategory> childList) {
 		childList.add(category);
 		for (PreferencesCategory child : category.getChildCategories()) {
 			buildChildCategoryListIncludeThis(child, childList);
 		}
 	}
-	
-	public static void buildChildCategoryListIncludeThisList(List<PreferencesCategory> list, List<PreferencesCategory> childList) {
+
+	public static void buildChildCategoryListIncludeThisList(
+			List<PreferencesCategory> list, List<PreferencesCategory> childList) {
 		for (PreferencesCategory c : list) {
 			buildChildCategoryListIncludeThis(c, childList);
 		}
 	}
-	
+
 }

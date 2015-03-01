@@ -21,43 +21,39 @@ import com.vaadin.ui.VerticalSplitPanel;
  * @author rushan
  * 
  */
-public class SashWidgetVertical extends VerticalSplitPanel implements SashWidget
-{
+public class SashWidgetVertical extends VerticalSplitPanel implements
+		SashWidget {
 	private SashWidgetExtension extension = new SashWidgetExtension(this);
-	
-	public void addListener(SplitPositionChangedListener listener)
-	{
+
+	public void addListener(SplitPositionChangedListener listener) {
 		this.extension.addListener(listener);
 	}
-	
-	public SashWidgetVertical()
-	{
+
+	public SashWidgetVertical() {
 		this.setImmediate(true);
 	}
-	
+
 	@Override
-	public void fireEvent(EventObject event) 
-	{
+	public void fireEvent(EventObject event) {
 		super.fireEvent(event);
 	}
-	
+
 	@Override
-	public AbstractSplitPanelState getState() 
-	{
+	public AbstractSplitPanelState getState() {
 		return super.getState();
 	}
-	
+
 	@Override
 	public <T extends ServerRpc> void registerRpc(T implementation,
 			Class<T> rpcInterfaceType) {
 		super.registerRpc(implementation, rpcInterfaceType);
 	}
-	
-//	@Override
-//	public void changeVariables(Object source, Map<String, Object> variables)
-//	{
-//		super.changeVariables(source, variables);
-//		
-//		extension.fireEvent(this.getSplitPosition());
-//	}
+
+	// @Override
+	// public void changeVariables(Object source, Map<String, Object> variables)
+	// {
+	// super.changeVariables(source, variables);
+	//
+	// extension.fireEvent(this.getSplitPosition());
+	// }
 }

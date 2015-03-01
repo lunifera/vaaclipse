@@ -15,12 +15,10 @@ package org.semanticsoft.commons.geom;
  * @author rushan
  *
  */
-public class Bounds
-{
+public class Bounds {
 	public double x, y, w, h;
-	
-	public Bounds(double x, double y, double w, double h)
-	{
+
+	public Bounds(double x, double y, double w, double h) {
 		this.x = x;
 		this.y = y;
 		this.w = w;

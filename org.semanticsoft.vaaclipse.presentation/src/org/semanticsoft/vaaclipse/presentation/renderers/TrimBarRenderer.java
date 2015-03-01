@@ -47,80 +47,74 @@ import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 
-
 @SuppressWarnings("restriction")
 public class TrimBarRenderer extends VaadinRenderer {
 
 	@Inject
 	MApplication app;
-	
+
 	@Inject
 	EventBroker eventBroker;
-	
+
 	@Inject
 	EModelService modelService;
-	
+
 	@Inject
 	VaadinExecutorService execService;
-	
+
 	private HashMap<MTrimBar, ArrayList<ArrayList<MTrimElement>>> pendingCleanup = new HashMap<MTrimBar, ArrayList<ArrayList<MTrimElement>>>();
-	
+
 	@PostConstruct
-	public void subsrcribe()
-	{
-		
+	public void subsrcribe() {
+
 	}
-	
+
 	@PreDestroy
-	public void unsubscribe()
-	{
-		
+	public void unsubscribe() {
+
 	}
-	
+
 	@Override
-	public void createWidget(MUIElement element, MElementContainer<MUIElement> parent) {
-		if (!(element instanceof MTrimBar)) 
-		{
+	public void createWidget(MUIElement element,
+			MElementContainer<MUIElement> parent) {
+		if (!(element instanceof MTrimBar)) {
 			return;
 		}
-		
+
 		MTrimBar mTrimBar = (MTrimBar) element;
 		int orientation = mTrimBar.getSide().getValue();
-		
+
 		AbstractLayout trimBar = null;
-		
-		if (orientation == SideValue.BOTTOM_VALUE)
-		{
+
+		if (orientation == SideValue.BOTTOM_VALUE) {
 			trimBar = new CssLayout();
 			trimBar.addStyleName("horizontaltrimbar");
-		}
-		else if (orientation == SideValue.TOP_VALUE)
-		{
+		} else if (orientation == SideValue.TOP_VALUE) {
 			trimBar = new CssLayout();
 			trimBar.addStyleName("toptrimbar");
-		}
-		else if (orientation == SideValue.LEFT_VALUE || orientation == SideValue.RIGHT_VALUE)
-		{
+		} else if (orientation == SideValue.LEFT_VALUE
+				|| orientation == SideValue.RIGHT_VALUE) {
 			trimBar = new VerticalLayout();
 			trimBar.addStyleName("verticaltrimbar");
 		}
-		
+
 		trimBar.setSizeUndefined();
-		
-		if (orientation == SideValue.BOTTOM_VALUE || orientation == SideValue.TOP_VALUE)
-		{
+
+		if (orientation == SideValue.BOTTOM_VALUE
+				|| orientation == SideValue.TOP_VALUE) {
 			trimBar.setWidth("100%");
 		}
-		
+
 		element.setWidget(trimBar);
 	}
 
 	@Override
 	public void processContents(MElementContainer<MUIElement> container) {
-		final MTrimBar trimBar = (MTrimBar)((MElementContainer<?>)container);
+		final MTrimBar trimBar = (MTrimBar) ((MElementContainer<?>) container);
 		int orientation = trimBar.getSide().getValue();
 		AbstractLayout trimBarWidget = (AbstractLayout) container.getWidget();
-		if (orientation == SideValue.TOP_VALUE || orientation == SideValue.BOTTOM_VALUE)
+		if (orientation == SideValue.TOP_VALUE
+				|| orientation == SideValue.BOTTOM_VALUE)
 			trimBarWidget.setHeight(-1, Unit.PIXELS);
 		else
 			trimBarWidget.setWidth(-1, Unit.PIXELS);
@@ -128,86 +122,87 @@ public class TrimBarRenderer extends VaadinRenderer {
 		boolean isFirst = true;
 		trimBarWidget.removeAllComponents();
 		for (MUIElement element : container.getChildren()) {
-			if (element.isToBeRendered())
-			{
-				ComponentContainer subToolbar = (ComponentContainer) element.getWidget();
+			if (element.isToBeRendered()) {
+				ComponentContainer subToolbar = (ComponentContainer) element
+						.getWidget();
 				subToolbar.setVisible(element.isVisible());
 				if (subToolbar != null) {
-					if (orientation == SideValue.TOP_VALUE || orientation == SideValue.BOTTOM_VALUE)
+					if (orientation == SideValue.TOP_VALUE
+							|| orientation == SideValue.BOTTOM_VALUE)
 						subToolbar.addStyleName("horizontaltrimelement");
 					else
 						subToolbar.addStyleName("verticaltrimelement");
-					
+
 					subToolbar.setSizeUndefined();
-					
+
 					trimBarWidget.addComponent(subToolbar);
 					isFirst = false;
-				}	
+				}
 			}
 		}
-		
-		//---
+
+		// ---
 		IEclipseContext ctx = getContext(container);
 		final ExpressionContext eContext = new ExpressionContext(ctx);
-		
-		//visible when support for original trimbar elements (without contributed)
-		for (final MTrimElement child : trimBar.getChildren())
-		{
+
+		// visible when support for original trimbar elements (without
+		// contributed)
+		for (final MTrimElement child : trimBar.getChildren()) {
 			if (child.getVisibleWhen() != null) {
 				ctx.runAndTrack(new RunAndTrack() {
 					@Override
 					public boolean changed(IEclipseContext context) {
-						
-						if (!trimBar.isToBeRendered()
-								|| !trimBar.isVisible()
+
+						if (!trimBar.isToBeRendered() || !trimBar.isVisible()
 								|| trimBar.getWidget() == null) {
 							return false;
 						}
-						
-						final boolean rc = ContributionsAnalyzer.isVisible((MCoreExpression)child.getVisibleWhen(), eContext);
+
+						final boolean rc = ContributionsAnalyzer.isVisible(
+								(MCoreExpression) child.getVisibleWhen(),
+								eContext);
 						execService.invokeLater(new Runnable() {
-							
+
 							@Override
-							public void run()
-							{
+							public void run() {
 								child.setToBeRendered(rc);
 							}
 						});
-						
+
 						return true;
 					}
 				});
 			}
 		}
-		
-		//contributions
+
+		// contributions
 		ArrayList<MTrimContribution> toContribute = new ArrayList<MTrimContribution>();
 		ContributionsAnalyzer.gatherTrimContributions(trimBar,
 				app.getTrimContributions(), trimBar.getElementId(),
 				toContribute, eContext);
 		addTrimContributions(trimBar, toContribute, ctx, eContext);
-		
+
 		refreshVisibility(trimBar);
 	}
 
 	private void refreshVisibility(MTrimBar trimBar) {
-		
+
 		AbstractLayout trimBarWidget = (AbstractLayout) trimBar.getWidget();
 		int orientation = trimBar.getSide().getValue();
-		
+
 		trimBarWidget.setVisible(trimBarWidget.getComponentCount() != 0);
-		
-		if (orientation == SideValue.TOP_VALUE)
-		{
+
+		if (orientation == SideValue.TOP_VALUE) {
 			MWindow window = modelService.getTopLevelWindowFor(trimBar);
-			TrimmedWindowContent windowContent = (TrimmedWindowContent) ((Panel) window.getWidget()).getContent();
-			
+			TrimmedWindowContent windowContent = (TrimmedWindowContent) ((Panel) window
+					.getWidget()).getContent();
+
 			Component topbar = windowContent.getTopbar();
 			if (topbar != null)
 				topbar.setVisible(trimBarWidget.getComponentCount() != 0);
 		}
 	}
-	
+
 	private void addTrimContributions(final MTrimBar trimModel,
 			ArrayList<MTrimContribution> toContribute, IEclipseContext ctx,
 			final ExpressionContext eContext) {
@@ -241,21 +236,19 @@ public class TrimBarRenderer extends VaadinRenderer {
 										|| trimModel.getWidget() == null) {
 									return false;
 								}
-								final boolean rc = ContributionsAnalyzer.isVisible(
-										contribution, eContext);
-								
-								
+								final boolean rc = ContributionsAnalyzer
+										.isVisible(contribution, eContext);
+
 								execService.invokeLater(new Runnable() {
-									
+
 									@Override
-									public void run()
-									{
+									public void run() {
 										for (MTrimElement child : toRemove) {
 											child.setToBeRendered(rc);
 										}
 									}
 								});
-								
+
 								return true;
 							}
 						});
@@ -275,54 +268,53 @@ public class TrimBarRenderer extends VaadinRenderer {
 					|| (toContribute.size() == retryCount);
 		}
 	}
-	
+
 	@Override
-	public void addChildGui(MUIElement child, MElementContainer<MUIElement> element)
-	{
-		if (!(child instanceof MTrimElement && (MElementContainer<?>)element instanceof MTrimBar))
+	public void addChildGui(MUIElement child,
+			MElementContainer<MUIElement> element) {
+		if (!(child instanceof MTrimElement && (MElementContainer<?>) element instanceof MTrimBar))
 			return;
-		
-		MTrimBar trimBar = (MTrimBar)(MElementContainer<?>)element;
-		
+
+		MTrimBar trimBar = (MTrimBar) (MElementContainer<?>) element;
+
 		final Component childWidget = (Component) child.getWidget();
 		childWidget.setVisible(child.isVisible());
 		childWidget.setSizeUndefined();
 		int orientation = trimBar.getSide().getValue();
-		if (orientation == SideValue.TOP_VALUE || orientation == SideValue.BOTTOM_VALUE)
+		if (orientation == SideValue.TOP_VALUE
+				|| orientation == SideValue.BOTTOM_VALUE)
 			childWidget.addStyleName("horizontaltrimelement");
 		else
 			childWidget.addStyleName("verticaltrimelement");
-		
+
 		int index = indexOf(child, element);
-		if (element.getWidget() instanceof CssLayout)
-		{
+		if (element.getWidget() instanceof CssLayout) {
 			CssLayout trimWidget = (CssLayout) element.getWidget();
 			trimWidget.addComponent(childWidget, index);
 			trimWidget.markAsDirty();
-		}
-		else if (element.getWidget() instanceof AbstractOrderedLayout)
-		{
-			AbstractOrderedLayout trimWidget = (AbstractOrderedLayout) element.getWidget();
+		} else if (element.getWidget() instanceof AbstractOrderedLayout) {
+			AbstractOrderedLayout trimWidget = (AbstractOrderedLayout) element
+					.getWidget();
 			trimWidget.addComponent(childWidget, index);
 			trimWidget.markAsDirty();
 		}
-		
+
 		refreshVisibility(trimBar);
 	}
-	
+
 	@Override
-	public void removeChildGui(MUIElement child, MElementContainer<MUIElement> element)
-	{
-		if (!(child instanceof MTrimElement && (MElementContainer<?>)element instanceof MTrimBar))
+	public void removeChildGui(MUIElement child,
+			MElementContainer<MUIElement> element) {
+		if (!(child instanceof MTrimElement && (MElementContainer<?>) element instanceof MTrimBar))
 			return;
-		
+
 		super.removeChildGui(child, element);
-		
+
 		Component trimWidget = (Component) element.getWidget();
-		
-		MTrimBar trimBar = (MTrimBar)(MElementContainer<?>)element;
+
+		MTrimBar trimBar = (MTrimBar) (MElementContainer<?>) element;
 		refreshVisibility(trimBar);
-		
+
 		trimWidget.markAsDirty();
 	}
 }

@@ -23,61 +23,71 @@ import e4modelextension.EditorPartDescriptor;
  * @author rushan
  *
  */
-public interface EPartServiceExt
-{
+public interface EPartServiceExt {
 	public static interface PartAddLogic {
 		void addMPart(MPart mpart);
 	}
-	
+
 	/**
 	 * Creates a new input part of the given id.
 	 * 
 	 * @param id
 	 *            the identifier of the part, must not be <code>null</code>
-	 * @return a new part of the given id, or <code>null</code> if no part descriptors can be found
-	 *         that match the specified id
+	 * @return a new part of the given id, or <code>null</code> if no part
+	 *         descriptors can be found that match the specified id
 	 */
 	MInputPart createInputPart(String id);
-	
+
 	MPartDescriptor findDescriptor(String id);
-	
+
 	EditorPartDescriptor findEditorPartDescriptorUsingId(String id);
-	
+
 	EditorPartDescriptor findEditorPartDescriptor(String inputUri);
-	
+
 	/**
-	 * Open the given uri in area with id = org.eclipse.ui.editorss (eclipse conditions)
-	 * @param inputUri given uri
+	 * Open the given uri in area with id = org.eclipse.ui.editorss (eclipse
+	 * conditions)
+	 * 
+	 * @param inputUri
+	 *            given uri
 	 * @return part that was opened or finded with this uri
 	 */
 	MInputPart openUri(String inputUri);
-	
+
 	/**
-	 * Open the given uri in area with id = org.eclipse.ui.editorss (eclipse conditions) in editor with given descriptor
+	 * Open the given uri in area with id = org.eclipse.ui.editorss (eclipse
+	 * conditions) in editor with given descriptor
 	 */
 	MInputPart openUri(String inputUri, EditorPartDescriptor descriptor);
-	
+
 	MInputPart openUri(String inputUri, String editorDescriptorId);
-	
+
 	/**
 	 * Open given uri in given are
+	 * 
 	 * @param area
 	 * @param inputUri
 	 * @return
 	 */
 	MInputPart openUri(MElementContainer<?> area, String inputUri);
-	
-	MInputPart openUri(String inputUri, EditorPartDescriptor editorPartDescriptor, MElementContainer<?> area);
-	
+
+	MInputPart openUri(String inputUri,
+			EditorPartDescriptor editorPartDescriptor, MElementContainer<?> area);
+
 	void closeUri(String inputUri, boolean saveBeforeClose);
-	
+
 	MInputPart openNewEditor(EditorPartDescriptor descriptor);
+
 	MInputPart openNewEditor(String descriptorId);
-	
+
 	/**
-	 * Fixed method EPartService.showPart. Current method search any opened shared part and if allowMultiples == false (default) it
-	 * create placeholder on this part rather creating new. The differences from original showPart is that it search shared part in any perspective,
-	 * the original showPart search shared part in active perspective. I can not say is this bug or general contract of this method...
+	 * Fixed method EPartService.showPart. Current method search any opened
+	 * shared part and if allowMultiples == false (default) it create
+	 * placeholder on this part rather creating new. The differences from
+	 * original showPart is that it search shared part in any perspective, the
+	 * original showPart search shared part in active perspective. I can not say
+	 * is this bug or general contract of this method...
+	 * 
 	 * @param id
 	 * @param partState
 	 * @return

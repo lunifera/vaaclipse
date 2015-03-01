@@ -21,59 +21,55 @@ import com.vaadin.ui.Component;
  * @author rushan
  *
  */
-public class ToolbarButtonBase extends Button 
-{
-	public ToolbarButtonBase() 
-	{
+public class ToolbarButtonBase extends Button {
+	public ToolbarButtonBase() {
 		this("Blank", null);
 	}
-	
-	public ToolbarButtonBase(String label, String iconURI) 
-	{
+
+	public ToolbarButtonBase(String label, String iconURI) {
 		this.setSizeUndefined();
-		
+
 		setLabelAndIcon(label, iconURI);
-		
-		//hack
+
+		// hack
 		super.addClickListener(new ClickListener() {
-			
-			public void buttonClick(ClickEvent event) 
-			{
-				//change focus
+
+			public void buttonClick(ClickEvent event) {
+				// change focus
 				Component parent = event.getButton().getParent();
-                while (parent != null) {
-                        if(parent instanceof Component.Focusable) {
-                                ((Component.Focusable) parent).focus();
-                                break;
-                        } else {
-                                parent = parent.getParent();
-                        }
-                }
+				while (parent != null) {
+					if (parent instanceof Component.Focusable) {
+						((Component.Focusable) parent).focus();
+						break;
+					} else {
+						parent = parent.getParent();
+					}
+				}
 			}
-		});		
+		});
 	}
 
 	public void setLabelAndIcon(String label, String iconURI) {
-		
-		//clear
+
+		// clear
 		this.setCaption(null);
 		this.setIcon(null);
 		this.removeStyleName("icononly");
 		this.removeStyleName("textonly");
-		
-		//setup icon and text
+
+		// setup icon and text
 		if (iconURI == null && label == null)
 			label = "Blank";
-		
+
 		if (iconURI != null) {
 			Resource icon = ResourceHelper.createResource(iconURI);
 			this.setIcon(icon);
 		}
-		
+
 		if (label != null) {
 			this.setCaption(label);
 		}
-		
+
 		if (iconURI == null && label != null)
 			this.addStyleName("textonly");
 		else if (iconURI != null && label == null)

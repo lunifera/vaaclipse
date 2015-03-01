@@ -17,22 +17,23 @@ import com.vaadin.ui.Label;
  * @author rushan
  *
  */
-public abstract class ListFieldEditorRenderer extends FieldEditorRenderer<String> {
+public abstract class ListFieldEditorRenderer extends
+		FieldEditorRenderer<String> {
 	@Inject
 	ListFieldEditor editor;
-	
+
 	AbstractSelect select;
-	
+
 	public abstract AbstractSelect createSelect();
-	
+
 	@Override
 	public void render() {
 		select = createSelect();
-		
+
 		CssLayout layout = new CssLayout();
 		layout.addComponent(new Label(editor.getLabel()));
 		layout.addComponent(select);
-		
+
 		refreshSelect();
 		component = layout;
 	}
@@ -50,7 +51,8 @@ public abstract class ListFieldEditorRenderer extends FieldEditorRenderer<String
 
 	@Override
 	public String getValue() {
-		return getPreferences().get(editor.getPreferenceName(), editor.getDefaultValue());
+		return getPreferences().get(editor.getPreferenceName(),
+				editor.getDefaultValue());
 	}
 
 	@Override

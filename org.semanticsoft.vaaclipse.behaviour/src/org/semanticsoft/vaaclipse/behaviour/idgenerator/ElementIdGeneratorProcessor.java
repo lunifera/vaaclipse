@@ -22,8 +22,7 @@ import org.eclipse.e4.ui.model.application.impl.ApplicationFactoryImpl;
  * @author rushan
  *
  */
-public class ElementIdGeneratorProcessor
-{
+public class ElementIdGeneratorProcessor {
 
 	@Execute
 	void addCleanupAddon(MApplication app) {
@@ -31,15 +30,15 @@ public class ElementIdGeneratorProcessor
 
 		// Prevent multiple copies
 		for (MAddon addon : addons) {
-			if (addon.getContributionURI().contains("org.semanticsoft.vaaclipse.behaviour.idgenerator"))
+			if (addon.getContributionURI().contains(
+					"org.semanticsoft.vaaclipse.behaviour.idgenerator"))
 				return;
 		}
 
 		// Insert the addon into the system
 		MAddon addon = ApplicationFactoryImpl.eINSTANCE.createAddon();
 		addon.setElementId("ElementIdGeneratorAddon"); //$NON-NLS-1$
-		addon
-				.setContributionURI("bundleclass://org.semanticsoft.vaaclipse.behaviour/org.semanticsoft.vaaclipse.behaviour.idgenerator.ElementIdGeneratorAddon"); //$NON-NLS-1$
+		addon.setContributionURI("bundleclass://org.semanticsoft.vaaclipse.behaviour/org.semanticsoft.vaaclipse.behaviour.idgenerator.ElementIdGeneratorAddon"); //$NON-NLS-1$
 		app.getAddons().add(addon);
 	}
 

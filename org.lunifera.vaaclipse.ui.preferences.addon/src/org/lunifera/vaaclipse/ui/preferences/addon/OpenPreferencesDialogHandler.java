@@ -18,14 +18,15 @@ import e4modelextension.VaaclipseApplication;
  *
  */
 public class OpenPreferencesDialogHandler {
-	
+
 	@Execute
 	public void execute(IEclipseContext context, MApplication app, UI ui) {
-		
-		context.set(VaaclipseApplication.class, (VaaclipseApplication)app);
-		PreferencesDialog prefDlg = ContextInjectionFactory.make(PreferencesDialog.class, context);
+
+		context.set(VaaclipseApplication.class, (VaaclipseApplication) app);
+		PreferencesDialog prefDlg = ContextInjectionFactory.make(
+				PreferencesDialog.class, context);
 		prefDlg.getWindow().center();
 		ui.addWindow(prefDlg.getWindow());
 	}
-	
+
 }

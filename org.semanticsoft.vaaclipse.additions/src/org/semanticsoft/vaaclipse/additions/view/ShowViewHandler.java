@@ -44,7 +44,9 @@ public class ShowViewHandler {
 		dlg.setHeight("500px");
 		dlg.setModal(true);
 		dlg.setCaption("Show View");
-		//static resource will process this, so we set application header icon without using ResourceInfoProvider service as for Open Perspective Dialog
+		// static resource will process this, so we set application header icon
+		// without using ResourceInfoProvider service as for Open Perspective
+		// Dialog
 		dlg.setIcon(new ThemeResource("../base/favicon.ico"));
 		ShowViewDialogContent componentProvider = ContextInjectionFactory.make(
 				ShowViewDialogContent.class, context);

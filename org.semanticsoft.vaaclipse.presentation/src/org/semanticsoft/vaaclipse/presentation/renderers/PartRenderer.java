@@ -32,51 +32,50 @@ import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.VerticalLayout;
 
-
 @SuppressWarnings("restriction")
 public class PartRenderer extends VaadinRenderer {
 
 	private Map<MPart, SavePromptSetup> savePrompts = new HashMap<MPart, SavePromptSetup>();
-	
+
 	@Inject
 	IPresentationEngine renderingEngine;
-	
-	public SavePromptSetup getSavePromptSetup(MPart part)
-	{
+
+	public SavePromptSetup getSavePromptSetup(MPart part) {
 		return savePrompts.get(part);
 	}
-	
+
 	@Override
-	public void createWidget(MUIElement element, MElementContainer<MUIElement> parent) {
+	public void createWidget(MUIElement element,
+			MElementContainer<MUIElement> parent) {
 		VerticalLayout pane = new VerticalLayout();
 		pane.setSizeFull();
-		final MPart part = (MPart) element;		
-		//toolbar
+		final MPart part = (MPart) element;
+		// toolbar
 		MToolBar toolbar = part.getToolbar();
-		if (toolbar != null && toolbar.isToBeRendered())
-		{
-			//create toolbar area
+		if (toolbar != null && toolbar.isToBeRendered()) {
+			// create toolbar area
 			CssLayout toolbarArea = new CssLayout();
 			toolbarArea.setStyleName("mparttoolbararea");
 			toolbarArea.setSizeUndefined();
 			toolbarArea.setWidth("100%");
 			pane.addComponent(toolbarArea);
-			
-			//create toolbar
-			Component toolbarWidget = (Component) renderingEngine.createGui(toolbar);
-			((AbstractLayout)toolbarWidget).setSizeUndefined();
+
+			// create toolbar
+			Component toolbarWidget = (Component) renderingEngine
+					.createGui(toolbar);
+			((AbstractLayout) toolbarWidget).setSizeUndefined();
 			toolbarWidget.setStyleName("mparttoolbar");
 			toolbarArea.addComponent(toolbarWidget);
 		}
-		
+
 		VerticalLayout contributionArea = new VerticalLayout();
 		contributionArea.setSizeFull();
 		pane.addComponent(contributionArea);
 		pane.setExpandRatio(contributionArea, 100);
-		
+
 		pane.setStyleName("part");
 		element.setWidget(pane);
-		
+
 		IEclipseContext localContext = part.getContext();
 		localContext.set(Component.class, contributionArea);
 		localContext.set(ComponentContainer.class, contributionArea);
@@ -86,18 +85,18 @@ public class PartRenderer extends VaadinRenderer {
 		savePrompts.put(part, savePromptProvider);
 		localContext.set(SavePromptSetup.class, savePromptProvider);
 		if (part instanceof MInputPart)
-			localContext.set(MInputPart.class, (MInputPart)part);
+			localContext.set(MInputPart.class, (MInputPart) part);
 
-		IContributionFactory contributionFactory = (IContributionFactory) localContext.get(IContributionFactory.class
-				.getName());
-		Object newPart = contributionFactory.create(part.getContributionURI(), localContext);
-		
+		IContributionFactory contributionFactory = (IContributionFactory) localContext
+				.get(IContributionFactory.class.getName());
+		Object newPart = contributionFactory.create(part.getContributionURI(),
+				localContext);
+
 		part.setObject(newPart);
 	}
-	
+
 	@Override
-	public void disposeWidget(MUIElement element)
-	{
+	public void disposeWidget(MUIElement element) {
 		this.savePrompts.remove(element);
 	}
 }

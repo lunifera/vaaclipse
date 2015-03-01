@@ -14,8 +14,7 @@ package org.semanticsoft.vaaclipse.widgets.client.ui.fastview;
 import com.google.gwt.user.client.ui.Widget;
 import com.vaadin.client.ui.VWindow;
 
-public class VFastView extends VWindow 
-{
+public class VFastView extends VWindow {
 	Integer side;
 	Widget trimmedWindowClientArea;
 }

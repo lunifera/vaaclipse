@@ -36,7 +36,7 @@ public class MinMaxProcessor {
 				return;
 			}
 		}
-		
+
 		MAddon minMaxAddon = ApplicationFactoryImpl.eINSTANCE.createAddon();
 		minMaxAddon.setElementId("MinMaxAddon");
 		minMaxAddon.setContributionURI(MIN_MAX_CONTRIBUTION_URI);

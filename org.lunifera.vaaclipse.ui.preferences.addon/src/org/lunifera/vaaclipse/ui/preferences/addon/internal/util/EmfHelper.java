@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.resource.Resource;
  *
  */
 public class EmfHelper {
-	
+
 	public static class EInterface implements EObject {
 
 		@Override
@@ -39,13 +39,13 @@ public class EmfHelper {
 		@Override
 		public void eSetDeliver(boolean deliver) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void eNotify(Notification notification) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
@@ -117,7 +117,7 @@ public class EmfHelper {
 		@Override
 		public void eSet(EStructuralFeature feature, Object newValue) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
@@ -129,7 +129,7 @@ public class EmfHelper {
 		@Override
 		public void eUnset(EStructuralFeature feature) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
@@ -138,7 +138,7 @@ public class EmfHelper {
 			// TODO Auto-generated method stub
 			return null;
 		}
-		
+
 	}
-	
+
 }

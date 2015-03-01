@@ -19,35 +19,36 @@ import org.lunifera.vaaclipse.ui.preferences.model.metadata.PreferencesPackage;
 import org.osgi.service.prefs.Preferences;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
+ * end-user-doc -->
+ * 
  * @generated
  */
-public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesFactory {
+public class PreferencesFactoryImpl extends EFactoryImpl implements
+		PreferencesFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static PreferencesFactory init() {
 		try {
-			PreferencesFactory thePreferencesFactory = (PreferencesFactory)EPackage.Registry.INSTANCE.getEFactory(PreferencesPackage.eNS_URI);
+			PreferencesFactory thePreferencesFactory = (PreferencesFactory) EPackage.Registry.INSTANCE
+					.getEFactory(PreferencesPackage.eNS_URI);
 			if (thePreferencesFactory != null) {
 				return thePreferencesFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new PreferencesFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PreferencesFactoryImpl() {
@@ -55,73 +56,90 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case PreferencesPackage.PREFERENCES_CATEGORY: return createPreferencesCategory();
-			case PreferencesPackage.PREFERENCES_PAGE: return createPreferencesPage();
-			case PreferencesPackage.FIELD_EDITOR: return createFieldEditor();
-			case PreferencesPackage.BOOLEAN_FIELD_EDITOR: return createBooleanFieldEditor();
-			case PreferencesPackage.ENTRY: return createEntry();
-			case PreferencesPackage.COMBO_FIELD_EDITOR: return createComboFieldEditor();
-			case PreferencesPackage.LIST_EDITOR: return createListEditor();
-			case PreferencesPackage.RADIO_GROUP_FIELD_EDITOR: return createRadioGroupFieldEditor();
-			case PreferencesPackage.SCALE_FIELD_EDITOR: return createScaleFieldEditor();
-			case PreferencesPackage.STRING_FIELD_EDITOR: return createStringFieldEditor();
-			case PreferencesPackage.INTEGER_FIELD_EDITOR: return createIntegerFieldEditor();
-			case PreferencesPackage.FILE_FIELD_EDITOR: return createFileFieldEditor();
-			case PreferencesPackage.DIRECTORY_FIELD_EDITOR: return createDirectoryFieldEditor();
-			case PreferencesPackage.LIST_FOLD: return createListFold();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case PreferencesPackage.PREFERENCES_CATEGORY:
+			return createPreferencesCategory();
+		case PreferencesPackage.PREFERENCES_PAGE:
+			return createPreferencesPage();
+		case PreferencesPackage.FIELD_EDITOR:
+			return createFieldEditor();
+		case PreferencesPackage.BOOLEAN_FIELD_EDITOR:
+			return createBooleanFieldEditor();
+		case PreferencesPackage.ENTRY:
+			return createEntry();
+		case PreferencesPackage.COMBO_FIELD_EDITOR:
+			return createComboFieldEditor();
+		case PreferencesPackage.LIST_EDITOR:
+			return createListEditor();
+		case PreferencesPackage.RADIO_GROUP_FIELD_EDITOR:
+			return createRadioGroupFieldEditor();
+		case PreferencesPackage.SCALE_FIELD_EDITOR:
+			return createScaleFieldEditor();
+		case PreferencesPackage.STRING_FIELD_EDITOR:
+			return createStringFieldEditor();
+		case PreferencesPackage.INTEGER_FIELD_EDITOR:
+			return createIntegerFieldEditor();
+		case PreferencesPackage.FILE_FIELD_EDITOR:
+			return createFileFieldEditor();
+		case PreferencesPackage.DIRECTORY_FIELD_EDITOR:
+			return createDirectoryFieldEditor();
+		case PreferencesPackage.LIST_FOLD:
+			return createListFold();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case PreferencesPackage.BOOLEAN_FIELD_STYLE:
-				return createBooleanFieldStyleFromString(eDataType, initialValue);
-			case PreferencesPackage.STRING_BUFFER:
-				return createStringBufferFromString(eDataType, initialValue);
-			case PreferencesPackage.PREFERENCES:
-				return createPreferencesFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case PreferencesPackage.BOOLEAN_FIELD_STYLE:
+			return createBooleanFieldStyleFromString(eDataType, initialValue);
+		case PreferencesPackage.STRING_BUFFER:
+			return createStringBufferFromString(eDataType, initialValue);
+		case PreferencesPackage.PREFERENCES:
+			return createPreferencesFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '"
+					+ eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case PreferencesPackage.BOOLEAN_FIELD_STYLE:
-				return convertBooleanFieldStyleToString(eDataType, instanceValue);
-			case PreferencesPackage.STRING_BUFFER:
-				return convertStringBufferToString(eDataType, instanceValue);
-			case PreferencesPackage.PREFERENCES:
-				return convertPreferencesToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case PreferencesPackage.BOOLEAN_FIELD_STYLE:
+			return convertBooleanFieldStyleToString(eDataType, instanceValue);
+		case PreferencesPackage.STRING_BUFFER:
+			return convertStringBufferToString(eDataType, instanceValue);
+		case PreferencesPackage.PREFERENCES:
+			return convertPreferencesToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '"
+					+ eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PreferencesCategory createPreferencesCategory() {
@@ -130,8 +148,8 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PreferencesPage createPreferencesPage() {
@@ -140,8 +158,8 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public <T> FieldEditor<T> createFieldEditor() {
@@ -150,8 +168,8 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BooleanFieldEditor createBooleanFieldEditor() {
@@ -160,8 +178,8 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Entry createEntry() {
@@ -170,8 +188,8 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ComboFieldEditor createComboFieldEditor() {
@@ -180,8 +198,8 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ListEditor createListEditor() {
@@ -190,8 +208,8 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public RadioGroupFieldEditor createRadioGroupFieldEditor() {
@@ -200,8 +218,8 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ScaleFieldEditor createScaleFieldEditor() {
@@ -210,8 +228,8 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public StringFieldEditor createStringFieldEditor() {
@@ -220,8 +238,8 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public IntegerFieldEditor createIntegerFieldEditor() {
@@ -230,8 +248,8 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FileFieldEditor createFileFieldEditor() {
@@ -240,8 +258,8 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DirectoryFieldEditor createDirectoryFieldEditor() {
@@ -250,8 +268,8 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ListFold createListFold() {
@@ -260,73 +278,82 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public BooleanFieldStyle createBooleanFieldStyleFromString(EDataType eDataType, String initialValue) {
+	public BooleanFieldStyle createBooleanFieldStyleFromString(
+			EDataType eDataType, String initialValue) {
 		BooleanFieldStyle result = BooleanFieldStyle.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue
+					+ "' is not a valid enumerator of '" + eDataType.getName()
+					+ "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertBooleanFieldStyleToString(EDataType eDataType, Object instanceValue) {
+	public String convertBooleanFieldStyleToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public StringBuffer createStringBufferFromString(EDataType eDataType, String initialValue) {
-		return (StringBuffer)super.createFromString(eDataType, initialValue);
+	public StringBuffer createStringBufferFromString(EDataType eDataType,
+			String initialValue) {
+		return (StringBuffer) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertStringBufferToString(EDataType eDataType, Object instanceValue) {
+	public String convertStringBufferToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public Preferences createPreferencesFromString(EDataType eDataType, String initialValue) {
-		return (Preferences)super.createFromString(eDataType, initialValue);
+	public Preferences createPreferencesFromString(EDataType eDataType,
+			String initialValue) {
+		return (Preferences) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertPreferencesToString(EDataType eDataType, Object instanceValue) {
+	public String convertPreferencesToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PreferencesPackage getPreferencesPackage() {
-		return (PreferencesPackage)getEPackage();
+		return (PreferencesPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -335,4 +362,4 @@ public class PreferencesFactoryImpl extends EFactoryImpl implements PreferencesF
 		return PreferencesPackage.eINSTANCE;
 	}
 
-} //PreferencesFactoryImpl
+} // PreferencesFactoryImpl

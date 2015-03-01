@@ -41,9 +41,8 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.VerticalLayout;
 
-
 @SuppressWarnings("restriction")
-public class ToolBarRenderer extends BasicMenuToolbarTrimbarRenderer {	
+public class ToolBarRenderer extends BasicMenuToolbarTrimbarRenderer {
 	@Inject
 	private MApplication application;
 	@Inject
@@ -58,60 +57,55 @@ public class ToolBarRenderer extends BasicMenuToolbarTrimbarRenderer {
 
 	@PreDestroy
 	public void contextDisposed() {
-		
+
 	}
-	
+
 	@Override
-	public void createWidget(MUIElement element, MElementContainer<MUIElement> parent) {
+	public void createWidget(MUIElement element,
+			MElementContainer<MUIElement> parent) {
 		if (!(element instanceof MToolBar)) {
 			return;
 		}
-		
+
 		MToolBar toolbarModel = (MToolBar) element;
 		processContribution(toolbarModel);
 
 		AbstractLayout toolBarWidget;
-		
-		if ((MElementContainer<?>)toolbarModel.getParent() instanceof MTrimBar)
-		{
-			MTrimBar parentTrimBar = (MTrimBar)(MElementContainer<?>)toolbarModel.getParent();
+
+		if ((MElementContainer<?>) toolbarModel.getParent() instanceof MTrimBar) {
+			MTrimBar parentTrimBar = (MTrimBar) (MElementContainer<?>) toolbarModel
+					.getParent();
 			int orientation = parentTrimBar.getSide().getValue();
-			
-			if (orientation == SideValue.TOP_VALUE || orientation == SideValue.BOTTOM_VALUE)
-			{
+
+			if (orientation == SideValue.TOP_VALUE
+					|| orientation == SideValue.BOTTOM_VALUE) {
 				toolBarWidget = new HorizontalLayout() {
 					@Override
-					public void addComponent(Component c)
-					{
+					public void addComponent(Component c) {
 						if (!c.getStyleName().contains("horizontalseparator"))
 							c.addStyleName("horizontaltoolbarlement");
 						super.addComponent(c);
 					}
-					
+
 					@Override
-					public void addComponent(Component c, int index)
-					{
+					public void addComponent(Component c, int index) {
 						if (!c.getStyleName().contains("horizontalseparator"))
 							c.addStyleName("horizontaltoolbarlement");
 						super.addComponent(c, index);
 					}
 				};
 				toolBarWidget.addStyleName("horizontaltoolbar");
-			}
-			else
-			{
+			} else {
 				toolBarWidget = new VerticalLayout() {
 					@Override
-					public void addComponent(Component c)
-					{
+					public void addComponent(Component c) {
 						if (!c.getStyleName().contains("verticalseparator"))
 							c.addStyleName("verticaltoolbarlement");
 						super.addComponent(c);
 					}
-					
+
 					@Override
-					public void addComponent(Component c, int index)
-					{
+					public void addComponent(Component c, int index) {
 						if (!c.getStyleName().contains("verticalseparator"))
 							c.addStyleName("verticaltoolbarlement");
 						super.addComponent(c, index);
@@ -119,14 +113,11 @@ public class ToolBarRenderer extends BasicMenuToolbarTrimbarRenderer {
 				};
 				toolBarWidget.addStyleName("verticaltoolbar");
 			}
-			
-			
+
 			Component separator = GuiUtils.createSeparator(toolbarModel);
 			if (separator != null)
 				toolBarWidget.addComponent(separator);
-		}
-		else
-		{
+		} else {
 			toolBarWidget = new HorizontalLayout();
 			Component separator = GuiUtils.createSeparator(toolbarModel);
 			if (separator != null)
@@ -134,15 +125,14 @@ public class ToolBarRenderer extends BasicMenuToolbarTrimbarRenderer {
 		}
 		toolBarWidget.setSizeUndefined();
 		toolBarWidget.addStyleName("toolbar");
-		
-		for (String css : toolbarModel.getTags())
-		{
+
+		for (String css : toolbarModel.getTags()) {
 			toolBarWidget.addStyleName(css);
 		}
-		
+
 		element.setWidget(toolBarWidget);
 	}
-	
+
 	/**
 	 * @param element
 	 */
@@ -206,7 +196,7 @@ public class ToolBarRenderer extends BasicMenuToolbarTrimbarRenderer {
 					}
 
 					record.updateVisibility(parentContext.getActiveLeaf());
-					
+
 					return true;
 				}
 			});
@@ -217,41 +207,46 @@ public class ToolBarRenderer extends BasicMenuToolbarTrimbarRenderer {
 
 	@Override
 	public void processContents(final MElementContainer<MUIElement> container) {
-		MToolBar toolBar = (MToolBar)(MElementContainer<?>)container;
+		MToolBar toolBar = (MToolBar) (MElementContainer<?>) container;
 		AbstractLayout toolBarWidget = (AbstractLayout) container.getWidget();
-		if (toolBarWidget != null)
-		{
+		if (toolBarWidget != null) {
 			for (MUIElement element : container.getChildren()) {
-				if (element instanceof MHandledToolItem || element instanceof MDirectToolItem) {
+				if (element instanceof MHandledToolItem
+						|| element instanceof MDirectToolItem) {
 					toolBarWidget.addComponent((Component) element.getWidget());
 				} else if (element instanceof MToolBarSeparator) {
-					toolBarWidget.addComponent(GuiUtils.createSeparator(toolBar));
+					toolBarWidget.addComponent(GuiUtils
+							.createSeparator(toolBar));
 				}
-			}	
+			}
 		}
 	}
-	
+
 	@Override
-	public void addChildGui(MUIElement child, MElementContainer<MUIElement> element)
-	{
-		if (!(child instanceof MToolBarElement && (MElementContainer<?>)element instanceof MToolBar))
+	public void addChildGui(MUIElement child,
+			MElementContainer<MUIElement> element) {
+		if (!(child instanceof MToolBarElement && (MElementContainer<?>) element instanceof MToolBar))
 			return;
-		
-		MToolBar toolBar = (MToolBar)(MElementContainer<?>)element;
-		
-		AbstractOrderedLayout toolbarWidget = (AbstractOrderedLayout) element.getWidget();
+
+		MToolBar toolBar = (MToolBar) (MElementContainer<?>) element;
+
+		AbstractOrderedLayout toolbarWidget = (AbstractOrderedLayout) element
+				.getWidget();
 		Component childWidget = (Component) child.getWidget();
 		if (toolbarWidget == null || childWidget == null)
 			return;
-		int index = indexOf(child, element)/* + 1*/; //+1 becouse the first element is toolbar drag handler (separator)
-		if (element instanceof MToolBarSeparator) 
-		{
-			toolbarWidget.addComponent(GuiUtils.createSeparator(toolBar), index);
-		} 
-		else  {
+		int index = indexOf(child, element)/* + 1 */; // +1 becouse the first
+														// element is toolbar
+														// drag handler
+														// (separator)
+		if (element instanceof MToolBarSeparator) {
+			toolbarWidget
+					.addComponent(GuiUtils.createSeparator(toolBar), index);
+		} else {
 			toolbarWidget.addComponent(childWidget, index);
 		}
-		
+
 		toolbarWidget.requestRepaint();
 	}
+
 }

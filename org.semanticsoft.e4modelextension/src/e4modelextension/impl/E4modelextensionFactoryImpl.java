@@ -13,35 +13,36 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
+ * end-user-doc -->
+ * 
  * @generated
  */
-public class E4modelextensionFactoryImpl extends EFactoryImpl implements E4modelextensionFactory {
+public class E4modelextensionFactoryImpl extends EFactoryImpl implements
+		E4modelextensionFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static E4modelextensionFactory init() {
 		try {
-			E4modelextensionFactory theE4modelextensionFactory = (E4modelextensionFactory)EPackage.Registry.INSTANCE.getEFactory(E4modelextensionPackage.eNS_URI);
+			E4modelextensionFactory theE4modelextensionFactory = (E4modelextensionFactory) EPackage.Registry.INSTANCE
+					.getEFactory(E4modelextensionPackage.eNS_URI);
 			if (theE4modelextensionFactory != null) {
 				return theE4modelextensionFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new E4modelextensionFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public E4modelextensionFactoryImpl() {
@@ -49,23 +50,26 @@ public class E4modelextensionFactoryImpl extends EFactoryImpl implements E4model
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case E4modelextensionPackage.EDITOR_PART_DESCRIPTOR: return createEditorPartDescriptor();
-			case E4modelextensionPackage.VAACLIPSE_APPLICATION: return createVaaclipseApplication();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case E4modelextensionPackage.EDITOR_PART_DESCRIPTOR:
+			return createEditorPartDescriptor();
+		case E4modelextensionPackage.VAACLIPSE_APPLICATION:
+			return createVaaclipseApplication();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EditorPartDescriptor createEditorPartDescriptor() {
@@ -74,8 +78,8 @@ public class E4modelextensionFactoryImpl extends EFactoryImpl implements E4model
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public VaaclipseApplication createVaaclipseApplication() {
@@ -84,17 +88,17 @@ public class E4modelextensionFactoryImpl extends EFactoryImpl implements E4model
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public E4modelextensionPackage getE4modelextensionPackage() {
-		return (E4modelextensionPackage)getEPackage();
+		return (E4modelextensionPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -103,4 +107,4 @@ public class E4modelextensionFactoryImpl extends EFactoryImpl implements E4model
 		return E4modelextensionPackage.eINSTANCE;
 	}
 
-} //E4modelextensionFactoryImpl
+} // E4modelextensionFactoryImpl

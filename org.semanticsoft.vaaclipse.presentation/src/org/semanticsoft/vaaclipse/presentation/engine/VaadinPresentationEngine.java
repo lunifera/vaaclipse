@@ -31,10 +31,10 @@ import com.vaadin.ui.VerticalLayout;
 @SuppressWarnings("restriction")
 public class VaadinPresentationEngine extends GenericPresentationEngine {
 
-	public VaadinPresentationEngine(){
-		
+	public VaadinPresentationEngine() {
+
 	}
-	
+
 	@Override
 	public Object run(final MApplicationElement uiRoot,
 			IEclipseContext appContext) {
@@ -69,12 +69,13 @@ public class VaadinPresentationEngine extends GenericPresentationEngine {
 	@Override
 	public void stop() {
 		eventBroker.send(PublicEvents.EXIT_WORKBENCH, null);
-		
+
 		super.stop();
-		
-		VaadinExecutorService executor = theApp.getContext().get(VaadinExecutorService.class);
+
+		VaadinExecutorService executor = theApp.getContext().get(
+				VaadinExecutorService.class);
 		executor.removeAllAlwaysRunnables();
-		
+
 		UI ui = theApp.getContext().get(UI.class);
 		ui.setContent(new VerticalLayout());
 		URI appUri = ui.getPage().getLocation();

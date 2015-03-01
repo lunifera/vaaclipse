@@ -23,32 +23,27 @@ import com.vaadin.ui.Label;
  * @author rushan
  *
  */
-public class GuiUtils
-{
-	public static Component createSeparator(MTrimElement trimElement)
-	{
-		if ((MElementContainer<?>)trimElement.getParent() instanceof MTrimBar)
-		{
+public class GuiUtils {
+	public static Component createSeparator(MTrimElement trimElement) {
+		if ((MElementContainer<?>) trimElement.getParent() instanceof MTrimBar) {
 			Label separator = new Label();
 			separator.setSizeUndefined();
-			
-			MTrimBar parentTrimBar = (MTrimBar)(MElementContainer<?>)trimElement.getParent();
+
+			MTrimBar parentTrimBar = (MTrimBar) (MElementContainer<?>) trimElement
+					.getParent();
 			int orientation = parentTrimBar.getSide().getValue();
-			
-			if (orientation == SideValue.TOP_VALUE || orientation == SideValue.BOTTOM_VALUE)
-			{
+
+			if (orientation == SideValue.TOP_VALUE
+					|| orientation == SideValue.BOTTOM_VALUE) {
 				separator.addStyleName("horizontalseparator");
 				separator.setHeight("100%");
-			}
-			else
-			{
+			} else {
 				separator.addStyleName("verticalseparator");
 				separator.setWidth("100%");
 			}
 			return separator;
-		}
-		else
+		} else
 			return null;
-		
+
 	}
 }

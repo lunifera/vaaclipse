@@ -15,12 +15,10 @@ package org.semanticsoft.vaaclipse.widgets.common;
  * @author rushan
  *
  */
-public class Bounds
-{
+public class Bounds {
 	public int x, y, w, h;
-	
-	public Bounds(int x, int y, int w, int h)
-	{
+
+	public Bounds(int x, int y, int w, int h) {
 		this.x = x;
 		this.y = y;
 		this.w = w;

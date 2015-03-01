@@ -8,18 +8,18 @@ import org.lunifera.vaaclipse.ui.preferences.model.ListFold;
 import org.lunifera.vaaclipse.ui.preferences.model.metadata.PreferencesPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>List Fold</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>List Fold</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class ListFoldImpl extends MinimalEObjectImpl.Container implements ListFold {
+public class ListFoldImpl extends MinimalEObjectImpl.Container implements
+		ListFold {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ListFoldImpl() {
@@ -27,8 +27,8 @@ public class ListFoldImpl extends MinimalEObjectImpl.Container implements ListFo
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -37,8 +37,8 @@ public class ListFoldImpl extends MinimalEObjectImpl.Container implements ListFo
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void apply(String value, StringBuffer prev) {
@@ -47,4 +47,4 @@ public class ListFoldImpl extends MinimalEObjectImpl.Container implements ListFo
 		throw new UnsupportedOperationException();
 	}
 
-} //ListFoldImpl
+} // ListFoldImpl

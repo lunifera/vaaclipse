@@ -29,27 +29,24 @@ import org.semanticsoft.vaaclipse.api.MenuContributionService;
  * @author rushan
  *
  */
-public class MenuContributionProcessor implements MenuContributionService
-{
+public class MenuContributionProcessor implements MenuContributionService {
 	@Inject
 	MApplication application;
 	@Inject
 	EModelService modelService;
-	
+
 	private Map<MMenuElement, ArrayList<ContributionRecord>> sharedElementToRecord = new HashMap<MMenuElement, ArrayList<ContributionRecord>>();
-	
+
 	@Execute
-	public void start(IEclipseContext context)
-	{
+	public void start(IEclipseContext context) {
 		context.set(MenuContributionService.class, this);
 	}
-	
+
 	@Override
-	public void addContributions(MMenu menu)
-	{
+	public void addContributions(MMenu menu) {
 		processContributions(menu, menu instanceof MPopupMenu);
 	}
-	
+
 	/**
 	 * @param menuModel
 	 * @param isMenuBar
@@ -64,18 +61,19 @@ public class MenuContributionProcessor implements MenuContributionService
 				application.getMenuContributions(), menuModel.getElementId(),
 				toContribute, null, isPopup);
 		generateContributions(menuModel, toContribute);
-//		for (MMenuElement element : menuModel.getChildren()) {
-//			if (element instanceof MMenu) {
-//				processContributions((MMenu) element, isPopup);
-//			}
-//		}
+		// for (MMenuElement element : menuModel.getChildren()) {
+		// if (element instanceof MMenu) {
+		// processContributions((MMenu) element, isPopup);
+		// }
+		// }
 	}
 
 	/**
 	 * @param menuModel
 	 * @param toContribute
 	 */
-	private void generateContributions(MMenu menuModel, ArrayList<MMenuContribution> toContribute) {
+	private void generateContributions(MMenu menuModel,
+			ArrayList<MMenuContribution> toContribute) {
 		HashSet<String> existingMenuIds = new HashSet<String>();
 		HashSet<String> existingSeparatorNames = new HashSet<String>();
 		for (MMenuElement child : menuModel.getChildren()) {
@@ -123,7 +121,7 @@ public class MenuContributionProcessor implements MenuContributionService
 		if (!record.mergeIntoModel()) {
 			return false;
 		}
-		
+
 		final IEclipseContext parentContext = modelService
 				.getContainingContext(menuModel);
 		parentContext.runAndTrack(new RunAndTrack() {
@@ -133,10 +131,10 @@ public class MenuContributionProcessor implements MenuContributionService
 				return true;
 			}
 		});
-		
+
 		return true;
 	}
-	
+
 	ArrayList<ContributionRecord> getList(MMenuElement item) {
 		ArrayList<ContributionRecord> tmp = sharedElementToRecord.get(item);
 		if (tmp == null) {
@@ -145,10 +143,9 @@ public class MenuContributionProcessor implements MenuContributionService
 		}
 		return tmp;
 	}
-	
-	public void removeContributions(MMenu menu)
-	{
-		
+
+	public void removeContributions(MMenu menu) {
+
 	}
 
 	IEclipseContext getContext(MUIElement element) {

@@ -3,7 +3,6 @@
  */
 package internal;
 
-
 import org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesFactoryImpl;
 import org.lunifera.vaaclipse.ui.preferences.model.metadata.PreferencesFactory;
 import org.osgi.framework.BundleActivator;
@@ -17,11 +16,12 @@ import org.osgi.framework.ServiceRegistration;
 public class Activator implements BundleActivator {
 
 	private ServiceRegistration<PreferencesFactory> factoryRegistraction;
-	
+
 	@Override
 	public void start(BundleContext context) throws Exception {
 		PreferencesFactory factory = new PreferencesFactoryImpl();
-		factoryRegistraction = context.registerService(PreferencesFactory.class, factory, null);
+		factoryRegistraction = context.registerService(
+				PreferencesFactory.class, factory, null);
 	}
 
 	@Override

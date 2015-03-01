@@ -20,7 +20,8 @@ import org.osgi.service.prefs.Preferences;
  *
  */
 public class PrefHelper {
-	public static void populateInterfaces(FieldEditor<?> editor, IEclipseContext rendererContext, Class<?>[] interfaces) {
+	public static void populateInterfaces(FieldEditor<?> editor,
+			IEclipseContext rendererContext, Class<?>[] interfaces) {
 		for (Class<?> i : interfaces) {
 			if (FieldEditor.class.isAssignableFrom(i)) {
 				Class<FieldEditor<?>> editorInterface = (Class<FieldEditor<?>>) i;
@@ -29,25 +30,26 @@ public class PrefHelper {
 			}
 		}
 	}
-	
-	public static String toEquinoxPath(Bundle bundle, PreferencesCategory category) {
+
+	public static String toEquinoxPath(Bundle bundle,
+			PreferencesCategory category) {
 		return toEquinoxPreferencePath(bundle, getAbsolutePath(category));
 	}
-	
+
 	public static String toEquinoxPreferencePath(Bundle bundle, String catPath) {
-		return "/configuration/org.eclipse.core.runtime.preferences.OSGiPreferences." + bundle.getBundleId()
-		+ catPath;
+		return "/configuration/org.eclipse.core.runtime.preferences.OSGiPreferences."
+				+ bundle.getBundleId() + catPath;
 	}
-	
+
 	public static String getAbsolutePath(PreferencesCategory cat) {
 		if (cat.getParentCategory() == null)
 			return "/" + cat.getId();
 		return getAbsolutePath(cat.getParentCategory()) + "/" + cat.getId();
 	}
-	
+
 	public static void flush(PreferencesPage page) throws BackingStoreException {
 		Set<Preferences> list = getPreferencesSet(page);
-		
+
 		for (Preferences p : list) {
 			p.flush();
 		}

@@ -17,6 +17,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.lunifera.runtime.web.vaadin.databinding.VaadinObservables;
 import org.semanticsoft.vaaclipse.api.VaadinExecutorService;
 
 import com.vaadin.server.DeploymentConfiguration;
@@ -27,23 +28,22 @@ import com.vaadin.server.VaadinServlet;
 import com.vaadin.server.VaadinServletService;
 import com.vaadin.server.VaadinSession;
 import com.vaadin.server.communication.UidlRequestHandler;
+import com.vaadin.ui.UI;
 
 @SuppressWarnings("serial")
 public class OSGiServletService extends VaadinServletService {
 
 	private final IVaadinSessionFactory factory;
 	private VaaclipseServerRpcHandler vaaclipseServerRpcHandler;
-	
-	public VaaclipseServerRpcHandler getVaaclipseServerRpcHandler() 
-	{
+
+	public VaaclipseServerRpcHandler getVaaclipseServerRpcHandler() {
 		return vaaclipseServerRpcHandler;
 	}
-	
-	public VaadinExecutorService getExecutorService()
-	{
+
+	public VaadinExecutorService getExecutorService() {
 		return vaaclipseServerRpcHandler.getExecutorService();
 	}
-	
+
 	public OSGiServletService(VaadinServlet servlet,
 			DeploymentConfiguration deploymentConfiguration,
 			IVaadinSessionFactory factory) throws ServiceException {
@@ -62,15 +62,13 @@ public class OSGiServletService extends VaadinServletService {
 			throws ServiceException {
 		return factory.createSession(request, getCurrentServletRequest());
 	}
-	
+
 	@Override
 	protected List<RequestHandler> createRequestHandlers()
 			throws ServiceException {
 		List<RequestHandler> handlers = super.createRequestHandlers();
-		for (RequestHandler h : handlers)
-		{
-			if (h instanceof UidlRequestHandler)
-			{
+		for (RequestHandler h : handlers) {
+			if (h instanceof UidlRequestHandler) {
 				Field rpcField = null;
 				try {
 					rpcField = h.getClass().getDeclaredField("rpcHandler");
@@ -79,16 +77,24 @@ public class OSGiServletService extends VaadinServletService {
 					rpcField.set(h, vaaclipseServerRpcHandler);
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
-				finally {
+				} finally {
 					if (rpcField != null)
 						rpcField.setAccessible(false);
 				}
-				
+
 				break;
 			}
 		}
 		return handlers;
+	}
+
+	public UI findUI(VaadinRequest request) {
+		UI instance = super.findUI(request);
+
+		// activate the realm for the current ui and thread
+		VaadinObservables.activateRealm(instance);
+
+		return instance;
 	}
 
 	/**

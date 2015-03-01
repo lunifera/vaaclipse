@@ -39,27 +39,23 @@ import org.semanticsoft.vaaclipse.api.VaadinExecutorService;
 import com.vaadin.ui.MenuBar.Command;
 import com.vaadin.ui.MenuBar.MenuItem;
 
-
 @SuppressWarnings("restriction")
 public abstract class ItemRenderer extends VaadinRenderer {
-	
+
 	@Inject
 	EModelService modelService;
-	
+
 	@Inject
 	protected VaadinExecutorService executorService;
-	
+
 	protected Map<MItem, Runnable> enabledUpdaters = new HashMap<MItem, Runnable>();
-	
-	protected void registerEnablementUpdaters(final MItem item)
-	{
-		if (!enabledUpdaters.containsKey(item))
-		{
+
+	protected void registerEnablementUpdaters(final MItem item) {
+		if (!enabledUpdaters.containsKey(item)) {
 			Runnable runnable = new Runnable() {
-				
+
 				@Override
-				public void run()
-				{
+				public void run() {
 					updateItemEnablement(item);
 				}
 			};
@@ -67,14 +63,15 @@ public abstract class ItemRenderer extends VaadinRenderer {
 			executorService.invokeLaterAlways(runnable);
 		}
 	}
-	
+
 	protected abstract void updateItemEnablement(MItem item);
-	
+
 	protected boolean canExecuteItem(MHandledItem item) {
 		final IEclipseContext eclipseContext = getContext(item);
-		if (eclipseContext == null) //item is not in hierarchy
+		if (eclipseContext == null) // item is not in hierarchy
 			return false;
-		EHandlerService service = (EHandlerService) eclipseContext.get(EHandlerService.class.getName());
+		EHandlerService service = (EHandlerService) eclipseContext
+				.get(EHandlerService.class.getName());
 		if (service == null)
 			return false;
 		ParameterizedCommand command = item.getWbCommand();
@@ -88,24 +85,20 @@ public abstract class ItemRenderer extends VaadinRenderer {
 		setupContext(eclipseContext, item);
 		return service.canExecute(command, eclipseContext);
 	}
-	
+
 	@Override
-	public void disposeWidget(MUIElement element)
-	{
+	public void disposeWidget(MUIElement element) {
 		unregisterEnabledUpdater(element);
 	}
 
-	private void unregisterEnabledUpdater(MUIElement element)
-	{
+	private void unregisterEnabledUpdater(MUIElement element) {
 		Runnable runnable = enabledUpdaters.remove(element);
-		if (runnable != null)
-		{
-			executorService.removeAlwaysRunnable(runnable);	
+		if (runnable != null) {
+			executorService.removeAlwaysRunnable(runnable);
 		}
 	}
-	
-	protected String prepareText(MMenuItem model)
-	{
+
+	protected String prepareText(MMenuItem model) {
 		String text = model.getLocalizedLabel();
 		if (model instanceof MHandledItem) {
 			MHandledItem handledItem = (MHandledItem) model;
@@ -123,10 +116,11 @@ public abstract class ItemRenderer extends VaadinRenderer {
 			text = "Blank";
 		return text;
 	}
-	
-	protected ParameterizedCommand generateParameterizedCommand(final MHandledItem item,
-			final IEclipseContext lclContext) {
-		ECommandService cmdService = (ECommandService) lclContext.get(ECommandService.class.getName());
+
+	protected ParameterizedCommand generateParameterizedCommand(
+			final MHandledItem item, final IEclipseContext lclContext) {
+		ECommandService cmdService = (ECommandService) lclContext
+				.get(ECommandService.class.getName());
 		Map<String, Object> parameters = null;
 		List<MParameter> modelParms = item.getParameters();
 		if (modelParms != null && !modelParms.isEmpty()) {
@@ -145,12 +139,12 @@ public abstract class ItemRenderer extends VaadinRenderer {
 			return null;
 	}
 
-	protected Command createParametrizedCommandEventHandler(final MHandledItem item) {
+	protected Command createParametrizedCommandEventHandler(
+			final MHandledItem item) {
 		return new Command() {
 
 			@Override
-			public void menuSelected(MenuItem selectedItem)
-			{
+			public void menuSelected(MenuItem selectedItem) {
 				processParametrizedAction(item);
 			}
 		};
@@ -160,17 +154,16 @@ public abstract class ItemRenderer extends VaadinRenderer {
 		return new Command() {
 
 			@Override
-			public void menuSelected(MenuItem selectedItem)
-			{
+			public void menuSelected(MenuItem selectedItem) {
 				processAction(item);
 			}
 		};
 	}
-	
-	protected void processParametrizedAction(final MHandledItem item)
-	{
+
+	protected void processParametrizedAction(final MHandledItem item) {
 		final IEclipseContext eclipseContext = getContext(item);
-		EHandlerService service = (EHandlerService) eclipseContext.get(EHandlerService.class.getName());
+		EHandlerService service = (EHandlerService) eclipseContext
+				.get(EHandlerService.class.getName());
 		ParameterizedCommand command = item.getWbCommand();
 		if (command == null) {
 			command = generateParameterizedCommand(item, eclipseContext);
@@ -184,26 +177,28 @@ public abstract class ItemRenderer extends VaadinRenderer {
 		service.executeHandler(command);
 		eclipseContext.remove(MItem.class.getName());
 	}
-	
-	protected void processAction(final MItem item)
-	{
+
+	protected void processAction(final MItem item) {
 		final IEclipseContext eclipseContext = getContext(item);
 		eclipseContext.set(MItem.class, item);
 		setupContext(eclipseContext, item);
 		if (item instanceof MDirectToolItem) {
 			Object toolItem = ((MDirectToolItem) item).getObject();
-			if ((Boolean) ContextInjectionFactory.invoke(toolItem, CanExecute.class, eclipseContext, true))
-				ContextInjectionFactory.invoke(toolItem, Execute.class, eclipseContext);
+			if ((Boolean) ContextInjectionFactory.invoke(toolItem,
+					CanExecute.class, eclipseContext, true))
+				ContextInjectionFactory.invoke(toolItem, Execute.class,
+						eclipseContext);
 		} else if (item instanceof MDirectMenuItem) {
 			Object menuItem = ((MDirectMenuItem) item).getObject();
-			if ((Boolean) ContextInjectionFactory.invoke(menuItem, CanExecute.class, eclipseContext, true))
-				ContextInjectionFactory.invoke(menuItem, Execute.class, eclipseContext);
+			if ((Boolean) ContextInjectionFactory.invoke(menuItem,
+					CanExecute.class, eclipseContext, true))
+				ContextInjectionFactory.invoke(menuItem, Execute.class,
+						eclipseContext);
 		}
 		eclipseContext.remove(MItem.class);
 	}
-	
-	protected void setupContext(IEclipseContext context, MItem item)
-	{
+
+	protected void setupContext(IEclipseContext context, MItem item) {
 		MWindow window = modelService.getTopLevelWindowFor(item);
 		context.set(MWindow.class, window);
 	}

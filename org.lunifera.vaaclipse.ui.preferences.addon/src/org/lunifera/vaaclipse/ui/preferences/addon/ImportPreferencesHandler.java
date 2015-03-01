@@ -26,10 +26,11 @@ public class ImportPreferencesHandler {
 	}
 
 	@Execute
-	public void execute(@Optional PreferencesAuthorization prefAuthService, IEclipseContext context) {
+	public void execute(@Optional PreferencesAuthorization prefAuthService,
+			IEclipseContext context) {
 		if (!canExecute(prefAuthService))
 			return;
-		
+
 		ContextInjectionFactory.make(ImportPreferences.class, context);
-	}	
+	}
 }

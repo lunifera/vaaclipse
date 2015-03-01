@@ -21,18 +21,15 @@ import com.vaadin.ui.Component;
  * @author rushan
  *
  */
-public class WidgetInfoImpl implements WidgetInfo
-{
+public class WidgetInfoImpl implements WidgetInfo {
 	@Execute
-	public void activate(IEclipseContext context)
-	{
+	public void activate(IEclipseContext context) {
 		context.set(WidgetInfo.class, this);
 		System.out.println("widgetinfo started");
 	}
 
 	@Override
-	public Object getParent(Object widget)
-	{
+	public Object getParent(Object widget) {
 		if (widget instanceof Component)
 			return ((Component) widget).getParent();
 		else

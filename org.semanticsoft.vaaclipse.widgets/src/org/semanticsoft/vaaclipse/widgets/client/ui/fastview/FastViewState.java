@@ -10,8 +10,7 @@ import com.vaadin.shared.ui.window.WindowState;
  * @author rushan
  *
  */
-public class FastViewState extends WindowState 
-{
+public class FastViewState extends WindowState {
 	public Integer side;
 	public Connector trimmedWindowClientArea;
 }

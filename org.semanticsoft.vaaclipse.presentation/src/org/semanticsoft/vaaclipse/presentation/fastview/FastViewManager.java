@@ -34,137 +34,127 @@ import org.semanticsoft.vaaclipse.widgets.StackWidget;
 
 import fi.jasoft.dragdroplayouts.client.ui.LayoutDragMode;
 
-
 /**
  * @author rushan
  *
  */
-public class FastViewManager
-{
+public class FastViewManager {
 	@Inject
 	private IEclipseContext context;
-	
+
 	@Inject
 	private EModelService modelService;
-	
+
 	private Map<MUIElement, SingleElementFastViewManager> element2man = new HashMap<MUIElement, SingleElementFastViewManager>();
 	private Map<StackWidget, LayoutDragMode> layoutDragMode = new HashMap<StackWidget, LayoutDragMode>();
 	private Map<MUIElement, List<MPartStack>> areaStackWidgets = new HashMap<MUIElement, List<MPartStack>>();
-	
+
 	private EventHandler minimizeHandler = new EventHandler() {
-		
+
 		@Override
-		public void handleEvent(Event event)
-		{
-			MUIElement minimizedElement = (MUIElement) event.getProperty(Events.MinMaxEvents.PARAMETER_ELEMENT);
-			
+		public void handleEvent(Event event) {
+			MUIElement minimizedElement = (MUIElement) event
+					.getProperty(Events.MinMaxEvents.PARAMETER_ELEMENT);
+
 			if (element2man.containsKey(minimizedElement))
 				return;
-			
-			//Disable drag mode
-			if (minimizedElement instanceof MPartStack)
+
+			// Disable drag mode
+			if (minimizedElement instanceof MPartStack) {
+				disableDrag((MPartStack) minimizedElement);
+			} else if (minimizedElement instanceof MPlaceholder) // area
 			{
-				disableDrag((MPartStack)minimizedElement);
-			}
-			else if (minimizedElement instanceof MPlaceholder) //area
-			{
-				if (((MPlaceholder) minimizedElement).getRef() != null)
-				{
-					List<MPartStack> stacks = modelService.findElements(((MPlaceholder) minimizedElement).getRef(), null, MPartStack.class, null);
-					
-					for (MPartStack stack : stacks)
-					{
-						if (stack.getWidget() != null)
-						{
-							disableDrag(stack);	
+				if (((MPlaceholder) minimizedElement).getRef() != null) {
+					List<MPartStack> stacks = modelService.findElements(
+							((MPlaceholder) minimizedElement).getRef(), null,
+							MPartStack.class, null);
+
+					for (MPartStack stack : stacks) {
+						if (stack.getWidget() != null) {
+							disableDrag(stack);
 						}
 					}
-					areaStackWidgets.put(minimizedElement, stacks);	
+					areaStackWidgets.put(minimizedElement, stacks);
 				}
 			}
-			
-			//start single element fast view manager for minimizedElement
-			MTrimBar trimBar = (MTrimBar) event.getProperty(Events.MinMaxEvents.PARAMETER_TRIMBAR);
-			MToolBar toolBar = (MToolBar) event.getProperty(Events.MinMaxEvents.PARAMETER_TOOLBAR);
-			
+
+			// start single element fast view manager for minimizedElement
+			MTrimBar trimBar = (MTrimBar) event
+					.getProperty(Events.MinMaxEvents.PARAMETER_TRIMBAR);
+			MToolBar toolBar = (MToolBar) event
+					.getProperty(Events.MinMaxEvents.PARAMETER_TOOLBAR);
+
 			IEclipseContext manContext = context.createChild();
 			manContext.set(MUIElement.class, minimizedElement);
 			manContext.set(MTrimBar.class, trimBar);
 			manContext.set(MToolBar.class, toolBar);
-			
-			SingleElementFastViewManager man = ContextInjectionFactory.make(SingleElementFastViewManager.class, manContext);
+
+			SingleElementFastViewManager man = ContextInjectionFactory.make(
+					SingleElementFastViewManager.class, manContext);
 			element2man.put(minimizedElement, man);
 		}
 	};
-	
+
 	private EventHandler restoreHandler = new EventHandler() {
-			
-			@Override
-			public void handleEvent(Event event)
+
+		@Override
+		public void handleEvent(Event event) {
+			MUIElement minimizedElement = (MUIElement) event
+					.getProperty(Events.MinMaxEvents.PARAMETER_ELEMENT);
+
+			if (!element2man.containsKey(minimizedElement))
+				return;
+
+			element2man.remove(minimizedElement).dispose();
+
+			// restore drag mode
+			if (minimizedElement instanceof MPartStack) {
+				restoreDrag((MPartStack) minimizedElement);
+			} else if (minimizedElement instanceof MPlaceholder) // area
 			{
-				MUIElement minimizedElement = (MUIElement) event.getProperty(Events.MinMaxEvents.PARAMETER_ELEMENT);
-				
-				if (!element2man.containsKey(minimizedElement))
-					return;
-				
-				element2man.remove(minimizedElement).dispose();
-				
-				//restore drag mode
-				if (minimizedElement instanceof MPartStack)
-				{
-					restoreDrag((MPartStack) minimizedElement);
-				}
-				else if (minimizedElement instanceof MPlaceholder) //area
-				{
-					MPlaceholder ph = (MPlaceholder) minimizedElement;
-					if (ph.getRef() != null)
-					{
-						List<MPartStack> stacks = areaStackWidgets.remove(minimizedElement);
-						if (stacks != null)
-						{
-							for (MPartStack stack : stacks)
-							{
-								restoreDrag(stack);
-							}
+				MPlaceholder ph = (MPlaceholder) minimizedElement;
+				if (ph.getRef() != null) {
+					List<MPartStack> stacks = areaStackWidgets
+							.remove(minimizedElement);
+					if (stacks != null) {
+						for (MPartStack stack : stacks) {
+							restoreDrag(stack);
 						}
 					}
 				}
 			}
+		}
 	};
-	
-	private void disableDrag(MPartStack stack)
-	{
+
+	private void disableDrag(MPartStack stack) {
 		StackWidget sw = (StackWidget) stack.getWidget();
-		if (sw != null)
-		{
-			if (sw.getDragMode() != null && !sw.getDragMode().equals(LayoutDragMode.NONE))
-			{
+		if (sw != null) {
+			if (sw.getDragMode() != null
+					&& !sw.getDragMode().equals(LayoutDragMode.NONE)) {
 				layoutDragMode.put(sw, sw.getDragMode());
 				sw.setDragMode(LayoutDragMode.NONE);
-			}	
+			}
 		}
 	}
-	
-	private void restoreDrag(MPartStack stack)
-	{
+
+	private void restoreDrag(MPartStack stack) {
 		StackWidget sw = (StackWidget) stack.getWidget();
-		if (sw != null)
-		{
+		if (sw != null) {
 			LayoutDragMode ldm = layoutDragMode.remove(sw);
-			if (ldm != null)
-			{
+			if (ldm != null) {
 				sw.setDragMode(ldm);
-			}	
+			}
 		}
 	}
-	
+
 	@PostConstruct
-	public void postConstruct(IEventBroker eventBroker)
-	{
+	public void postConstruct(IEventBroker eventBroker) {
 		eventBroker.unsubscribe(minimizeHandler);
-		eventBroker.subscribe(Events.MinMaxEvents.EVENT_MINIMIZE_ELEMENT, minimizeHandler);
-		
+		eventBroker.subscribe(Events.MinMaxEvents.EVENT_MINIMIZE_ELEMENT,
+				minimizeHandler);
+
 		eventBroker.unsubscribe(restoreHandler);
-		eventBroker.subscribe(Events.MinMaxEvents.EVENT_RESTORE_ELEMENT, restoreHandler);
+		eventBroker.subscribe(Events.MinMaxEvents.EVENT_RESTORE_ELEMENT,
+				restoreHandler);
 	}
 }

@@ -27,64 +27,56 @@ import com.vaadin.shared.ui.Connect;
  *
  */
 @Connect(FastView.class)
-public class FastViewConnector extends WindowConnector
-{
+public class FastViewConnector extends WindowConnector {
 	@Override
-	public VFastView getWidget() 
-	{
+	public VFastView getWidget() {
 		return (VFastView) super.getWidget();
 	}
-	
+
 	@Override
-    public void onStateChanged(StateChangeEvent stateChangeEvent) 
-	{
-        super.onStateChanged(stateChangeEvent);
-        
-        Set<String> changedProperties = stateChangeEvent.getChangedProperties();
-        if (changedProperties.contains("side")) 
-        {
-            getWidget().side = getState().side;
-            getWidget().trimmedWindowClientArea = ((ComponentConnector)getState().trimmedWindowClientArea).getWidget();
-            setPaneLocation();
-        }
-    }
-	
+	public void onStateChanged(StateChangeEvent stateChangeEvent) {
+		super.onStateChanged(stateChangeEvent);
+
+		Set<String> changedProperties = stateChangeEvent.getChangedProperties();
+		if (changedProperties.contains("side")) {
+			getWidget().side = getState().side;
+			getWidget().trimmedWindowClientArea = ((ComponentConnector) getState().trimmedWindowClientArea)
+					.getWidget();
+			setPaneLocation();
+		}
+	}
+
 	@Override
-	public FastViewState getState() 
-	{
+	public FastViewState getState() {
 		return (FastViewState) super.getState();
 	}
-	
-	public void setPaneLocation()
-	{
+
+	public void setPaneLocation() {
 		VFastView fastView = getWidget();
-		
+
 		if (fastView.side == null)
 			return;
-		
-		//VExtendedVerticalLayout trimmedWindowClientArea = findTrimmedWindowClientArea(RootPanel.get());
+
+		// VExtendedVerticalLayout trimmedWindowClientArea =
+		// findTrimmedWindowClientArea(RootPanel.get());
 		Widget trimmedWindowClientArea = fastView.trimmedWindowClientArea;
-		
-		if (trimmedWindowClientArea != null)
-		{
+
+		if (trimmedWindowClientArea != null) {
 			int x, y;
 			int w = 600, h = 400;
-			if (Side.LEFT.equals(fastView.side))
-			{
+			if (Side.LEFT.equals(fastView.side)) {
 				x = trimmedWindowClientArea.getAbsoluteLeft();
 				y = trimmedWindowClientArea.getAbsoluteTop();
-			}
-			else if (Side.RIGHT.equals(fastView.side))
-			{
-				x = trimmedWindowClientArea.getAbsoluteLeft() + trimmedWindowClientArea.getOffsetWidth() - w;
+			} else if (Side.RIGHT.equals(fastView.side)) {
+				x = trimmedWindowClientArea.getAbsoluteLeft()
+						+ trimmedWindowClientArea.getOffsetWidth() - w;
 				y = trimmedWindowClientArea.getAbsoluteTop();
-			}
-			else
+			} else
 				return;
-			
+
 			fastView.setPopupPosition(x, y);
 			fastView.setWidth(w + "px");
-			fastView.setHeight(h + "px");	
+			fastView.setHeight(h + "px");
 		}
 	}
 }

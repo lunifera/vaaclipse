@@ -18,7 +18,7 @@ import org.semanticsoft.vaaclipse.presentation.renderers.VaadinRenderer;
 
 @SuppressWarnings("restriction")
 public class GenericRendererFactory implements RendererFactory {
-	
+
 	VaadinRenderer genericRenderer = new VaadinRenderer();
 
 	@Override

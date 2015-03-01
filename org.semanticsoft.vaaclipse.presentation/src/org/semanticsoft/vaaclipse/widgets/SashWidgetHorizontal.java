@@ -21,42 +21,40 @@ import com.vaadin.ui.HorizontalSplitPanel;
  * @author rushan
  * 
  */
-public class SashWidgetHorizontal extends HorizontalSplitPanel implements SashWidget
-{
+public class SashWidgetHorizontal extends HorizontalSplitPanel implements
+		SashWidget {
 	private SashWidgetExtension extension = new SashWidgetExtension(this);
-	
-	public void addListener(SplitPositionChangedListener listener)
-	{
+
+	public void addListener(SplitPositionChangedListener listener) {
 		this.extension.addListener(listener);
 	}
-	
-	public SashWidgetHorizontal()
-	{
+
+	public SashWidgetHorizontal() {
 		this.setImmediate(true);
 	}
-	
+
 	@Override
 	public void fireEvent(EventObject event) {
 		super.fireEvent(event);
 	}
-	
+
 	@Override
 	public AbstractSplitPanelState getState() {
 		return super.getState();
 	}
-	
+
 	@Override
 	public <T extends ServerRpc> void registerRpc(T implementation,
 			Class<T> rpcInterfaceType) {
 		super.registerRpc(implementation, rpcInterfaceType);
 	}
-	
-//	@Override
-//	public void changeVariables(Object source, Map<String, Object> variables)
-//	{
-//		super.changeVariables(source, variables);
-//		
-//		extension.fireEvent(this.getSplitPosition());
-//
-//	}
+
+	// @Override
+	// public void changeVariables(Object source, Map<String, Object> variables)
+	// {
+	// super.changeVariables(source, variables);
+	//
+	// extension.fireEvent(this.getSplitPosition());
+	//
+	// }
 }

@@ -29,61 +29,57 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 
-public class DefaultPartAddingLogic
-{
+public class DefaultPartAddingLogic {
 	@Inject
 	MApplication application;
-	
+
 	@Inject
 	EModelService modelService;
-	
+
 	@Execute
-	public void execute(MWindow window, @Optional MElementContainer<?> area, MPart part, EModelService modelService)
-	{
-		if (area != null)
-		{
+	public void execute(MWindow window, @Optional MElementContainer<?> area,
+			MPart part, EModelService modelService) {
+		if (area != null) {
 			addLogic1(area, part, modelService);
-		}
-		else
-		{//add using part logic copied from eclipse e4 service epartservice implementation - partservicesimpl
+		} else {// add using part logic copied from eclipse e4 service
+				// epartservice implementation - partservicesimpl
 			addLogic2(window, part, modelService);
 		}
 	}
 
-	private void addLogic1(MElementContainer<?> area, MPart part, EModelService modelService)
-	{
+	private void addLogic1(MElementContainer<?> area, MPart part,
+			EModelService modelService) {
 		MPartStack stack = null;
-		List<MPartStack> partStacks = modelService.findElements(area, null, MPartStack.class, null);
-		if (partStacks.isEmpty())
-		{
-			if (area instanceof MArea)
-			{
+		List<MPartStack> partStacks = modelService.findElements(area, null,
+				MPartStack.class, null);
+		if (partStacks.isEmpty()) {
+			if (area instanceof MArea) {
 				MArea marea = (MArea) area;
 				stack = MBasicFactory.INSTANCE.createPartStack();
 				marea.getChildren().add(stack);
-//					engine.createGui(stack);
-//					((GenericRenderer)marea.getRenderer()).refreshPlatformElement(marea);
-			}
-			else
-				throw new IllegalStateException(String.format("Can not add the part %s to area %s", part, area));
-		}
-		else
-		{
+				// engine.createGui(stack);
+				// ((GenericRenderer)marea.getRenderer()).refreshPlatformElement(marea);
+			} else
+				throw new IllegalStateException(String.format(
+						"Can not add the part %s to area %s", part, area));
+		} else {
 			stack = partStacks.get(0);
 		}
-		
+
 		if (stack != null)
 			stack.getChildren().add(part);
 	}
-	
+
 	/**
-	 * Add using part logic copied from eclipse e4 service epartservice implementation - partservicesimpl
+	 * Add using part logic copied from eclipse e4 service epartservice
+	 * implementation - partservicesimpl
 	 */
-	private void addLogic2(MWindow window, MPart part, EModelService modelService)
-	{
-		//------------from epartserviceimpl---
+	private void addLogic2(MWindow window, MPart part,
+			EModelService modelService) {
+		// ------------from epartserviceimpl---
 		MElementContainer<MUIElement> container = getContainer(window);
-		MElementContainer<?> area = (MElementContainer<?>) modelService.find("org.eclipse.ui.editorss", container); //$NON-NLS-1$
+		MElementContainer<?> area = (MElementContainer<?>) modelService.find(
+				"org.eclipse.ui.editorss", container); //$NON-NLS-1$
 
 		MPartStack activeStack = null;
 		if (area instanceof MPlaceholder
@@ -105,8 +101,8 @@ public class DefaultPartAddingLogic
 			activeStack.getChildren().add(part);
 		} else {
 			// Find the first visible stack in the area
-			List<MPartStack> sharedStacks = modelService.findElements(area, null,
-					MPartStack.class, null);
+			List<MPartStack> sharedStacks = modelService.findElements(area,
+					null, MPartStack.class, null);
 			if (sharedStacks.size() > 0) {
 				for (MPartStack stack : sharedStacks) {
 					if (stack.isToBeRendered()) {
@@ -119,10 +115,11 @@ public class DefaultPartAddingLogic
 			}
 		}
 	}
-	
+
 	/**
-	 * "Container" here is: 1) a selected MPerspective, or, if none available 2) the MWindow for
-	 * which this part service is created, or, if not available, 3) the MApplication.
+	 * "Container" here is: 1) a selected MPerspective, or, if none available 2)
+	 * the MWindow for which this part service is created, or, if not available,
+	 * 3) the MApplication.
 	 */
 	private MElementContainer<MUIElement> getContainer(MWindow workbenchWindow) {
 		MElementContainer<? extends MUIElement> outerContainer = (workbenchWindow != null) ? workbenchWindow

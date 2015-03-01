@@ -22,12 +22,12 @@ import org.semanticsoft.e4extension.service.EPartServiceExt;
  * @author rushan
  *
  */
-public class StartServiceProcessor
-{
+public class StartServiceProcessor {
 	@Execute
 	void addMinMaxAddon(MApplication application, IEclipseContext context) {
-		
-		PartServiceExtImpl partServiceExt = ContextInjectionFactory.make(PartServiceExtImpl.class, context);
+
+		PartServiceExtImpl partServiceExt = ContextInjectionFactory.make(
+				PartServiceExtImpl.class, context);
 		context.set(EPartServiceExt.class, partServiceExt);
 	}
 }

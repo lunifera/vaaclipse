@@ -20,21 +20,17 @@ import com.vaadin.ui.Window;
  * @author rushan
  *
  */
-public class FastView extends Window
-{
+public class FastView extends Window {
 	@Override
-	protected FastViewState getState()
-	{
+	protected FastViewState getState() {
 		return (FastViewState) super.getState();
 	}
-	
-	public void setSide(Integer side)
-	{
+
+	public void setSide(Integer side) {
 		this.getState().side = side;
 	}
-	
-	public void setTrimmedWindowClientArea(Component component)
-	{
+
+	public void setTrimmedWindowClientArea(Component component) {
 		this.getState().trimmedWindowClientArea = component;
 	}
 }

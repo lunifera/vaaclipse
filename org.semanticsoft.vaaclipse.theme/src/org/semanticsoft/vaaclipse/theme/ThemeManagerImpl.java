@@ -12,44 +12,40 @@ import org.semanticsoft.vaaclipse.publicapi.theme.ThemeManager;
  * @author rushan
  *
  */
-public class ThemeManagerImpl implements ThemeManager
-{
+public class ThemeManagerImpl implements ThemeManager {
 	@Inject
 	IEventBroker eventBroker;
-	
+
 	@Inject
 	private ThemeEngine themeEngine;
-	
+
 	private String themeId;
 
 	@Override
-	public String getThemeId()
-	{
+	public String getThemeId() {
 		return this.themeId;
 	}
 
 	@Override
-	public ThemeEngine getThemeEngine()
-	{
+	public ThemeEngine getThemeEngine() {
 		return this.themeEngine;
 	}
 
 	@Override
-	public Theme getTheme()
-	{
+	public Theme getTheme() {
 		return themeEngine.getTheme(themeId);
 	}
-	
+
 	@Override
-	public void setTheme(String themeId)
-	{
+	public void setTheme(String themeId) {
 		if (this.themeId != null && this.themeId.equals(themeId))
 			return;
-		
+
 		Theme theme = themeEngine.getTheme(themeId);
 		if (theme == null)
-			throw new IllegalArgumentException(String.format("Theme with id=%s is not exists", themeId));
+			throw new IllegalArgumentException(String.format(
+					"Theme with id=%s is not exists", themeId));
 		this.themeId = themeId;
 		eventBroker.send(ThemeConstants.Events.setThemeEvent, theme);
-	}	
+	}
 }

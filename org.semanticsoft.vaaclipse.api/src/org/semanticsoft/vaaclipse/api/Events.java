@@ -15,19 +15,15 @@ package org.semanticsoft.vaaclipse.api;
  * @author rushan
  *
  */
-public class Events
-{
-	public static class MinMaxEvents
-	{
+public class Events {
+	public static class MinMaxEvents {
 		public static final String EVENT_MAXIMIZE_ELEMENT = "EVENT_MAXIMIZE_ELEMENT";
 		public static final String EVENT_MINIMIZE_ELEMENT = "EVENT_MINIMIZE_ELEMENT";
 		public static final String EVENT_RESTORE_ELEMENT = "EVENT_RESTORE_ELEMENT";
-		
+
 		public static final String PARAMETER_ELEMENT = "PARAMETER_ELEMENT";
 		public static final String PARAMETER_TRIMBAR = "PARAMETER_TRIMBAR";
 		public static final String PARAMETER_TOOLBAR = "PARAMETER_TOOLBAR";
 	}
-	
-	
-	
+
 }

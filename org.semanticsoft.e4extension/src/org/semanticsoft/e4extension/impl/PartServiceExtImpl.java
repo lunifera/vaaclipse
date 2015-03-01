@@ -108,11 +108,11 @@ public class PartServiceExtImpl implements EPartServiceExt {
 		}
 		return null;
 	}
-	
+
 	@Override
-	public EditorPartDescriptor findEditorPartDescriptorUsingId(String id)
-	{
-		for (EditorPartDescriptor descriptor : ((VaaclipseApplication) application).getEditorDescriptors()) {
+	public EditorPartDescriptor findEditorPartDescriptorUsingId(String id) {
+		for (EditorPartDescriptor descriptor : ((VaaclipseApplication) application)
+				.getEditorDescriptors()) {
 			if (descriptor.getElementId().equals(id)) {
 				return descriptor;
 			}
@@ -122,8 +122,8 @@ public class PartServiceExtImpl implements EPartServiceExt {
 
 	@Override
 	public EditorPartDescriptor findEditorPartDescriptor(String inputUri) {
-		for (EditorPartDescriptor d : ((VaaclipseApplication) application).getEditorDescriptors()) 
-		{
+		for (EditorPartDescriptor d : ((VaaclipseApplication) application)
+				.getEditorDescriptors()) {
 			if (d.getUriFilter() != null) {
 				String filter = d.getUriFilter().trim();
 				if (!filter.isEmpty()) {
@@ -140,17 +140,16 @@ public class PartServiceExtImpl implements EPartServiceExt {
 		}
 		return null;
 	}
-	
+
 	@Override
-	public MInputPart openUri(MElementContainer<?> area, String inputUri)
-	{
+	public MInputPart openUri(MElementContainer<?> area, String inputUri) {
 		EditorPartDescriptor editorPartDescriptor = findEditorPartDescriptor(inputUri);
 		return openUri(inputUri, editorPartDescriptor, area);
 	}
 
 	@Override
-	public MInputPart openUri(String inputUri, EditorPartDescriptor editorPartDescriptor, MElementContainer<?> area) 
-	{
+	public MInputPart openUri(String inputUri,
+			EditorPartDescriptor editorPartDescriptor, MElementContainer<?> area) {
 		MInputPart part = ensurePartAdded(getWindow(), area,
 				editorPartDescriptor, inputUri);
 
@@ -178,24 +177,20 @@ public class PartServiceExtImpl implements EPartServiceExt {
 
 	@Override
 	public MInputPart openUri(String inputUri) {
-		return this.openUri((MElementContainer<?>)null, inputUri);
+		return this.openUri((MElementContainer<?>) null, inputUri);
 	}
-	
+
 	@Override
-	public MInputPart openUri(String inputUri, EditorPartDescriptor descriptor)
-	{
+	public MInputPart openUri(String inputUri, EditorPartDescriptor descriptor) {
 		return this.openUri(inputUri, descriptor, null);
 	}
-	
+
 	@Override
-	public MInputPart openUri(String inputUri, String editorDescriptorId)
-	{
+	public MInputPart openUri(String inputUri, String editorDescriptorId) {
 		EditorPartDescriptor d = findEditorPartDescriptorUsingId(editorDescriptorId);
-		if (d != null)
-		{
+		if (d != null) {
 			return openUri(inputUri, d);
-		}
-		else
+		} else
 			return null;
 	}
 
@@ -239,8 +234,8 @@ public class PartServiceExtImpl implements EPartServiceExt {
 		return part;
 	}
 
-	private MInputPart addInputPart(MWindow window, MElementContainer<?> area, EditorPartDescriptor editorPartDescriptor, String inputUri)
-	{
+	private MInputPart addInputPart(MWindow window, MElementContainer<?> area,
+			EditorPartDescriptor editorPartDescriptor, String inputUri) {
 		MInputPart part;
 		part = createInputPart(editorPartDescriptor);
 		part.setInputURI(inputUri);
@@ -259,20 +254,17 @@ public class PartServiceExtImpl implements EPartServiceExt {
 				editorPartDescriptor.getPartAddingLogicUri(), localContext);
 
 		// execute adding logic
-		ContextInjectionFactory.invoke(addLogic, Execute.class,
-				localContext);
+		ContextInjectionFactory.invoke(addLogic, Execute.class, localContext);
 		return part;
 	}
-	
+
 	@Override
-	public MInputPart openNewEditor(EditorPartDescriptor descriptor)
-	{
+	public MInputPart openNewEditor(EditorPartDescriptor descriptor) {
 		return addInputPart(getWindow(), null, descriptor, null);
 	}
-	
+
 	@Override
-	public MInputPart openNewEditor(String descriptorId)
-	{
+	public MInputPart openNewEditor(String descriptorId) {
 		EditorPartDescriptor d = findEditorPartDescriptorUsingId(descriptorId);
 		if (d == null)
 			return null;

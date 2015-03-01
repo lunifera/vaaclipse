@@ -24,11 +24,13 @@ import org.eclipse.e4.ui.workbench.modeling.EPartService;
 @SuppressWarnings("restriction")
 public class FastViewHandler {
 	@Execute
-	public void showFastView(MItem item, EModelService modelService, EPartService partService, MApplication application) {
-		
+	public void showFastView(MItem item, EModelService modelService,
+			EPartService partService, MApplication application) {
+
 		List<MAddon> addons = application.getAddons();
 		for (MAddon addon : addons) {
-			if (addon.getContributionURI().equals(MinMaxProcessor.MIN_MAX_CONTRIBUTION_URI)) {
+			if (addon.getContributionURI().equals(
+					MinMaxProcessor.MIN_MAX_CONTRIBUTION_URI)) {
 				if (addon.getObject() instanceof MinMaxAddon) {
 					MinMaxAddon minMaxAddon = (MinMaxAddon) addon.getObject();
 					MPart part = minMaxAddon.item2Element.get(item);

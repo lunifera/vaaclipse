@@ -14,12 +14,10 @@ package org.semanticsoft.vaaclipse.api;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimBar;
 
-
 /**
  * @author rushan
  *
  */
-public interface FastViewListener
-{
+public interface FastViewListener {
 	void showFastView(MTrimBar trimBar, MUIElement element);
 }

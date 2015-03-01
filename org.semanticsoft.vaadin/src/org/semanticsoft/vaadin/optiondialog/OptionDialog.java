@@ -17,11 +17,11 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
 public class OptionDialog extends Window {
-	
+
 	public enum OptionsAlign {
 		LEFT, RIGHT, CENTER
 	}
-	
+
 	public static interface OptionListener {
 		void optionSelected(OptionDialog optionDialog, int optionId);
 	}
@@ -75,11 +75,11 @@ public class OptionDialog extends Window {
 	public OptionDialog() {
 		// msgLabel.setWidth("100%");
 		// buttons.setWidth("100%");
-		
+
 		buttons.setSpacing(true);
 		buttons.setMargin(new MarginInfo(false, true, false, true));
 		setOptionsPanelHeight(50, Unit.PIXELS);
-		
+
 		content = new VerticalLayout();
 		content.setSizeFull();
 		this.setContent(content);
@@ -127,14 +127,12 @@ public class OptionDialog extends Window {
 			this.componentProvider = componentProvider;
 		}
 	}
-	
-	public Alignment getOptionButtonsAlignment()
-	{
+
+	public Alignment getOptionButtonsAlignment() {
 		return content.getComponentAlignment(buttons);
 	}
-	
-	public void setOptionButtonsAlignment(OptionsAlign align)
-	{
+
+	public void setOptionButtonsAlignment(OptionsAlign align) {
 		if (align == OptionsAlign.LEFT)
 			content.setComponentAlignment(buttons, Alignment.MIDDLE_LEFT);
 		else if (align == OptionsAlign.RIGHT)
@@ -142,22 +140,18 @@ public class OptionDialog extends Window {
 		else if (align == OptionsAlign.CENTER)
 			content.setComponentAlignment(buttons, Alignment.MIDDLE_CENTER);
 	}
-	
-	public void setOptionsPanelHeight(float height, Unit unit)
-	{
+
+	public void setOptionsPanelHeight(float height, Unit unit) {
 		buttons.setHeight(height, unit);
 	}
-	
-	public void setOptionButtonsWidth(float width, Unit unit)
-	{
+
+	public void setOptionButtonsWidth(float width, Unit unit) {
 		this.optionButtonWidth = width;
 		this.optionButtonWidthUnit = unit;
 		Iterator<Component> it = buttons.iterator();
-		while (it.hasNext())
-		{
+		while (it.hasNext()) {
 			Component c = it.next();
-			if (c instanceof Button)
-			{
+			if (c instanceof Button) {
 				c.setWidth(width, unit);
 			}
 		}
@@ -211,13 +205,13 @@ public class OptionDialog extends Window {
 		Button button = option2button.get(optionId);
 		button.setEnabled(enabled);
 	}
-	
+
 	public Button getOptionButton(int optionId) {
 		return option2button.get(optionId);
 	}
 
-	public static void show(UI parentWindow, String caption,
-			String message, String[] options, int w, int h, Unit units,
+	public static void show(UI parentWindow, String caption, String message,
+			String[] options, int w, int h, Unit units,
 			OptionListener optionListener) {
 		OptionDialog optionDialog = new OptionDialog();
 		if (w > 0 && h > 0) {
@@ -229,16 +223,16 @@ public class OptionDialog extends Window {
 		optionDialog.setCaption(caption);
 		optionDialog.setMessage(message);
 		optionDialog.setOptionListener(optionListener);
-		
+
 		for (int i = 0; i < options.length; i++) {
 			optionDialog.addOption(i, options[i]);
 		}
-		
+
 		parentWindow.addWindow(optionDialog);
 	}
 
-	public static void show(UI parentWindow, String caption,
-			String message, String[] options, OptionListener optionListener) {
+	public static void show(UI parentWindow, String caption, String message,
+			String[] options, OptionListener optionListener) {
 		show(parentWindow, caption, message, options, -1, -1, null,
 				optionListener);
 	}

@@ -23,29 +23,26 @@ import com.vaadin.ui.VerticalLayout;
  * @author rushan
  *
  */
-public class PerspectiveRenderer extends VaadinRenderer
-{
+public class PerspectiveRenderer extends VaadinRenderer {
 	@Override
-	public void createWidget(MUIElement element, MElementContainer<MUIElement> parent) 
-	{
+	public void createWidget(MUIElement element,
+			MElementContainer<MUIElement> parent) {
 		if (!(element instanceof MPerspective))
 			return;
-		
+
 		VerticalLayout perspectivePanel = new VerticalLayout();
 		perspectivePanel.setSizeFull();
 		element.setWidget(perspectivePanel);
-		
+
 		MPerspective p = (MPerspective) element;
-		
-		if (p.getIconURI() == null && p.getLabel() == null)
-		{
+
+		if (p.getIconURI() == null && p.getLabel() == null) {
 			p.setIconURI("platform:/plugin/org.semanticsoft.vaaclipse.resources/VAADIN/themes/vaaclipse_default_theme/img/blank_perspective.png");
 		}
 	}
-	
+
 	@Override
-	public void processContents(MElementContainer<MUIElement> element)
-	{
+	public void processContents(MElementContainer<MUIElement> element) {
 		VerticalLayout perspectivePanel = (VerticalLayout) element.getWidget();
 		for (MUIElement e : element.getChildren()) {
 			if (e.isToBeRendered() && e.getWidget() != null) {
@@ -53,15 +50,15 @@ public class PerspectiveRenderer extends VaadinRenderer
 			}
 		}
 	}
-	
+
 	@Override
-	public void addChildGui(MUIElement child, MElementContainer<MUIElement> element)
-	{
+	public void addChildGui(MUIElement child,
+			MElementContainer<MUIElement> element) {
 		if (!(child instanceof MPartSashContainerElement))
 			return;
-		
+
 		VerticalLayout sw = (VerticalLayout) element.getWidget();
 		int index = indexOf(child, element);
-		sw.addComponent((Component)child.getWidget(), index);
+		sw.addComponent((Component) child.getWidget(), index);
 	}
 }

@@ -13,29 +13,27 @@ import org.semanticsoft.vaaclipse.publicapi.theme.ThemeManager;
  * @author rushan
  *
  */
-public class ThemeManagerContextFunction extends ContextFunction
-{
+public class ThemeManagerContextFunction extends ContextFunction {
 	private ThemeEngine themeEngine;
-	
-	public void activate()
-	{
+
+	public void activate() {
 		System.out.println("Theme manager factory is started");
 	}
-	
+
 	@Override
 	public Object compute(IEclipseContext context) {
 		ThemeManager manager = context.getLocal(ThemeManager.class);
 		if (manager == null) {
 			if (themeEngine != null)
 				context.set(ThemeEngine.class, themeEngine);
-            manager = ContextInjectionFactory.make(ThemeManagerImpl.class, context);
-            context.set(ThemeManager.class, manager);
+			manager = ContextInjectionFactory.make(ThemeManagerImpl.class,
+					context);
+			context.set(ThemeManager.class, manager);
 		}
 		return manager;
 	}
-	
-	public void bindThemeEngine(ThemeEngine themeEngine)
-	{
+
+	public void bindThemeEngine(ThemeEngine themeEngine) {
 		this.themeEngine = themeEngine;
 	}
 }

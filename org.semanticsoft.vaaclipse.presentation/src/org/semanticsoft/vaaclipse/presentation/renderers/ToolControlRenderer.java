@@ -33,32 +33,34 @@ import com.vaadin.ui.VerticalLayout;
  * Create a contribute part.
  */
 public class ToolControlRenderer extends VaadinRenderer {
-	
+
 	@Inject
 	EModelService modelService;
-	
-	public void createWidget(MUIElement element, MElementContainer<MUIElement> parent) 
-	{
+
+	public void createWidget(MUIElement element,
+			MElementContainer<MUIElement> parent) {
 		if (!(element instanceof MToolControl))
 			return;
-		
+
 		MToolControl toolControl = (MToolControl) element;
-		
+
 		ComponentContainer toolControlContainer;
-		if ((MElementContainer<?>)element.getParent() instanceof MTrimBar)
-		{
-			MTrimBar trimBar = (MTrimBar)(MElementContainer<?>)element.getParent();
-			if (trimBar.getSide() == SideValue.LEFT || trimBar.getSide() == SideValue.RIGHT)
+		if ((MElementContainer<?>) element.getParent() instanceof MTrimBar) {
+			MTrimBar trimBar = (MTrimBar) (MElementContainer<?>) element
+					.getParent();
+			if (trimBar.getSide() == SideValue.LEFT
+					|| trimBar.getSide() == SideValue.RIGHT)
 				toolControlContainer = new VerticalLayout();
 			else
 				toolControlContainer = new HorizontalLayout();
-			//add the drag handler (separator)
-			toolControlContainer.addComponent(GuiUtils.createSeparator(toolControl));
-		}
-		else
+			// add the drag handler (separator)
+			toolControlContainer.addComponent(GuiUtils
+					.createSeparator(toolControl));
+		} else
 			toolControlContainer = new VerticalLayout();
-		
-		IEclipseContext parentContext = modelService.getContainingContext(element);
+
+		IEclipseContext parentContext = modelService
+				.getContainingContext(element);
 
 		// Create a context just to contain the parameters for injection
 		IContributionFactory contributionFactory = parentContext
@@ -69,15 +71,15 @@ public class ToolControlRenderer extends VaadinRenderer {
 		localContext.set(Component.class, toolControlContainer);
 		localContext.set(ComponentContainer.class, toolControlContainer);
 		localContext.set(MToolControl.class, toolControl);
-		
-		Object tcImpl = contributionFactory.create(toolControl.getContributionURI(), parentContext, localContext);
+
+		Object tcImpl = contributionFactory.create(
+				toolControl.getContributionURI(), parentContext, localContext);
 		toolControl.setObject(tcImpl);
-		
-		for (String css : toolControl.getTags())
-		{
+
+		for (String css : toolControl.getTags()) {
 			toolControlContainer.addStyleName(css);
 		}
-		
+
 		toolControl.setWidget(toolControlContainer);
 	}
 

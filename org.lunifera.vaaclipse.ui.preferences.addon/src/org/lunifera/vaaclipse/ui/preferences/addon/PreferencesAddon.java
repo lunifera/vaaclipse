@@ -43,83 +43,89 @@ public class PreferencesAddon {
 
 	@Inject
 	MApplication app;
-	
+
 	@Inject
 	IEclipseContext context;
-	
+
 	Map<String, Bundle> bundlesByName = new HashMap<>();
 	Logger logger = LoggerFactory.getLogger(PreferencesAddon.class);
-	
+
 	IPreferencesService equinoxPrefService = PreferencesService.getDefault();
 	IEclipsePreferences root = equinoxPrefService.getRootNode();
 
 	private PreferencesAuthorization authService;
 
 	private VaaclipseApplication vaaApp;
-	
+
 	@PostConstruct
 	void init() {
 		vaaApp = (VaaclipseApplication) app;
 		context.set(VaaclipseApplication.class, vaaApp);
-		
-		BundleContext bundleContext = FrameworkUtil.getBundle(PreferencesAddon.class).getBundleContext();
-		
+
+		BundleContext bundleContext = FrameworkUtil.getBundle(
+				PreferencesAddon.class).getBundleContext();
+
 		obtainPreferencesAuthService(bundleContext);
-		
+
 		for (Bundle b : bundleContext.getBundles()) {
 			bundlesByName.put(b.getSymbolicName(), b);
 		}
-		
+
 		for (PreferencesCategory c : vaaApp.getPreferencesCategories()) {
 			setupPreferences(c, "");
 		}
-		
+
 		for (PreferencesPage page : vaaApp.getPreferencesPages()) {
 			setTypedDefaultValues(page);
 			initContributions(page);
 		}
-		
+
 		logger.info("Preferences adon activated");
 	}
 
-	private void setupPreferences(PreferencesCategory category, String currentPath) {
-		
+	private void setupPreferences(PreferencesCategory category,
+			String currentPath) {
+
 		String catPath = currentPath + "/" + category.getId();
-		
+
 		if (category.getPage() != null) {
 			for (FieldEditor<?> editor : category.getPage().getChildren()) {
-				
+
 				Bundle bundle = bundlesByName.get(editor.getBundle());
 				if (bundle != null) {
-					String absolutePreferencePath = PrefHelper.toEquinoxPreferencePath(bundle, catPath);
-					
+					String absolutePreferencePath = PrefHelper
+							.toEquinoxPreferencePath(bundle, catPath);
+
 					Preferences pref = root.node(absolutePreferencePath);
 					editor.setPreferences(pref);
 					editor.setEquinoxPath(absolutePreferencePath);
-				}
-				else {
-					logger.warn("Could not find bundle {} for editor {}", editor.getBundle(), editor);
+				} else {
+					logger.warn("Could not find bundle {} for editor {}",
+							editor.getBundle(), editor);
 				}
 			}
-				
+
 		}
-		
+
 		for (PreferencesCategory childCat : category.getChildCategories()) {
 			setupPreferences(childCat, catPath);
 		}
 	}
 
 	private void obtainPreferencesAuthService(BundleContext bundleContext) {
-		
-		ServiceReference<PreferencesAuthorization> ref = bundleContext.getServiceReference(PreferencesAuthorization.class);
+
+		ServiceReference<PreferencesAuthorization> ref = bundleContext
+				.getServiceReference(PreferencesAuthorization.class);
 		if (ref != null) {
 			authService = bundleContext.getService(ref);
 			context.set(PreferencesAuthorization.class, authService);
 		}
-		
-		ServiceReference<PreferencesFactory> prefFactoryRef = bundleContext.getServiceReference(PreferencesFactory.class);
+
+		ServiceReference<PreferencesFactory> prefFactoryRef = bundleContext
+				.getServiceReference(PreferencesFactory.class);
 		if (prefFactoryRef != null) {
-			PreferencesFactory service = bundleContext.getService(prefFactoryRef);
+			PreferencesFactory service = bundleContext
+					.getService(prefFactoryRef);
 			context.set(PreferencesFactory.class, service);
 		}
 	}
@@ -127,7 +133,7 @@ public class PreferencesAddon {
 	private void setTypedDefaultValues(PreferencesPage page) {
 		for (FieldEditor<?> ed : page.getChildren()) {
 			FieldEditor<Object> editor = (FieldEditor<Object>) ed;
-			
+
 			PreferencesSwitch<?> sw = new PreferencesSwitch() {
 				@Override
 				public Object caseBooleanFieldEditor(BooleanFieldEditor object) {
@@ -135,14 +141,14 @@ public class PreferencesAddon {
 						return false;
 					return Boolean.valueOf(object.getDefaultValue());
 				}
-				
+
 				@Override
 				public Object caseScaleFieldEditor(ScaleFieldEditor object) {
 					if (object.getDefaultValue() == null)
 						return 0;
 					return Integer.valueOf(object.getDefaultValue());
 				}
-				
+
 				@Override
 				public Object caseIntegerFieldEditor(IntegerFieldEditor object) {
 					if (object.getDefaultValue() == null)
@@ -160,18 +166,24 @@ public class PreferencesAddon {
 			editor.setDefaultValue(converted.toString());
 		}
 	}
-	
+
 	@SuppressWarnings("restriction")
 	private void initContributions(PreferencesPage page) {
 		for (FieldEditor<?> ed : page.getChildren()) {
 			if (ed instanceof MContribution) {
 				MContribution editorWithContribution = (MContribution) ed;
-				String contributorURI = editorWithContribution.getContributionURI();
+				String contributorURI = editorWithContribution
+						.getContributionURI();
 				if (contributorURI != null) {
 					IEclipseContext childContext = context.createChild();
-					PrefHelper.populateInterfaces((FieldEditor<?>) editorWithContribution, childContext, editorWithContribution.getClass().getInterfaces());
-					IContributionFactory contributionFactory = (IContributionFactory) childContext.get(IContributionFactory.class.getName());
-					Object editorContribution = contributionFactory.create(contributorURI, childContext);
+					PrefHelper.populateInterfaces(
+							(FieldEditor<?>) editorWithContribution,
+							childContext, editorWithContribution.getClass()
+									.getInterfaces());
+					IContributionFactory contributionFactory = (IContributionFactory) childContext
+							.get(IContributionFactory.class.getName());
+					Object editorContribution = contributionFactory.create(
+							contributorURI, childContext);
 					editorWithContribution.setObject(editorContribution);
 				}
 			}

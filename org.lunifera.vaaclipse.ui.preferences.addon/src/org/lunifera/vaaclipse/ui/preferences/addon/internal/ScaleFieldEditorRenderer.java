@@ -21,9 +21,9 @@ public class ScaleFieldEditorRenderer extends FieldEditorRenderer<Integer> {
 
 	@Inject
 	ScaleFieldEditor editor;
-	
+
 	Slider slider;
-	
+
 	@Override
 	public void render() {
 		CssLayout layout = new CssLayout();
@@ -35,14 +35,13 @@ public class ScaleFieldEditorRenderer extends FieldEditorRenderer<Integer> {
 			slider.setMax(editor.getMaxValue().doubleValue());
 		if (editor.getMinValue() != null)
 			slider.setMin(editor.getMinValue().doubleValue());
-		
+
 		try {
 			slider.setValue(getValue().doubleValue());
+		} catch (ValueOutOfBoundsException vo) {
+
 		}
-		catch (ValueOutOfBoundsException vo) {
-			
-		}
-		
+
 		slider.setOrientation(SliderOrientation.HORIZONTAL);
 		layout.addComponent(slider);
 		this.component = layout;
@@ -50,7 +49,8 @@ public class ScaleFieldEditorRenderer extends FieldEditorRenderer<Integer> {
 
 	@Override
 	public Integer getValue() {
-		return getPreferences().getInt(editor.getPreferenceName(), editor.getDefaultValueTyped());
+		return getPreferences().getInt(editor.getPreferenceName(),
+				editor.getDefaultValueTyped());
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class ScaleFieldEditorRenderer extends FieldEditorRenderer<Integer> {
 	@Override
 	public void save() {
 		if (slider.getValue() != null) {
-			setValue(slider.getValue().intValue());	
+			setValue(slider.getValue().intValue());
 		}
 	}
 

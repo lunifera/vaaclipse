@@ -54,6 +54,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.service.datalocation.Location;
+import org.lunifera.runtime.web.vaadin.databinding.VaadinObservables;
 import org.lunifera.vaaclipse.app.VaadinE4Application;
 import org.lunifera.vaaclipse.app.servlet.OSGiServletService;
 import org.lunifera.vaaclipse.app.servlet.VaadinExecutorServiceImpl;
@@ -69,7 +70,6 @@ import com.vaadin.server.WrappedHttpSession;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.themes.ValoTheme;
 
 @SuppressWarnings("restriction")
 @Push
@@ -204,7 +204,6 @@ public class VaadinUI extends UI {
 		man.exec();
 	}
 
-	@SuppressWarnings("deprecation")
 	public void prepareEnvironment(IApplicationContext applicationContext) {
 		args = (String[]) applicationContext.getArguments().get(
 				IApplicationContext.APPLICATION_ARGS);
@@ -219,11 +218,13 @@ public class VaadinUI extends UI {
 		appContext.set(UISynchronize.class, new UISynchronize() {
 
 			public void syncExec(Runnable runnable) {
-				runnable.run();
+				VaadinObservables.activateRealm(VaadinUI.this);
+				VaadinUI.this.accessSynchronously(runnable);
 			}
 
 			public void asyncExec(Runnable runnable) {
-				runnable.run();
+				VaadinObservables.activateRealm(VaadinUI.this);
+				VaadinUI.this.access(runnable);
 			}
 		});
 
@@ -417,11 +418,11 @@ public class VaadinUI extends UI {
 		String themeId = getArgValue(THEME_ID, applicationContext, false);
 		eclipseContext.set(THEME_ID, themeId);
 
-//		if (themeId != null && !themeId.equals("")) {
-//			setTheme(themeId);
-//		} else {
-//			setTheme(ValoTheme.THEME_NAME);
-//		}
+		// if (themeId != null && !themeId.equals("")) {
+		// setTheme(themeId);
+		// } else {
+		// setTheme(ValoTheme.THEME_NAME);
+		// }
 
 		String cssURI = getArgValue(E4Workbench.CSS_URI_ARG,
 				applicationContext, false);

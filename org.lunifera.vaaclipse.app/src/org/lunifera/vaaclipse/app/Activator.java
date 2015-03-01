@@ -19,44 +19,37 @@ import org.osgi.framework.Filter;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.util.tracker.ServiceTracker;
 
-public class Activator implements BundleActivator
-{
+public class Activator implements BundleActivator {
 	private BundleContext context;
 	private ServiceTracker<Location, Location> locationTracker;
 	private static Activator activator;
 
-	public static Activator getDefault()
-	{
+	public static Activator getDefault() {
 		return activator;
 	}
 
-	public BundleContext getContext()
-	{
+	public BundleContext getContext() {
 		return context;
 	}
 
 	@Override
-	public void start(BundleContext context) throws Exception
-	{
+	public void start(BundleContext context) throws Exception {
 		activator = this;
 		this.context = context;
 	}
 
 	@Override
-	public void stop(BundleContext context) throws Exception
-	{
+	public void stop(BundleContext context) throws Exception {
 		VaadinE4Application.getInstance().shutdown();
-		
-		if(locationTracker != null){
+
+		if (locationTracker != null) {
 			locationTracker.close();
 			locationTracker = null;
 		}
 	}
 
-	public Bundle getBundle()
-	{
-		if (context == null)
-		{
+	public Bundle getBundle() {
+		if (context == null) {
 			return null;
 		}
 		return context.getBundle();
@@ -65,21 +58,17 @@ public class Activator implements BundleActivator
 	/**
 	 * @return the instance Location service
 	 */
-	public Location getInstanceLocation()
-	{
-		if (locationTracker == null)
-		{
+	public Location getInstanceLocation() {
+		if (locationTracker == null) {
 			Filter filter = null;
-			try
-			{
+			try {
 				filter = context.createFilter(Location.INSTANCE_FILTER);
-			}
-			catch (InvalidSyntaxException e)
-			{
+			} catch (InvalidSyntaxException e) {
 				// ignore this. It should never happen as we have tested the
 				// above format.
 			}
-			locationTracker = new ServiceTracker<Location, Location>(context, filter, null);
+			locationTracker = new ServiceTracker<Location, Location>(context,
+					filter, null);
 			locationTracker.open();
 		}
 		return locationTracker.getService();

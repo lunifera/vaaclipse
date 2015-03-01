@@ -9,7 +9,6 @@ import com.vaadin.ui.AbstractSplitPanel;
  * @author rushan
  *
  */
-public interface SplitPositionChangedListener 
-{
+public interface SplitPositionChangedListener {
 	void processEvent(AbstractSplitPanel splitPanel, float newSplitPos);
 }

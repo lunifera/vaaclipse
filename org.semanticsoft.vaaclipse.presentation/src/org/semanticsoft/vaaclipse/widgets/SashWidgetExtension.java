@@ -16,48 +16,42 @@ import com.vaadin.ui.AbstractSplitPanel.SplitterClickEvent;
  * @author rushan
  *
  */
-public class SashWidgetExtension 
-{
+public class SashWidgetExtension {
 	AbstractSplitPanel splitPanel;
 	SashWidget sash;
 	List<SplitPositionChangedListener> listeners = new ArrayList<SplitPositionChangedListener>();
-	
-	public SashWidgetExtension(AbstractSplitPanel splitPanel) 
-	{
+
+	public SashWidgetExtension(AbstractSplitPanel splitPanel) {
 		this.splitPanel = splitPanel;
 		this.sash = (SashWidget) splitPanel;
 		installRpc();
 	}
-	
-	public void addListener(SplitPositionChangedListener listener) 
-	{
+
+	public void addListener(SplitPositionChangedListener listener) {
 		this.listeners.add(listener);
 	}
-	
-	public void fireEvent(float newPos)
-	{
-		for (SplitPositionChangedListener l : this.listeners)
-		{
+
+	public void fireEvent(float newPos) {
+		for (SplitPositionChangedListener l : this.listeners) {
 			l.processEvent(splitPanel, newPos);
 		}
 	}
-	
-	private void installRpc()
-	{
+
+	private void installRpc() {
 		sash.registerRpc(new AbstractSplitPanelRpc() {
 
-				@Override
-		        public void splitterClick(MouseEventDetails mouseDetails) {
-		            sash.fireEvent(new SplitterClickEvent(splitPanel, mouseDetails));
-		        }
+			@Override
+			public void splitterClick(MouseEventDetails mouseDetails) {
+				sash.fireEvent(new SplitterClickEvent(splitPanel, mouseDetails));
+			}
 
-		        @Override
-		        public void setSplitterPosition(float position) {
-		            sash.getState().splitterState.position = position;
-		            System.out.println("split position changed!");
-		            fireEvent(splitPanel.getSplitPosition());
-		        }
-				
-			}, AbstractSplitPanelRpc.class);
+			@Override
+			public void setSplitterPosition(float position) {
+				sash.getState().splitterState.position = position;
+				System.out.println("split position changed!");
+				fireEvent(splitPanel.getSplitPosition());
+			}
+
+		}, AbstractSplitPanelRpc.class);
 	}
 }

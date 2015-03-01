@@ -37,32 +37,31 @@ import com.vaadin.ui.VerticalLayout;
  * @author rushan
  *
  */
-public class PlaceholderRenderer extends VaadinRenderer
-{	
+public class PlaceholderRenderer extends VaadinRenderer {
 	@Inject
 	IPresentationEngine renderingEngine;
-	
+
 	@Inject
 	private IEventBroker eventBroker;
-	
+
 	@Override
-	public void createWidget(MUIElement element, MElementContainer<MUIElement> parent)
-	{
+	public void createWidget(MUIElement element,
+			MElementContainer<MUIElement> parent) {
 		MPlaceholder ph = (MPlaceholder) element;
 		final MUIElement ref = ph.getRef();
 		ref.setCurSharedRef(ph);
-		
+
 		VerticalLayout phComp = new VerticalLayout();
 		phComp.setSizeFull();
 		phComp.setMargin(false);
 		ph.setWidget(phComp);
-		
+
 		Component refWidget = (Component) ref.getWidget();
 		if (refWidget == null) {
 			ref.setToBeRendered(true);
 			refWidget = (Component) renderingEngine.createGui(ref);
 		}
-		
+
 		if (refWidget.getParent() != phComp) {
 			phComp.addComponent(refWidget);
 		}
@@ -75,24 +74,27 @@ public class PlaceholderRenderer extends VaadinRenderer
 			}
 		}
 	}
-	
+
 	EventHandler tagListener = new EventHandler() {
 		@Override
 		public void handleEvent(Event event) {
 			Object changedObj = event.getProperty(EventTags.ELEMENT);
-			String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
-			String tag = (String) event.getProperty(UIEvents.EventTags.NEW_VALUE);
-			
+			String eventType = (String) event
+					.getProperty(UIEvents.EventTags.TYPE);
+			String tag = (String) event
+					.getProperty(UIEvents.EventTags.NEW_VALUE);
+
 			if (!(changedObj instanceof MPlaceholder)) {
 				return;
 			}
-			
+
 			final MPlaceholder ph = (MPlaceholder) changedObj;
-			MPartStack topLeftStack = HierarchyUtils.findTopLeftFolder(ph.getRef());
-			if (topLeftStack != null)
-			{
-				StackWidget stackWidget = (StackWidget)topLeftStack.getWidget();
-				
+			MPartStack topLeftStack = HierarchyUtils.findTopLeftFolder(ph
+					.getRef());
+			if (topLeftStack != null) {
+				StackWidget stackWidget = (StackWidget) topLeftStack
+						.getWidget();
+
 				if (UIEvents.EventTypes.ADD.equals(eventType)) {
 					if (IPresentationEngine.MINIMIZED.equals(tag)) {
 						stackWidget.setState(-1);
@@ -101,20 +103,19 @@ public class PlaceholderRenderer extends VaadinRenderer
 					}
 				} else if (UIEvents.EventTypes.REMOVE.equals(eventType)) {
 					stackWidget.setState(0);
-				}	
+				}
 			}
 		}
 	};
 
 	@PostConstruct
-	void postConstruct()
-	{
-		eventBroker.subscribe(UIEvents.ApplicationElement.TOPIC_TAGS, tagListener);
+	void postConstruct() {
+		eventBroker.subscribe(UIEvents.ApplicationElement.TOPIC_TAGS,
+				tagListener);
 	}
-	
+
 	@PreDestroy
-	void preDestroy()
-	{
+	void preDestroy() {
 		eventBroker.unsubscribe(tagListener);
 	}
 }

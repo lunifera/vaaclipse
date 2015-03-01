@@ -73,7 +73,7 @@ public class ToolBarContributionRecord {
 			HashSet<ToolBarContributionRecord> recentlyUpdated,
 			MToolBarElement item, ExpressionContext exprContext) {
 		boolean currentVisibility = isVisible;
-		
+
 		if (currentVisibility
 				&& item.getVisibleWhen() instanceof MCoreExpression) {
 			boolean val = ContributionsAnalyzer.isVisible(
@@ -108,7 +108,7 @@ public class ToolBarContributionRecord {
 					.copy((EObject) item);
 			copyElements.add(copy);
 		}
-		
+
 		for (MToolBarElement copy : copyElements) {
 			// if a visibleWhen clause is defined, the item should not be
 			// visible until the clause has been evaluated and returned 'true'
@@ -146,7 +146,7 @@ public class ToolBarContributionRecord {
 		if (id == null) {
 			return model.getChildren().size();
 		}
-		
+
 		int idx = 0;
 		int size = model.getChildren().size();
 		while (idx < size) {

@@ -18,103 +18,89 @@ import java.util.List;
  * @author rushan
  *
  */
-public class TwoStateToolbarButton extends ToolbarButtonBase
-{
+public class TwoStateToolbarButton extends ToolbarButtonBase {
 	private String primaryStyle;
 	private String selectedStyle;
-	
+
 	private boolean switchOn = false;
 	private boolean switchStateByUserClickEnabled = true;
 	private List<ClickListener> userListeners = new ArrayList<ClickListener>();
-	
+
 	public TwoStateToolbarButton() {
 		this("Blank", null);
 	}
-	
+
 	public TwoStateToolbarButton(String label, String iconURI) {
-		
+
 		super(label, iconURI);
-		
+
 		setPrimaryStyle("vaaclipsebutton");
 		setSelectedStyle("pushed");
-		
+
 		setCheckedState(false);
-		
+
 		super.addClickListener(new ClickListener() {
-					
+
 			public void buttonClick(ClickEvent event) {
-				if (switchStateByUserClickEnabled)
-				{
+				if (switchStateByUserClickEnabled) {
 					setCheckedState(!switchOn);
-					
-					for (ClickListener l : userListeners)
-					{
+
+					for (ClickListener l : userListeners) {
 						l.buttonClick(event);
 					}
 				}
 			}
 		});
 	}
-	
-	public boolean getCheckedState()
-	{
+
+	public boolean getCheckedState() {
 		return switchOn;
 	}
-	
+
 	public void setCheckedState(boolean switchOn) {
-		if (switchOn)
-		{
+		if (switchOn) {
 			addStyleName(selectedStyle);
-		}
-		else
-		{
+		} else {
 			removeStyleName(selectedStyle);
 		}
-		
+
 		this.switchOn = switchOn;
 	}
-	
+
 	@Override
-	public void addListener(ClickListener listener)
-	{
+	public void addListener(ClickListener listener) {
 		this.userListeners.add(listener);
 	}
-	
-	public boolean isSwitchStateByUserClickEnabled()
-	{
+
+	public boolean isSwitchStateByUserClickEnabled() {
 		return switchStateByUserClickEnabled;
 	}
-	
-	public void setSwitchStateByUserClickEnabled(boolean switchStateByUserClickEnabled)
-	{
+
+	public void setSwitchStateByUserClickEnabled(
+			boolean switchStateByUserClickEnabled) {
 		this.switchStateByUserClickEnabled = switchStateByUserClickEnabled;
 	}
-	
-	public String getPrimaryStyle()
-	{
+
+	public String getPrimaryStyle() {
 		return primaryStyle;
 	}
-	
-	public void setPrimaryStyle(String primaryStyle)
-	{
+
+	public void setPrimaryStyle(String primaryStyle) {
 		removePrimaryStyle();
 		this.primaryStyle = primaryStyle;
 		this.addStyleName(this.primaryStyle);
 	}
-	
-	public void removePrimaryStyle()
-	{
+
+	public void removePrimaryStyle() {
 		if (this.primaryStyle != null)
 			this.removeStyleName(this.primaryStyle);
 	}
-		
-	public String getSelectedStyle()
-	{
+
+	public String getSelectedStyle() {
 		return selectedStyle;
 	}
-	
-	public void setSelectedStyle(String selectedStyle)
-	{
+
+	public void setSelectedStyle(String selectedStyle) {
 		if (this.switchOn)
 			this.removeStyleName(this.selectedStyle);
 		this.selectedStyle = selectedStyle;

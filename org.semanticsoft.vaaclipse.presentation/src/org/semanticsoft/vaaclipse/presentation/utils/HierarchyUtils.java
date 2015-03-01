@@ -20,8 +20,7 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
  * @author rushan
  *
  */
-public class HierarchyUtils
-{
+public class HierarchyUtils {
 	/**
 	 * Recursively search in container the top right stack (the stack locatied
 	 * in top right corner), i.e. the stack with top right corner is mathced
@@ -31,22 +30,25 @@ public class HierarchyUtils
 	 *            - input container (area)
 	 * @return the top right part stack
 	 */
-	public static MPartStack findTopLeftFolder(MUIElement container)
-	{
+	public static MPartStack findTopLeftFolder(MUIElement container) {
 		if (container instanceof MPartStack)
 			return (MPartStack) container;
-		else if (container instanceof MPartSashContainer)
-		{
+		else if (container instanceof MPartSashContainer) {
 			MPartSashContainer sash = (MPartSashContainer) container;
-			
+
 			if (sash.getChildren().isEmpty())
 				return null;
 			else if (sash.getChildren().size() == 1)
-				return findTopLeftFolder((MElementContainer) sash.getChildren().get(0));
-			else if (sash.isHorizontal() && sash.getChildren().get(1) instanceof MElementContainer<?>)
-				return findTopLeftFolder((MElementContainer) sash.getChildren().get(1));
-			else if (!sash.isHorizontal() && sash.getChildren().get(0) instanceof MElementContainer<?>)
-				return findTopLeftFolder((MElementContainer) sash.getChildren().get(0));
+				return findTopLeftFolder((MElementContainer) sash.getChildren()
+						.get(0));
+			else if (sash.isHorizontal()
+					&& sash.getChildren().get(1) instanceof MElementContainer<?>)
+				return findTopLeftFolder((MElementContainer) sash.getChildren()
+						.get(1));
+			else if (!sash.isHorizontal()
+					&& sash.getChildren().get(0) instanceof MElementContainer<?>)
+				return findTopLeftFolder((MElementContainer) sash.getChildren()
+						.get(0));
 		}
 
 		return null;

@@ -19,9 +19,9 @@ public class IntegerFieldEditorRenderer extends FieldEditorRenderer<Integer> {
 
 	@Inject
 	IntegerFieldEditor editor;
-	
+
 	TextField textField;
-	
+
 	@Override
 	public void render() {
 		CssLayout layout = createCssLayoutWithCaption();
@@ -34,30 +34,37 @@ public class IntegerFieldEditorRenderer extends FieldEditorRenderer<Integer> {
 
 	@Override
 	public Integer getValue() {
-		return getPreferences().getInt(editor.getPreferenceName(), editor.getDefaultValueTyped());
+		return getPreferences().getInt(editor.getPreferenceName(),
+				editor.getDefaultValueTyped());
 	}
 
 	@Override
 	public void setValue(Integer value) {
 		this.getPreferences().putInt(editor.getPreferenceName(), value);
 	}
-	
+
 	@Override
 	public void validate() throws ValidationFailedException {
-		
+
 		if (textField.getValue() != null) {
 			int value;
 			try {
 				value = Integer.parseInt(textField.getValue());
+			} catch (NumberFormatException e) {
+				throw new ValidationFailedException(editor.getLabel(),
+						"The value should be integer value");
 			}
-			catch (NumberFormatException e) {
-				throw new ValidationFailedException(editor.getLabel(), "The value should be integer value");
-			}
-			
-			if ((editor.getMinValidValue() != null && value < editor.getMinValidValue()) || (editor.getMaxValidValue() != null && value > editor.getMaxValidValue()))
-				throw new ValidationFailedException(editor.getLabel(), String.format("Value should be in range (%s, %s)", 
-						editor.getMinValidValue() != null ? editor.getMinValidValue().toString() : "?", 
-								editor.getMaxValidValue() != null ? editor.getMaxValidValue().toString() : "?"));
+
+			if ((editor.getMinValidValue() != null && value < editor
+					.getMinValidValue())
+					|| (editor.getMaxValidValue() != null && value > editor
+							.getMaxValidValue()))
+				throw new ValidationFailedException(editor.getLabel(),
+						String.format("Value should be in range (%s, %s)",
+								editor.getMinValidValue() != null ? editor
+										.getMinValidValue().toString() : "?",
+								editor.getMaxValidValue() != null ? editor
+										.getMaxValidValue().toString() : "?"));
 		}
 	}
 
@@ -68,9 +75,8 @@ public class IntegerFieldEditorRenderer extends FieldEditorRenderer<Integer> {
 			try {
 				int intValue = Integer.parseInt(value);
 				setValue(intValue);
-			}
-			catch (NumberFormatException e) {
-				
+			} catch (NumberFormatException e) {
+
 			}
 		}
 	}

@@ -12,58 +12,57 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Package</b> for the model.
- * It contains accessors for the meta objects to represent
+ * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
+ * accessors for the meta objects to represent
  * <ul>
- *   <li>each class,</li>
- *   <li>each feature of each class,</li>
- *   <li>each operation of each class,</li>
- *   <li>each enum,</li>
- *   <li>and each data type</li>
+ * <li>each class,</li>
+ * <li>each feature of each class,</li>
+ * <li>each operation of each class,</li>
+ * <li>each enum,</li>
+ * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
+ * 
  * @see org.lunifera.vaaclipse.ui.preferences.model.metadata.PreferencesFactory
  * @model kind="package"
  * @generated
  */
 public interface PreferencesPackage extends EPackage {
 	/**
-	 * The package name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	String eNAME = "preferences";
 
 	/**
-	 * The package namespace URI.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	String eNS_URI = "http://www.lunifera.org/vaaclipse/ui/preferences";
 
 	/**
-	 * The package namespace name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	String eNS_PREFIX = "preferences";
 
 	/**
-	 * The singleton instance of the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The singleton instance of the package. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	PreferencesPackage eINSTANCE = org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl.init();
+	PreferencesPackage eINSTANCE = org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl
+			.init();
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesCategoryImpl <em>Category</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesCategoryImpl
+	 * <em>Category</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesCategoryImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getPreferencesCategory()
 	 * @generated
@@ -71,108 +70,109 @@ public interface PreferencesPackage extends EPackage {
 	int PREFERENCES_CATEGORY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Element Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Element Id</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_CATEGORY__ELEMENT_ID = ApplicationPackageImpl.APPLICATION_ELEMENT__ELEMENT_ID;
 
 	/**
-	 * The feature id for the '<em><b>Persisted State</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Persisted State</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_CATEGORY__PERSISTED_STATE = ApplicationPackageImpl.APPLICATION_ELEMENT__PERSISTED_STATE;
 
 	/**
-	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Tags</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_CATEGORY__TAGS = ApplicationPackageImpl.APPLICATION_ELEMENT__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_CATEGORY__CONTRIBUTOR_URI = ApplicationPackageImpl.APPLICATION_ELEMENT__CONTRIBUTOR_URI;
 
 	/**
-	 * The feature id for the '<em><b>Transient Data</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Transient Data</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_CATEGORY__TRANSIENT_DATA = ApplicationPackageImpl.APPLICATION_ELEMENT__TRANSIENT_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_CATEGORY__NAME = ApplicationPackageImpl.APPLICATION_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Child Categories</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Child Categories</b></em>' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_CATEGORY__CHILD_CATEGORIES = ApplicationPackageImpl.APPLICATION_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Parent Category</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Parent Category</b></em>' container
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_CATEGORY__PARENT_CATEGORY = ApplicationPackageImpl.APPLICATION_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Page</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Page</b></em>' containment reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_CATEGORY__PAGE = ApplicationPackageImpl.APPLICATION_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Id</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_CATEGORY__ID = ApplicationPackageImpl.APPLICATION_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the '<em>Category</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Category</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_CATEGORY_FEATURE_COUNT = ApplicationPackageImpl.APPLICATION_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPageImpl <em>Page</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPageImpl
+	 * <em>Page</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPageImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getPreferencesPage()
 	 * @generated
@@ -180,126 +180,126 @@ public interface PreferencesPackage extends EPackage {
 	int PREFERENCES_PAGE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Element Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Element Id</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__ELEMENT_ID = UiPackageImpl.ELEMENT_CONTAINER__ELEMENT_ID;
 
 	/**
-	 * The feature id for the '<em><b>Persisted State</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Persisted State</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__PERSISTED_STATE = UiPackageImpl.ELEMENT_CONTAINER__PERSISTED_STATE;
 
 	/**
-	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Tags</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__TAGS = UiPackageImpl.ELEMENT_CONTAINER__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__CONTRIBUTOR_URI = UiPackageImpl.ELEMENT_CONTAINER__CONTRIBUTOR_URI;
 
 	/**
-	 * The feature id for the '<em><b>Transient Data</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Transient Data</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__TRANSIENT_DATA = UiPackageImpl.ELEMENT_CONTAINER__TRANSIENT_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Widget</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Widget</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__WIDGET = UiPackageImpl.ELEMENT_CONTAINER__WIDGET;
 
 	/**
-	 * The feature id for the '<em><b>Renderer</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Renderer</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__RENDERER = UiPackageImpl.ELEMENT_CONTAINER__RENDERER;
 
 	/**
-	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__TO_BE_RENDERED = UiPackageImpl.ELEMENT_CONTAINER__TO_BE_RENDERED;
 
 	/**
-	 * The feature id for the '<em><b>On Top</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>On Top</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__ON_TOP = UiPackageImpl.ELEMENT_CONTAINER__ON_TOP;
 
 	/**
-	 * The feature id for the '<em><b>Visible</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__VISIBLE = UiPackageImpl.ELEMENT_CONTAINER__VISIBLE;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Parent</b></em>' container reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__PARENT = UiPackageImpl.ELEMENT_CONTAINER__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Container Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Container Data</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__CONTAINER_DATA = UiPackageImpl.ELEMENT_CONTAINER__CONTAINER_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__CUR_SHARED_REF = UiPackageImpl.ELEMENT_CONTAINER__CUR_SHARED_REF;
 
 	/**
-	 * The feature id for the '<em><b>Visible When</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible When</b></em>' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -307,53 +307,53 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__ACCESSIBILITY_PHRASE = UiPackageImpl.ELEMENT_CONTAINER__ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__LOCALIZED_ACCESSIBILITY_PHRASE = UiPackageImpl.ELEMENT_CONTAINER__LOCALIZED_ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Children</b></em>' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__CHILDREN = UiPackageImpl.ELEMENT_CONTAINER__CHILDREN;
 
 	/**
-	 * The feature id for the '<em><b>Selected Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Selected Element</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__SELECTED_ELEMENT = UiPackageImpl.ELEMENT_CONTAINER__SELECTED_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Contribution URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contribution URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__CONTRIBUTION_URI = UiPackageImpl.ELEMENT_CONTAINER_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Object</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Object</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -361,35 +361,37 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Category</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__CATEGORY = UiPackageImpl.ELEMENT_CONTAINER_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Description</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE__DESCRIPTION = UiPackageImpl.ELEMENT_CONTAINER_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>Page</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Page</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PREFERENCES_PAGE_FEATURE_COUNT = UiPackageImpl.ELEMENT_CONTAINER_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.FieldEditorImpl <em>Field Editor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.FieldEditorImpl
+	 * <em>Field Editor</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.FieldEditorImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getFieldEditor()
 	 * @generated
@@ -397,126 +399,126 @@ public interface PreferencesPackage extends EPackage {
 	int FIELD_EDITOR = 2;
 
 	/**
-	 * The feature id for the '<em><b>Element Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Element Id</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__ELEMENT_ID = UiPackageImpl.UI_ELEMENT__ELEMENT_ID;
 
 	/**
-	 * The feature id for the '<em><b>Persisted State</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Persisted State</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__PERSISTED_STATE = UiPackageImpl.UI_ELEMENT__PERSISTED_STATE;
 
 	/**
-	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Tags</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__TAGS = UiPackageImpl.UI_ELEMENT__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__CONTRIBUTOR_URI = UiPackageImpl.UI_ELEMENT__CONTRIBUTOR_URI;
 
 	/**
-	 * The feature id for the '<em><b>Transient Data</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Transient Data</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__TRANSIENT_DATA = UiPackageImpl.UI_ELEMENT__TRANSIENT_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Widget</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Widget</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__WIDGET = UiPackageImpl.UI_ELEMENT__WIDGET;
 
 	/**
-	 * The feature id for the '<em><b>Renderer</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Renderer</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__RENDERER = UiPackageImpl.UI_ELEMENT__RENDERER;
 
 	/**
-	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__TO_BE_RENDERED = UiPackageImpl.UI_ELEMENT__TO_BE_RENDERED;
 
 	/**
-	 * The feature id for the '<em><b>On Top</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>On Top</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__ON_TOP = UiPackageImpl.UI_ELEMENT__ON_TOP;
 
 	/**
-	 * The feature id for the '<em><b>Visible</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__VISIBLE = UiPackageImpl.UI_ELEMENT__VISIBLE;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Parent</b></em>' container reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__PARENT = UiPackageImpl.UI_ELEMENT__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Container Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Container Data</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__CONTAINER_DATA = UiPackageImpl.UI_ELEMENT__CONTAINER_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__CUR_SHARED_REF = UiPackageImpl.UI_ELEMENT__CUR_SHARED_REF;
 
 	/**
-	 * The feature id for the '<em><b>Visible When</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible When</b></em>' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -524,44 +526,44 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__ACCESSIBILITY_PHRASE = UiPackageImpl.UI_ELEMENT__ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = UiPackageImpl.UI_ELEMENT__LOCALIZED_ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__LABEL = UiPackageImpl.UI_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Preference Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preference Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__PREFERENCE_NAME = UiPackageImpl.UI_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Default Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -569,35 +571,35 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Default Value Typed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__DEFAULT_VALUE_TYPED = UiPackageImpl.UI_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Bundle</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Bundle</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__BUNDLE = UiPackageImpl.UI_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Preferences</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preferences</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR__PREFERENCES = UiPackageImpl.UI_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -605,17 +607,19 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The number of structural features of the '<em>Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FIELD_EDITOR_FEATURE_COUNT = UiPackageImpl.UI_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.BooleanFieldEditorImpl <em>Boolean Field Editor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.BooleanFieldEditorImpl
+	 * <em>Boolean Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.BooleanFieldEditorImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getBooleanFieldEditor()
 	 * @generated
@@ -623,126 +627,126 @@ public interface PreferencesPackage extends EPackage {
 	int BOOLEAN_FIELD_EDITOR = 3;
 
 	/**
-	 * The feature id for the '<em><b>Element Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Element Id</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__ELEMENT_ID = FIELD_EDITOR__ELEMENT_ID;
 
 	/**
-	 * The feature id for the '<em><b>Persisted State</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Persisted State</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__PERSISTED_STATE = FIELD_EDITOR__PERSISTED_STATE;
 
 	/**
-	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Tags</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__TAGS = FIELD_EDITOR__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__CONTRIBUTOR_URI = FIELD_EDITOR__CONTRIBUTOR_URI;
 
 	/**
-	 * The feature id for the '<em><b>Transient Data</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Transient Data</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__TRANSIENT_DATA = FIELD_EDITOR__TRANSIENT_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Widget</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Widget</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__WIDGET = FIELD_EDITOR__WIDGET;
 
 	/**
-	 * The feature id for the '<em><b>Renderer</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Renderer</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__RENDERER = FIELD_EDITOR__RENDERER;
 
 	/**
-	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__TO_BE_RENDERED = FIELD_EDITOR__TO_BE_RENDERED;
 
 	/**
-	 * The feature id for the '<em><b>On Top</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>On Top</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__ON_TOP = FIELD_EDITOR__ON_TOP;
 
 	/**
-	 * The feature id for the '<em><b>Visible</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__VISIBLE = FIELD_EDITOR__VISIBLE;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Parent</b></em>' container reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__PARENT = FIELD_EDITOR__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Container Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Container Data</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__CONTAINER_DATA = FIELD_EDITOR__CONTAINER_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__CUR_SHARED_REF = FIELD_EDITOR__CUR_SHARED_REF;
 
 	/**
-	 * The feature id for the '<em><b>Visible When</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible When</b></em>' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -750,44 +754,44 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__LABEL = FIELD_EDITOR__LABEL;
 
 	/**
-	 * The feature id for the '<em><b>Preference Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preference Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__PREFERENCE_NAME = FIELD_EDITOR__PREFERENCE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Default Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -795,62 +799,64 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Default Value Typed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__DEFAULT_VALUE_TYPED = FIELD_EDITOR__DEFAULT_VALUE_TYPED;
 
 	/**
-	 * The feature id for the '<em><b>Bundle</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Bundle</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__BUNDLE = FIELD_EDITOR__BUNDLE;
 
 	/**
-	 * The feature id for the '<em><b>Preferences</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preferences</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__PREFERENCES = FIELD_EDITOR__PREFERENCES;
 
 	/**
-	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__EQUINOX_PATH = FIELD_EDITOR__EQUINOX_PATH;
 
 	/**
-	 * The feature id for the '<em><b>Style</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Style</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR__STYLE = FIELD_EDITOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Boolean Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Boolean Field Editor</em>'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int BOOLEAN_FIELD_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListFieldEditorImpl <em>List Field Editor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListFieldEditorImpl
+	 * <em>List Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.ListFieldEditorImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getListFieldEditor()
 	 * @generated
@@ -858,126 +864,126 @@ public interface PreferencesPackage extends EPackage {
 	int LIST_FIELD_EDITOR = 4;
 
 	/**
-	 * The feature id for the '<em><b>Element Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Element Id</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__ELEMENT_ID = FIELD_EDITOR__ELEMENT_ID;
 
 	/**
-	 * The feature id for the '<em><b>Persisted State</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Persisted State</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__PERSISTED_STATE = FIELD_EDITOR__PERSISTED_STATE;
 
 	/**
-	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Tags</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__TAGS = FIELD_EDITOR__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__CONTRIBUTOR_URI = FIELD_EDITOR__CONTRIBUTOR_URI;
 
 	/**
-	 * The feature id for the '<em><b>Transient Data</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Transient Data</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__TRANSIENT_DATA = FIELD_EDITOR__TRANSIENT_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Widget</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Widget</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__WIDGET = FIELD_EDITOR__WIDGET;
 
 	/**
-	 * The feature id for the '<em><b>Renderer</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Renderer</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__RENDERER = FIELD_EDITOR__RENDERER;
 
 	/**
-	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__TO_BE_RENDERED = FIELD_EDITOR__TO_BE_RENDERED;
 
 	/**
-	 * The feature id for the '<em><b>On Top</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>On Top</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__ON_TOP = FIELD_EDITOR__ON_TOP;
 
 	/**
-	 * The feature id for the '<em><b>Visible</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__VISIBLE = FIELD_EDITOR__VISIBLE;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Parent</b></em>' container reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__PARENT = FIELD_EDITOR__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Container Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Container Data</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__CONTAINER_DATA = FIELD_EDITOR__CONTAINER_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__CUR_SHARED_REF = FIELD_EDITOR__CUR_SHARED_REF;
 
 	/**
-	 * The feature id for the '<em><b>Visible When</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible When</b></em>' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -985,44 +991,44 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__LABEL = FIELD_EDITOR__LABEL;
 
 	/**
-	 * The feature id for the '<em><b>Preference Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preference Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__PREFERENCE_NAME = FIELD_EDITOR__PREFERENCE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Default Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1030,80 +1036,81 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Default Value Typed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__DEFAULT_VALUE_TYPED = FIELD_EDITOR__DEFAULT_VALUE_TYPED;
 
 	/**
-	 * The feature id for the '<em><b>Bundle</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Bundle</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__BUNDLE = FIELD_EDITOR__BUNDLE;
 
 	/**
-	 * The feature id for the '<em><b>Preferences</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preferences</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__PREFERENCES = FIELD_EDITOR__PREFERENCES;
 
 	/**
-	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__EQUINOX_PATH = FIELD_EDITOR__EQUINOX_PATH;
 
 	/**
-	 * The feature id for the '<em><b>Contribution URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contribution URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__CONTRIBUTION_URI = FIELD_EDITOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Object</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Object</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__OBJECT = FIELD_EDITOR_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Entries</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Entries</b></em>' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR__ENTRIES = FIELD_EDITOR_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>List Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>List Field Editor</em>'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FIELD_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.EntryImpl <em>Entry</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.EntryImpl
+	 * <em>Entry</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.EntryImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getEntry()
 	 * @generated
@@ -1111,36 +1118,38 @@ public interface PreferencesPackage extends EPackage {
 	int ENTRY = 5;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int ENTRY__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int ENTRY__VALUE = 1;
 
 	/**
-	 * The number of structural features of the '<em>Entry</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Entry</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int ENTRY_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ComboFieldEditorImpl <em>Combo Field Editor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.ComboFieldEditorImpl
+	 * <em>Combo Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.ComboFieldEditorImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getComboFieldEditor()
 	 * @generated
@@ -1148,126 +1157,126 @@ public interface PreferencesPackage extends EPackage {
 	int COMBO_FIELD_EDITOR = 6;
 
 	/**
-	 * The feature id for the '<em><b>Element Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Element Id</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__ELEMENT_ID = LIST_FIELD_EDITOR__ELEMENT_ID;
 
 	/**
-	 * The feature id for the '<em><b>Persisted State</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Persisted State</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__PERSISTED_STATE = LIST_FIELD_EDITOR__PERSISTED_STATE;
 
 	/**
-	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Tags</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__TAGS = LIST_FIELD_EDITOR__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__CONTRIBUTOR_URI = LIST_FIELD_EDITOR__CONTRIBUTOR_URI;
 
 	/**
-	 * The feature id for the '<em><b>Transient Data</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Transient Data</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__TRANSIENT_DATA = LIST_FIELD_EDITOR__TRANSIENT_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Widget</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Widget</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__WIDGET = LIST_FIELD_EDITOR__WIDGET;
 
 	/**
-	 * The feature id for the '<em><b>Renderer</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Renderer</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__RENDERER = LIST_FIELD_EDITOR__RENDERER;
 
 	/**
-	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__TO_BE_RENDERED = LIST_FIELD_EDITOR__TO_BE_RENDERED;
 
 	/**
-	 * The feature id for the '<em><b>On Top</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>On Top</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__ON_TOP = LIST_FIELD_EDITOR__ON_TOP;
 
 	/**
-	 * The feature id for the '<em><b>Visible</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__VISIBLE = LIST_FIELD_EDITOR__VISIBLE;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Parent</b></em>' container reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__PARENT = LIST_FIELD_EDITOR__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Container Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Container Data</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__CONTAINER_DATA = LIST_FIELD_EDITOR__CONTAINER_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__CUR_SHARED_REF = LIST_FIELD_EDITOR__CUR_SHARED_REF;
 
 	/**
-	 * The feature id for the '<em><b>Visible When</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible When</b></em>' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1275,44 +1284,44 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__ACCESSIBILITY_PHRASE = LIST_FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = LIST_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__LABEL = LIST_FIELD_EDITOR__LABEL;
 
 	/**
-	 * The feature id for the '<em><b>Preference Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preference Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__PREFERENCE_NAME = LIST_FIELD_EDITOR__PREFERENCE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Default Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1320,80 +1329,82 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Default Value Typed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__DEFAULT_VALUE_TYPED = LIST_FIELD_EDITOR__DEFAULT_VALUE_TYPED;
 
 	/**
-	 * The feature id for the '<em><b>Bundle</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Bundle</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__BUNDLE = LIST_FIELD_EDITOR__BUNDLE;
 
 	/**
-	 * The feature id for the '<em><b>Preferences</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preferences</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__PREFERENCES = LIST_FIELD_EDITOR__PREFERENCES;
 
 	/**
-	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__EQUINOX_PATH = LIST_FIELD_EDITOR__EQUINOX_PATH;
 
 	/**
-	 * The feature id for the '<em><b>Contribution URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contribution URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__CONTRIBUTION_URI = LIST_FIELD_EDITOR__CONTRIBUTION_URI;
 
 	/**
-	 * The feature id for the '<em><b>Object</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Object</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__OBJECT = LIST_FIELD_EDITOR__OBJECT;
 
 	/**
-	 * The feature id for the '<em><b>Entries</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Entries</b></em>' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR__ENTRIES = LIST_FIELD_EDITOR__ENTRIES;
 
 	/**
-	 * The number of structural features of the '<em>Combo Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Combo Field Editor</em>'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int COMBO_FIELD_EDITOR_FEATURE_COUNT = LIST_FIELD_EDITOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListEditorImpl <em>List Editor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListEditorImpl
+	 * <em>List Editor</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.ListEditorImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getListEditor()
 	 * @generated
@@ -1401,126 +1412,126 @@ public interface PreferencesPackage extends EPackage {
 	int LIST_EDITOR = 7;
 
 	/**
-	 * The feature id for the '<em><b>Element Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Element Id</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__ELEMENT_ID = FIELD_EDITOR__ELEMENT_ID;
 
 	/**
-	 * The feature id for the '<em><b>Persisted State</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Persisted State</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__PERSISTED_STATE = FIELD_EDITOR__PERSISTED_STATE;
 
 	/**
-	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Tags</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__TAGS = FIELD_EDITOR__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__CONTRIBUTOR_URI = FIELD_EDITOR__CONTRIBUTOR_URI;
 
 	/**
-	 * The feature id for the '<em><b>Transient Data</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Transient Data</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__TRANSIENT_DATA = FIELD_EDITOR__TRANSIENT_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Widget</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Widget</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__WIDGET = FIELD_EDITOR__WIDGET;
 
 	/**
-	 * The feature id for the '<em><b>Renderer</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Renderer</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__RENDERER = FIELD_EDITOR__RENDERER;
 
 	/**
-	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__TO_BE_RENDERED = FIELD_EDITOR__TO_BE_RENDERED;
 
 	/**
-	 * The feature id for the '<em><b>On Top</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>On Top</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__ON_TOP = FIELD_EDITOR__ON_TOP;
 
 	/**
-	 * The feature id for the '<em><b>Visible</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__VISIBLE = FIELD_EDITOR__VISIBLE;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Parent</b></em>' container reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__PARENT = FIELD_EDITOR__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Container Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Container Data</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__CONTAINER_DATA = FIELD_EDITOR__CONTAINER_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__CUR_SHARED_REF = FIELD_EDITOR__CUR_SHARED_REF;
 
 	/**
-	 * The feature id for the '<em><b>Visible When</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible When</b></em>' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1528,44 +1539,44 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__LABEL = FIELD_EDITOR__LABEL;
 
 	/**
-	 * The feature id for the '<em><b>Preference Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preference Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__PREFERENCE_NAME = FIELD_EDITOR__PREFERENCE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Default Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1573,71 +1584,71 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Default Value Typed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__DEFAULT_VALUE_TYPED = FIELD_EDITOR__DEFAULT_VALUE_TYPED;
 
 	/**
-	 * The feature id for the '<em><b>Bundle</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Bundle</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__BUNDLE = FIELD_EDITOR__BUNDLE;
 
 	/**
-	 * The feature id for the '<em><b>Preferences</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preferences</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__PREFERENCES = FIELD_EDITOR__PREFERENCES;
 
 	/**
-	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__EQUINOX_PATH = FIELD_EDITOR__EQUINOX_PATH;
 
 	/**
-	 * The feature id for the '<em><b>Contribution URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contribution URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__CONTRIBUTION_URI = FIELD_EDITOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Object</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Object</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__OBJECT = FIELD_EDITOR_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>List Crud</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>List Crud</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR__LIST_CRUD = FIELD_EDITOR_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>List Fold</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>List Fold</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1645,17 +1656,19 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The number of structural features of the '<em>List Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.RadioGroupFieldEditorImpl <em>Radio Group Field Editor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.RadioGroupFieldEditorImpl
+	 * <em>Radio Group Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.RadioGroupFieldEditorImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getRadioGroupFieldEditor()
 	 * @generated
@@ -1663,126 +1676,126 @@ public interface PreferencesPackage extends EPackage {
 	int RADIO_GROUP_FIELD_EDITOR = 8;
 
 	/**
-	 * The feature id for the '<em><b>Element Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Element Id</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__ELEMENT_ID = LIST_FIELD_EDITOR__ELEMENT_ID;
 
 	/**
-	 * The feature id for the '<em><b>Persisted State</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Persisted State</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__PERSISTED_STATE = LIST_FIELD_EDITOR__PERSISTED_STATE;
 
 	/**
-	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Tags</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__TAGS = LIST_FIELD_EDITOR__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__CONTRIBUTOR_URI = LIST_FIELD_EDITOR__CONTRIBUTOR_URI;
 
 	/**
-	 * The feature id for the '<em><b>Transient Data</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Transient Data</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__TRANSIENT_DATA = LIST_FIELD_EDITOR__TRANSIENT_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Widget</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Widget</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__WIDGET = LIST_FIELD_EDITOR__WIDGET;
 
 	/**
-	 * The feature id for the '<em><b>Renderer</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Renderer</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__RENDERER = LIST_FIELD_EDITOR__RENDERER;
 
 	/**
-	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__TO_BE_RENDERED = LIST_FIELD_EDITOR__TO_BE_RENDERED;
 
 	/**
-	 * The feature id for the '<em><b>On Top</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>On Top</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__ON_TOP = LIST_FIELD_EDITOR__ON_TOP;
 
 	/**
-	 * The feature id for the '<em><b>Visible</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__VISIBLE = LIST_FIELD_EDITOR__VISIBLE;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Parent</b></em>' container reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__PARENT = LIST_FIELD_EDITOR__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Container Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Container Data</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__CONTAINER_DATA = LIST_FIELD_EDITOR__CONTAINER_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__CUR_SHARED_REF = LIST_FIELD_EDITOR__CUR_SHARED_REF;
 
 	/**
-	 * The feature id for the '<em><b>Visible When</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible When</b></em>' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1790,44 +1803,44 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__ACCESSIBILITY_PHRASE = LIST_FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = LIST_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__LABEL = LIST_FIELD_EDITOR__LABEL;
 
 	/**
-	 * The feature id for the '<em><b>Preference Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preference Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__PREFERENCE_NAME = LIST_FIELD_EDITOR__PREFERENCE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Default Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1835,80 +1848,83 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Default Value Typed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__DEFAULT_VALUE_TYPED = LIST_FIELD_EDITOR__DEFAULT_VALUE_TYPED;
 
 	/**
-	 * The feature id for the '<em><b>Bundle</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Bundle</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__BUNDLE = LIST_FIELD_EDITOR__BUNDLE;
 
 	/**
-	 * The feature id for the '<em><b>Preferences</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preferences</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__PREFERENCES = LIST_FIELD_EDITOR__PREFERENCES;
 
 	/**
-	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__EQUINOX_PATH = LIST_FIELD_EDITOR__EQUINOX_PATH;
 
 	/**
-	 * The feature id for the '<em><b>Contribution URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contribution URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__CONTRIBUTION_URI = LIST_FIELD_EDITOR__CONTRIBUTION_URI;
 
 	/**
-	 * The feature id for the '<em><b>Object</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Object</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__OBJECT = LIST_FIELD_EDITOR__OBJECT;
 
 	/**
-	 * The feature id for the '<em><b>Entries</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Entries</b></em>' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR__ENTRIES = LIST_FIELD_EDITOR__ENTRIES;
 
 	/**
-	 * The number of structural features of the '<em>Radio Group Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '
+	 * <em>Radio Group Field Editor</em>' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RADIO_GROUP_FIELD_EDITOR_FEATURE_COUNT = LIST_FIELD_EDITOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ScaleFieldEditorImpl <em>Scale Field Editor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.ScaleFieldEditorImpl
+	 * <em>Scale Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.ScaleFieldEditorImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getScaleFieldEditor()
 	 * @generated
@@ -1916,126 +1932,126 @@ public interface PreferencesPackage extends EPackage {
 	int SCALE_FIELD_EDITOR = 9;
 
 	/**
-	 * The feature id for the '<em><b>Element Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Element Id</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__ELEMENT_ID = FIELD_EDITOR__ELEMENT_ID;
 
 	/**
-	 * The feature id for the '<em><b>Persisted State</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Persisted State</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__PERSISTED_STATE = FIELD_EDITOR__PERSISTED_STATE;
 
 	/**
-	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Tags</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__TAGS = FIELD_EDITOR__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__CONTRIBUTOR_URI = FIELD_EDITOR__CONTRIBUTOR_URI;
 
 	/**
-	 * The feature id for the '<em><b>Transient Data</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Transient Data</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__TRANSIENT_DATA = FIELD_EDITOR__TRANSIENT_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Widget</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Widget</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__WIDGET = FIELD_EDITOR__WIDGET;
 
 	/**
-	 * The feature id for the '<em><b>Renderer</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Renderer</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__RENDERER = FIELD_EDITOR__RENDERER;
 
 	/**
-	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__TO_BE_RENDERED = FIELD_EDITOR__TO_BE_RENDERED;
 
 	/**
-	 * The feature id for the '<em><b>On Top</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>On Top</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__ON_TOP = FIELD_EDITOR__ON_TOP;
 
 	/**
-	 * The feature id for the '<em><b>Visible</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__VISIBLE = FIELD_EDITOR__VISIBLE;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Parent</b></em>' container reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__PARENT = FIELD_EDITOR__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Container Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Container Data</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__CONTAINER_DATA = FIELD_EDITOR__CONTAINER_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__CUR_SHARED_REF = FIELD_EDITOR__CUR_SHARED_REF;
 
 	/**
-	 * The feature id for the '<em><b>Visible When</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible When</b></em>' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -2043,44 +2059,44 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__LABEL = FIELD_EDITOR__LABEL;
 
 	/**
-	 * The feature id for the '<em><b>Preference Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preference Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__PREFERENCE_NAME = FIELD_EDITOR__PREFERENCE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Default Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -2088,80 +2104,82 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Default Value Typed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__DEFAULT_VALUE_TYPED = FIELD_EDITOR__DEFAULT_VALUE_TYPED;
 
 	/**
-	 * The feature id for the '<em><b>Bundle</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Bundle</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__BUNDLE = FIELD_EDITOR__BUNDLE;
 
 	/**
-	 * The feature id for the '<em><b>Preferences</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preferences</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__PREFERENCES = FIELD_EDITOR__PREFERENCES;
 
 	/**
-	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__EQUINOX_PATH = FIELD_EDITOR__EQUINOX_PATH;
 
 	/**
-	 * The feature id for the '<em><b>Min Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Min Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__MIN_VALUE = FIELD_EDITOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Max Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Max Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__MAX_VALUE = FIELD_EDITOR_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Increment Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Increment Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR__INCREMENT_VALUE = FIELD_EDITOR_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Scale Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Scale Field Editor</em>'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SCALE_FIELD_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.StringFieldEditorImpl <em>String Field Editor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.StringFieldEditorImpl
+	 * <em>String Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.StringFieldEditorImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getStringFieldEditor()
 	 * @generated
@@ -2169,126 +2187,126 @@ public interface PreferencesPackage extends EPackage {
 	int STRING_FIELD_EDITOR = 10;
 
 	/**
-	 * The feature id for the '<em><b>Element Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Element Id</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__ELEMENT_ID = FIELD_EDITOR__ELEMENT_ID;
 
 	/**
-	 * The feature id for the '<em><b>Persisted State</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Persisted State</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__PERSISTED_STATE = FIELD_EDITOR__PERSISTED_STATE;
 
 	/**
-	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Tags</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__TAGS = FIELD_EDITOR__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__CONTRIBUTOR_URI = FIELD_EDITOR__CONTRIBUTOR_URI;
 
 	/**
-	 * The feature id for the '<em><b>Transient Data</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Transient Data</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__TRANSIENT_DATA = FIELD_EDITOR__TRANSIENT_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Widget</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Widget</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__WIDGET = FIELD_EDITOR__WIDGET;
 
 	/**
-	 * The feature id for the '<em><b>Renderer</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Renderer</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__RENDERER = FIELD_EDITOR__RENDERER;
 
 	/**
-	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__TO_BE_RENDERED = FIELD_EDITOR__TO_BE_RENDERED;
 
 	/**
-	 * The feature id for the '<em><b>On Top</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>On Top</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__ON_TOP = FIELD_EDITOR__ON_TOP;
 
 	/**
-	 * The feature id for the '<em><b>Visible</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__VISIBLE = FIELD_EDITOR__VISIBLE;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Parent</b></em>' container reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__PARENT = FIELD_EDITOR__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Container Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Container Data</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__CONTAINER_DATA = FIELD_EDITOR__CONTAINER_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__CUR_SHARED_REF = FIELD_EDITOR__CUR_SHARED_REF;
 
 	/**
-	 * The feature id for the '<em><b>Visible When</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible When</b></em>' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -2296,44 +2314,44 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__LABEL = FIELD_EDITOR__LABEL;
 
 	/**
-	 * The feature id for the '<em><b>Preference Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preference Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__PREFERENCE_NAME = FIELD_EDITOR__PREFERENCE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Default Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -2341,62 +2359,64 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Default Value Typed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__DEFAULT_VALUE_TYPED = FIELD_EDITOR__DEFAULT_VALUE_TYPED;
 
 	/**
-	 * The feature id for the '<em><b>Bundle</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Bundle</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__BUNDLE = FIELD_EDITOR__BUNDLE;
 
 	/**
-	 * The feature id for the '<em><b>Preferences</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preferences</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__PREFERENCES = FIELD_EDITOR__PREFERENCES;
 
 	/**
-	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__EQUINOX_PATH = FIELD_EDITOR__EQUINOX_PATH;
 
 	/**
-	 * The feature id for the '<em><b>Max Length</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Max Length</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR__MAX_LENGTH = FIELD_EDITOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>String Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>String Field Editor</em>'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int STRING_FIELD_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.IntegerFieldEditorImpl <em>Integer Field Editor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.IntegerFieldEditorImpl
+	 * <em>Integer Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.IntegerFieldEditorImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getIntegerFieldEditor()
 	 * @generated
@@ -2404,126 +2424,126 @@ public interface PreferencesPackage extends EPackage {
 	int INTEGER_FIELD_EDITOR = 11;
 
 	/**
-	 * The feature id for the '<em><b>Element Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Element Id</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__ELEMENT_ID = FIELD_EDITOR__ELEMENT_ID;
 
 	/**
-	 * The feature id for the '<em><b>Persisted State</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Persisted State</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__PERSISTED_STATE = FIELD_EDITOR__PERSISTED_STATE;
 
 	/**
-	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Tags</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__TAGS = FIELD_EDITOR__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__CONTRIBUTOR_URI = FIELD_EDITOR__CONTRIBUTOR_URI;
 
 	/**
-	 * The feature id for the '<em><b>Transient Data</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Transient Data</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__TRANSIENT_DATA = FIELD_EDITOR__TRANSIENT_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Widget</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Widget</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__WIDGET = FIELD_EDITOR__WIDGET;
 
 	/**
-	 * The feature id for the '<em><b>Renderer</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Renderer</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__RENDERER = FIELD_EDITOR__RENDERER;
 
 	/**
-	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__TO_BE_RENDERED = FIELD_EDITOR__TO_BE_RENDERED;
 
 	/**
-	 * The feature id for the '<em><b>On Top</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>On Top</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__ON_TOP = FIELD_EDITOR__ON_TOP;
 
 	/**
-	 * The feature id for the '<em><b>Visible</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__VISIBLE = FIELD_EDITOR__VISIBLE;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Parent</b></em>' container reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__PARENT = FIELD_EDITOR__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Container Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Container Data</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__CONTAINER_DATA = FIELD_EDITOR__CONTAINER_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__CUR_SHARED_REF = FIELD_EDITOR__CUR_SHARED_REF;
 
 	/**
-	 * The feature id for the '<em><b>Visible When</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible When</b></em>' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -2531,44 +2551,44 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__LABEL = FIELD_EDITOR__LABEL;
 
 	/**
-	 * The feature id for the '<em><b>Preference Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preference Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__PREFERENCE_NAME = FIELD_EDITOR__PREFERENCE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Default Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -2576,71 +2596,73 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Default Value Typed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__DEFAULT_VALUE_TYPED = FIELD_EDITOR__DEFAULT_VALUE_TYPED;
 
 	/**
-	 * The feature id for the '<em><b>Bundle</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Bundle</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__BUNDLE = FIELD_EDITOR__BUNDLE;
 
 	/**
-	 * The feature id for the '<em><b>Preferences</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preferences</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__PREFERENCES = FIELD_EDITOR__PREFERENCES;
 
 	/**
-	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__EQUINOX_PATH = FIELD_EDITOR__EQUINOX_PATH;
 
 	/**
-	 * The feature id for the '<em><b>Min Valid Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Min Valid Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__MIN_VALID_VALUE = FIELD_EDITOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Max Valid Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Max Valid Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR__MAX_VALID_VALUE = FIELD_EDITOR_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Integer Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Integer Field Editor</em>'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INTEGER_FIELD_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.FileFieldEditorImpl <em>File Field Editor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.FileFieldEditorImpl
+	 * <em>File Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.FileFieldEditorImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getFileFieldEditor()
 	 * @generated
@@ -2648,126 +2670,126 @@ public interface PreferencesPackage extends EPackage {
 	int FILE_FIELD_EDITOR = 12;
 
 	/**
-	 * The feature id for the '<em><b>Element Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Element Id</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__ELEMENT_ID = FIELD_EDITOR__ELEMENT_ID;
 
 	/**
-	 * The feature id for the '<em><b>Persisted State</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Persisted State</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__PERSISTED_STATE = FIELD_EDITOR__PERSISTED_STATE;
 
 	/**
-	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Tags</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__TAGS = FIELD_EDITOR__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__CONTRIBUTOR_URI = FIELD_EDITOR__CONTRIBUTOR_URI;
 
 	/**
-	 * The feature id for the '<em><b>Transient Data</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Transient Data</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__TRANSIENT_DATA = FIELD_EDITOR__TRANSIENT_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Widget</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Widget</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__WIDGET = FIELD_EDITOR__WIDGET;
 
 	/**
-	 * The feature id for the '<em><b>Renderer</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Renderer</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__RENDERER = FIELD_EDITOR__RENDERER;
 
 	/**
-	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__TO_BE_RENDERED = FIELD_EDITOR__TO_BE_RENDERED;
 
 	/**
-	 * The feature id for the '<em><b>On Top</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>On Top</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__ON_TOP = FIELD_EDITOR__ON_TOP;
 
 	/**
-	 * The feature id for the '<em><b>Visible</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__VISIBLE = FIELD_EDITOR__VISIBLE;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Parent</b></em>' container reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__PARENT = FIELD_EDITOR__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Container Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Container Data</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__CONTAINER_DATA = FIELD_EDITOR__CONTAINER_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__CUR_SHARED_REF = FIELD_EDITOR__CUR_SHARED_REF;
 
 	/**
-	 * The feature id for the '<em><b>Visible When</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible When</b></em>' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -2775,44 +2797,44 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__LABEL = FIELD_EDITOR__LABEL;
 
 	/**
-	 * The feature id for the '<em><b>Preference Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preference Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__PREFERENCE_NAME = FIELD_EDITOR__PREFERENCE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Default Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -2820,71 +2842,73 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Default Value Typed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__DEFAULT_VALUE_TYPED = FIELD_EDITOR__DEFAULT_VALUE_TYPED;
 
 	/**
-	 * The feature id for the '<em><b>Bundle</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Bundle</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__BUNDLE = FIELD_EDITOR__BUNDLE;
 
 	/**
-	 * The feature id for the '<em><b>Preferences</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preferences</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__PREFERENCES = FIELD_EDITOR__PREFERENCES;
 
 	/**
-	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__EQUINOX_PATH = FIELD_EDITOR__EQUINOX_PATH;
 
 	/**
-	 * The feature id for the '<em><b>Contribution URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contribution URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__CONTRIBUTION_URI = FIELD_EDITOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Object</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Object</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR__OBJECT = FIELD_EDITOR_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>File Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>File Field Editor</em>'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_FIELD_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.DirectoryFieldEditorImpl <em>Directory Field Editor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.DirectoryFieldEditorImpl
+	 * <em>Directory Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.DirectoryFieldEditorImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getDirectoryFieldEditor()
 	 * @generated
@@ -2892,126 +2916,126 @@ public interface PreferencesPackage extends EPackage {
 	int DIRECTORY_FIELD_EDITOR = 13;
 
 	/**
-	 * The feature id for the '<em><b>Element Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Element Id</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__ELEMENT_ID = FIELD_EDITOR__ELEMENT_ID;
 
 	/**
-	 * The feature id for the '<em><b>Persisted State</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Persisted State</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__PERSISTED_STATE = FIELD_EDITOR__PERSISTED_STATE;
 
 	/**
-	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Tags</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__TAGS = FIELD_EDITOR__TAGS;
 
 	/**
-	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contributor URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__CONTRIBUTOR_URI = FIELD_EDITOR__CONTRIBUTOR_URI;
 
 	/**
-	 * The feature id for the '<em><b>Transient Data</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Transient Data</b></em>' map. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__TRANSIENT_DATA = FIELD_EDITOR__TRANSIENT_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Widget</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Widget</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__WIDGET = FIELD_EDITOR__WIDGET;
 
 	/**
-	 * The feature id for the '<em><b>Renderer</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Renderer</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__RENDERER = FIELD_EDITOR__RENDERER;
 
 	/**
-	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>To Be Rendered</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__TO_BE_RENDERED = FIELD_EDITOR__TO_BE_RENDERED;
 
 	/**
-	 * The feature id for the '<em><b>On Top</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>On Top</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__ON_TOP = FIELD_EDITOR__ON_TOP;
 
 	/**
-	 * The feature id for the '<em><b>Visible</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__VISIBLE = FIELD_EDITOR__VISIBLE;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Parent</b></em>' container reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__PARENT = FIELD_EDITOR__PARENT;
 
 	/**
-	 * The feature id for the '<em><b>Container Data</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Container Data</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__CONTAINER_DATA = FIELD_EDITOR__CONTAINER_DATA;
 
 	/**
-	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Cur Shared Ref</b></em>' reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__CUR_SHARED_REF = FIELD_EDITOR__CUR_SHARED_REF;
 
 	/**
-	 * The feature id for the '<em><b>Visible When</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Visible When</b></em>' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -3019,44 +3043,44 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__ACCESSIBILITY_PHRASE = FIELD_EDITOR__ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Localized Accessibility Phrase</b></em>'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE = FIELD_EDITOR__LOCALIZED_ACCESSIBILITY_PHRASE;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__LABEL = FIELD_EDITOR__LABEL;
 
 	/**
-	 * The feature id for the '<em><b>Preference Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preference Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__PREFERENCE_NAME = FIELD_EDITOR__PREFERENCE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Default Value</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -3064,71 +3088,72 @@ public interface PreferencesPackage extends EPackage {
 
 	/**
 	 * The feature id for the '<em><b>Default Value Typed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__DEFAULT_VALUE_TYPED = FIELD_EDITOR__DEFAULT_VALUE_TYPED;
 
 	/**
-	 * The feature id for the '<em><b>Bundle</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Bundle</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__BUNDLE = FIELD_EDITOR__BUNDLE;
 
 	/**
-	 * The feature id for the '<em><b>Preferences</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Preferences</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__PREFERENCES = FIELD_EDITOR__PREFERENCES;
 
 	/**
-	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Equinox Path</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__EQUINOX_PATH = FIELD_EDITOR__EQUINOX_PATH;
 
 	/**
-	 * The feature id for the '<em><b>Contribution URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Contribution URI</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__CONTRIBUTION_URI = FIELD_EDITOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Object</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Object</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR__OBJECT = FIELD_EDITOR_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Directory Field Editor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Directory Field Editor</em>
+	 * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DIRECTORY_FIELD_EDITOR_FEATURE_COUNT = FIELD_EDITOR_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.ListCrud <em>List Crud</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.ListCrud
+	 * <em>List Crud</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.ListCrud
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getListCrud()
 	 * @generated
@@ -3136,18 +3161,19 @@ public interface PreferencesPackage extends EPackage {
 	int LIST_CRUD = 14;
 
 	/**
-	 * The number of structural features of the '<em>List Crud</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>List Crud</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_CRUD_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListFoldImpl <em>List Fold</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListFoldImpl
+	 * <em>List Fold</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.ListFoldImpl
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getListFold()
 	 * @generated
@@ -3155,18 +3181,20 @@ public interface PreferencesPackage extends EPackage {
 	int LIST_FOLD = 15;
 
 	/**
-	 * The number of structural features of the '<em>List Fold</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>List Fold</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LIST_FOLD_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldStyle <em>Boolean Field Style</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldStyle
+	 * <em>Boolean Field Style</em>}' enum. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldStyle
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getBooleanFieldStyle()
 	 * @generated
@@ -3174,9 +3202,9 @@ public interface PreferencesPackage extends EPackage {
 	int BOOLEAN_FIELD_STYLE = 16;
 
 	/**
-	 * The meta object id for the '<em>String Buffer</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '<em>String Buffer</em>' data type. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see java.lang.StringBuffer
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getStringBuffer()
 	 * @generated
@@ -3184,20 +3212,20 @@ public interface PreferencesPackage extends EPackage {
 	int STRING_BUFFER = 17;
 
 	/**
-	 * The meta object id for the '<em>Preferences</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '<em>Preferences</em>' data type. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.osgi.service.prefs.Preferences
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getPreferences()
 	 * @generated
 	 */
 	int PREFERENCES = 18;
 
-
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory <em>Category</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory
+	 * <em>Category</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Category</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory
 	 * @generated
@@ -3205,9 +3233,10 @@ public interface PreferencesPackage extends EPackage {
 	EClass getPreferencesCategory();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getName
+	 * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getName()
 	 * @see #getPreferencesCategory()
@@ -3216,10 +3245,13 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getPreferencesCategory_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getChildCategories <em>Child Categories</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Child Categories</em>'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getChildCategories
+	 * <em>Child Categories</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @return the meta object for the containment reference list '
+	 *         <em>Child Categories</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getChildCategories()
 	 * @see #getPreferencesCategory()
 	 * @generated
@@ -3227,10 +3259,12 @@ public interface PreferencesPackage extends EPackage {
 	EReference getPreferencesCategory_ChildCategories();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getParentCategory <em>Parent Category</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Parent Category</em>'.
+	 * Returns the meta object for the container reference '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getParentCategory
+	 * <em>Parent Category</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the container reference '
+	 *         <em>Parent Category</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getParentCategory()
 	 * @see #getPreferencesCategory()
 	 * @generated
@@ -3238,9 +3272,10 @@ public interface PreferencesPackage extends EPackage {
 	EReference getPreferencesCategory_ParentCategory();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getPage <em>Page</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the containment reference '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getPage
+	 * <em>Page</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the containment reference '<em>Page</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getPage()
 	 * @see #getPreferencesCategory()
@@ -3249,9 +3284,10 @@ public interface PreferencesPackage extends EPackage {
 	EReference getPreferencesCategory_Page();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getId <em>Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getId
+	 * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Id</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory#getId()
 	 * @see #getPreferencesCategory()
@@ -3260,9 +3296,10 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getPreferencesCategory_Id();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesPage <em>Page</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesPage
+	 * <em>Page</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Page</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.PreferencesPage
 	 * @generated
@@ -3270,9 +3307,10 @@ public interface PreferencesPackage extends EPackage {
 	EClass getPreferencesPage();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesPage#getCategory <em>Category</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the container reference '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesPage#getCategory
+	 * <em>Category</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the container reference '<em>Category</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.PreferencesPage#getCategory()
 	 * @see #getPreferencesPage()
@@ -3281,9 +3319,10 @@ public interface PreferencesPackage extends EPackage {
 	EReference getPreferencesPage_Category();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesPage#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.PreferencesPage#getDescription
+	 * <em>Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Description</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.PreferencesPage#getDescription()
 	 * @see #getPreferencesPage()
@@ -3292,9 +3331,10 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getPreferencesPage_Description();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor <em>Field Editor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor
+	 * <em>Field Editor</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Field Editor</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.FieldEditor
 	 * @generated
@@ -3302,9 +3342,10 @@ public interface PreferencesPackage extends EPackage {
 	EClass getFieldEditor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getLabel <em>Label</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getLabel
+	 * <em>Label</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Label</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getLabel()
 	 * @see #getFieldEditor()
@@ -3313,9 +3354,10 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getFieldEditor_Label();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getPreferenceName <em>Preference Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getPreferenceName
+	 * <em>Preference Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Preference Name</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getPreferenceName()
 	 * @see #getFieldEditor()
@@ -3324,9 +3366,10 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getFieldEditor_PreferenceName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getDefaultValue <em>Default Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getDefaultValue
+	 * <em>Default Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Default Value</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getDefaultValue()
 	 * @see #getFieldEditor()
@@ -3335,9 +3378,11 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getFieldEditor_DefaultValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getDefaultValueTyped <em>Default Value Typed</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getDefaultValueTyped
+	 * <em>Default Value Typed</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @return the meta object for the attribute '<em>Default Value Typed</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getDefaultValueTyped()
 	 * @see #getFieldEditor()
@@ -3346,9 +3391,10 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getFieldEditor_DefaultValueTyped();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getBundle <em>Bundle</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getBundle
+	 * <em>Bundle</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Bundle</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getBundle()
 	 * @see #getFieldEditor()
@@ -3357,9 +3403,10 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getFieldEditor_Bundle();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getPreferences <em>Preferences</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getPreferences
+	 * <em>Preferences</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Preferences</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getPreferences()
 	 * @see #getFieldEditor()
@@ -3368,9 +3415,10 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getFieldEditor_Preferences();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getEquinoxPath <em>Equinox Path</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getEquinoxPath
+	 * <em>Equinox Path</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Equinox Path</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.FieldEditor#getEquinoxPath()
 	 * @see #getFieldEditor()
@@ -3379,9 +3427,11 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getFieldEditor_EquinoxPath();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldEditor <em>Boolean Field Editor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldEditor
+	 * <em>Boolean Field Editor</em>}'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Boolean Field Editor</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldEditor
 	 * @generated
@@ -3389,9 +3439,10 @@ public interface PreferencesPackage extends EPackage {
 	EClass getBooleanFieldEditor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldEditor#getStyle <em>Style</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldEditor#getStyle
+	 * <em>Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Style</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldEditor#getStyle()
 	 * @see #getBooleanFieldEditor()
@@ -3400,9 +3451,11 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getBooleanFieldEditor_Style();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.ListFieldEditor <em>List Field Editor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.ListFieldEditor
+	 * <em>List Field Editor</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @return the meta object for class '<em>List Field Editor</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.ListFieldEditor
 	 * @generated
@@ -3410,9 +3463,10 @@ public interface PreferencesPackage extends EPackage {
 	EClass getListFieldEditor();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.lunifera.vaaclipse.ui.preferences.model.ListFieldEditor#getEntries <em>Entries</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the reference list '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.ListFieldEditor#getEntries
+	 * <em>Entries</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the reference list '<em>Entries</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.ListFieldEditor#getEntries()
 	 * @see #getListFieldEditor()
@@ -3421,9 +3475,10 @@ public interface PreferencesPackage extends EPackage {
 	EReference getListFieldEditor_Entries();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.Entry <em>Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.Entry <em>Entry</em>}
+	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Entry</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.Entry
 	 * @generated
@@ -3431,9 +3486,10 @@ public interface PreferencesPackage extends EPackage {
 	EClass getEntry();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.Entry#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.Entry#getName
+	 * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.Entry#getName()
 	 * @see #getEntry()
@@ -3442,9 +3498,10 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getEntry_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.Entry#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.Entry#getValue
+	 * <em>Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Value</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.Entry#getValue()
 	 * @see #getEntry()
@@ -3453,9 +3510,11 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getEntry_Value();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.ComboFieldEditor <em>Combo Field Editor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.ComboFieldEditor
+	 * <em>Combo Field Editor</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @return the meta object for class '<em>Combo Field Editor</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.ComboFieldEditor
 	 * @generated
@@ -3463,9 +3522,10 @@ public interface PreferencesPackage extends EPackage {
 	EClass getComboFieldEditor();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.ListEditor <em>List Editor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.ListEditor
+	 * <em>List Editor</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>List Editor</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.ListEditor
 	 * @generated
@@ -3473,9 +3533,10 @@ public interface PreferencesPackage extends EPackage {
 	EClass getListEditor();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.vaaclipse.ui.preferences.model.ListEditor#getListCrud <em>List Crud</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the reference '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.ListEditor#getListCrud
+	 * <em>List Crud</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the reference '<em>List Crud</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.ListEditor#getListCrud()
 	 * @see #getListEditor()
@@ -3484,9 +3545,10 @@ public interface PreferencesPackage extends EPackage {
 	EReference getListEditor_ListCrud();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.vaaclipse.ui.preferences.model.ListEditor#getListFold <em>List Fold</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the reference '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.ListEditor#getListFold
+	 * <em>List Fold</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the reference '<em>List Fold</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.ListEditor#getListFold()
 	 * @see #getListEditor()
@@ -3495,9 +3557,11 @@ public interface PreferencesPackage extends EPackage {
 	EReference getListEditor_ListFold();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.RadioGroupFieldEditor <em>Radio Group Field Editor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.RadioGroupFieldEditor
+	 * <em>Radio Group Field Editor</em>}'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Radio Group Field Editor</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.RadioGroupFieldEditor
 	 * @generated
@@ -3505,9 +3569,11 @@ public interface PreferencesPackage extends EPackage {
 	EClass getRadioGroupFieldEditor();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.ScaleFieldEditor <em>Scale Field Editor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.ScaleFieldEditor
+	 * <em>Scale Field Editor</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @return the meta object for class '<em>Scale Field Editor</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.ScaleFieldEditor
 	 * @generated
@@ -3515,9 +3581,10 @@ public interface PreferencesPackage extends EPackage {
 	EClass getScaleFieldEditor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.ScaleFieldEditor#getMinValue <em>Min Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.ScaleFieldEditor#getMinValue
+	 * <em>Min Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Min Value</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.ScaleFieldEditor#getMinValue()
 	 * @see #getScaleFieldEditor()
@@ -3526,9 +3593,10 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getScaleFieldEditor_MinValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.ScaleFieldEditor#getMaxValue <em>Max Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.ScaleFieldEditor#getMaxValue
+	 * <em>Max Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Max Value</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.ScaleFieldEditor#getMaxValue()
 	 * @see #getScaleFieldEditor()
@@ -3537,9 +3605,10 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getScaleFieldEditor_MaxValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.ScaleFieldEditor#getIncrementValue <em>Increment Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.ScaleFieldEditor#getIncrementValue
+	 * <em>Increment Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Increment Value</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.ScaleFieldEditor#getIncrementValue()
 	 * @see #getScaleFieldEditor()
@@ -3548,9 +3617,11 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getScaleFieldEditor_IncrementValue();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.StringFieldEditor <em>String Field Editor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.StringFieldEditor
+	 * <em>String Field Editor</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @return the meta object for class '<em>String Field Editor</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.StringFieldEditor
 	 * @generated
@@ -3558,9 +3629,10 @@ public interface PreferencesPackage extends EPackage {
 	EClass getStringFieldEditor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.StringFieldEditor#getMaxLength <em>Max Length</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.StringFieldEditor#getMaxLength
+	 * <em>Max Length</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Max Length</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.StringFieldEditor#getMaxLength()
 	 * @see #getStringFieldEditor()
@@ -3569,9 +3641,11 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getStringFieldEditor_MaxLength();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.IntegerFieldEditor <em>Integer Field Editor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.IntegerFieldEditor
+	 * <em>Integer Field Editor</em>}'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Integer Field Editor</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.IntegerFieldEditor
 	 * @generated
@@ -3579,9 +3653,10 @@ public interface PreferencesPackage extends EPackage {
 	EClass getIntegerFieldEditor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.IntegerFieldEditor#getMinValidValue <em>Min Valid Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.IntegerFieldEditor#getMinValidValue
+	 * <em>Min Valid Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Min Valid Value</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.IntegerFieldEditor#getMinValidValue()
 	 * @see #getIntegerFieldEditor()
@@ -3590,9 +3665,10 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getIntegerFieldEditor_MinValidValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.lunifera.vaaclipse.ui.preferences.model.IntegerFieldEditor#getMaxValidValue <em>Max Valid Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.IntegerFieldEditor#getMaxValidValue
+	 * <em>Max Valid Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Max Valid Value</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.IntegerFieldEditor#getMaxValidValue()
 	 * @see #getIntegerFieldEditor()
@@ -3601,9 +3677,11 @@ public interface PreferencesPackage extends EPackage {
 	EAttribute getIntegerFieldEditor_MaxValidValue();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.FileFieldEditor <em>File Field Editor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.FileFieldEditor
+	 * <em>File Field Editor</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @return the meta object for class '<em>File Field Editor</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.FileFieldEditor
 	 * @generated
@@ -3611,9 +3689,11 @@ public interface PreferencesPackage extends EPackage {
 	EClass getFileFieldEditor();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.DirectoryFieldEditor <em>Directory Field Editor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.DirectoryFieldEditor
+	 * <em>Directory Field Editor</em>}'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Directory Field Editor</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.DirectoryFieldEditor
 	 * @generated
@@ -3621,9 +3701,10 @@ public interface PreferencesPackage extends EPackage {
 	EClass getDirectoryFieldEditor();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.ListCrud <em>List Crud</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.ListCrud
+	 * <em>List Crud</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>List Crud</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.ListCrud
 	 * @generated
@@ -3631,9 +3712,10 @@ public interface PreferencesPackage extends EPackage {
 	EClass getListCrud();
 
 	/**
-	 * Returns the meta object for class '{@link org.lunifera.vaaclipse.ui.preferences.model.ListFold <em>List Fold</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.ListFold
+	 * <em>List Fold</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>List Fold</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.ListFold
 	 * @generated
@@ -3641,9 +3723,11 @@ public interface PreferencesPackage extends EPackage {
 	EClass getListFold();
 
 	/**
-	 * Returns the meta object for enum '{@link org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldStyle <em>Boolean Field Style</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for enum '
+	 * {@link org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldStyle
+	 * <em>Boolean Field Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @return the meta object for enum '<em>Boolean Field Style</em>'.
 	 * @see org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldStyle
 	 * @generated
@@ -3651,9 +3735,9 @@ public interface PreferencesPackage extends EPackage {
 	EEnum getBooleanFieldStyle();
 
 	/**
-	 * Returns the meta object for data type '{@link java.lang.StringBuffer <em>String Buffer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for data type '{@link java.lang.StringBuffer
+	 * <em>String Buffer</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for data type '<em>String Buffer</em>'.
 	 * @see java.lang.StringBuffer
 	 * @model instanceClass="java.lang.StringBuffer"
@@ -3662,9 +3746,10 @@ public interface PreferencesPackage extends EPackage {
 	EDataType getStringBuffer();
 
 	/**
-	 * Returns the meta object for data type '{@link org.osgi.service.prefs.Preferences <em>Preferences</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for data type '
+	 * {@link org.osgi.service.prefs.Preferences <em>Preferences</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for data type '<em>Preferences</em>'.
 	 * @see org.osgi.service.prefs.Preferences
 	 * @model instanceClass="org.osgi.service.prefs.Preferences"
@@ -3673,32 +3758,35 @@ public interface PreferencesPackage extends EPackage {
 	EDataType getPreferences();
 
 	/**
-	 * Returns the factory that creates the instances of the model.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the factory that creates the instances of the model. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
 	PreferencesFactory getPreferencesFactory();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * Defines literals for the meta objects that represent
+	 * <!-- begin-user-doc --> Defines literals for the meta objects that
+	 * represent
 	 * <ul>
-	 *   <li>each class,</li>
-	 *   <li>each feature of each class,</li>
-	 *   <li>each operation of each class,</li>
-	 *   <li>each enum,</li>
-	 *   <li>and each data type</li>
+	 * <li>each class,</li>
+	 * <li>each feature of each class,</li>
+	 * <li>each operation of each class,</li>
+	 * <li>each enum,</li>
+	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesCategoryImpl <em>Category</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesCategoryImpl
+		 * <em>Category</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+		 * -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesCategoryImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getPreferencesCategory()
 		 * @generated
@@ -3706,49 +3794,57 @@ public interface PreferencesPackage extends EPackage {
 		EClass PREFERENCES_CATEGORY = eINSTANCE.getPreferencesCategory();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute PREFERENCES_CATEGORY__NAME = eINSTANCE.getPreferencesCategory_Name();
+		EAttribute PREFERENCES_CATEGORY__NAME = eINSTANCE
+				.getPreferencesCategory_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Child Categories</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Child Categories</b></em>'
+		 * containment reference list feature. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EReference PREFERENCES_CATEGORY__CHILD_CATEGORIES = eINSTANCE.getPreferencesCategory_ChildCategories();
+		EReference PREFERENCES_CATEGORY__CHILD_CATEGORIES = eINSTANCE
+				.getPreferencesCategory_ChildCategories();
 
 		/**
-		 * The meta object literal for the '<em><b>Parent Category</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Parent Category</b></em>'
+		 * container reference feature. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EReference PREFERENCES_CATEGORY__PARENT_CATEGORY = eINSTANCE.getPreferencesCategory_ParentCategory();
+		EReference PREFERENCES_CATEGORY__PARENT_CATEGORY = eINSTANCE
+				.getPreferencesCategory_ParentCategory();
 
 		/**
-		 * The meta object literal for the '<em><b>Page</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Page</b></em>' containment
+		 * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EReference PREFERENCES_CATEGORY__PAGE = eINSTANCE.getPreferencesCategory_Page();
+		EReference PREFERENCES_CATEGORY__PAGE = eINSTANCE
+				.getPreferencesCategory_Page();
 
 		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute PREFERENCES_CATEGORY__ID = eINSTANCE.getPreferencesCategory_Id();
+		EAttribute PREFERENCES_CATEGORY__ID = eINSTANCE
+				.getPreferencesCategory_Id();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPageImpl <em>Page</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPageImpl
+		 * <em>Page</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPageImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getPreferencesPage()
 		 * @generated
@@ -3756,25 +3852,29 @@ public interface PreferencesPackage extends EPackage {
 		EClass PREFERENCES_PAGE = eINSTANCE.getPreferencesPage();
 
 		/**
-		 * The meta object literal for the '<em><b>Category</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Category</b></em>' container
+		 * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EReference PREFERENCES_PAGE__CATEGORY = eINSTANCE.getPreferencesPage_Category();
+		EReference PREFERENCES_PAGE__CATEGORY = eINSTANCE
+				.getPreferencesPage_Category();
 
 		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Description</b></em>'
+		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute PREFERENCES_PAGE__DESCRIPTION = eINSTANCE.getPreferencesPage_Description();
+		EAttribute PREFERENCES_PAGE__DESCRIPTION = eINSTANCE
+				.getPreferencesPage_Description();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.FieldEditorImpl <em>Field Editor</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.FieldEditorImpl
+		 * <em>Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.FieldEditorImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getFieldEditor()
 		 * @generated
@@ -3782,65 +3882,72 @@ public interface PreferencesPackage extends EPackage {
 		EClass FIELD_EDITOR = eINSTANCE.getFieldEditor();
 
 		/**
-		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Label</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute FIELD_EDITOR__LABEL = eINSTANCE.getFieldEditor_Label();
 
 		/**
-		 * The meta object literal for the '<em><b>Preference Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Preference Name</b></em>'
+		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute FIELD_EDITOR__PREFERENCE_NAME = eINSTANCE.getFieldEditor_PreferenceName();
+		EAttribute FIELD_EDITOR__PREFERENCE_NAME = eINSTANCE
+				.getFieldEditor_PreferenceName();
 
 		/**
-		 * The meta object literal for the '<em><b>Default Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Default Value</b></em>'
+		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute FIELD_EDITOR__DEFAULT_VALUE = eINSTANCE.getFieldEditor_DefaultValue();
+		EAttribute FIELD_EDITOR__DEFAULT_VALUE = eINSTANCE
+				.getFieldEditor_DefaultValue();
 
 		/**
-		 * The meta object literal for the '<em><b>Default Value Typed</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Default Value Typed</b></em>'
+		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute FIELD_EDITOR__DEFAULT_VALUE_TYPED = eINSTANCE.getFieldEditor_DefaultValueTyped();
+		EAttribute FIELD_EDITOR__DEFAULT_VALUE_TYPED = eINSTANCE
+				.getFieldEditor_DefaultValueTyped();
 
 		/**
-		 * The meta object literal for the '<em><b>Bundle</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Bundle</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute FIELD_EDITOR__BUNDLE = eINSTANCE.getFieldEditor_Bundle();
 
 		/**
-		 * The meta object literal for the '<em><b>Preferences</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Preferences</b></em>'
+		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute FIELD_EDITOR__PREFERENCES = eINSTANCE.getFieldEditor_Preferences();
+		EAttribute FIELD_EDITOR__PREFERENCES = eINSTANCE
+				.getFieldEditor_Preferences();
 
 		/**
-		 * The meta object literal for the '<em><b>Equinox Path</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Equinox Path</b></em>'
+		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute FIELD_EDITOR__EQUINOX_PATH = eINSTANCE.getFieldEditor_EquinoxPath();
+		EAttribute FIELD_EDITOR__EQUINOX_PATH = eINSTANCE
+				.getFieldEditor_EquinoxPath();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.BooleanFieldEditorImpl <em>Boolean Field Editor</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.BooleanFieldEditorImpl
+		 * <em>Boolean Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.BooleanFieldEditorImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getBooleanFieldEditor()
 		 * @generated
@@ -3848,17 +3955,20 @@ public interface PreferencesPackage extends EPackage {
 		EClass BOOLEAN_FIELD_EDITOR = eINSTANCE.getBooleanFieldEditor();
 
 		/**
-		 * The meta object literal for the '<em><b>Style</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Style</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute BOOLEAN_FIELD_EDITOR__STYLE = eINSTANCE.getBooleanFieldEditor_Style();
+		EAttribute BOOLEAN_FIELD_EDITOR__STYLE = eINSTANCE
+				.getBooleanFieldEditor_Style();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListFieldEditorImpl <em>List Field Editor</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListFieldEditorImpl
+		 * <em>List Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.ListFieldEditorImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getListFieldEditor()
 		 * @generated
@@ -3866,17 +3976,19 @@ public interface PreferencesPackage extends EPackage {
 		EClass LIST_FIELD_EDITOR = eINSTANCE.getListFieldEditor();
 
 		/**
-		 * The meta object literal for the '<em><b>Entries</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Entries</b></em>' reference
+		 * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EReference LIST_FIELD_EDITOR__ENTRIES = eINSTANCE.getListFieldEditor_Entries();
+		EReference LIST_FIELD_EDITOR__ENTRIES = eINSTANCE
+				.getListFieldEditor_Entries();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.EntryImpl <em>Entry</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.EntryImpl
+		 * <em>Entry</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.EntryImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getEntry()
 		 * @generated
@@ -3884,25 +3996,27 @@ public interface PreferencesPackage extends EPackage {
 		EClass ENTRY = eINSTANCE.getEntry();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute ENTRY__NAME = eINSTANCE.getEntry_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute ENTRY__VALUE = eINSTANCE.getEntry_Value();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ComboFieldEditorImpl <em>Combo Field Editor</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.ComboFieldEditorImpl
+		 * <em>Combo Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.ComboFieldEditorImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getComboFieldEditor()
 		 * @generated
@@ -3910,9 +4024,11 @@ public interface PreferencesPackage extends EPackage {
 		EClass COMBO_FIELD_EDITOR = eINSTANCE.getComboFieldEditor();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListEditorImpl <em>List Editor</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListEditorImpl
+		 * <em>List Editor</em>}' class. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.ListEditorImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getListEditor()
 		 * @generated
@@ -3920,25 +4036,27 @@ public interface PreferencesPackage extends EPackage {
 		EClass LIST_EDITOR = eINSTANCE.getListEditor();
 
 		/**
-		 * The meta object literal for the '<em><b>List Crud</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>List Crud</b></em>' reference
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference LIST_EDITOR__LIST_CRUD = eINSTANCE.getListEditor_ListCrud();
 
 		/**
-		 * The meta object literal for the '<em><b>List Fold</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>List Fold</b></em>' reference
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EReference LIST_EDITOR__LIST_FOLD = eINSTANCE.getListEditor_ListFold();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.RadioGroupFieldEditorImpl <em>Radio Group Field Editor</em>}' class.
-		 * <!-- begin-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.RadioGroupFieldEditorImpl
+		 * <em>Radio Group Field Editor</em>}' class. <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.RadioGroupFieldEditorImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getRadioGroupFieldEditor()
 		 * @generated
@@ -3946,9 +4064,11 @@ public interface PreferencesPackage extends EPackage {
 		EClass RADIO_GROUP_FIELD_EDITOR = eINSTANCE.getRadioGroupFieldEditor();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ScaleFieldEditorImpl <em>Scale Field Editor</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.ScaleFieldEditorImpl
+		 * <em>Scale Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.ScaleFieldEditorImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getScaleFieldEditor()
 		 * @generated
@@ -3956,33 +4076,38 @@ public interface PreferencesPackage extends EPackage {
 		EClass SCALE_FIELD_EDITOR = eINSTANCE.getScaleFieldEditor();
 
 		/**
-		 * The meta object literal for the '<em><b>Min Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Min Value</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute SCALE_FIELD_EDITOR__MIN_VALUE = eINSTANCE.getScaleFieldEditor_MinValue();
+		EAttribute SCALE_FIELD_EDITOR__MIN_VALUE = eINSTANCE
+				.getScaleFieldEditor_MinValue();
 
 		/**
-		 * The meta object literal for the '<em><b>Max Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Max Value</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute SCALE_FIELD_EDITOR__MAX_VALUE = eINSTANCE.getScaleFieldEditor_MaxValue();
+		EAttribute SCALE_FIELD_EDITOR__MAX_VALUE = eINSTANCE
+				.getScaleFieldEditor_MaxValue();
 
 		/**
-		 * The meta object literal for the '<em><b>Increment Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Increment Value</b></em>'
+		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute SCALE_FIELD_EDITOR__INCREMENT_VALUE = eINSTANCE.getScaleFieldEditor_IncrementValue();
+		EAttribute SCALE_FIELD_EDITOR__INCREMENT_VALUE = eINSTANCE
+				.getScaleFieldEditor_IncrementValue();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.StringFieldEditorImpl <em>String Field Editor</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.StringFieldEditorImpl
+		 * <em>String Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.StringFieldEditorImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getStringFieldEditor()
 		 * @generated
@@ -3990,17 +4115,20 @@ public interface PreferencesPackage extends EPackage {
 		EClass STRING_FIELD_EDITOR = eINSTANCE.getStringFieldEditor();
 
 		/**
-		 * The meta object literal for the '<em><b>Max Length</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Max Length</b></em>'
+		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute STRING_FIELD_EDITOR__MAX_LENGTH = eINSTANCE.getStringFieldEditor_MaxLength();
+		EAttribute STRING_FIELD_EDITOR__MAX_LENGTH = eINSTANCE
+				.getStringFieldEditor_MaxLength();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.IntegerFieldEditorImpl <em>Integer Field Editor</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.IntegerFieldEditorImpl
+		 * <em>Integer Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.IntegerFieldEditorImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getIntegerFieldEditor()
 		 * @generated
@@ -4008,25 +4136,29 @@ public interface PreferencesPackage extends EPackage {
 		EClass INTEGER_FIELD_EDITOR = eINSTANCE.getIntegerFieldEditor();
 
 		/**
-		 * The meta object literal for the '<em><b>Min Valid Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Min Valid Value</b></em>'
+		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute INTEGER_FIELD_EDITOR__MIN_VALID_VALUE = eINSTANCE.getIntegerFieldEditor_MinValidValue();
+		EAttribute INTEGER_FIELD_EDITOR__MIN_VALID_VALUE = eINSTANCE
+				.getIntegerFieldEditor_MinValidValue();
 
 		/**
-		 * The meta object literal for the '<em><b>Max Valid Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Max Valid Value</b></em>'
+		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
-		EAttribute INTEGER_FIELD_EDITOR__MAX_VALID_VALUE = eINSTANCE.getIntegerFieldEditor_MaxValidValue();
+		EAttribute INTEGER_FIELD_EDITOR__MAX_VALID_VALUE = eINSTANCE
+				.getIntegerFieldEditor_MaxValidValue();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.FileFieldEditorImpl <em>File Field Editor</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.FileFieldEditorImpl
+		 * <em>File Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.FileFieldEditorImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getFileFieldEditor()
 		 * @generated
@@ -4034,9 +4166,11 @@ public interface PreferencesPackage extends EPackage {
 		EClass FILE_FIELD_EDITOR = eINSTANCE.getFileFieldEditor();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.DirectoryFieldEditorImpl <em>Directory Field Editor</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.DirectoryFieldEditorImpl
+		 * <em>Directory Field Editor</em>}' class. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.DirectoryFieldEditorImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getDirectoryFieldEditor()
 		 * @generated
@@ -4044,9 +4178,11 @@ public interface PreferencesPackage extends EPackage {
 		EClass DIRECTORY_FIELD_EDITOR = eINSTANCE.getDirectoryFieldEditor();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.ListCrud <em>List Crud</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.ListCrud
+		 * <em>List Crud</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+		 * -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.ListCrud
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getListCrud()
 		 * @generated
@@ -4054,9 +4190,11 @@ public interface PreferencesPackage extends EPackage {
 		EClass LIST_CRUD = eINSTANCE.getListCrud();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListFoldImpl <em>List Fold</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.impl.ListFoldImpl
+		 * <em>List Fold</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+		 * -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.ListFoldImpl
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getListFold()
 		 * @generated
@@ -4064,9 +4202,11 @@ public interface PreferencesPackage extends EPackage {
 		EClass LIST_FOLD = eINSTANCE.getListFold();
 
 		/**
-		 * The meta object literal for the '{@link org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldStyle <em>Boolean Field Style</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldStyle
+		 * <em>Boolean Field Style</em>}' enum. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.BooleanFieldStyle
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getBooleanFieldStyle()
 		 * @generated
@@ -4075,8 +4215,8 @@ public interface PreferencesPackage extends EPackage {
 
 		/**
 		 * The meta object literal for the '<em>String Buffer</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see java.lang.StringBuffer
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getStringBuffer()
 		 * @generated
@@ -4085,8 +4225,8 @@ public interface PreferencesPackage extends EPackage {
 
 		/**
 		 * The meta object literal for the '<em>Preferences</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.osgi.service.prefs.Preferences
 		 * @see org.lunifera.vaaclipse.ui.preferences.model.impl.PreferencesPackageImpl#getPreferences()
 		 * @generated
@@ -4095,4 +4235,4 @@ public interface PreferencesPackage extends EPackage {
 
 	}
 
-} //PreferencesPackage
+} // PreferencesPackage

@@ -15,7 +15,7 @@ import org.lunifera.vaaclipse.ui.preferences.addon.internal.impexp.ExportPrefere
  *
  */
 public class ExportPreferencesHandler {
-	
+
 	@CanExecute
 	public boolean canExecute(@Optional PreferencesAuthorization prefAuthService) {
 		boolean isAllowed = true;
@@ -26,11 +26,12 @@ public class ExportPreferencesHandler {
 	}
 
 	@Execute
-	public void execute(@Optional PreferencesAuthorization prefAuthService, IEclipseContext context) {
+	public void execute(@Optional PreferencesAuthorization prefAuthService,
+			IEclipseContext context) {
 		if (!canExecute(prefAuthService))
 			return;
-		
+
 		ContextInjectionFactory.make(ExportPreferences.class, context);
 	}
-	
+
 }

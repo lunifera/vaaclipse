@@ -9,18 +9,15 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
  * @author rushan
  *
  */
-public class ThreadLocals
-{
+public class ThreadLocals {
 	private static final ThreadLocal<IEclipseContext> eclipseContext = new ThreadLocal<IEclipseContext>();
-	
-	public static IEclipseContext getRootContext()
-	{
+
+	public static IEclipseContext getRootContext() {
 		return eclipseContext.get();
 	}
-	
-	public static void setRootContext(IEclipseContext context)
-	{
+
+	public static void setRootContext(IEclipseContext context) {
 		eclipseContext.set(context);
 	}
-	
+
 }

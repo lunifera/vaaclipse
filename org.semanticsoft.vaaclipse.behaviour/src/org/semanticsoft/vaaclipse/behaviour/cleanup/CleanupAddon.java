@@ -45,48 +45,57 @@ public class CleanupAddon {
 
 	@Inject
 	MApplication app;
-	
+
 	@Inject
 	VaadinExecutorService communicationManager;
 
 	private EventHandler childrenHandler = new EventHandler() {
-		
+
 		private boolean ignoreChildrenChanges = false;
-		
+
 		public void handleEvent(Event event) {
-			
+
 			if (ignoreChildrenChanges)
 				return;
-			
+
 			Object changedObj = event.getProperty(UIEvents.EventTags.ELEMENT);
-			String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
+			String eventType = (String) event
+					.getProperty(UIEvents.EventTags.TYPE);
 			if (UIEvents.EventTypes.REMOVE.equals(eventType)) {
 				final MElementContainer<?> container = (MElementContainer<?>) changedObj;
 				MUIElement containerParent = container.getParent();
 
-				// Determine the elements that should *not* ever be auto-destroyed
-				if (container instanceof MApplication || container instanceof MPerspectiveStack
-						|| container instanceof MMenuElement || container instanceof MTrimBar
-						|| container instanceof MToolBar || container instanceof MArea
-						|| container.getTags().contains(IPresentationEngine.NO_AUTO_COLLAPSE)) {
+				// Determine the elements that should *not* ever be
+				// auto-destroyed
+				if (container instanceof MApplication
+						|| container instanceof MPerspectiveStack
+						|| container instanceof MMenuElement
+						|| container instanceof MTrimBar
+						|| container instanceof MToolBar
+						|| container instanceof MArea
+						|| container.getTags().contains(
+								IPresentationEngine.NO_AUTO_COLLAPSE)) {
 					return;
 				}
 
-				if (container instanceof MWindow && containerParent instanceof MApplication) {
+				if (container instanceof MWindow
+						&& containerParent instanceof MApplication) {
 					return;
 				}
 
-				// Stall the removal to handle cases where the container is only transiently empty
+				// Stall the removal to handle cases where the container is only
+				// transiently empty
 
 				communicationManager.invokeLater(new Runnable() {
-					
-					@Override
-					public void run()
-					{
-						// Remove it from the display if no visible children
-						int tbrCount = modelService.toBeRenderedCount(container);
 
-						// Cache the value since setting the TBR may change the result
+					@Override
+					public void run() {
+						// Remove it from the display if no visible children
+						int tbrCount = modelService
+								.toBeRenderedCount(container);
+
+						// Cache the value since setting the TBR may change the
+						// result
 						boolean lastStack = isLastEditorStack(container);
 						if (tbrCount == 0 && !lastStack) {
 							container.setToBeRendered(false);
@@ -95,7 +104,8 @@ public class CleanupAddon {
 						// Remove it from the model if it has no children at all
 						MElementContainer<?> lclContainer = container;
 						if (lclContainer.getChildren().size() == 0) {
-							MElementContainer<MUIElement> parent = container.getParent();
+							MElementContainer<MUIElement> parent = container
+									.getParent();
 							if (parent != null && !lastStack) {
 								container.setToBeRendered(false);
 								parent.getChildren().remove(container);
@@ -104,25 +114,32 @@ public class CleanupAddon {
 								MUIElement eParent = (MUIElement) ((EObject) container)
 										.eContainer();
 								if (eParent instanceof MPerspective) {
-									((MPerspective) eParent).getWindows().remove(container);
+									((MPerspective) eParent).getWindows()
+											.remove(container);
 								} else if (eParent instanceof MWindow) {
-									((MWindow) eParent).getWindows().remove(container);
+									((MWindow) eParent).getWindows().remove(
+											container);
 								}
 							}
 						} else if (container.getChildren().size() == 1
 								&& container instanceof MPartSashContainer) {
-							// if a sash container has only one element then remove it and move
+							// if a sash container has only one element then
+							// remove it and move
 							// its child up to where it used to be
-							MUIElement theChild = container.getChildren().get(0);
+							MUIElement theChild = container.getChildren()
+									.get(0);
 							MElementContainer<MUIElement> parentContainer = container
 									.getParent();
 							if (parentContainer != null) {
 								ignoreChildrenChanges = true;
-								int index = parentContainer.getChildren().indexOf(container);
-								theChild.setContainerData(container.getContainerData());
+								int index = parentContainer.getChildren()
+										.indexOf(container);
+								theChild.setContainerData(container
+										.getContainerData());
 								container.getChildren().remove(theChild);
 								parentContainer.getChildren().remove(container);
-								parentContainer.getChildren().add(index, theChild);
+								parentContainer.getChildren().add(index,
+										theChild);
 								container.setToBeRendered(false);
 								ignoreChildrenChanges = false;
 							}
@@ -134,59 +151,68 @@ public class CleanupAddon {
 	};
 
 	private EventHandler renderingChangeHandler = new EventHandler() {
-		
+
 		public void handleEvent(Event event) {
-			MUIElement changedObj = (MUIElement) event.getProperty(UIEvents.EventTags.ELEMENT);
+			MUIElement changedObj = (MUIElement) event
+					.getProperty(UIEvents.EventTags.ELEMENT);
 			MElementContainer<MUIElement> container = null;
 			if (changedObj.getCurSharedRef() != null)
 				container = changedObj.getCurSharedRef().getParent();
 			else
 				container = changedObj.getParent();
 
-			// this can happen for shared parts that aren't attached to any placeholders
+			// this can happen for shared parts that aren't attached to any
+			// placeholders
 			if (container == null) {
 				return;
 			}
 
 			// never hide top-level windows
 			MUIElement containerElement = container;
-			if (containerElement instanceof MWindow && containerElement.getParent() != null) {
+			if (containerElement instanceof MWindow
+					&& containerElement.getParent() != null) {
 				return;
 			}
 
-			// These elements should neither be shown nor hidden based on their containment state
-			if (isLastEditorStack(containerElement) || containerElement instanceof MPerspective
-					|| containerElement instanceof MPerspectiveStack || containerElement instanceof MTrimBar)
+			// These elements should neither be shown nor hidden based on their
+			// containment state
+			if (isLastEditorStack(containerElement)
+					|| containerElement instanceof MPerspective
+					|| containerElement instanceof MPerspectiveStack
+					|| containerElement instanceof MTrimBar)
 				return;
 
-			Boolean toBeRendered = (Boolean) event.getProperty(UIEvents.EventTags.NEW_VALUE);
+			Boolean toBeRendered = (Boolean) event
+					.getProperty(UIEvents.EventTags.NEW_VALUE);
 			if (toBeRendered) {
 				// Bring the container back if one of its children goes visible
 				if (!container.isToBeRendered())
 					container.setToBeRendered(true);
 			} else {
 				// Never hide the container marked as no_close
-				if (container.getTags().contains(IPresentationEngine.NO_AUTO_COLLAPSE)) {
+				if (container.getTags().contains(
+						IPresentationEngine.NO_AUTO_COLLAPSE)) {
 					return;
 				}
 
 				int visCount = modelService.countRenderableChildren(container);
 
-				// Remove stacks with no visible children from the display (but not the
+				// Remove stacks with no visible children from the display (but
+				// not the
 				// model)
 				final MElementContainer<MUIElement> theContainer = container;
 				if (visCount == 0) {
 					communicationManager.invokeLater(new Runnable() {
-						
+
 						@Override
-						public void run()
-						{
+						public void run() {
 							if (!isLastEditorStack(theContainer))
 								theContainer.setToBeRendered(false);
 						}
 					});
 				} else {
-					// if there are rendered elements but none are 'visible' we should
+					// if there are rendered elements but none are 'visible' we
+					// should
 					// make the container invisible as well
 					boolean makeInvisible = true;
 
@@ -210,8 +236,10 @@ public class CleanupAddon {
 
 	@PostConstruct
 	void init(IEclipseContext context) {
-		eventBroker.subscribe(UIEvents.ElementContainer.TOPIC_CHILDREN, childrenHandler);
-		eventBroker.subscribe(UIEvents.UIElement.TOPIC_TOBERENDERED, renderingChangeHandler);
+		eventBroker.subscribe(UIEvents.ElementContainer.TOPIC_CHILDREN,
+				childrenHandler);
+		eventBroker.subscribe(UIEvents.UIElement.TOPIC_TOBERENDERED,
+				renderingChangeHandler);
 	}
 
 	@PreDestroy

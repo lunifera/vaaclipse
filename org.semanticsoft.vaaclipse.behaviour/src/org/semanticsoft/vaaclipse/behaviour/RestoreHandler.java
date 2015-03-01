@@ -22,14 +22,15 @@ import org.eclipse.e4.ui.workbench.modeling.EModelService;
 @SuppressWarnings("restriction")
 public class RestoreHandler {
 	@Execute
-	public void restore(MItem item, EModelService modelService, MWindow window, MApplication application) {
+	public void restore(MItem item, EModelService modelService, MWindow window,
+			MApplication application) {
 		String stackId = item.getContainerData();
 		MUIElement element = modelService.find(stackId, window);
-		//MUIElement element = (MUIElement) item.getTransientData().get("minimizedStack");
-		if (element != null)
-		{
+		// MUIElement element = (MUIElement)
+		// item.getTransientData().get("minimizedStack");
+		if (element != null) {
 			element.getTags().remove(IPresentationEngine.MINIMIZED_BY_ZOOM);
-			element.getTags().remove(IPresentationEngine.MINIMIZED);	
+			element.getTags().remove(IPresentationEngine.MINIMIZED);
 		}
 	}
 }

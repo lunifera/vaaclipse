@@ -11,7 +11,6 @@
 
 package org.semanticsoft.vaaclipse.util;
 
-
 public class Utils {
-		
+
 }

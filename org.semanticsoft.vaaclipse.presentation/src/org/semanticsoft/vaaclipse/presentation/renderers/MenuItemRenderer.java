@@ -199,8 +199,8 @@ public class MenuItemRenderer extends ItemRenderer {
 		else if (item instanceof MHandledMenuItem)
 			context.set(MHandledMenuItem.class, (MHandledMenuItem) item);
 		// TODO luna - check this
-//		else if (item instanceof MOpaqueMenuItem)
-//			context.set(MOpaqueMenuItem.class, (MOpaqueMenuItem) item);
+		// else if (item instanceof MOpaqueMenuItem)
+		// context.set(MOpaqueMenuItem.class, (MOpaqueMenuItem) item);
 	}
 
 	@Override

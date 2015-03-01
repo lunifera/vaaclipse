@@ -25,14 +25,16 @@ public class CleanupProcessor {
 
 		// Prevent multiple copies
 		for (MAddon addon : addons) {
-			if (addon.getContributionURI().contains("org.semanticsoft.vaaclipse.behaviour.CleanupAddon"))
+			if (addon.getContributionURI().contains(
+					"org.semanticsoft.vaaclipse.behaviour.CleanupAddon"))
 				return;
 		}
 
 		// Insert the addon into the system
 		MAddon cleanupAddon = ApplicationFactoryImpl.eINSTANCE.createAddon();
 		cleanupAddon.setElementId("CleanupAddon"); //$NON-NLS-1$
-		cleanupAddon.setContributionURI("bundleclass://org.semanticsoft.vaaclipse.behaviour/org.semanticsoft.vaaclipse.behaviour.cleanup.CleanupAddon"); //$NON-NLS-1$
+		cleanupAddon
+				.setContributionURI("bundleclass://org.semanticsoft.vaaclipse.behaviour/org.semanticsoft.vaaclipse.behaviour.cleanup.CleanupAddon"); //$NON-NLS-1$
 		app.getAddons().add(cleanupAddon);
 	}
 }

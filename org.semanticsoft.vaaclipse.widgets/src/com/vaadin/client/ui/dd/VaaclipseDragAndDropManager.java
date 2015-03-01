@@ -64,758 +64,760 @@ import fi.jasoft.dragdroplayouts.client.ui.tabsheet.VDDTabSheet;
  */
 public class VaaclipseDragAndDropManager extends VDragAndDropManager {
 
-    public static final String ACTIVE_DRAG_SOURCE_STYLENAME = "v-active-drag-source";
-    
-    Logger logger = Logger.getLogger(VaaclipseDragAndDropManager.class.getName());
+	public static final String ACTIVE_DRAG_SOURCE_STYLENAME = "v-active-drag-source";
 
-    private final class DefaultDragAndDropEventHandler implements
-            NativePreviewHandler {
+	Logger logger = Logger.getLogger(VaaclipseDragAndDropManager.class
+			.getName());
 
-        @Override
-        public void onPreviewNativeEvent(NativePreviewEvent event) {
-            NativeEvent nativeEvent = event.getNativeEvent();
+	private final class DefaultDragAndDropEventHandler implements
+			NativePreviewHandler {
 
-            int typeInt = event.getTypeInt();
-            if (typeInt == Event.ONKEYDOWN) {
-                int keyCode = event.getNativeEvent().getKeyCode();
-                if (keyCode == KeyCodes.KEY_ESCAPE) {
-                    // end drag if ESC is hit
-                    interruptDrag();
-                    event.cancel();
-                    event.getNativeEvent().preventDefault();
-                }
-                // no use for handling for any key down event
-                return;
-            }
+		@Override
+		public void onPreviewNativeEvent(NativePreviewEvent event) {
+			NativeEvent nativeEvent = event.getNativeEvent();
 
-            currentDrag.setCurrentGwtEvent(nativeEvent);
-            updateDragImagePosition();
+			int typeInt = event.getTypeInt();
+			if (typeInt == Event.ONKEYDOWN) {
+				int keyCode = event.getNativeEvent().getKeyCode();
+				if (keyCode == KeyCodes.KEY_ESCAPE) {
+					// end drag if ESC is hit
+					interruptDrag();
+					event.cancel();
+					event.getNativeEvent().preventDefault();
+				}
+				// no use for handling for any key down event
+				return;
+			}
 
-            Node targetNode = Node.as(nativeEvent.getEventTarget());
-            Element targetElement;
-            if (Element.is(targetNode)) {
-                targetElement = Element.as(targetNode);
-            } else {
-                targetElement = targetNode.getParentElement();
-            }
-            
-        	//VConsole.log("Target Element is: " + targetElement);
-            if (targetElement == null)
-            	return;
+			currentDrag.setCurrentGwtEvent(nativeEvent);
+			updateDragImagePosition();
 
-            if (Util.isTouchEvent(nativeEvent)
-                    || (dragElement != null && dragElement
-                            .isOrHasChild(targetElement))) {
-                // to detect the "real" target, hide dragelement temporary and
-                // use elementFromPoint
-                String display = dragElement.getStyle().getDisplay();
-                dragElement.getStyle().setDisplay(Display.NONE);
-                try {
-                    int x = Util.getTouchOrMouseClientX(nativeEvent);
-                    int y = Util.getTouchOrMouseClientY(nativeEvent);
-                    // Util.browserDebugger();
-                    targetElement = Util.getElementFromPoint(x, y);
-                    if (targetElement == null) {
-                        // ApplicationConnection.getConsole().log(
-                        // "Event on dragImage, ignored");
-                        event.cancel();
-                        nativeEvent.stopPropagation();
-                        return;
+			Node targetNode = Node.as(nativeEvent.getEventTarget());
+			Element targetElement;
+			if (Element.is(targetNode)) {
+				targetElement = Element.as(targetNode);
+			} else {
+				targetElement = targetNode.getParentElement();
+			}
 
-                    } else {
-                        // ApplicationConnection.getConsole().log(
-                        // "Event on dragImage, target changed");
-                        // special handling for events over dragImage
-                        // pretty much all events are mousemove althout below
-                        // kind of happens mouseover
-                        switch (typeInt) {
-                        case Event.ONMOUSEOVER:
-                        case Event.ONMOUSEOUT:
-                            // ApplicationConnection
-                            // .getConsole()
-                            // .log(
-                            // "IGNORING proxy image event, fired because of hack or not significant");
-                            return;
-                        case Event.ONMOUSEMOVE:
-                        case Event.ONTOUCHMOVE:
-                            VDropHandler findDragTarget = findDragTarget(targetElement);
-                            if (findDragTarget != currentDropHandler) {
-                                // dragleave on old
-                                if (currentDropHandler != null) {
-                                    currentDropHandler.dragLeave(currentDrag);
-                                    currentDrag.getDropDetails().clear();
-                                    serverCallback = null;
-                                }
-                                // dragenter on new
-                                currentDropHandler = findDragTarget;
-                                if (findDragTarget != null) {
-                                    // ApplicationConnection.getConsole().log(
-                                    // "DropHandler now"
-                                    // + currentDropHandler
-                                    // .getPaintable());
-                                }
+			// VConsole.log("Target Element is: " + targetElement);
+			if (targetElement == null)
+				return;
 
-                                if (currentDropHandler != null) {
-                                    currentDrag
-                                            .setElementOver((com.google.gwt.user.client.Element) targetElement);
-                                    currentDropHandler.dragEnter(currentDrag);
-                                }
-                            } else if (findDragTarget != null) {
-                                currentDrag
-                                        .setElementOver((com.google.gwt.user.client.Element) targetElement);
-                                currentDropHandler.dragOver(currentDrag);
-                            }
-                            // prevent text selection on IE
-                            nativeEvent.preventDefault();
-                            return;
-                        default:
-                            // just update element over and let the actual
-                            // handling code do the thing
-                            // ApplicationConnection.getConsole().log(
-                            // "Target just modified on "
-                            // + event.getType());
-                            currentDrag
-                                    .setElementOver((com.google.gwt.user.client.Element) targetElement);
-                            break;
-                        }
+			if (Util.isTouchEvent(nativeEvent)
+					|| (dragElement != null && dragElement
+							.isOrHasChild(targetElement))) {
+				// to detect the "real" target, hide dragelement temporary and
+				// use elementFromPoint
+				String display = dragElement.getStyle().getDisplay();
+				dragElement.getStyle().setDisplay(Display.NONE);
+				try {
+					int x = Util.getTouchOrMouseClientX(nativeEvent);
+					int y = Util.getTouchOrMouseClientY(nativeEvent);
+					// Util.browserDebugger();
+					targetElement = Util.getElementFromPoint(x, y);
+					if (targetElement == null) {
+						// ApplicationConnection.getConsole().log(
+						// "Event on dragImage, ignored");
+						event.cancel();
+						nativeEvent.stopPropagation();
+						return;
 
-                    }
-                } catch (RuntimeException e) {
-                    // ApplicationConnection.getConsole().log(
-                    // "ERROR during elementFromPoint hack.");
-                    throw e;
-                } finally {
-                    dragElement.getStyle().setProperty("display", display);
-                }
-            }
+					} else {
+						// ApplicationConnection.getConsole().log(
+						// "Event on dragImage, target changed");
+						// special handling for events over dragImage
+						// pretty much all events are mousemove althout below
+						// kind of happens mouseover
+						switch (typeInt) {
+						case Event.ONMOUSEOVER:
+						case Event.ONMOUSEOUT:
+							// ApplicationConnection
+							// .getConsole()
+							// .log(
+							// "IGNORING proxy image event, fired because of hack or not significant");
+							return;
+						case Event.ONMOUSEMOVE:
+						case Event.ONTOUCHMOVE:
+							VDropHandler findDragTarget = findDragTarget(targetElement);
+							if (findDragTarget != currentDropHandler) {
+								// dragleave on old
+								if (currentDropHandler != null) {
+									currentDropHandler.dragLeave(currentDrag);
+									currentDrag.getDropDetails().clear();
+									serverCallback = null;
+								}
+								// dragenter on new
+								currentDropHandler = findDragTarget;
+								if (findDragTarget != null) {
+									// ApplicationConnection.getConsole().log(
+									// "DropHandler now"
+									// + currentDropHandler
+									// .getPaintable());
+								}
 
-            switch (typeInt) {
-            case Event.ONMOUSEOVER:
-                VDropHandler target = findDragTarget(targetElement);
+								if (currentDropHandler != null) {
+									currentDrag
+											.setElementOver((com.google.gwt.user.client.Element) targetElement);
+									currentDropHandler.dragEnter(currentDrag);
+								}
+							} else if (findDragTarget != null) {
+								currentDrag
+										.setElementOver((com.google.gwt.user.client.Element) targetElement);
+								currentDropHandler.dragOver(currentDrag);
+							}
+							// prevent text selection on IE
+							nativeEvent.preventDefault();
+							return;
+						default:
+							// just update element over and let the actual
+							// handling code do the thing
+							// ApplicationConnection.getConsole().log(
+							// "Target just modified on "
+							// + event.getType());
+							currentDrag
+									.setElementOver((com.google.gwt.user.client.Element) targetElement);
+							break;
+						}
 
-                if (target != null && target != currentDropHandler) {
-                    if (currentDropHandler != null) {
-                        currentDropHandler.dragLeave(currentDrag);
-                        currentDrag.getDropDetails().clear();
-                    }
+					}
+				} catch (RuntimeException e) {
+					// ApplicationConnection.getConsole().log(
+					// "ERROR during elementFromPoint hack.");
+					throw e;
+				} finally {
+					dragElement.getStyle().setProperty("display", display);
+				}
+			}
 
-                    currentDropHandler = target;
-                    // ApplicationConnection.getConsole().log(
-                    // "DropHandler now"
-                    // + currentDropHandler.getPaintable());
-                    currentDrag
-                            .setElementOver((com.google.gwt.user.client.Element) targetElement);
-                    target.dragEnter(currentDrag);
-                } else if (target == null && currentDropHandler != null) {
-                    // ApplicationConnection.getConsole().log("Invalid state!?");
-                    currentDropHandler.dragLeave(currentDrag);
-                    currentDrag.getDropDetails().clear();
-                    currentDropHandler = null;
-                }
-                break;
-            case Event.ONMOUSEOUT:
-                Element relatedTarget = Element.as(nativeEvent
-                        .getRelatedEventTarget());
-                VDropHandler newDragHanler = findDragTarget(relatedTarget);
-                //VConsole.log("Related Target is: " + relatedTarget);
-                if (dragElement != null
-                        && dragElement.isOrHasChild(relatedTarget)) {
-                    // ApplicationConnection.getConsole().log(
-                    // "Mouse out of dragImage, ignored");
-                    return;
-                }
+			switch (typeInt) {
+			case Event.ONMOUSEOVER:
+				VDropHandler target = findDragTarget(targetElement);
 
-                if (currentDropHandler != null
-                        && currentDropHandler != newDragHanler) {
-                    currentDropHandler.dragLeave(currentDrag);
-                    currentDrag.getDropDetails().clear();
-                    currentDropHandler = null;
-                    serverCallback = null;
-                }
-                break;
-            case Event.ONMOUSEMOVE:
-            case Event.ONTOUCHMOVE:
-                if (currentDropHandler != null) {
-                    currentDrag
-                            .setElementOver((com.google.gwt.user.client.Element) targetElement);
-                    currentDropHandler.dragOver(currentDrag);
-                }
-                nativeEvent.preventDefault();
+				if (target != null && target != currentDropHandler) {
+					if (currentDropHandler != null) {
+						currentDropHandler.dragLeave(currentDrag);
+						currentDrag.getDropDetails().clear();
+					}
 
-                break;
+					currentDropHandler = target;
+					// ApplicationConnection.getConsole().log(
+					// "DropHandler now"
+					// + currentDropHandler.getPaintable());
+					currentDrag
+							.setElementOver((com.google.gwt.user.client.Element) targetElement);
+					target.dragEnter(currentDrag);
+				} else if (target == null && currentDropHandler != null) {
+					// ApplicationConnection.getConsole().log("Invalid state!?");
+					currentDropHandler.dragLeave(currentDrag);
+					currentDrag.getDropDetails().clear();
+					currentDropHandler = null;
+				}
+				break;
+			case Event.ONMOUSEOUT:
+				Element relatedTarget = Element.as(nativeEvent
+						.getRelatedEventTarget());
+				VDropHandler newDragHanler = findDragTarget(relatedTarget);
+				// VConsole.log("Related Target is: " + relatedTarget);
+				if (dragElement != null
+						&& dragElement.isOrHasChild(relatedTarget)) {
+					// ApplicationConnection.getConsole().log(
+					// "Mouse out of dragImage, ignored");
+					return;
+				}
 
-            case Event.ONTOUCHEND:
-                /* Avoid simulated event on drag end */
-                event.getNativeEvent().preventDefault();
-            case Event.ONMOUSEUP:
-                endDrag();
-                break;
+				if (currentDropHandler != null
+						&& currentDropHandler != newDragHanler) {
+					currentDropHandler.dragLeave(currentDrag);
+					currentDrag.getDropDetails().clear();
+					currentDropHandler = null;
+					serverCallback = null;
+				}
+				break;
+			case Event.ONMOUSEMOVE:
+			case Event.ONTOUCHMOVE:
+				if (currentDropHandler != null) {
+					currentDrag
+							.setElementOver((com.google.gwt.user.client.Element) targetElement);
+					currentDropHandler.dragOver(currentDrag);
+				}
+				nativeEvent.preventDefault();
 
-            default:
-                break;
-            }
+				break;
 
-        }
+			case Event.ONTOUCHEND:
+				/* Avoid simulated event on drag end */
+				event.getNativeEvent().preventDefault();
+			case Event.ONMOUSEUP:
+				endDrag();
+				break;
 
-    }
+			default:
+				break;
+			}
 
-    private static VaaclipseDragAndDropManager instance;
-    private HandlerRegistration handlerRegistration;
-    private VDragEvent currentDrag;
+		}
 
-    /**
-     * If dragging is currently on a drophandler, this field has reference to it
-     */
-    private VDropHandler currentDropHandler;
+	}
 
-    public VDropHandler getCurrentDropHandler() {
-        return currentDropHandler;
-    }
+	private static VaaclipseDragAndDropManager instance;
+	private HandlerRegistration handlerRegistration;
+	private VDragEvent currentDrag;
 
-    /**
-     * If drag and drop operation is not handled by {@link VaaclipseDragAndDropManager}s
-     * internal handler, this can be used to update current {@link VDropHandler}
-     * .
-     * 
-     * @param currentDropHandler
-     */
-    public void setCurrentDropHandler(VDropHandler currentDropHandler) {
-        this.currentDropHandler = currentDropHandler;
-    }
+	/**
+	 * If dragging is currently on a drophandler, this field has reference to it
+	 */
+	private VDropHandler currentDropHandler;
 
-    private VDragEventServerCallback serverCallback;
+	public VDropHandler getCurrentDropHandler() {
+		return currentDropHandler;
+	}
 
-    private HandlerRegistration deferredStartRegistration;
+	/**
+	 * If drag and drop operation is not handled by
+	 * {@link VaaclipseDragAndDropManager}s internal handler, this can be used
+	 * to update current {@link VDropHandler} .
+	 * 
+	 * @param currentDropHandler
+	 */
+	public void setCurrentDropHandler(VDropHandler currentDropHandler) {
+		this.currentDropHandler = currentDropHandler;
+	}
+
+	private VDragEventServerCallback serverCallback;
+
+	private HandlerRegistration deferredStartRegistration;
 	private String version = "2";
 
-    public static VaaclipseDragAndDropManager get() {
-        if (instance == null) {
-            instance = GWT.create(VaaclipseDragAndDropManager.class);
-        }
-        return instance;
-    }
+	public static VaaclipseDragAndDropManager get() {
+		if (instance == null) {
+			instance = GWT.create(VaaclipseDragAndDropManager.class);
+		}
+		return instance;
+	}
 
-    /* Singleton */
-    protected VaaclipseDragAndDropManager() {
-    	
-    	logger.info("VaaclipseDragAndDropManager - version " + version );
-    	
-    }
+	/* Singleton */
+	protected VaaclipseDragAndDropManager() {
 
-    private NativePreviewHandler defaultDragAndDropEventHandler = new DefaultDragAndDropEventHandler();
+		logger.info("VaaclipseDragAndDropManager - version " + version);
 
-    /**
-     * Flag to indicate if drag operation has really started or not. Null check
-     * of currentDrag field is not enough as a lazy start may be pending.
-     */
-    private boolean isStarted;
+	}
 
-    /**
-     * This method is used to start Vaadin client side drag and drop operation.
-     * Operation may be started by virtually any Widget.
-     * <p>
-     * Cancels possible existing drag. TODO figure out if this is always a bug
-     * if one is active. Maybe a good and cheap lifesaver thought.
-     * <p>
-     * If possible, method automatically detects current {@link VDropHandler}
-     * and fires {@link VDropHandler#dragEnter(VDragEvent)} event on it.
-     * <p>
-     * May also be used to control the drag and drop operation. If this option
-     * is used, {@link VDropHandler} is searched on mouse events and appropriate
-     * methods on it called automatically.
-     * 
-     * @param transferable
-     * @param nativeEvent
-     * @param handleDragEvents
-     *            if true, {@link VaaclipseDragAndDropManager} handles the drag and drop
-     *            operation GWT event preview.
-     * @return
-     */
-    public VDragEvent startDrag(VTransferable transferable,
-            final NativeEvent startEvent, final boolean handleDragEvents) {
-    	
-        interruptDrag();
-        isStarted = false;
+	private NativePreviewHandler defaultDragAndDropEventHandler = new DefaultDragAndDropEventHandler();
 
-        currentDrag = new VDragEvent(transferable, startEvent);
-        currentDrag.setCurrentGwtEvent(startEvent);
+	/**
+	 * Flag to indicate if drag operation has really started or not. Null check
+	 * of currentDrag field is not enough as a lazy start may be pending.
+	 */
+	private boolean isStarted;
 
-        final Command startDrag = new Command() {
+	/**
+	 * This method is used to start Vaadin client side drag and drop operation.
+	 * Operation may be started by virtually any Widget.
+	 * <p>
+	 * Cancels possible existing drag. TODO figure out if this is always a bug
+	 * if one is active. Maybe a good and cheap lifesaver thought.
+	 * <p>
+	 * If possible, method automatically detects current {@link VDropHandler}
+	 * and fires {@link VDropHandler#dragEnter(VDragEvent)} event on it.
+	 * <p>
+	 * May also be used to control the drag and drop operation. If this option
+	 * is used, {@link VDropHandler} is searched on mouse events and appropriate
+	 * methods on it called automatically.
+	 * 
+	 * @param transferable
+	 * @param nativeEvent
+	 * @param handleDragEvents
+	 *            if true, {@link VaaclipseDragAndDropManager} handles the drag
+	 *            and drop operation GWT event preview.
+	 * @return
+	 */
+	public VDragEvent startDrag(VTransferable transferable,
+			final NativeEvent startEvent, final boolean handleDragEvents) {
 
-            @Override
-            public void execute() {
-                isStarted = true;
-                addActiveDragSourceStyleName();
-                VDropHandler dh = null;
-                if (startEvent != null) {
-                    dh = findDragTarget(Element.as(currentDrag
-                            .getCurrentGwtEvent().getEventTarget()));
-                }
-                if (dh != null) {
-                    // drag has started on a DropHandler, kind of drag over
-                    // happens
-                    currentDropHandler = dh;
-                    dh.dragEnter(currentDrag);
-                }
+		interruptDrag();
+		isStarted = false;
 
-                if (handleDragEvents) {
-                    handlerRegistration = Event
-                            .addNativePreviewHandler(defaultDragAndDropEventHandler);
-                    if (dragElement != null
-                            && dragElement.getParentElement() == null) {
-                        // deferred attaching drag image is on going, we can
-                        // hurry with it now
-                        lazyAttachDragElement.cancel();
-                        lazyAttachDragElement.run();
-                    }
-                }
-                // just capture something to prevent text selection in IE
-                Event.setCapture(RootPanel.getBodyElement());
-            }
+		currentDrag = new VDragEvent(transferable, startEvent);
+		currentDrag.setCurrentGwtEvent(startEvent);
 
-            private void addActiveDragSourceStyleName() {
-                ComponentConnector dragSource = currentDrag.getTransferable()
-                        .getDragSource();
-                dragSource.getWidget().addStyleName(
-                        ACTIVE_DRAG_SOURCE_STYLENAME);
-            }
-        };
+		final Command startDrag = new Command() {
 
-        final int eventType = Event.as(startEvent).getTypeInt();
-        if (handleDragEvents
-                && (eventType == Event.ONMOUSEDOWN || eventType == Event.ONTOUCHSTART)) {
-            // only really start drag event on mousemove
-            deferredStartRegistration = Event
-                    .addNativePreviewHandler(new NativePreviewHandler() {
+			@Override
+			public void execute() {
+				isStarted = true;
+				addActiveDragSourceStyleName();
+				VDropHandler dh = null;
+				if (startEvent != null) {
+					dh = findDragTarget(Element.as(currentDrag
+							.getCurrentGwtEvent().getEventTarget()));
+				}
+				if (dh != null) {
+					// drag has started on a DropHandler, kind of drag over
+					// happens
+					currentDropHandler = dh;
+					dh.dragEnter(currentDrag);
+				}
 
-                        @Override
-                        public void onPreviewNativeEvent(
-                                NativePreviewEvent event) {
-                            int typeInt = event.getTypeInt();
-                            switch (typeInt) {
-                            case Event.ONMOUSEOVER:
-                                if (dragElement == null) {
-                                    break;
-                                }
-                                EventTarget currentEventTarget = event
-                                        .getNativeEvent()
-                                        .getCurrentEventTarget();
-                                if (Node.is(currentEventTarget)
-                                        && !dragElement.isOrHasChild(Node
-                                                .as(currentEventTarget))) {
-                                    // drag image appeared below, ignore
-                                    break;
-                                }
-                            case Event.ONKEYDOWN:
-                            case Event.ONKEYPRESS:
-                            case Event.ONKEYUP:
-                            case Event.ONBLUR:
-                            case Event.ONFOCUS:
-                                // don't cancel possible drag start
-                                break;
-                            case Event.ONMOUSEOUT:
+				if (handleDragEvents) {
+					handlerRegistration = Event
+							.addNativePreviewHandler(defaultDragAndDropEventHandler);
+					if (dragElement != null
+							&& dragElement.getParentElement() == null) {
+						// deferred attaching drag image is on going, we can
+						// hurry with it now
+						lazyAttachDragElement.cancel();
+						lazyAttachDragElement.run();
+					}
+				}
+				// just capture something to prevent text selection in IE
+				Event.setCapture(RootPanel.getBodyElement());
+			}
 
-                                if (dragElement == null) {
-                                    break;
-                                }
-                                EventTarget relatedEventTarget = event
-                                        .getNativeEvent()
-                                        .getRelatedEventTarget();
-                                if (Node.is(relatedEventTarget)
-                                        && !dragElement.isOrHasChild(Node
-                                                .as(relatedEventTarget))) {
-                                    // drag image appeared below, ignore
-                                    break;
-                                }
-                            case Event.ONMOUSEMOVE:
-                            case Event.ONTOUCHMOVE:
-                                if (deferredStartRegistration != null) {
-                                    deferredStartRegistration.removeHandler();
-                                    deferredStartRegistration = null;
-                                }
-                                currentDrag.setCurrentGwtEvent(event
-                                        .getNativeEvent());
-                                startDrag.execute();
-                                break;
-                            default:
-                                // on any other events, clean up the
-                                // deferred drag start
-                                if (deferredStartRegistration != null) {
-                                    deferredStartRegistration.removeHandler();
-                                    deferredStartRegistration = null;
-                                }
-                                currentDrag = null;
-                                clearDragElement();
-                                break;
-                            }
-                        }
+			private void addActiveDragSourceStyleName() {
+				ComponentConnector dragSource = currentDrag.getTransferable()
+						.getDragSource();
+				dragSource.getWidget().addStyleName(
+						ACTIVE_DRAG_SOURCE_STYLENAME);
+			}
+		};
 
-                    });
+		final int eventType = Event.as(startEvent).getTypeInt();
+		if (handleDragEvents
+				&& (eventType == Event.ONMOUSEDOWN || eventType == Event.ONTOUCHSTART)) {
+			// only really start drag event on mousemove
+			deferredStartRegistration = Event
+					.addNativePreviewHandler(new NativePreviewHandler() {
 
-        } else {
-            startDrag.execute();
-        }
+						@Override
+						public void onPreviewNativeEvent(
+								NativePreviewEvent event) {
+							int typeInt = event.getTypeInt();
+							switch (typeInt) {
+							case Event.ONMOUSEOVER:
+								if (dragElement == null) {
+									break;
+								}
+								EventTarget currentEventTarget = event
+										.getNativeEvent()
+										.getCurrentEventTarget();
+								if (Node.is(currentEventTarget)
+										&& !dragElement.isOrHasChild(Node
+												.as(currentEventTarget))) {
+									// drag image appeared below, ignore
+									break;
+								}
+							case Event.ONKEYDOWN:
+							case Event.ONKEYPRESS:
+							case Event.ONKEYUP:
+							case Event.ONBLUR:
+							case Event.ONFOCUS:
+								// don't cancel possible drag start
+								break;
+							case Event.ONMOUSEOUT:
 
-        return currentDrag;
-    }
+								if (dragElement == null) {
+									break;
+								}
+								EventTarget relatedEventTarget = event
+										.getNativeEvent()
+										.getRelatedEventTarget();
+								if (Node.is(relatedEventTarget)
+										&& !dragElement.isOrHasChild(Node
+												.as(relatedEventTarget))) {
+									// drag image appeared below, ignore
+									break;
+								}
+							case Event.ONMOUSEMOVE:
+							case Event.ONTOUCHMOVE:
+								if (deferredStartRegistration != null) {
+									deferredStartRegistration.removeHandler();
+									deferredStartRegistration = null;
+								}
+								currentDrag.setCurrentGwtEvent(event
+										.getNativeEvent());
+								startDrag.execute();
+								break;
+							default:
+								// on any other events, clean up the
+								// deferred drag start
+								if (deferredStartRegistration != null) {
+									deferredStartRegistration.removeHandler();
+									deferredStartRegistration = null;
+								}
+								currentDrag = null;
+								clearDragElement();
+								break;
+							}
+						}
 
-    private void updateDragImagePosition() {
-        if (currentDrag.getCurrentGwtEvent() != null && dragElement != null) {
-            Style style = dragElement.getStyle();
-            int clientY = Util.getTouchOrMouseClientY(currentDrag
-                    .getCurrentGwtEvent());
-            int clientX = Util.getTouchOrMouseClientX(currentDrag
-                    .getCurrentGwtEvent());
-            style.setTop(clientY, Unit.PX);
-            style.setLeft(clientX, Unit.PX);
-        }
-    }
+					});
 
-  public VDropHandler findDragTarget(com.google.gwt.dom.client.Element element) {
-	
-	  //VConsole.log("findDragTarget: version " + version);
-	  
-      try {
-      	Widget w = Util.findWidget(
-                  (com.google.gwt.user.client.Element) element, null);
-          if (w == null) {
-              return null;
-          }
-          
-          ComponentConnector dragSource = currentDrag.getTransferable().getDragSource();
-          
-  		if (dragSource != null && dragSource.getWidget() instanceof VDDTabSheet)
-  		{
-              while (!(w instanceof VDDTabSheet) ) {
-                  w = w.getParent();
-                  if (w == null) {
-                      break;
-                  }
-              }
-  		}
-  		else
-  		{
-            while (!(w instanceof VHasDropHandler)
-                    || !isDropEnabled((VHasDropHandler) w)) {
-                  w = w.getParent();
-                  if (w == null) {
-                      break;
-                  }
-              }
-  		}
-  		
-  		if (w == null) {
-              return null;
-          } else {
-              VDropHandler dh = ((VHasDropHandler) w).getDropHandler();
-              return dh;
-          }
-      } catch (Exception e) {
-          return null;
-      }
+		} else {
+			startDrag.execute();
+		}
 
-  }
-  
-  /**
-   * Checks if the given {@link VHasDropHandler} really is able to accept
-   * drops.
-   */
-  private static boolean isDropEnabled(VHasDropHandler target) {
-      VDropHandler dh = target.getDropHandler();
-      return dh != null && dh.getConnector().isEnabled();
-  }
+		return currentDrag;
+	}
 
-    /**
-     * Drag is ended (drop happened) on current drop handler. Calls drop method
-     * on current drop handler and does appropriate cleanup.
-     */
-    public void endDrag() {
-        endDrag(true);
-    }
+	private void updateDragImagePosition() {
+		if (currentDrag.getCurrentGwtEvent() != null && dragElement != null) {
+			Style style = dragElement.getStyle();
+			int clientY = Util.getTouchOrMouseClientY(currentDrag
+					.getCurrentGwtEvent());
+			int clientX = Util.getTouchOrMouseClientX(currentDrag
+					.getCurrentGwtEvent());
+			style.setTop(clientY, Unit.PX);
+			style.setLeft(clientX, Unit.PX);
+		}
+	}
 
-    /**
-     * The drag and drop operation is ended, but drop did not happen. If
-     * operation is currently on a drop handler, its dragLeave method is called
-     * and appropriate cleanup happens.
-     */
-    public void interruptDrag() {
-        endDrag(false);
-    }
+	public VDropHandler findDragTarget(com.google.gwt.dom.client.Element element) {
 
-    private void endDrag(boolean doDrop) {
-        if (handlerRegistration != null) {
-            handlerRegistration.removeHandler();
-            handlerRegistration = null;
-        }
-        boolean sendTransferableToServer = false;
-        if (currentDropHandler != null) {
-            if (doDrop) {
-                // we have dropped on a drop target
-                sendTransferableToServer = currentDropHandler.drop(currentDrag);
-                if (sendTransferableToServer) {
-                    doRequest(DragEventType.DROP);
-                    /*
-                     * Clean active source class name deferred until response is
-                     * handled. E.g. hidden on start, removed in drophandler ->
-                     * would flicker in case removed eagerly.
-                     */
-                    final ComponentConnector dragSource = currentDrag
-                            .getTransferable().getDragSource();
-                    final ApplicationConnection client = currentDropHandler
-                            .getApplicationConnection();
-                    Scheduler.get().scheduleFixedDelay(new RepeatingCommand() {
-                        @Override
-                        public boolean execute() {
-                            if (!client.hasActiveRequest()) {
-                                removeActiveDragSourceStyleName(dragSource);
-                                return false;
-                            }
-                            return true;
-                        }
+		// VConsole.log("findDragTarget: version " + version);
 
-                    }, 30);
+		try {
+			Widget w = Util.findWidget(
+					(com.google.gwt.user.client.Element) element, null);
+			if (w == null) {
+				return null;
+			}
 
-                }
-            } else {
-                currentDrag.setCurrentGwtEvent(null);
-                currentDropHandler.dragLeave(currentDrag);
-            }
-            currentDropHandler = null;
-            serverCallback = null;
-            visitId = 0; // reset to ignore ongoing server check
-        }
+			ComponentConnector dragSource = currentDrag.getTransferable()
+					.getDragSource();
 
-        /*
-         * Remove class name indicating drag source when server visit is done
-         * iff server visit was not initiated. Otherwise it will be removed once
-         * the server visit is done.
-         */
-        if (!sendTransferableToServer && currentDrag != null) {
-            removeActiveDragSourceStyleName(currentDrag.getTransferable()
-                    .getDragSource());
-        }
+			if (dragSource != null
+					&& dragSource.getWidget() instanceof VDDTabSheet) {
+				while (!(w instanceof VDDTabSheet)) {
+					w = w.getParent();
+					if (w == null) {
+						break;
+					}
+				}
+			} else {
+				while (!(w instanceof VHasDropHandler)
+						|| !isDropEnabled((VHasDropHandler) w)) {
+					w = w.getParent();
+					if (w == null) {
+						break;
+					}
+				}
+			}
 
-        currentDrag = null;
+			if (w == null) {
+				return null;
+			} else {
+				VDropHandler dh = ((VHasDropHandler) w).getDropHandler();
+				return dh;
+			}
+		} catch (Exception e) {
+			return null;
+		}
 
-        clearDragElement();
+	}
 
-        // release the capture (set to prevent text selection in IE)
-        Event.releaseCapture(RootPanel.getBodyElement());
+	/**
+	 * Checks if the given {@link VHasDropHandler} really is able to accept
+	 * drops.
+	 */
+	private static boolean isDropEnabled(VHasDropHandler target) {
+		VDropHandler dh = target.getDropHandler();
+		return dh != null && dh.getConnector().isEnabled();
+	}
 
-    }
+	/**
+	 * Drag is ended (drop happened) on current drop handler. Calls drop method
+	 * on current drop handler and does appropriate cleanup.
+	 */
+	public void endDrag() {
+		endDrag(true);
+	}
 
-    private void removeActiveDragSourceStyleName(ComponentConnector dragSource) {
-        dragSource.getWidget().removeStyleName(ACTIVE_DRAG_SOURCE_STYLENAME);
-    }
+	/**
+	 * The drag and drop operation is ended, but drop did not happen. If
+	 * operation is currently on a drop handler, its dragLeave method is called
+	 * and appropriate cleanup happens.
+	 */
+	public void interruptDrag() {
+		endDrag(false);
+	}
 
-    private void clearDragElement() {
-        if (dragElement != null) {
-            if (dragElement.getParentElement() != null) {
-                dragElement.removeFromParent();
-            }
-            dragElement = null;
-        }
-    }
+	private void endDrag(boolean doDrop) {
+		if (handlerRegistration != null) {
+			handlerRegistration.removeHandler();
+			handlerRegistration = null;
+		}
+		boolean sendTransferableToServer = false;
+		if (currentDropHandler != null) {
+			if (doDrop) {
+				// we have dropped on a drop target
+				sendTransferableToServer = currentDropHandler.drop(currentDrag);
+				if (sendTransferableToServer) {
+					doRequest(DragEventType.DROP);
+					/*
+					 * Clean active source class name deferred until response is
+					 * handled. E.g. hidden on start, removed in drophandler ->
+					 * would flicker in case removed eagerly.
+					 */
+					final ComponentConnector dragSource = currentDrag
+							.getTransferable().getDragSource();
+					final ApplicationConnection client = currentDropHandler
+							.getApplicationConnection();
+					Scheduler.get().scheduleFixedDelay(new RepeatingCommand() {
+						@Override
+						public boolean execute() {
+							if (!client.hasActiveRequest()) {
+								removeActiveDragSourceStyleName(dragSource);
+								return false;
+							}
+							return true;
+						}
 
-    private int visitId = 0;
-    private Element dragElement;
+					}, 30);
 
-    /**
-     * Visits server during drag and drop procedure. Transferable and event type
-     * is given to server side counterpart of DropHandler.
-     * 
-     * If another server visit is started before the current is received, the
-     * current is just dropped. TODO consider if callback should have
-     * interrupted() method for cleanup.
-     * 
-     * @param acceptCallback
-     */
-    public void visitServer(VDragEventServerCallback acceptCallback) {
-        doRequest(DragEventType.ENTER);
-        serverCallback = acceptCallback;
-    }
+				}
+			} else {
+				currentDrag.setCurrentGwtEvent(null);
+				currentDropHandler.dragLeave(currentDrag);
+			}
+			currentDropHandler = null;
+			serverCallback = null;
+			visitId = 0; // reset to ignore ongoing server check
+		}
 
-    private void doRequest(DragEventType drop) {
-        if (currentDropHandler == null) {
-            return;
-        }
-        ComponentConnector paintable = currentDropHandler.getConnector();
-        ApplicationConnection client = currentDropHandler
-                .getApplicationConnection();
-        /*
-         * For drag events we are using special id that are routed to
-         * "drag service" which then again finds the corresponding DropHandler
-         * on server side.
-         * 
-         * TODO add rest of the data in Transferable
-         * 
-         * TODO implement partial updates to Transferable (currently the whole
-         * Transferable is sent on each request)
-         */
-        visitId++;
-        client.updateVariable(ApplicationConstants.DRAG_AND_DROP_CONNECTOR_ID,
-                "visitId", visitId, false);
-        client.updateVariable(ApplicationConstants.DRAG_AND_DROP_CONNECTOR_ID,
-                "eventId", currentDrag.getEventId(), false);
-        client.updateVariable(ApplicationConstants.DRAG_AND_DROP_CONNECTOR_ID,
-                "dhowner", paintable, false);
+		/*
+		 * Remove class name indicating drag source when server visit is done
+		 * iff server visit was not initiated. Otherwise it will be removed once
+		 * the server visit is done.
+		 */
+		if (!sendTransferableToServer && currentDrag != null) {
+			removeActiveDragSourceStyleName(currentDrag.getTransferable()
+					.getDragSource());
+		}
 
-        VTransferable transferable = currentDrag.getTransferable();
+		currentDrag = null;
 
-        client.updateVariable(ApplicationConstants.DRAG_AND_DROP_CONNECTOR_ID,
-                "component", transferable.getDragSource(), false);
+		clearDragElement();
 
-        client.updateVariable(ApplicationConstants.DRAG_AND_DROP_CONNECTOR_ID,
-                "type", drop.ordinal(), false);
+		// release the capture (set to prevent text selection in IE)
+		Event.releaseCapture(RootPanel.getBodyElement());
 
-        if (currentDrag.getCurrentGwtEvent() != null) {
-            try {
-                MouseEventDetails mouseEventDetails = MouseEventDetailsBuilder
-                        .buildMouseEventDetails(currentDrag
-                                .getCurrentGwtEvent());
-                currentDrag.getDropDetails().put("mouseEvent",
-                        mouseEventDetails.serialize());
-            } catch (Exception e) {
-                // NOP, (at least oophm on Safari) can't serialize html dd event
-                // to mouseevent
-            }
-        } else {
-            currentDrag.getDropDetails().put("mouseEvent", null);
-        }
-        client.updateVariable(ApplicationConstants.DRAG_AND_DROP_CONNECTOR_ID,
-                "evt", currentDrag.getDropDetails(), false);
+	}
 
-        client.updateVariable(ApplicationConstants.DRAG_AND_DROP_CONNECTOR_ID,
-                "tra", transferable.getVariableMap(), true);
+	private void removeActiveDragSourceStyleName(ComponentConnector dragSource) {
+		dragSource.getWidget().removeStyleName(ACTIVE_DRAG_SOURCE_STYLENAME);
+	}
 
-    }
+	private void clearDragElement() {
+		if (dragElement != null) {
+			if (dragElement.getParentElement() != null) {
+				dragElement.removeFromParent();
+			}
+			dragElement = null;
+		}
+	}
 
-    public void handleServerResponse(ValueMap valueMap) {
-        if (serverCallback == null) {
-            return;
-        }
-        Profiler.enter("VDragAndDropManager.handleServerResponse");
+	private int visitId = 0;
+	private Element dragElement;
 
-        UIDL uidl = (UIDL) valueMap.cast();
-        int visitId = uidl.getIntAttribute("visitId");
+	/**
+	 * Visits server during drag and drop procedure. Transferable and event type
+	 * is given to server side counterpart of DropHandler.
+	 * 
+	 * If another server visit is started before the current is received, the
+	 * current is just dropped. TODO consider if callback should have
+	 * interrupted() method for cleanup.
+	 * 
+	 * @param acceptCallback
+	 */
+	public void visitServer(VDragEventServerCallback acceptCallback) {
+		doRequest(DragEventType.ENTER);
+		serverCallback = acceptCallback;
+	}
 
-        if (this.visitId == visitId) {
-            serverCallback.handleResponse(uidl.getBooleanAttribute("accepted"),
-                    uidl);
-            serverCallback = null;
-        }
-        runDeferredCommands();
+	private void doRequest(DragEventType drop) {
+		if (currentDropHandler == null) {
+			return;
+		}
+		ComponentConnector paintable = currentDropHandler.getConnector();
+		ApplicationConnection client = currentDropHandler
+				.getApplicationConnection();
+		/*
+		 * For drag events we are using special id that are routed to
+		 * "drag service" which then again finds the corresponding DropHandler
+		 * on server side.
+		 * 
+		 * TODO add rest of the data in Transferable
+		 * 
+		 * TODO implement partial updates to Transferable (currently the whole
+		 * Transferable is sent on each request)
+		 */
+		visitId++;
+		client.updateVariable(ApplicationConstants.DRAG_AND_DROP_CONNECTOR_ID,
+				"visitId", visitId, false);
+		client.updateVariable(ApplicationConstants.DRAG_AND_DROP_CONNECTOR_ID,
+				"eventId", currentDrag.getEventId(), false);
+		client.updateVariable(ApplicationConstants.DRAG_AND_DROP_CONNECTOR_ID,
+				"dhowner", paintable, false);
 
-        Profiler.leave("VDragAndDropManager.handleServerResponse");
-    }
+		VTransferable transferable = currentDrag.getTransferable();
 
-    private void runDeferredCommands() {
-        if (deferredCommand != null) {
-            Command command = deferredCommand;
-            deferredCommand = null;
-            command.execute();
-            if (!isBusy()) {
-                runDeferredCommands();
-            }
-        }
-    }
+		client.updateVariable(ApplicationConstants.DRAG_AND_DROP_CONNECTOR_ID,
+				"component", transferable.getDragSource(), false);
 
-    void setDragElement(Element node) {
-        if (currentDrag != null) {
-            if (dragElement != null && dragElement != node) {
-                clearDragElement();
-            } else if (node == dragElement) {
-                return;
-            }
+		client.updateVariable(ApplicationConstants.DRAG_AND_DROP_CONNECTOR_ID,
+				"type", drop.ordinal(), false);
 
-            dragElement = node;
-            dragElement.addClassName("v-drag-element");
-            updateDragImagePosition();
+		if (currentDrag.getCurrentGwtEvent() != null) {
+			try {
+				MouseEventDetails mouseEventDetails = MouseEventDetailsBuilder
+						.buildMouseEventDetails(currentDrag
+								.getCurrentGwtEvent());
+				currentDrag.getDropDetails().put("mouseEvent",
+						mouseEventDetails.serialize());
+			} catch (Exception e) {
+				// NOP, (at least oophm on Safari) can't serialize html dd event
+				// to mouseevent
+			}
+		} else {
+			currentDrag.getDropDetails().put("mouseEvent", null);
+		}
+		client.updateVariable(ApplicationConstants.DRAG_AND_DROP_CONNECTOR_ID,
+				"evt", currentDrag.getDropDetails(), false);
 
-            if (isStarted) {
-                lazyAttachDragElement.run();
-            } else {
-                /*
-                 * To make our default dnd handler as compatible as possible, we
-                 * need to defer the appearance of dragElement. Otherwise events
-                 * that are derived from sequences of other events might not
-                 * fire as domchanged will fire between them or mouse up might
-                 * happen on dragElement.
-                 */
-                lazyAttachDragElement.schedule(300);
-            }
-        }
-    }
+		client.updateVariable(ApplicationConstants.DRAG_AND_DROP_CONNECTOR_ID,
+				"tra", transferable.getVariableMap(), true);
 
-    Element getDragElement() {
-        return dragElement;
-    }
+	}
 
-    private final Timer lazyAttachDragElement = new Timer() {
+	public void handleServerResponse(ValueMap valueMap) {
+		if (serverCallback == null) {
+			return;
+		}
+		Profiler.enter("VDragAndDropManager.handleServerResponse");
 
-        @Override
-        public void run() {
-            if (dragElement != null && dragElement.getParentElement() == null) {
-                ApplicationConnection connection = getCurrentDragApplicationConnection();
-                Element dragImageParent;
-                if (connection == null) {
-                    logger.log(Level.SEVERE, "Could not determine ApplicationConnection for current drag operation. The drag image will likely look broken");
-                    dragImageParent = RootPanel.getBodyElement();
-                } else {
-                    dragImageParent = VOverlay.getOverlayContainer(connection);
-                }
-                dragImageParent.appendChild(dragElement);
-            }
+		UIDL uidl = (UIDL) valueMap.cast();
+		int visitId = uidl.getIntAttribute("visitId");
 
-        }
-    };
+		if (this.visitId == visitId) {
+			serverCallback.handleResponse(uidl.getBooleanAttribute("accepted"),
+					uidl);
+			serverCallback = null;
+		}
+		runDeferredCommands();
 
-    private Command deferredCommand;
+		Profiler.leave("VDragAndDropManager.handleServerResponse");
+	}
 
-    private boolean isBusy() {
-        return serverCallback != null;
-    }
+	private void runDeferredCommands() {
+		if (deferredCommand != null) {
+			Command command = deferredCommand;
+			deferredCommand = null;
+			command.execute();
+			if (!isBusy()) {
+				runDeferredCommands();
+			}
+		}
+	}
 
-    protected ApplicationConnection getCurrentDragApplicationConnection() {
-        if (currentDrag == null) {
-            return null;
-        }
+	void setDragElement(Element node) {
+		if (currentDrag != null) {
+			if (dragElement != null && dragElement != node) {
+				clearDragElement();
+			} else if (node == dragElement) {
+				return;
+			}
 
-        final ComponentConnector dragSource = currentDrag.getTransferable()
-                .getDragSource();
-        if (dragSource == null) {
-            return null;
-        }
-        return dragSource.getConnection();
-    }
+			dragElement = node;
+			dragElement.addClassName("v-drag-element");
+			updateDragImagePosition();
 
-    /**
-     * Method to que tasks until all dd related server visits are done
-     * 
-     * @param command
-     */
-    private void defer(Command command) {
-        deferredCommand = command;
-    }
+			if (isStarted) {
+				lazyAttachDragElement.run();
+			} else {
+				/*
+				 * To make our default dnd handler as compatible as possible, we
+				 * need to defer the appearance of dragElement. Otherwise events
+				 * that are derived from sequences of other events might not
+				 * fire as domchanged will fire between them or mouse up might
+				 * happen on dragElement.
+				 */
+				lazyAttachDragElement.schedule(300);
+			}
+		}
+	}
 
-    /**
-     * Method to execute commands when all existing dd related tasks are
-     * completed (some may require server visit).
-     * <p>
-     * Using this method may be handy if criterion that uses lazy initialization
-     * are used. Check
-     * <p>
-     * TODO Optimization: consider if we actually only need to keep the last
-     * command in queue here.
-     * 
-     * @param command
-     */
-    public void executeWhenReady(Command command) {
-        if (isBusy()) {
-            defer(command);
-        } else {
-            command.execute();
-        }
-    }
+	Element getDragElement() {
+		return dragElement;
+	}
+
+	private final Timer lazyAttachDragElement = new Timer() {
+
+		@Override
+		public void run() {
+			if (dragElement != null && dragElement.getParentElement() == null) {
+				ApplicationConnection connection = getCurrentDragApplicationConnection();
+				Element dragImageParent;
+				if (connection == null) {
+					logger.log(
+							Level.SEVERE,
+							"Could not determine ApplicationConnection for current drag operation. The drag image will likely look broken");
+					dragImageParent = RootPanel.getBodyElement();
+				} else {
+					dragImageParent = VOverlay.getOverlayContainer(connection);
+				}
+				dragImageParent.appendChild(dragElement);
+			}
+
+		}
+	};
+
+	private Command deferredCommand;
+
+	private boolean isBusy() {
+		return serverCallback != null;
+	}
+
+	protected ApplicationConnection getCurrentDragApplicationConnection() {
+		if (currentDrag == null) {
+			return null;
+		}
+
+		final ComponentConnector dragSource = currentDrag.getTransferable()
+				.getDragSource();
+		if (dragSource == null) {
+			return null;
+		}
+		return dragSource.getConnection();
+	}
+
+	/**
+	 * Method to que tasks until all dd related server visits are done
+	 * 
+	 * @param command
+	 */
+	private void defer(Command command) {
+		deferredCommand = command;
+	}
+
+	/**
+	 * Method to execute commands when all existing dd related tasks are
+	 * completed (some may require server visit).
+	 * <p>
+	 * Using this method may be handy if criterion that uses lazy initialization
+	 * are used. Check
+	 * <p>
+	 * TODO Optimization: consider if we actually only need to keep the last
+	 * command in queue here.
+	 * 
+	 * @param command
+	 */
+	public void executeWhenReady(Command command) {
+		if (isBusy()) {
+			defer(command);
+		} else {
+			command.execute();
+		}
+	}
 
 }

@@ -9,18 +9,18 @@ import org.lunifera.vaaclipse.ui.preferences.model.ComboFieldEditor;
 import org.lunifera.vaaclipse.ui.preferences.model.metadata.PreferencesPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Combo Field Editor</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Combo Field Editor</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class ComboFieldEditorImpl extends ListFieldEditorImpl implements ComboFieldEditor {
+public class ComboFieldEditorImpl extends ListFieldEditorImpl implements
+		ComboFieldEditor {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ComboFieldEditorImpl() {
@@ -28,8 +28,8 @@ public class ComboFieldEditorImpl extends ListFieldEditorImpl implements ComboFi
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -37,4 +37,4 @@ public class ComboFieldEditorImpl extends ListFieldEditorImpl implements ComboFi
 		return PreferencesPackage.Literals.COMBO_FIELD_EDITOR;
 	}
 
-} //ComboFieldEditorImpl
+} // ComboFieldEditorImpl

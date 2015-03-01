@@ -41,69 +41,73 @@ public class ExportPreferences extends BasicImpExp {
 	private CssLayout layout;
 	private Button downloadButton;
 	private byte[] preferencesBytes;
-	
+
 	@Override
 	public Component getComponent(OptionDialog optionDialog) {
-		
+
 		layout = new CssLayout();
 		layout.addStyleName("export");
 		layout.addComponent(new Label("Select preferences to export"));
 		createPreferencesTable(layout);
-		
+
 		createStatusLabel(layout, "Press Export to export preferences");
-		
+
 		return layout;
 	}
 
 	private StreamResource createResource() {
-		
-        return new StreamResource(new StreamSource() {
+
+		return new StreamResource(new StreamSource() {
 			@Override
-            public InputStream getStream() {
-            	if (preferencesBytes != null) {
-            		ByteArrayInputStream is = new ByteArrayInputStream(preferencesBytes);
-                	return is;	
-            	}
-            	else
-            		return null;
-            }
-        }, "preferences.epf");
-    }
+			public InputStream getStream() {
+				if (preferencesBytes != null) {
+					ByteArrayInputStream is = new ByteArrayInputStream(
+							preferencesBytes);
+					return is;
+				} else
+					return null;
+			}
+		}, "preferences.epf");
+	}
 
 	@SuppressWarnings("restriction")
 	@Override
 	protected void doAction() {
-		//dlg.close();
-		
+		// dlg.close();
+
 		List<PreferencesPage> selectedPages = getSelectedPages();
-    	if (selectedPages.isEmpty()) {
-    		setStatusText("Preferences doesn't selected. Please select preferences above.");
-    		return;
-    	}
-    	
-    	IEclipsePreferences root = PreferencesService.getDefault().getRootNode();
-    	
-    	ByteArrayOutputStream baos = new ByteArrayOutputStream(200);
-    	
-    	try {
-			PreferencesService.getDefault().exportPreferences(root, new IPreferenceFilter[] {createFilter(selectedPages)}, baos);
+		if (selectedPages.isEmpty()) {
+			setStatusText("Preferences doesn't selected. Please select preferences above.");
+			return;
+		}
+
+		IEclipsePreferences root = PreferencesService.getDefault()
+				.getRootNode();
+
+		ByteArrayOutputStream baos = new ByteArrayOutputStream(200);
+
+		try {
+			PreferencesService.getDefault().exportPreferences(root,
+					new IPreferenceFilter[] { createFilter(selectedPages) },
+					baos);
 		} catch (CoreException e) {
 			logger.error("Exception when export preferences", e);
 			return;
 		}
-		
+
 		preferencesBytes = baos.toByteArray();
-		
+
 		StringBuffer exportedPrefNames = toTextWithCatName(selectedPages);
-		
-		setStatusText("Preferences was exported: " + exportedPrefNames.toString());
-		
+
+		setStatusText("Preferences was exported: "
+				+ exportedPrefNames.toString());
+
 		if (downloadButton == null) {
 			downloadButton = new Button(BaseTheme.BUTTON_LINK);
 			downloadButton.addStyleName("download-button");
 			downloadButton.setCaption("Download preferences.epf");
 			layout.addComponent(downloadButton);
-			
+
 			FileDownloader fileDownloader = new FileDownloader(createResource());
 			fileDownloader.extend(downloadButton);
 		}
@@ -112,5 +116,5 @@ public class ExportPreferences extends BasicImpExp {
 	@Override
 	protected String getActionName() {
 		return "Export";
-	}	
+	}
 }

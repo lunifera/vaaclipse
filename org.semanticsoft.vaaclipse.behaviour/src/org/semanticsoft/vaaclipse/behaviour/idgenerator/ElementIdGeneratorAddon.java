@@ -18,29 +18,31 @@ import org.osgi.service.event.EventHandler;
 public class ElementIdGeneratorAddon {
 	@Inject
 	IEventBroker eventBroker;
-	
+
 	@Inject
 	MApplication app;
 
 	private EventHandler childrenHandler = new EventHandler() {
-		
+
 		public void handleEvent(Event event) {
-		
+
 			Object changedObj = event.getProperty(UIEvents.EventTags.ELEMENT);
 			if (!(changedObj instanceof MElementContainer<?>))
 				return;
-			
-			String eventType = (String) event.getProperty(UIEvents.EventTags.TYPE);
+
+			String eventType = (String) event
+					.getProperty(UIEvents.EventTags.TYPE);
 			if (UIEvents.EventTypes.ADD.equals(eventType)) {
-				
-				Object newValue = event.getProperty(UIEvents.EventTags.NEW_VALUE);
+
+				Object newValue = event
+						.getProperty(UIEvents.EventTags.NEW_VALUE);
 				if (!(newValue instanceof MUIElement))
 					return;
-				
+
 				MUIElement element = (MUIElement) newValue;
-				
-				if (element.getElementId() == null || element.getElementId().trim().isEmpty())
-				{
+
+				if (element.getElementId() == null
+						|| element.getElementId().trim().isEmpty()) {
 					element.setElementId(UUID.randomUUID().toString());
 				}
 			}
@@ -49,7 +51,8 @@ public class ElementIdGeneratorAddon {
 
 	@PostConstruct
 	void init(IEclipseContext context) {
-		eventBroker.subscribe(UIEvents.ElementContainer.TOPIC_CHILDREN, childrenHandler);
+		eventBroker.subscribe(UIEvents.ElementContainer.TOPIC_CHILDREN,
+				childrenHandler);
 	}
 
 	@PreDestroy

@@ -18,11 +18,14 @@ import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.workbench.IPresentationEngine;
 
 /**
- * This engine was adopted from Kai Toedter's generic renderer project. I place it in vaaclipse packages temproraly -
- * until the generic renderer will be the part of eclipse project.
+ * This engine was adopted from Kai Toedter's generic renderer project. I place
+ * it in vaaclipse packages temproraly - until the generic renderer will be the
+ * part of eclipse project.
+ * 
  * @author Kai Toedter
  */
 @SuppressWarnings("restriction")
 public interface PresentationEngine extends IPresentationEngine {
-	public Object createGui(MUIElement element, MElementContainer<MUIElement> parent, IEclipseContext parentContext);
+	public Object createGui(MUIElement element,
+			MElementContainer<MUIElement> parent, IEclipseContext parentContext);
 }

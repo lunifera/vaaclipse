@@ -16,14 +16,14 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimBar;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 
-
 /**
  * @author rushan
  *
  */
-public interface Behaviour
-{
+public interface Behaviour {
 	MTrimBar getTrimBarForMinimizedElement(MUIElement minimizedElement);
+
 	MToolBar getToolBarForMinimizedElement(MUIElement minimizedElement);
+
 	MUIElement getMinimizedParentForPart(MPart part);
 }
