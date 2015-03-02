@@ -168,16 +168,16 @@ public class MenuItemRenderer extends ItemRenderer {
 		item.setEnabled(canExecute(item));
 	}
 
-	private boolean canExecute(MItem item) {
+	public boolean canExecute(MItem item) {
 		if (item instanceof MHandledItem)
-			return canExecuteItem((MHandledItem) item);
+			return canExecute((MHandledItem) item);
 		else if (item instanceof MDirectMenuItem)
-			return canExecuteItem((MDirectMenuItem) item);
+			return canExecute((MDirectMenuItem) item);
 		else
 			return false;
 	}
 
-	private boolean canExecuteItem(MDirectMenuItem item) {
+	private boolean canExecute(MDirectMenuItem item) {
 		final IEclipseContext eclipseContext = getContext(item);
 		eclipseContext.set(MItem.class, item);
 		setupContext(eclipseContext, item);

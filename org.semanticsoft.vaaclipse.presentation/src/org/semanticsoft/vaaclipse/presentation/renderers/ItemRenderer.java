@@ -66,7 +66,12 @@ public abstract class ItemRenderer extends VaadinRenderer {
 
 	protected abstract void updateItemEnablement(MItem item);
 
-	protected boolean canExecuteItem(MHandledItem item) {
+	public boolean canExecute(MItem item) {
+		// override by sub classes
+		return true;
+	}
+
+	protected boolean canExecute(MHandledItem item) {
 		final IEclipseContext eclipseContext = getContext(item);
 		if (eclipseContext == null) // item is not in hierarchy
 			return false;
@@ -145,7 +150,7 @@ public abstract class ItemRenderer extends VaadinRenderer {
 
 			@Override
 			public void menuSelected(MenuItem selectedItem) {
-				processParametrizedAction(item);
+				executeItem(item);
 			}
 		};
 	}
@@ -155,12 +160,12 @@ public abstract class ItemRenderer extends VaadinRenderer {
 
 			@Override
 			public void menuSelected(MenuItem selectedItem) {
-				processAction(item);
+				executeItem(item);
 			}
 		};
 	}
 
-	protected void processParametrizedAction(final MHandledItem item) {
+	public void executeItem(final MHandledItem item) {
 		final IEclipseContext eclipseContext = getContext(item);
 		EHandlerService service = (EHandlerService) eclipseContext
 				.get(EHandlerService.class.getName());
@@ -178,24 +183,29 @@ public abstract class ItemRenderer extends VaadinRenderer {
 		eclipseContext.remove(MItem.class.getName());
 	}
 
-	protected void processAction(final MItem item) {
-		final IEclipseContext eclipseContext = getContext(item);
-		eclipseContext.set(MItem.class, item);
-		setupContext(eclipseContext, item);
-		if (item instanceof MDirectToolItem) {
-			Object toolItem = ((MDirectToolItem) item).getObject();
-			if ((Boolean) ContextInjectionFactory.invoke(toolItem,
-					CanExecute.class, eclipseContext, true))
-				ContextInjectionFactory.invoke(toolItem, Execute.class,
-						eclipseContext);
-		} else if (item instanceof MDirectMenuItem) {
-			Object menuItem = ((MDirectMenuItem) item).getObject();
-			if ((Boolean) ContextInjectionFactory.invoke(menuItem,
-					CanExecute.class, eclipseContext, true))
-				ContextInjectionFactory.invoke(menuItem, Execute.class,
-						eclipseContext);
+	public void executeItem(final MItem item) {
+		if (item instanceof MHandledItem) {
+			MHandledItem mHandled = (MHandledItem) item;
+			executeItem(mHandled);
+		} else {
+			final IEclipseContext eclipseContext = getContext(item);
+			eclipseContext.set(MItem.class, item);
+			setupContext(eclipseContext, item);
+			if (item instanceof MDirectToolItem) {
+				Object toolItem = ((MDirectToolItem) item).getObject();
+				if ((Boolean) ContextInjectionFactory.invoke(toolItem,
+						CanExecute.class, eclipseContext, true))
+					ContextInjectionFactory.invoke(toolItem, Execute.class,
+							eclipseContext);
+			} else if (item instanceof MDirectMenuItem) {
+				Object menuItem = ((MDirectMenuItem) item).getObject();
+				if ((Boolean) ContextInjectionFactory.invoke(menuItem,
+						CanExecute.class, eclipseContext, true))
+					ContextInjectionFactory.invoke(menuItem, Execute.class,
+							eclipseContext);
+			}
+			eclipseContext.remove(MItem.class);
 		}
-		eclipseContext.remove(MItem.class);
 	}
 
 	protected void setupContext(IEclipseContext context, MItem item) {

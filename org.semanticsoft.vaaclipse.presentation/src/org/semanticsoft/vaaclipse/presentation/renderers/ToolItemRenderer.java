@@ -209,16 +209,16 @@ public class ToolItemRenderer extends ItemRenderer {
 		item.setEnabled(canExecute(item));
 	}
 
-	private boolean canExecute(MItem item) {
+	public boolean canExecute(MItem item) {
 		if (item instanceof MHandledItem)
-			return canExecuteItem((MHandledItem) item);
+			return canExecute((MHandledItem) item);
 		else if (item instanceof MDirectToolItem)
-			return canExecuteItem((MDirectToolItem) item);
+			return canExecute((MDirectToolItem) item);
 		else
 			return false;
 	}
 
-	private boolean canExecuteItem(MDirectToolItem item) {
+	protected boolean canExecute(MDirectToolItem item) {
 		final IEclipseContext eclipseContext = getContext(item);
 		if (eclipseContext == null) // item is not in hierarchy
 			return false;
@@ -258,7 +258,7 @@ public class ToolItemRenderer extends ItemRenderer {
 						}
 					}
 
-					processAction(item);
+					executeItem(item);
 				}
 			});
 		} else if (me instanceof MHandledToolItem) {
@@ -282,7 +282,7 @@ public class ToolItemRenderer extends ItemRenderer {
 						}
 					}
 
-					processParametrizedAction(item);
+					executeItem(item);
 				}
 			});
 		}

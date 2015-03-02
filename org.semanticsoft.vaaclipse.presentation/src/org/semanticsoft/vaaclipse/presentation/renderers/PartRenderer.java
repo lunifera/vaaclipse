@@ -24,6 +24,8 @@ import org.eclipse.e4.ui.model.application.ui.basic.MInputPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.e4.ui.workbench.IPresentationEngine;
+import org.semanticsoft.vaaclipse.presentation.renderers.callback.PartItemExecutionService;
+import org.semanticsoft.vaaclipse.publicapi.commands.IPartItemExecutionService;
 import org.semanticsoft.vaaclipse.publicapi.editor.SavePromptSetup;
 
 import com.vaadin.ui.AbstractLayout;
@@ -81,6 +83,9 @@ public class PartRenderer extends VaadinRenderer {
 		localContext.set(ComponentContainer.class, contributionArea);
 		localContext.set(VerticalLayout.class, contributionArea);
 		localContext.set(MPart.class, part);
+		localContext.set(IPartItemExecutionService.class,
+				new PartItemExecutionService());
+
 		SavePromptSetup savePromptProvider = new SavePromptSetup();
 		savePrompts.put(part, savePromptProvider);
 		localContext.set(SavePromptSetup.class, savePromptProvider);
