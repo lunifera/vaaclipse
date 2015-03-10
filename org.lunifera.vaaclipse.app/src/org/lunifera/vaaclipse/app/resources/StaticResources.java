@@ -229,8 +229,9 @@ public class StaticResources extends HttpServlet {
 					if ("styles.css".equals(segments[3])) {
 						Theme inheritedTheme = themeEngine.getTheme(themeName);
 						path = inheritedTheme.getCssUri();
-					} else
+					} else {
 						path = "platform:/plugin/com.vaadin.themes" + url;
+					}
 				}
 			} else if ("vaadinBootstrap.js".equals(segments[1])) {
 				path = "platform:/plugin/com.vaadin.server" + url;
