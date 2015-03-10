@@ -448,6 +448,7 @@ public class VaadinUI extends UI {
 		// translation
 		String locale = Locale.getDefault().toString();
 		serviceContext.set(TranslationService.LOCALE, locale);
+		logger.debug("Setting locale to " + locale);
 		TranslationService bundleTranslationProvider = TranslationProviderFactory
 				.bundleTranslationService(serviceContext);
 		serviceContext.set(TranslationService.class, bundleTranslationProvider);
