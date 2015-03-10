@@ -11,7 +11,6 @@
 
 package org.semanticsoft.vaaclipse.presentation.renderers;
 
-import java.rmi.activation.Activatable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -58,9 +57,8 @@ import org.vaadin.peter.contextmenu.ContextMenu.ContextMenuItemClickEvent;
 import com.vaadin.data.Item;
 import com.vaadin.data.util.IndexedContainer;
 import com.vaadin.server.Resource;
-import com.vaadin.server.ThemeResource;
 import com.vaadin.server.Sizeable.Unit;
-import com.vaadin.ui.Alignment;
+import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -72,7 +70,6 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.themes.Reindeer;
 
 /**
  * @author rushan
@@ -236,6 +233,49 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 		}
 	};
 
+	private EventHandler localizeLabel = new EventHandler() {
+		@Override
+		public void handleEvent(Event event) {
+			Object element = event.getProperty(UIEvents.EventTags.ELEMENT);
+
+			if (!(element instanceof MPerspective))
+				return;
+
+			MPerspective perspective = (MPerspective) element;
+
+			String newValue = (String) event
+					.getProperty(UIEvents.EventTags.NEW_VALUE);
+
+			boolean iconsOnly = perspectiveStackForSwitcher.getTags().contains(
+					Tags.ICONS_ONLY);
+			String label = iconsOnly ? null : Commons.trim(newValue);
+			String iconURI = Commons.trim(perspective.getIconURI());
+
+			TwoStateToolbarButton button = perspective_button.get(perspective);
+			button.setLabelAndIcon(label, iconURI);
+		}
+	};
+
+	private EventHandler localizeTooltip = new EventHandler() {
+		@Override
+		public void handleEvent(Event event) {
+			Object element = event.getProperty(UIEvents.EventTags.ELEMENT);
+
+			if (!(element instanceof MPerspective))
+				return;
+
+			MPerspective perspective = (MPerspective) element;
+
+			if (perspective.getTooltip() != null) {
+				String newValue = (String) event
+						.getProperty(UIEvents.EventTags.NEW_VALUE);
+				TwoStateToolbarButton button = perspective_button
+						.get(perspective);
+				button.setDescription(newValue);
+			}
+		}
+	};
+
 	private void disconnectReferencedElementsFromPerspectiveWidgets(
 			MElementContainer<? extends MUIElement> container) {
 		for (MUIElement e : container.getChildren()) {
@@ -258,12 +298,18 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 				selectPerspectiveHandler);
 		eventBroker.subscribe(UIEvents.ApplicationElement.TOPIC_TAGS,
 				tagListener);
+		eventBroker.subscribe(UIEvents.UILabel.TOPIC_LOCALIZED_LABEL,
+				localizeLabel);
+		eventBroker.subscribe(UIEvents.UILabel.TOPIC_LOCALIZED_TOOLTIP,
+				localizeTooltip);
 	}
 
 	@PreDestroy
 	public void preDestroy() {
 		eventBroker.unsubscribe(selectPerspectiveHandler);
 		eventBroker.unsubscribe(tagListener);
+		eventBroker.unsubscribe(localizeLabel);
+		eventBroker.unsubscribe(localizeTooltip);
 	}
 
 	@Override
@@ -340,7 +386,8 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 			return null;
 		boolean iconsOnly = perspectiveStackForSwitcher.getTags().contains(
 				Tags.ICONS_ONLY);
-		String label = iconsOnly ? null : Commons.trim(perspective.getLabel());
+		String label = iconsOnly ? null : Commons.trim(perspective
+				.getLocalizedLabel());
 		String iconURI = Commons.trim(perspective.getIconURI());
 
 		final TwoStateToolbarButton button = new TwoStateToolbarButton(label,
