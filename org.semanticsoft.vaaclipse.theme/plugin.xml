@@ -58,6 +58,15 @@
                uri="platform:/plugin/com.vaadin.themes/VAADIN/themes/base/">
          </resourceLocationUri>
       </theme>
+       <theme
+            cssUri="platform:/plugin/com.vaadin.themes/VAADIN/themes/valo/styles.css"
+            description="Vaadin Valo theme"
+            id="valo"
+            label="Valo">
+         <resourceLocationUri
+               uri="platform:/plugin/com.vaadin.themes/VAADIN/themes/valo/">
+         </resourceLocationUri>
+      </theme>
    </extension>
 
 </plugin>

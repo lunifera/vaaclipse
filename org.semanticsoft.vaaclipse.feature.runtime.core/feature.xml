@@ -17,6 +17,18 @@
       %license
    </license>
 
+   <requires>
+      <import plugin="org.eclipse.e4.core.commands" version="0.10.2" match="equivalent"/>
+      <import plugin="org.eclipse.e4.core.contexts" version="1.3.100" match="equivalent"/>
+      <import plugin="org.eclipse.e4.core.di" version="1.4.0" match="equivalent"/>
+      <import plugin="org.eclipse.e4.core.di.extensions" version="0.12.0" match="equivalent"/>
+      <import plugin="org.eclipse.e4.core.services" version="1.2.1" match="equivalent"/>
+      <import plugin="org.eclipse.e4.ui.model.workbench" version="1.1.0" match="equivalent"/>
+      <import plugin="org.eclipse.e4.ui.css.core" version="0.10.100" match="equivalent"/>
+      <import plugin="org.eclipse.e4.ui.di" version="1.0.0" match="equivalent"/>
+      <import plugin="org.eclipse.e4.ui.services" version="1.1.0" match="equivalent"/>
+   </requires>
+
    <plugin
          id="org.semanticsoft.commons"
          download-size="0"
@@ -47,13 +59,6 @@
 
    <plugin
          id="org.semanticsoft.vaaclipse.api"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.semanticsoft.vaaclipse.app"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -131,13 +136,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.semanticsoft.vaadin.osgi.staticres"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.semanticsoft.vaaclipse.widgets"
          download-size="0"
          install-size="0"
@@ -171,13 +169,12 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-           
+
    <plugin
          id="org.lunifera.vaaclipse.app"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
 
 </feature>
