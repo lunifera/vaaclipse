@@ -18,7 +18,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<shiro-version>1.2.1</shiro-version>
-<!-- 		<vaadin73-version>[7.3.0,7.4.0)</vaadin73-version> -->
+		<!-- <vaadin73-version>[7.3.0,7.4.0)</vaadin73-version> -->
 		<vaadin.version>7.3.8</vaadin.version>
 		<vaadin-icepush-version>0.5.4</vaadin-icepush-version>
 		<icepush-version>3.0.1</icepush-version>
@@ -67,7 +67,7 @@
 			<url>https://maven.atlassian.com/repository/public</url>
 		</pluginRepository>
 	</pluginRepositories>
-	
+
 	<distributionManagement>
 		<repository>
 			<id>lunifera-nexus-release</id>
@@ -128,13 +128,12 @@
 
 				<!-- Runtime components -->
 				<module>org.semanticsoft.vaadin</module>
-				<module>org.semanticsoft.vaadin.osgi.staticres</module>
 				<module>org.semanticsoft.commons</module>
 				<module>org.semanticsoft.vaaclipse.additions</module>
 				<module>org.semanticsoft.vaaclipse.behaviour</module>
 				<module>org.semanticsoft.vaaclipse.api</module>
+				<!-- Replaces vaaclipse.app and static.resources -->
 				<module>org.lunifera.vaaclipse.app</module>
-				<module>org.semanticsoft.vaaclipse.app</module>
 				<module>org.semanticsoft.vaaclipse.widgets</module>
 				<module>org.semanticsoft.vaaclipse.contributions</module>
 				<module>org.semanticsoft.vaaclipse.presentation</module>
@@ -400,16 +399,16 @@
 		</pluginManagement>
 	</build>
 
-<!-- 	<distributionManagement> -->
-<!-- 		<repository> -->
-<!-- 			<id>archiva.internal</id> -->
-<!-- 			<name>Internal Release Repository</name> -->
-<!-- 			<url>http://semanticsoft.org:8085/archiva/repository/internal/</url> -->
-<!-- 		</repository> -->
-<!-- 		<snapshotRepository> -->
-<!-- 			<id>archiva.snapshots</id> -->
-<!-- 			<name>Internal Snapshot Repository</name> -->
-<!-- 			<url>http://semanticsoft.org:8085/archiva/repository/snapshots/</url> -->
-<!-- 		</snapshotRepository> -->
-<!-- 	</distributionManagement> -->
+	<!-- <distributionManagement> -->
+	<!-- <repository> -->
+	<!-- <id>archiva.internal</id> -->
+	<!-- <name>Internal Release Repository</name> -->
+	<!-- <url>http://semanticsoft.org:8085/archiva/repository/internal/</url> -->
+	<!-- </repository> -->
+	<!-- <snapshotRepository> -->
+	<!-- <id>archiva.snapshots</id> -->
+	<!-- <name>Internal Snapshot Repository</name> -->
+	<!-- <url>http://semanticsoft.org:8085/archiva/repository/snapshots/</url> -->
+	<!-- </snapshotRepository> -->
+	<!-- </distributionManagement> -->
 </project>
