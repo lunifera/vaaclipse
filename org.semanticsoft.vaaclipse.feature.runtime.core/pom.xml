@@ -24,6 +24,7 @@
 					</execution>
 				</executions>
 				<configuration>
+					<skip>true</skip>
 					<excludes>
 						<plugin id="org.eclipse.e4.core.commands" />
 						<plugin id="org.eclipse.e4.core.contexts" />
