@@ -1,13 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.semanticsoft</groupId>
-    <artifactId>org.semanticsoft.vaaclipse</artifactId>
-    <version>2.7.3-SNAPSHOT</version>
-  </parent>
-  <artifactId>org.semanticsoft.vaaclipse.feature.runtime.core</artifactId>
-  <packaging>eclipse-feature</packaging>
-  <build>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.semanticsoft</groupId>
+		<artifactId>org.semanticsoft.vaaclipse</artifactId>
+		<version>2.7.3-SNAPSHOT</version>
+	</parent>
+	<artifactId>org.semanticsoft.vaaclipse.feature.runtime.core</artifactId>
+	<packaging>eclipse-feature</packaging>
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho.extras</groupId>
@@ -23,6 +24,17 @@
 					</execution>
 				</executions>
 				<configuration>
+					<excludes>
+						<plugin id="org.eclipse.e4.core.commands" />
+						<plugin id="org.eclipse.e4.core.contexts" />
+						<plugin id="org.eclipse.e4.core.di" />
+						<plugin id="org.eclipse.e4.core.di.extensions" />
+						<plugin id="org.eclipse.e4.core.services" />
+						<plugin id="org.eclipse.e4.ui.model.workbench" />
+						<plugin id="org.eclipse.e4.ui.css.core" />
+						<plugin id="org.eclipse.e4.ui.di" />
+						<plugin id="org.eclipse.e4.ui.services" />
+					</excludes>
 					<labelSuffix> (source)</labelSuffix>
 				</configuration>
 			</plugin>
