@@ -534,8 +534,10 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 		MPerspective p = (MPerspective) child;
 
 		Button button = perspective_button.remove(p);
-		perspectiveSwitcherPanel.removeComponent(button);
-		button2ContextMenu.remove(button);
+		if (button != null) {
+			perspectiveSwitcherPanel.removeComponent(button);
+			button2ContextMenu.remove(button);
+		}
 
 		refreshPerspectiveStackVisibility(stack);
 	}

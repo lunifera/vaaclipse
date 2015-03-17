@@ -126,8 +126,6 @@ class ShowViewDialogContent implements ComponentProvider {
 
 	public void showView(MPartDescriptor... descriptors) {
 		for (MPartDescriptor descriptor : descriptors) {
-			// partService.showPart(descriptor.getElementId(),
-			// PartState.ACTIVATE);
 			partServiceExt.showPart(descriptor.getElementId(),
 					PartState.ACTIVATE);
 		}

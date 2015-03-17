@@ -539,6 +539,7 @@ public class GenericPresentationEngine implements PresentationEngine {
 
 	@Override
 	public Object run(MApplicationElement uiRoot, IEclipseContext appContext) {
+		appContext.set(IPresentationEngine.class, this);
 		appContext.set(GenericPresentationEngine.class, this);
 		if (uiRoot instanceof MApplication) {
 			theApp = (MApplication) uiRoot;
