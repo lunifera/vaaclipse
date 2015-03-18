@@ -56,7 +56,6 @@ import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.service.datalocation.Location;
 import org.lunifera.runtime.web.vaadin.databinding.VaadinObservables;
 import org.lunifera.vaaclipse.app.VaadinE4Application;
-import org.lunifera.vaaclipse.app.servlet.OSGiServletService;
 import org.lunifera.vaaclipse.app.servlet.VaadinExecutorServiceImpl;
 import org.osgi.service.event.EventHandler;
 import org.semanticsoft.vaaclipse.api.VaadinExecutorService;
@@ -66,9 +65,11 @@ import org.semanticsoft.vaaclipse.publicapi.theme.ThemeConstants;
 
 import com.vaadin.annotations.Push;
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.server.WrappedHttpSession;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.UIDetachedException;
 import com.vaadin.ui.VerticalLayout;
 
 @SuppressWarnings("restriction")
@@ -103,6 +104,8 @@ public class VaadinUI extends UI {
 	private Object user;
 	private Class<Object> userClass;
 
+	private VaadinExecutorServiceImpl executorService;
+
 	private static Map<String, Object[]> tempUserStore = new HashMap<String, Object[]>();
 
 	public VaadinUI() {
@@ -119,6 +122,7 @@ public class VaadinUI extends UI {
 
 	@Override
 	public void init(VaadinRequest request) {
+		executorService = new VaadinExecutorServiceImpl();
 		context = VaadinE4Application.getInstance().getAppContext();
 		logger = VaadinE4Application.getInstance().getLogger();
 
@@ -199,6 +203,50 @@ public class VaadinUI extends UI {
 					}
 				});
 
+		executeLater();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.vaadin.ui.UI#push()
+	 */
+	@Override
+	public void push() {
+		VaadinSession session = getSession();
+
+		if (session == null) {
+			throw new UIDetachedException("Cannot push a detached UI");
+		}
+		assert session.hasLock();
+
+		if (!getPushConfiguration().getPushMode().isEnabled()) {
+			throw new IllegalStateException("Push not enabled");
+		}
+		assert getPushConnection() != null;
+
+		/*
+		 * Purge the pending access queue as it might mark a connector as dirty
+		 * when the push would otherwise be ignored because there are no changes
+		 * to push.
+		 */
+		session.getService().runPendingAccessTasks(session);
+
+		// execute the runnables for e4 kernel
+		executorService.exec();
+		
+		if (!getConnectorTracker().hasDirtyConnectors()) {
+			// Do not push if there is nothing to push
+			return;
+		}
+
+		getPushConnection().push();
+	}
+
+	/**
+	 * Is used to execute the runnables from executor service.
+	 */
+	public void executeLater() {
 		VaadinExecutorServiceImpl man = (VaadinExecutorServiceImpl) appContext
 				.get(VaadinExecutorService.class);
 		man.exec();
@@ -212,9 +260,7 @@ public class VaadinUI extends UI {
 		appContext.set("e4ApplicationInstanceId", UUID.randomUUID().toString());
 		appContext.set("vaadinUI", this);
 		appContext.set(UI.class, this);
-		appContext.set(VaadinExecutorService.class,
-				((OSGiServletService) getSession().getService())
-						.getExecutorService());
+		appContext.set(VaadinExecutorService.class, getExecutorService());
 		appContext.set(UISynchronize.class, new UISynchronize() {
 
 			public void syncExec(Runnable runnable) {
@@ -243,6 +289,10 @@ public class VaadinUI extends UI {
 						PostContextCreate.class, appContext, null);
 			}
 		}
+	}
+
+	private VaadinExecutorService getExecutorService() {
+		return executorService;
 	}
 
 	public E4Workbench createE4Workbench(IApplicationContext applicationContext) {
