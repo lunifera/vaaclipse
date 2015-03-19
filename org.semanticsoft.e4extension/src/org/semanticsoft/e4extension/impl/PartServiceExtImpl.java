@@ -351,7 +351,8 @@ public class PartServiceExtImpl implements EPartServiceExt {
 			}
 		}
 
-		return partService.showPart(addPart(part), partState);
+		// TODO - seems to work better that way!
+		return partService.showPart(part, partState);
 	}
 
 	public MPart addPart(MPart part) {
