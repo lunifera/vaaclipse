@@ -204,6 +204,12 @@ public class StackRenderer extends VaadinRenderer {
 		} else if (UIEvents.UILabel.TOOLTIP.equals(attName)) {
 			String newTTip = (String) newValue;
 			tab.setDescription(newTTip);
+		} else if (UIEvents.UILabel.LOCALIZED_LABEL.equals(attName)) {
+			String newName = (String) newValue;
+			tab.setCaption(getLabel(part, newName));
+		} else if (UIEvents.UILabel.LOCALIZED_TOOLTIP.equals(attName)) {
+			String newTTip = (String) newValue;
+			tab.setDescription(newTTip);
 		} else if (UIEvents.Dirtyable.DIRTY.equals(attName)) {
 			Boolean dirtyState = (Boolean) newValue;
 			String text = tab.getCaption();
