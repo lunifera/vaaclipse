@@ -12,7 +12,6 @@
 package org.lunifera.vaaclipse.app.webapp;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
@@ -188,6 +187,12 @@ public class VaadinUI extends UI {
 						userClass = (Class<Object>) event
 								.getProperty(AuthenticationConstants.Events.Authentication.userClass);
 
+						if (userClass == null && user != null) {
+							userClass = (Class<Object>) user.getClass();
+						}
+						appContext.set(userClass, user);
+						appContext.set("user", user);
+
 						if (e4Workbench != null) {
 							String sessionId = getSession().getSession()
 									.getId();
@@ -234,7 +239,7 @@ public class VaadinUI extends UI {
 
 		// execute the runnables for e4 kernel
 		executorService.exec();
-		
+
 		if (!getConnectorTracker().hasDirtyConnectors()) {
 			// Do not push if there is nothing to push
 			return;
@@ -496,7 +501,7 @@ public class VaadinUI extends UI {
 				eclipseContext));
 
 		// translation
-		String locale = Locale.getDefault().toString();
+		String locale = getLocale().toString();
 		serviceContext.set(TranslationService.LOCALE, locale);
 		logger.debug("Setting locale to " + locale);
 		TranslationService bundleTranslationProvider = TranslationProviderFactory
