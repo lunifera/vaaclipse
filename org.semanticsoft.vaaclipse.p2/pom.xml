@@ -69,7 +69,7 @@
 				<xtext-p2>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</xtext-p2>
 				<ecview-p2>http://lun.lunifera.org/downloads/p2/ecview/nightly/</ecview-p2>
 				<lunifera.deployment.p2.origin.dir>${project.build.directory}/repository</lunifera.deployment.p2.origin.dir>
-				<associate.p2>${lunifera.build.eclipse.platform.p2.url},${orbit-site},${ecview-p2},${xtext-p2},${lunifera.build.remote.federated.p2.url}</associate.p2>
+				<associate.p2>${lunifera.build.eclipse.platform.p2.url},${orbit-site},${ecview-p2},${xtext-p2}</associate.p2>
 			</properties>
 			<build>
 				<plugins>
