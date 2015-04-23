@@ -4,7 +4,6 @@
 package org.lunifera.vaaclipse.ui.preferences.addon.internal.util;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
@@ -20,6 +19,7 @@ import org.osgi.service.prefs.Preferences;
  *
  */
 public class PrefHelper {
+	@SuppressWarnings("unchecked")
 	public static void populateInterfaces(FieldEditor<?> editor,
 			IEclipseContext rendererContext, Class<?>[] interfaces) {
 		for (Class<?> i : interfaces) {

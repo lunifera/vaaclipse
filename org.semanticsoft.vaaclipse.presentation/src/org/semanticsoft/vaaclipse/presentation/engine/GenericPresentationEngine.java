@@ -276,21 +276,26 @@ public class GenericPresentationEngine implements PresentationEngine {
 			// Assert.isTrue(ctxt.getContext() == null,
 			// "Before rendering Context should be null");
 			if (ctxt.getContext() == null) {
-				IEclipseContext eclipseContext = getContext(parent)
-						.createChild(getContextName(element));
-				populateModelInterfaces(ctxt, eclipseContext, element
-						.getClass().getInterfaces());
-				ctxt.setContext(eclipseContext);
+				try {
+					IEclipseContext eclipseContext = getContext(parent)
+							.createChild(getContextName(element));
+					populateModelInterfaces(ctxt, eclipseContext, element
+							.getClass().getInterfaces());
+					ctxt.setContext(eclipseContext);
 
-				// make sure the context knows about these variables that have
-				// been defined in the model
-				for (String variable : ctxt.getVariables()) {
-					eclipseContext.declareModifiable(variable);
-				}
+					// make sure the context knows about these variables that have
+					// been defined in the model
+					for (String variable : ctxt.getVariables()) {
+						eclipseContext.declareModifiable(variable);
+					}
 
-				Map<String, String> props = ctxt.getProperties();
-				for (String key : props.keySet()) {
-					eclipseContext.set(key, props.get(key));
+					Map<String, String> props = ctxt.getProperties();
+					for (String key : props.keySet()) {
+						eclipseContext.set(key, props.get(key));
+					}
+				} catch (Exception e) {
+					// TODO - REMOVE ME AFTER TESTS!
+					e.printStackTrace();
 				}
 
 				// E4Workbench.processHierarchy(element);

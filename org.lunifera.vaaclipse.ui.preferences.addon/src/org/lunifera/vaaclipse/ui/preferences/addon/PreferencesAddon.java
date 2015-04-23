@@ -50,6 +50,7 @@ public class PreferencesAddon {
 	Map<String, Bundle> bundlesByName = new HashMap<>();
 	Logger logger = LoggerFactory.getLogger(PreferencesAddon.class);
 
+	@SuppressWarnings("restriction")
 	IPreferencesService equinoxPrefService = PreferencesService.getDefault();
 	IEclipsePreferences root = equinoxPrefService.getRootNode();
 

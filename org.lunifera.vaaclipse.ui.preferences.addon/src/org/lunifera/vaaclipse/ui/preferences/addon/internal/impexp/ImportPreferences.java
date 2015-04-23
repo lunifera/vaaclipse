@@ -7,12 +7,9 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 import javax.inject.Inject;
 
@@ -20,13 +17,10 @@ import org.eclipse.core.internal.preferences.PreferencesService;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.preferences.IExportedPreferences;
 import org.eclipse.core.runtime.preferences.IPreferenceFilter;
-import org.lunifera.vaaclipse.ui.preferences.addon.internal.util.PrefHelper;
 import org.lunifera.vaaclipse.ui.preferences.model.FieldEditor;
-import org.lunifera.vaaclipse.ui.preferences.model.PreferencesCategory;
 import org.lunifera.vaaclipse.ui.preferences.model.PreferencesPage;
 import org.lunifera.vaaclipse.ui.preferences.model.metadata.PreferencesFactory;
 import org.osgi.service.prefs.BackingStoreException;
-import org.osgi.service.prefs.Preferences;
 import org.semanticsoft.vaadin.optiondialog.OptionDialog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +37,7 @@ import com.vaadin.ui.Upload.SucceededListener;
  * @author rushan
  *
  */
+@SuppressWarnings({ "serial", "restriction" })
 public class ImportPreferences extends BasicImpExp implements
 		SucceededListener, Receiver {
 
@@ -107,7 +102,6 @@ public class ImportPreferences extends BasicImpExp implements
 		return "Import";
 	}
 
-	@SuppressWarnings("restriction")
 	@Override
 	public void uploadSucceeded(SucceededEvent event) {
 		byteArray = baos.toByteArray();

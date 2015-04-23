@@ -21,6 +21,7 @@ import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.ui.MContext;
@@ -44,6 +45,7 @@ import org.semanticsoft.vaaclipse.presentation.engine.GenericPresentationEngine;
 import org.semanticsoft.vaaclipse.presentation.utils.Commons;
 import org.semanticsoft.vaaclipse.presentation.utils.HierarchyUtils;
 import org.semanticsoft.vaaclipse.publicapi.model.Tags;
+import org.semanticsoft.vaaclipse.publicapi.perspective.IPerspectiveHandler;
 import org.semanticsoft.vaaclipse.publicapi.resources.BundleResource;
 import org.semanticsoft.vaaclipse.publicapi.resources.ResourceHelper;
 import org.semanticsoft.vaaclipse.widgets.StackWidget;
@@ -84,6 +86,10 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 	private MPerspective activePerspective;
 	@Inject
 	private UI vaadinUI;
+
+	@Inject
+	@Optional
+	private IPerspectiveHandler perspectiveRegistry;
 
 	private static class PerspectiveContextMenu extends ContextMenu {
 		private ContextMenuItem showTextItem;
@@ -476,22 +482,40 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 		MPerspectiveStack perspectiveStack = (MPerspectiveStack) (MElementContainer<?>) element;
 		MPerspective selectedPerspective = perspectiveStack
 				.getSelectedElement();
-
 		if (selectedPerspective == null) {
-			selectedPerspective = (MPerspective) findFirstRenderableAndVisibleElement(perspectiveStack);
-			if (selectedPerspective != null)
-				switchPerspective(selectedPerspective);
-		} else if (!selectedPerspective.isToBeRendered()
-				|| !selectedPerspective.isVisible()) {
-			selectedPerspective = (MPerspective) findFirstRenderableAndVisibleElement(perspectiveStack);
-			if (selectedPerspective != null)
-				switchPerspective(selectedPerspective);
-			else
+			// try to find by registry
+			if (perspectiveRegistry != null) {
+				String userId = (String) context.get("user");
+				String perspectiveId = perspectiveRegistry
+						.getDefaultPerspective(userId);
+				if (perspectiveId != null) {
+					selectedPerspective = perspectiveRegistry
+							.findPerspectiveWithId(perspectiveId);
+				}
+				if (selectedPerspective == null) {
+					selectedPerspective = (MPerspective) findFirstRenderableAndVisibleElement(perspectiveStack);
+				}
+			} else {
+				// use the first elemet
+				selectedPerspective = (MPerspective) findFirstRenderableAndVisibleElement(perspectiveStack);
+			}
+		}
+
+		if (selectedPerspective != null) {
+			if (!selectedPerspective.isToBeRendered()
+					|| !selectedPerspective.isVisible()) {
+				selectedPerspective = (MPerspective) findFirstRenderableAndVisibleElement(perspectiveStack);
+				if (selectedPerspective != null) {
+					switchPerspective(selectedPerspective);
+				} else {
+					perspectiveStack.setSelectedElement(null);
+				}
+			} else {
+				// reset selected element (set selected element handler will
+				// work)
 				perspectiveStack.setSelectedElement(null);
-		} else {
-			// reset selected element (set selected element handler will work)
-			perspectiveStack.setSelectedElement(null);
-			switchPerspective(selectedPerspective);
+				switchPerspective(selectedPerspective);
+			}
 		}
 
 		refreshPerspectiveStackVisibility(perspectiveStack);

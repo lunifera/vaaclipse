@@ -28,6 +28,7 @@ Import-Package: com.vaadin.data;version="[7.3.0,7.4.0)",
  org.lunifera.vaaclipse.ui.preferences.model.metadata,
  org.lunifera.vaaclipse.ui.preferences.model.util,
  org.osgi.framework;version="1.7.0",
+ org.osgi.service.component.annotations;version="1.2.0",
  org.osgi.service.prefs;version="1.1.1",
  org.semanticsoft.vaaclipse.publicapi.resources,
  org.semanticsoft.vaadin.optiondialog,
@@ -39,5 +40,7 @@ Require-Bundle: org.eclipse.e4.core.di,
  com.vaadin.server;bundle-version="[7.3.0,7.4.0)",
  com.vaadin.shared;bundle-version="[7.3.0,7.4.0)",
  org.eclipse.equinox.preferences;bundle-version="3.5.100",
- org.eclipse.core.runtime;bundle-version="3.9.0"
+ org.eclipse.core.runtime;bundle-version="3.9.0",
+ org.semanticsoft.vaaclipse.publicapi;bundle-version="2.7.3"
 Export-Package: org.lunifera.vaaclipse.ui.preferences.addon
+Service-Component: OSGI-INF/org.lunifera.vaaclipse.ui.preferences.addon.internal.service.PreferenceProviderContextFunction.xml

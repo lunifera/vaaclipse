@@ -6,17 +6,12 @@ package org.lunifera.vaaclipse.ui.preferences.addon.internal.impexp;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.core.internal.preferences.PreferencesService;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.IPreferenceFilter;
-import org.lunifera.vaaclipse.ui.preferences.model.FieldEditor;
 import org.lunifera.vaaclipse.ui.preferences.model.PreferencesPage;
 import org.semanticsoft.vaadin.optiondialog.OptionDialog;
 import org.slf4j.Logger;
@@ -55,8 +50,8 @@ public class ExportPreferences extends BasicImpExp {
 		return layout;
 	}
 
+	@SuppressWarnings("serial")
 	private StreamResource createResource() {
-
 		return new StreamResource(new StreamSource() {
 			@Override
 			public InputStream getStream() {

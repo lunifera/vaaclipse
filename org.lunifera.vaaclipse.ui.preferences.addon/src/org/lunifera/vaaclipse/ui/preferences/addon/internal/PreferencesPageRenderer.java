@@ -55,7 +55,7 @@ public class PreferencesPageRenderer {
 		page.setRenderer(this);
 	}
 
-	@SuppressWarnings({ "unchecked", "restriction" })
+	@SuppressWarnings("restriction")
 	public void render() {
 		pageLayout.addStyleName("preferences-page");
 

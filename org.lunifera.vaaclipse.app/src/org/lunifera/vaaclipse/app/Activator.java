@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *     Rushan R. Gilmullin - initial API and implementation
+ *     Florian Pirchner - adjustings for lunifera implementation
  *******************************************************************************/
 
 package org.lunifera.vaaclipse.app;

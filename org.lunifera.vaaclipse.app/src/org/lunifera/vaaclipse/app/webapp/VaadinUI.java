@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *     Rushan R. Gilmullin - initial API and implementation
+ *     Florian Pirchner - adjustings for lunifera implementation
  *******************************************************************************/
 
 package org.lunifera.vaaclipse.app.webapp;
@@ -32,15 +33,23 @@ import org.eclipse.e4.ui.di.UISynchronize;
 import org.eclipse.e4.ui.internal.workbench.ActiveChildLookupFunction;
 import org.eclipse.e4.ui.internal.workbench.ActivePartLookupFunction;
 import org.eclipse.e4.ui.internal.workbench.E4Workbench;
+import org.eclipse.e4.ui.internal.workbench.E4XMIResourceFactory;
 import org.eclipse.e4.ui.internal.workbench.ExceptionHandler;
 import org.eclipse.e4.ui.internal.workbench.ModelServiceImpl;
+import org.eclipse.e4.ui.internal.workbench.PlaceholderResolver;
 import org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory;
-import org.eclipse.e4.ui.internal.workbench.ResourceHandler;
 import org.eclipse.e4.ui.internal.workbench.WorkbenchLogger;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.MContribution;
+import org.eclipse.e4.ui.model.application.commands.impl.CommandsPackageImpl;
+import org.eclipse.e4.ui.model.application.impl.ApplicationPackageImpl;
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
+import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
+import org.eclipse.e4.ui.model.application.ui.advanced.impl.AdvancedPackageImpl;
+import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicPackageImpl;
+import org.eclipse.e4.ui.model.application.ui.impl.UiPackageImpl;
+import org.eclipse.e4.ui.model.application.ui.menu.impl.MenuPackageImpl;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.e4.ui.services.internal.events.EventBroker;
 import org.eclipse.e4.ui.workbench.IExceptionHandler;
@@ -49,11 +58,17 @@ import org.eclipse.e4.ui.workbench.lifecycle.PostContextCreate;
 import org.eclipse.e4.ui.workbench.lifecycle.ProcessAdditions;
 import org.eclipse.e4.ui.workbench.lifecycle.ProcessRemovals;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
+import org.eclipse.e4.ui.workbench.modeling.EPlaceholderResolver;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.service.datalocation.Location;
 import org.lunifera.runtime.web.vaadin.databinding.VaadinObservables;
+import org.lunifera.vaaclipse.addons.common.api.resource.ICustomizedModelHandler;
+import org.lunifera.vaaclipse.addons.common.api.resource.ICustomizedModelResourceHandler;
+import org.lunifera.vaaclipse.addons.common.resource.LayoutChangedObserver;
 import org.lunifera.vaaclipse.app.VaadinE4Application;
 import org.lunifera.vaaclipse.app.servlet.VaadinExecutorServiceImpl;
 import org.osgi.service.event.EventHandler;
@@ -71,6 +86,7 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.UIDetachedException;
 import com.vaadin.ui.VerticalLayout;
 
+// TODO Lunifera - Move me to Lunifera github repo.
 @SuppressWarnings("restriction")
 @Push
 public class VaadinUI extends UI {
@@ -78,13 +94,19 @@ public class VaadinUI extends UI {
 
 	public static final String THEME_ID = "cssTheme";
 
+	/**
+	 * This UI uses a different default resource handler.
+	 */
+	private static final String DEFAULT_RESOURCE_HANDLER = "bundleclass://org.lunifera.vaaclipse.addons.common/org.lunifera.vaaclipse.addons.common.resource.ResourceHandler";
+	private static final String CUSTOMIZED_MODEL_SERVICE = "bundleclass://org.lunifera.vaaclipse.addons.common/org.lunifera.vaaclipse.addons.common.resource.CustomizedModelHandler";
+
 	protected static String presentationEngineURI = "bundleclass://org.semanticsoft.vaaclipse.presentation/"
 			+ "org.semanticsoft.vaaclipse.presentation.engine.VaadinPresentationEngine";
 
 	protected Logger logger;
 
 	private String[] args;
-	private IModelResourceHandler modelResourceHandler;
+	private ICustomizedModelResourceHandler modelResourceHandler;
 
 	private E4Workbench e4Workbench;
 
@@ -104,6 +126,8 @@ public class VaadinUI extends UI {
 	private Class<Object> userClass;
 
 	private VaadinExecutorServiceImpl executorService;
+
+	private LayoutChangedObserver layoutChangedObserver;
 
 	private static Map<String, Object[]> tempUserStore = new HashMap<String, Object[]>();
 
@@ -322,6 +346,7 @@ public class VaadinUI extends UI {
 		}
 
 		E4Workbench e4Workbench = new E4Workbench(appModel, appContext);
+
 		return e4Workbench;
 	}
 
@@ -331,15 +356,26 @@ public class VaadinUI extends UI {
 					|| element.getElementId().trim().isEmpty()) {
 				element.setElementId(UUID.randomUUID().toString());
 			} else {
-				// check that there are not element in model with this id
-				// MUIElement someElement =
-				// modelService.find(element.getElementId(), app); //this search
-				// recursive - very long, so use map
-				MUIElement someElement = id2element.get(element.getElementId());
-				if (someElement != null && someElement != element) {
-					final String randomUUID = UUID.randomUUID().toString();
-					element.setElementId(element.getElementId() + "_"
-							+ randomUUID);
+				if (element instanceof MPlaceholder) {
+					// NOTHING TO DO - We must not touch the ID. Otherwise parts
+					// can not be wired for the #reference after cloning.
+					logger.debug("Skip fixing ID for " + element);
+				} else if (isInSharedArea(element)) {
+					// NOTHING TO DO - We must not touch the ID
+					logger.debug("Skip fixing ID for " + element);
+				} else {
+					// check that there are not element in model with this id
+					// MUIElement someElement =
+					// modelService.find(element.getElementId(), app); //this
+					// search
+					// recursive - very long, so use map
+					MUIElement someElement = id2element.get(element
+							.getElementId());
+					if (someElement != null && someElement != element) {
+						final String randomUUID = UUID.randomUUID().toString();
+						element.setElementId(element.getElementId() + "_"
+								+ randomUUID);
+					}
 				}
 			}
 
@@ -352,6 +388,15 @@ public class VaadinUI extends UI {
 				fixNullElementIds(child);
 			}
 		}
+	}
+
+	private boolean isInSharedArea(MUIElement element) {
+		EModelService modelService = appContext.get(EModelService.class);
+		int location = modelService.getElementLocation(element);
+		if ((location & EModelService.IN_SHARED_AREA) != 0) {
+			return true;
+		}
+		return false;
 	}
 
 	private MApplication loadApplicationModel(IApplicationContext appContext,
@@ -379,7 +424,7 @@ public class VaadinUI extends UI {
 
 		saveAndRestore = value == null || Boolean.parseBoolean(value);
 
-		eclipseContext.set(E4Workbench.PERSIST_STATE, false);
+		eclipseContext.set(E4Workbench.PERSIST_STATE, true);
 
 		// Persisted state
 		boolean clearPersistedState;
@@ -394,24 +439,72 @@ public class VaadinUI extends UI {
 		eclipseContext.set(E4Workbench.DELTA_RESTORE,
 				Boolean.valueOf(deltaRestore));
 
-		String resourceHandler = getArgValue(
-				E4Workbench.MODEL_RESOURCE_HANDLER, appContext, false);
-
-		if (resourceHandler == null) {
-			resourceHandler = "bundleclass://org.eclipse.e4.ui.workbench/"
-					+ ResourceHandler.class.getName();
-		}
+		registerResourceSet(eclipseContext);
 
 		IContributionFactory factory = eclipseContext
 				.get(IContributionFactory.class);
 
-		modelResourceHandler = (IModelResourceHandler) factory.create(
+		// create the customized model service
+		ICustomizedModelHandler service = (ICustomizedModelHandler) factory
+				.create(CUSTOMIZED_MODEL_SERVICE, eclipseContext);
+		eclipseContext.set(ICustomizedModelHandler.class, service);
+
+		String resourceHandler = getArgValue(
+				E4Workbench.MODEL_RESOURCE_HANDLER, appContext, false);
+
+		if (resourceHandler == null) {
+			resourceHandler = DEFAULT_RESOURCE_HANDLER;
+		}
+
+		modelResourceHandler = (ICustomizedModelResourceHandler) factory.create(
 				resourceHandler, eclipseContext);
+		eclipseContext.set(IModelResourceHandler.class, modelResourceHandler);
+		eclipseContext.set(ICustomizedModelResourceHandler.class, modelResourceHandler);
 
 		Resource resource = modelResourceHandler.loadMostRecentModel();
 		theApp = (MApplication) resource.getContents().get(0);
 
+		// register the layout changed observer
+		layoutChangedObserver = ContextInjectionFactory.make(
+				LayoutChangedObserver.class, eclipseContext);
+		eclipseContext.set(LayoutChangedObserver.class, layoutChangedObserver);
+
 		return theApp;
+	}
+
+	/**
+	 * Registers the model resource set at the eclipse context.
+	 * 
+	 * @param eclipseContext
+	 */
+	private void registerResourceSet(IEclipseContext eclipseContext) {
+		ResourceSet resourceSetImpl = new ResourceSetImpl();
+		resourceSetImpl
+				.getResourceFactoryRegistry()
+				.getExtensionToFactoryMap()
+				.put(Resource.Factory.Registry.DEFAULT_EXTENSION,
+						new E4XMIResourceFactory());
+
+		resourceSetImpl.getPackageRegistry().put(
+				ApplicationPackageImpl.eNS_URI,
+				ApplicationPackageImpl.eINSTANCE);
+		resourceSetImpl.getPackageRegistry().put(CommandsPackageImpl.eNS_URI,
+				CommandsPackageImpl.eINSTANCE);
+		resourceSetImpl.getPackageRegistry().put(UiPackageImpl.eNS_URI,
+				UiPackageImpl.eINSTANCE);
+		resourceSetImpl.getPackageRegistry().put(MenuPackageImpl.eNS_URI,
+				MenuPackageImpl.eINSTANCE);
+		resourceSetImpl.getPackageRegistry().put(BasicPackageImpl.eNS_URI,
+				BasicPackageImpl.eINSTANCE);
+		resourceSetImpl.getPackageRegistry().put(AdvancedPackageImpl.eNS_URI,
+				AdvancedPackageImpl.eINSTANCE);
+		resourceSetImpl
+				.getPackageRegistry()
+				.put(org.eclipse.e4.ui.model.application.descriptor.basic.impl.BasicPackageImpl.eNS_URI,
+						org.eclipse.e4.ui.model.application.descriptor.basic.impl.BasicPackageImpl.eINSTANCE);
+
+		eclipseContext.set(ResourceSet.class, resourceSetImpl);
+		eclipseContext.set("e4ModelResourceset", resourceSetImpl);
 	}
 
 	private String getArgValue(String argName, IApplicationContext appContext,
@@ -462,6 +555,9 @@ public class VaadinUI extends UI {
 		}
 		eclipseContext.set(E4Workbench.PRESENTATION_URI_ARG, presentationURI);
 		eclipseContext.set(UI.class, this);
+
+		eclipseContext.set(EPlaceholderResolver.class,
+				new PlaceholderResolver());
 
 		if (user != null) {
 			if (userClass == null)
@@ -525,8 +621,13 @@ public class VaadinUI extends UI {
 
 	@Override
 	public void detach() {
-		if (e4Workbench != null)
+		if (e4Workbench != null) {
 			e4Workbench.close();
+		}
+
+		if (layoutChangedObserver != null) {
+			layoutChangedObserver.dispose();
+		}
 		super.detach();
 	}
 }

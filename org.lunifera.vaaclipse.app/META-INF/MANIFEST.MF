@@ -28,7 +28,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.lunifera.ecview.jetty.manager;bundle-version="0.7.5",
  org.json;bundle-version="0.0.20080701",
  org.lunifera.runtime.web.vaadin.databinding;bundle-version="0.9.1",
- com.vaadin.external.atmosphere.runtime;bundle-version="2.1.2"
+ com.vaadin.external.atmosphere.runtime;bundle-version="2.1.2",
+ org.eclipse.emf.ecore.xmi;bundle-version="2.10.2",
+ org.lunifera.vaaclipse.addons.common.api,
+ org.lunifera.vaaclipse.addons.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.lunifera.vaaclipse.app;x-internal:=true,
