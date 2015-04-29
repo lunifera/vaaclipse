@@ -19,7 +19,6 @@ import org.eclipse.e4.ui.model.application.ui.menu.MItem;
 import org.eclipse.e4.ui.workbench.IPresentationEngine;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 
-@SuppressWarnings("restriction")
 public class RestoreHandler {
 	@Execute
 	public void restore(MItem item, EModelService modelService, MWindow window,

@@ -381,9 +381,12 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 		// add buttons to perspective switch panel
 		for (final MPerspective perspective : perspectiveStackForSwitcher
 				.getChildren()) {
-			Component button = createPerspectiveButton(perspective);
-			if (button != null)
-				perspectiveSwitcherPanel.addComponent(button);
+			if (perspective.isToBeRendered()) {
+				Component button = createPerspectiveButton(perspective);
+				if (button != null) {
+					perspectiveSwitcherPanel.addComponent(button);
+				}
+			}
 		}
 	}
 

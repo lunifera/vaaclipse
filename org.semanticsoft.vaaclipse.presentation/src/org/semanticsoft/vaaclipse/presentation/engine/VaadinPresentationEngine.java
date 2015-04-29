@@ -20,7 +20,6 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.contributions.IContributionFactory;
 import org.eclipse.e4.ui.model.application.MApplicationElement;
 import org.eclipse.e4.ui.workbench.IPresentationEngine;
-import org.semanticsoft.vaaclipse.api.Events;
 import org.semanticsoft.vaaclipse.api.VaadinExecutorService;
 import org.semanticsoft.vaaclipse.presentation.fastview.FastViewManager;
 import org.semanticsoft.vaaclipse.publicapi.events.PublicEvents;
@@ -76,10 +75,21 @@ public class VaadinPresentationEngine extends GenericPresentationEngine {
 				VaadinExecutorService.class);
 		executor.removeAllAlwaysRunnables();
 
-		UI ui = theApp.getContext().get(UI.class);
-		ui.setContent(new VerticalLayout());
-		URI appUri = ui.getPage().getLocation();
-		ui.close();
-		ui.getPage().setLocation(appUri);
+		final UI ui = theApp.getContext().get(UI.class);
+		Runnable runnable = new Runnable() {
+			@Override
+			public void run() {
+				ui.setContent(new VerticalLayout());
+				URI appUri = ui.getPage().getLocation();
+				ui.close();
+				ui.getPage().setLocation(appUri);
+			}
+		};
+
+		if (UI.getCurrent() == null) {
+			ui.access(runnable);
+		} else {
+			runnable.run();
+		}
 	}
 }

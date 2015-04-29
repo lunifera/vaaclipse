@@ -66,7 +66,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.service.datalocation.Location;
 import org.lunifera.runtime.web.vaadin.databinding.VaadinObservables;
-import org.lunifera.vaaclipse.addons.common.api.resource.ICustomizedModelHandler;
+import org.lunifera.vaaclipse.addons.common.api.resource.ISystemuserModelHandler;
 import org.lunifera.vaaclipse.addons.common.api.resource.ICustomizedModelResourceHandler;
 import org.lunifera.vaaclipse.addons.common.resource.LayoutChangedObserver;
 import org.lunifera.vaaclipse.app.VaadinE4Application;
@@ -98,7 +98,7 @@ public class VaadinUI extends UI {
 	 * This UI uses a different default resource handler.
 	 */
 	private static final String DEFAULT_RESOURCE_HANDLER = "bundleclass://org.lunifera.vaaclipse.addons.common/org.lunifera.vaaclipse.addons.common.resource.ResourceHandler";
-	private static final String CUSTOMIZED_MODEL_SERVICE = "bundleclass://org.lunifera.vaaclipse.addons.common/org.lunifera.vaaclipse.addons.common.resource.CustomizedModelHandler";
+	private static final String CUSTOMIZED_MODEL_SERVICE = "bundleclass://org.lunifera.vaaclipse.addons.common/org.lunifera.vaaclipse.addons.common.resource.SystemuserModelHandler";
 
 	protected static String presentationEngineURI = "bundleclass://org.semanticsoft.vaaclipse.presentation/"
 			+ "org.semanticsoft.vaaclipse.presentation.engine.VaadinPresentationEngine";
@@ -445,9 +445,9 @@ public class VaadinUI extends UI {
 				.get(IContributionFactory.class);
 
 		// create the customized model service
-		ICustomizedModelHandler service = (ICustomizedModelHandler) factory
+		ISystemuserModelHandler service = (ISystemuserModelHandler) factory
 				.create(CUSTOMIZED_MODEL_SERVICE, eclipseContext);
-		eclipseContext.set(ICustomizedModelHandler.class, service);
+		eclipseContext.set(ISystemuserModelHandler.class, service);
 
 		String resourceHandler = getArgValue(
 				E4Workbench.MODEL_RESOURCE_HANDLER, appContext, false);
