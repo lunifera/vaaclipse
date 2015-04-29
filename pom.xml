@@ -133,7 +133,6 @@
 				<module>org.semanticsoft.vaaclipse.behaviour</module>
 				<module>org.semanticsoft.vaaclipse.api</module>
 				<!-- Replaces vaaclipse.app and static.resources -->
-				<module>org.lunifera.vaaclipse.app</module>
 				<module>org.semanticsoft.vaaclipse.widgets</module>
 				<module>org.semanticsoft.vaaclipse.contributions</module>
 				<module>org.semanticsoft.vaaclipse.presentation</module>
