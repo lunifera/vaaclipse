@@ -287,7 +287,9 @@ public class StackRenderer extends VaadinRenderer {
 		// specified for stack, set the first child as selected
 		if (stack.getChildren().size() > 0
 				&& stack.getSelectedElement() == null) {
-			stack.setSelectedElement(stack.getChildren().get(0));
+			if (stack.getChildren().get(0).isVisible() && stack.getChildren().get(0).isToBeRendered()) {
+				stack.setSelectedElement(stack.getChildren().get(0));
+			}
 		}
 
 		if (stack.getSelectedElement() != null) {

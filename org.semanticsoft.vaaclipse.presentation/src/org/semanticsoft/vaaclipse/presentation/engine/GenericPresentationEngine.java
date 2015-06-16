@@ -283,7 +283,8 @@ public class GenericPresentationEngine implements PresentationEngine {
 							.getClass().getInterfaces());
 					ctxt.setContext(eclipseContext);
 
-					// make sure the context knows about these variables that have
+					// make sure the context knows about these variables that
+					// have
 					// been defined in the model
 					for (String variable : ctxt.getVariables()) {
 						eclipseContext.declareModifiable(variable);

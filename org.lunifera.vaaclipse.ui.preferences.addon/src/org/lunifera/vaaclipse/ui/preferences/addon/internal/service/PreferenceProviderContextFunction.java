@@ -24,13 +24,10 @@ import org.semanticsoft.vaaclipse.publicapi.preferences.IPreferenceProvider;
 public class PreferenceProviderContextFunction extends ContextFunction {
 	@Override
 	public Object compute(IEclipseContext context, String contextKey) {
-		PreferenceProvider broker = context.getLocal(PreferenceProvider.class);
-		if (broker == null) {
-			broker = ContextInjectionFactory.make(PreferenceProvider.class,
-					context);
-			context.set(IPreferenceProvider.class, broker);
-			context.set(PreferenceProvider.class, broker);
-		}
+		PreferenceProvider broker = ContextInjectionFactory.make(
+				PreferenceProvider.class, context);
+		context.set(IPreferenceProvider.class, broker);
+		context.set(PreferenceProvider.class, broker);
 		return broker;
 	}
 }
