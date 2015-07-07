@@ -129,33 +129,10 @@
 			<artifactId>ant</artifactId>
 			<version>1.8.4</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.json</groupId> -->
-<!-- 			<artifactId>json</artifactId> -->
-<!-- 			<version>20131108.vaadin1</version> -->
-<!-- 			<scope>compile</scope> -->
-<!-- 		</dependency> -->
-
-		<!-- <dependency> -->
-		<!-- <groupId>ant-contrib</groupId> -->
-		<!-- <artifactId>ant-contrib</artifactId> -->
-		<!-- <version>1.0b3</version> -->
-		<!-- <exclusions> -->
-		<!-- <exclusion> -->
-		<!-- <groupId>ant</groupId> -->
-		<!-- <artifactId>ant</artifactId> -->
-		<!-- </exclusion> -->
-		<!-- </exclusions> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>net.sf.saxon</groupId> -->
-		<!-- <artifactId>Saxon-HE</artifactId> -->
-		<!-- <version>9.4</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.oopsconsultancy</groupId> -->
-		<!-- <artifactId>xmltask</artifactId> -->
-		<!-- <version>1.16</version> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation</artifactId>
+			<version>1.1.0.v201105051105</version>
+		</dependency>
 	</dependencies>
 </project>
