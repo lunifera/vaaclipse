@@ -9,12 +9,4 @@
   	<relativePath>..</relativePath>
   </parent>
   
-  	<dependencies>
-		<dependency>
-			<groupId>javax.annotation</groupId>
-			<artifactId>javax.annotation</artifactId>
-			<version>1.1.0</version>
-		</dependency>
-	</dependencies>
-  
 </project>
