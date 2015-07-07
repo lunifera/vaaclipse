@@ -44,12 +44,15 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
-		<repository>
-			<id>com.springsource.repository.bundles.release</id>
-			<name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
-			<url>http://repository.springsource.com/maven/bundles/release</url>
-		</repository>
 	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+	</dependencies>
 
 	<pluginRepositories>
 		<pluginRepository>
@@ -417,11 +420,5 @@
 	<!-- </distributionManagement> -->
 
 
-	<dependencies>
-		<dependency>
-			<groupId>org.eclipse.jetty.orbit</groupId>
-			<artifactId>javax.annotation</artifactId>
-			<version>1.1.0.v201108011116</version>
-		</dependency>
-	</dependencies>
+
 </project>
