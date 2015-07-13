@@ -46,6 +46,14 @@
 		</repository>
 	</repositories>
 
+	<dependencies>
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+	</dependencies>
+
 	<pluginRepositories>
 		<pluginRepository>
 			<id>tycho-snapshots</id>
@@ -410,4 +418,7 @@
 	<!-- <url>http://semanticsoft.org:8085/archiva/repository/snapshots/</url> -->
 	<!-- </snapshotRepository> -->
 	<!-- </distributionManagement> -->
+
+
+
 </project>
