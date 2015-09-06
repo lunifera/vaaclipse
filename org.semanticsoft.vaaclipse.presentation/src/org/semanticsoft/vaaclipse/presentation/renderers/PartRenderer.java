@@ -32,6 +32,7 @@ import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 
 @SuppressWarnings("restriction")
@@ -49,7 +50,11 @@ public class PartRenderer extends VaadinRenderer {
 	@Override
 	public void createWidget(MUIElement element,
 			MElementContainer<MUIElement> parent) {
+		Panel shortcutReceiver = new Panel();
+		shortcutReceiver.setSizeFull();
+
 		VerticalLayout pane = new VerticalLayout();
+		shortcutReceiver.setContent(pane);
 		pane.setSizeFull();
 		final MPart part = (MPart) element;
 		// toolbar
@@ -76,7 +81,7 @@ public class PartRenderer extends VaadinRenderer {
 		pane.setExpandRatio(contributionArea, 100);
 
 		pane.setStyleName("part");
-		element.setWidget(pane);
+		element.setWidget(shortcutReceiver);
 
 		IEclipseContext localContext = part.getContext();
 		localContext.set(Component.class, contributionArea);

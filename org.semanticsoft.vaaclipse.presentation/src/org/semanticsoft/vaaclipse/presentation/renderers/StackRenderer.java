@@ -287,7 +287,8 @@ public class StackRenderer extends VaadinRenderer {
 		// specified for stack, set the first child as selected
 		if (stack.getChildren().size() > 0
 				&& stack.getSelectedElement() == null) {
-			if (stack.getChildren().get(0).isVisible() && stack.getChildren().get(0).isToBeRendered()) {
+			if (stack.getChildren().get(0).isVisible()
+					&& stack.getChildren().get(0).isToBeRendered()) {
 				stack.setSelectedElement(stack.getChildren().get(0));
 			}
 		}
@@ -310,14 +311,17 @@ public class StackRenderer extends VaadinRenderer {
 		if (mLabel instanceof MPart)
 			closable = ((MPart) mLabel).isCloseable();
 
-		Resource icon = mLabel.getIconURI() != null ? ResourceHelper
-				.createResource(mLabel.getIconURI()) : null;
 		// Tab tab = parentPane.addTab((com.vaadin.ui.Component)
 		// element.getWidget(), mLabel.getLocalizedLabel(), icon, pos);
 		Tab tab = parentPane.addTab(
 				(com.vaadin.ui.Component) element.getWidget(), pos);
 		tab.setCaption(mLabel.getLocalizedLabel());
-		tab.setIcon(icon);
+		Resource icon = (mLabel.getIconURI() != null && !mLabel.getIconURI()
+				.trim().equals("")) ? ResourceHelper.createResource(mLabel
+				.getIconURI()) : null;
+		if (icon != null) {
+			tab.setIcon(icon);
+		}
 		tab.setClosable(closable);
 		tab.setDescription(mLabel.getLocalizedTooltip());
 
