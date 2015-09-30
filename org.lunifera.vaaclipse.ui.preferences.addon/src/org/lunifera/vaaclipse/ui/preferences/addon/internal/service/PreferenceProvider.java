@@ -24,7 +24,7 @@ import org.semanticsoft.vaaclipse.publicapi.preferences.IPreferenceProvider;
 public class PreferenceProvider implements IPreferenceProvider {
 
 	@Inject
-	@Named("user")
+	@Named("userId")
 	@Optional
 	String userId;
 
