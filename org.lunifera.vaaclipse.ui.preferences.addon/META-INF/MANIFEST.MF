@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Addon
 Bundle-SymbolicName: org.lunifera.vaaclipse.ui.preferences.addon;singleton:=true
 Bundle-Version: 2.7.3.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: com.vaadin.data;version="[7.3.0,7.4.0)",
  com.vaadin.event;version="[7.3.0,7.4.0)",
  com.vaadin.server;version="[7.3.0,7.4.0)",
