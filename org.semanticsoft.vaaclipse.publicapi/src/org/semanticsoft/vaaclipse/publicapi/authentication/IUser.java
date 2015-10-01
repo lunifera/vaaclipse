@@ -16,10 +16,10 @@ package org.semanticsoft.vaaclipse.publicapi.authentication;
 public interface IUser {
 
 	/**
-	 * Returns the user id.
+	 * Returns the user name.
 	 * 
 	 * @return
 	 */
-	String getId();
+	String getUserName();
 
 }
