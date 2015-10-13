@@ -601,6 +601,7 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 			Table list;
 			IndexedContainer container;
 
+			@SuppressWarnings("unchecked")
 			@Override
 			public Component getComponent(OptionDialog optionDialog) {
 				if (panel == null) {
@@ -613,8 +614,12 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 					for (MPerspective p : perspectiveStackForSwitcher
 							.getChildren()) {
 						Item item = container.addItem(p.getElementId());
-						item.getItemProperty(PERSPECTIVE_ICON).setValue(
-								ResourceHelper.createResource(p.getIconURI()));
+						Resource icon = ResourceHelper.createResource(p
+								.getIconURI());
+						if (icon != null) {
+							item.getItemProperty(PERSPECTIVE_ICON).setValue(
+									icon);
+						}
 						item.getItemProperty(PERSPECTIVE_LABEL).setValue(
 								p.getLabel());
 					}

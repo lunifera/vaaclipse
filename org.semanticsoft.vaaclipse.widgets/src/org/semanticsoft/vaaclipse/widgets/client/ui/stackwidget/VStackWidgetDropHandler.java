@@ -35,7 +35,7 @@ public class VStackWidgetDropHandler extends VDDTabsheetDropHandler {
 
 		stackWidget.deEmphasis();
 
-		stackWidget.updateDropDetails(drag);
+		stackWidget.updateDragDetails(drag);
 
 		stackWidget.postOverHook(drag);
 
@@ -57,7 +57,7 @@ public class VStackWidgetDropHandler extends VDDTabsheetDropHandler {
 	public void dragLeave(VDragEvent drag) {
 		// VConsole.log("Drag Leave");
 		stackWidget.deEmphasis();
-		stackWidget.updateDropDetails(drag);
+		stackWidget.updateDragDetails(drag);
 		stackWidget.postLeaveHook(drag);
 
 		stackWidget.removeDockZone();

@@ -41,9 +41,8 @@ import com.vaadin.data.Item;
 import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.event.FieldEvents.TextChangeListener;
 import com.vaadin.event.ItemClickEvent;
-import com.vaadin.server.Sizeable.Unit;
+import com.vaadin.server.Sizeable;
 import com.vaadin.shared.MouseEventDetails.MouseButton;
-import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -259,7 +258,7 @@ public class PreferencesDialog {
 
 		splitPanel.addComponent(leftSide);
 		splitPanel.addComponent(rightSide);
-		splitPanel.setSplitPosition(30, Unit.PERCENTAGE);
+		splitPanel.setSplitPosition(30, Sizeable.Unit.PERCENTAGE);
 
 		rightSide.setExpandRatio(pageHeader, 0);
 		rightSide.setExpandRatio(pageContentPanel, 1);

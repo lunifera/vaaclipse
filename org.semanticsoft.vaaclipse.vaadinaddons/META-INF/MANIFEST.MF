@@ -7,7 +7,7 @@ Bundle-Vendor: Rushan R. Gilmullin
 Export-Package: com.vaadin.incubator.dashlayout.client.ui,
  com.vaadin.incubator.dashlayout.client.util.css,
  com.vaadin.incubator.dashlayout.ui,
- fi.jasoft.dragdroplayouts,
+ fi.jasoft.dragdroplayouts, 
  fi.jasoft.dragdroplayouts.client.ui,
  fi.jasoft.dragdroplayouts.client.ui.interfaces,
  fi.jasoft.dragdroplayouts.client.ui.util,
@@ -23,6 +23,6 @@ Export-Package: com.vaadin.incubator.dashlayout.client.ui,
  org.vaadin.peter.contextmenu.client.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.semanticsoft.commons;bundle-version="0.0.1",
- com.vaadin.server;bundle-version="7.0.0",
- com.vaadin.shared;bundle-version="7.0.0",
+ com.vaadin.server;bundle-version="[7.5.7,7.7.0)",
+ com.vaadin.shared;bundle-version="[7.5.7,7.7.0)",
  org.semanticsoft.vaaclipse.vaadin.addon.dndlayout;bundle-version="0.0.1"

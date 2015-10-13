@@ -5,7 +5,8 @@ Bundle-SymbolicName: org.semanticsoft.vaadin
 Bundle-Version: 2.7.3.qualifier
 Bundle-Vendor: Rushan R. Gilmullin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Require-Bundle: com.vaadin.server;bundle-version="[7.3.0,7.4.0)",
- com.vaadin.shared;bundle-version="[7.3.0,7.4.0)",
- org.json;bundle-version="0.0.20080701"
+Require-Bundle: com.vaadin.server;bundle-version="[7.5.7,7.7.0)",
+ com.vaadin.shared;bundle-version="[7.5.7,7.7.0)",
+ org.json;bundle-version="0.0.20080701",
+ org.jsoup;bundle-version="1.7.2"
 Export-Package: org.semanticsoft.vaadin.optiondialog

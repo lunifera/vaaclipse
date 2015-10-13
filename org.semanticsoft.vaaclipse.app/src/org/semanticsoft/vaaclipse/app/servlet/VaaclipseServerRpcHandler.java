@@ -62,7 +62,7 @@ public class VaaclipseServerRpcHandler extends ServerRpcHandler {
 	}
  
 	public void handleRpc(UI ui, Reader reader, VaadinRequest request)
-			throws IOException, InvalidUIDLSecurityKeyException, JSONException {
+			throws IOException, InvalidUIDLSecurityKeyException {
 		ui.getSession().setLastRequestTimestamp(System.currentTimeMillis());
 
 		String changeMessage = getMessage(reader);

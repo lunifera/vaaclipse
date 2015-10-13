@@ -12,7 +12,6 @@
 package org.semanticsoft.vaaclipse.widgets.client.ui.stackwidget;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -586,7 +585,7 @@ public class VStackWidget extends VDDTabSheet
 	 *            The drag event
 	 */
 	@Override
-	public void updateDropDetails(VDragEvent event) {
+	public void updateDragDetails(VDragEvent event) {
 		if (!updateRegion(event))
 			return;
 

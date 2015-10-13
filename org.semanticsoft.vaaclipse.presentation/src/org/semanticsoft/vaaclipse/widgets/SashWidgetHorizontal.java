@@ -14,7 +14,7 @@ package org.semanticsoft.vaaclipse.widgets;
 import java.util.EventObject;
 
 import com.vaadin.shared.communication.ServerRpc;
-import com.vaadin.shared.ui.splitpanel.AbstractSplitPanelState;
+import com.vaadin.shared.ui.splitpanel.HorizontalSplitPanelState;
 import com.vaadin.ui.HorizontalSplitPanel;
 
 /**
@@ -39,7 +39,7 @@ public class SashWidgetHorizontal extends HorizontalSplitPanel implements
 	}
 
 	@Override
-	public AbstractSplitPanelState getState() {
+	public HorizontalSplitPanelState getState() {
 		return super.getState();
 	}
 
