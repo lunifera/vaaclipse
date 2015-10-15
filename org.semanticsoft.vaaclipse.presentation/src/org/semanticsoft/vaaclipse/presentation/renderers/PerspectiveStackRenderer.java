@@ -44,6 +44,7 @@ import org.semanticsoft.vaaclipse.api.ResourceInfoProvider;
 import org.semanticsoft.vaaclipse.presentation.engine.GenericPresentationEngine;
 import org.semanticsoft.vaaclipse.presentation.utils.Commons;
 import org.semanticsoft.vaaclipse.presentation.utils.HierarchyUtils;
+import org.semanticsoft.vaaclipse.publicapi.authentication.AuthenticationConstants;
 import org.semanticsoft.vaaclipse.publicapi.model.Tags;
 import org.semanticsoft.vaaclipse.publicapi.perspective.IPerspectiveHandler;
 import org.semanticsoft.vaaclipse.publicapi.resources.BundleResource;
@@ -488,7 +489,8 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 		if (selectedPerspective == null) {
 			// try to find by registry
 			if (perspectiveRegistry != null) {
-				String userId = (String) context.get("user");
+				String userId = (String) context
+						.get(AuthenticationConstants.USER_ID);
 				String perspectiveId = perspectiveRegistry
 						.getDefaultPerspective(userId);
 				if (perspectiveId != null) {

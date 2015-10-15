@@ -18,4 +18,6 @@ public interface VaadinExecutorService {
 	void removeAlwaysRunnable(Runnable runnable);
 
 	void removeAllAlwaysRunnables();
+	
+	void dispose();
 }

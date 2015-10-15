@@ -21,6 +21,10 @@ public class AuthenticationConstants {
 		public static class Authentication {
 			public static final String name = "vaaclipseAuthentication";
 			public static final String userClass = "userClass";
+			/**
+			 * Logs out the current session.
+			 */
+			public static final String LOGOUT = "session/logout";
 		}
 	}
 }
