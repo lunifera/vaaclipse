@@ -9,5 +9,4 @@ plugin.xml_gen
 **/xtend-gen
 **/widgetsets
 **/gwt-unitCache
-**/resources
 **/WEB-INF
