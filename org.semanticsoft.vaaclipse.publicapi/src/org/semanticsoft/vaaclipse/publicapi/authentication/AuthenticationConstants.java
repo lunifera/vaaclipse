@@ -22,6 +22,10 @@ public class AuthenticationConstants {
 			public static final String name = "vaaclipseAuthentication";
 			public static final String userClass = "userClass";
 			/**
+			 * Is sent before the logout of the current session.
+			 */
+			public static final String PRE_LOGOUT = "session/prelogout";
+			/**
 			 * Logs out the current session.
 			 */
 			public static final String LOGOUT = "session/logout";
