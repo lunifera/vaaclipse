@@ -259,7 +259,9 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 			String iconURI = Commons.trim(perspective.getIconURI());
 
 			TwoStateToolbarButton button = perspective_button.get(perspective);
-			button.setLabelAndIcon(label, iconURI);
+			if (button != null) {
+				button.setLabelAndIcon(label, iconURI);
+			}
 		}
 	};
 
