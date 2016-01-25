@@ -278,7 +278,9 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 						.getProperty(UIEvents.EventTags.NEW_VALUE);
 				TwoStateToolbarButton button = perspective_button
 						.get(perspective);
-				button.setDescription(newValue);
+				if (button != null) {
+					button.setDescription(newValue);
+				}
 			}
 		}
 	};
