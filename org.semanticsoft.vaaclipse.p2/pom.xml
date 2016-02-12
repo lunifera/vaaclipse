@@ -6,9 +6,7 @@
 		<artifactId>org.semanticsoft.vaaclipse</artifactId>
 		<version>2.7.3-SNAPSHOT</version>
 	</parent>
-	<groupId>org.semanticsoft</groupId>
 	<artifactId>org.semanticsoft.vaaclipse.p2</artifactId>
-	<version>2.7.3-SNAPSHOT</version>
 	<packaging>eclipse-repository</packaging>
 
 
