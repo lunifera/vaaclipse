@@ -68,8 +68,8 @@
 
 	<repositories>
 		<repository>
-			<id>lunifera-nexus-snapshots</id>
-			<url>http://maven.lunifera.org:8086/nexus/content/repositories/snapshots/</url>
+			<id>osbee-nexus-snapshots</id>
+			<url>http://download.osbee.org:8086/nexus/content/repositories/osbee-master-clean-snapshots/</url>
 			<releases>
 				<enabled>false</enabled>
 			</releases>
