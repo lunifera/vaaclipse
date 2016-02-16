@@ -10,3 +10,4 @@ plugin.xml_gen
 **/widgetsets
 **/gwt-unitCache
 **/WEB-INF
+/resources/

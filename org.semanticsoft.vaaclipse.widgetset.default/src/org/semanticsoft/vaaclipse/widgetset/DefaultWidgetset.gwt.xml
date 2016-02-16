@@ -4,13 +4,16 @@
 	<inherits name="com.vaadin.DefaultWidgetSet" />
 
 	<inherits name="org.vaadin.peter.contextmenu.ContextmenuWidgetset" />
-<!-- 	<inherits name="fi.jasoft.dragdroplayouts.DragDropLayoutsWidgetSet" /> -->
+	<!-- <inherits name="fi.jasoft.dragdroplayouts.DragDropLayoutsWidgetSet" 
+		/> -->
 	<inherits
 		name="org.semanticsoft.vaaclipse.widgets.Org_semanticsoft_vaaclipse_widgetsWidgetset" />
 
-<!-- 	// Enable for super dev mode -->
-<!-- 	<set-configuration-property name="devModeRedirectEnabled" -->
-<!-- 		value="true" /> -->
+	<inherits name="org.vaadin.gridutil.WidgetSet" />
 
-<!-- 	<add-linker name="xsiframe" /> -->
+	<!-- // Enable for super dev mode -->
+	<!-- <set-configuration-property name="devModeRedirectEnabled" -->
+	<!-- value="true" /> -->
+
+	<!-- <add-linker name="xsiframe" /> -->
 </module>

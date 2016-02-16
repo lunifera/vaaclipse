@@ -566,7 +566,7 @@ public class VaaclipseDragAndDropManager extends VDragAndDropManager {
 					Scheduler.get().scheduleFixedDelay(new RepeatingCommand() {
 						@Override
 						public boolean execute() {
-							if (!client.hasActiveRequest()) {
+							if (!client.getMessageSender().hasActiveRequest()) {
 								removeActiveDragSourceStyleName(dragSource);
 								return false;
 							}

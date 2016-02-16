@@ -45,7 +45,7 @@ public class PlaceholderRenderer extends VaadinRenderer {
 	private IEventBroker eventBroker;
 
 	@Override
-	public void createWidget(MUIElement element,
+	public void createWidget(MUIElement element,  
 			MElementContainer<MUIElement> parent) {
 		MPlaceholder ph = (MPlaceholder) element;
 		final MUIElement ref = ph.getRef();

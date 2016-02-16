@@ -20,7 +20,7 @@ function org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset(){
   org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset.__softPermutationId = 0;
   org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset.__computePropValue = null;
   org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset.__getPropMap = null;
-  org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset.__gwtInstallCode = function(){
+  org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset.__installRunAsyncCode = function(){
   }
   ;
   org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset.__gwtStartLoadingFragment = function(){
@@ -35,18 +35,27 @@ function org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset(){
     return null;
   }
   ;
-  __propertyErrorFunction = null;
+  var __propertyErrorFunction = null;
   var activeModules = $wnd_0.__gwt_activeModules = $wnd_0.__gwt_activeModules || {};
   activeModules['org.semanticsoft.vaaclipse.widgetset.DefaultWidgetset'] = {moduleName:'org.semanticsoft.vaaclipse.widgetset.DefaultWidgetset'};
+  org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset.__moduleStartupDone = function(permProps){
+    var oldBindings = activeModules['org.semanticsoft.vaaclipse.widgetset.DefaultWidgetset'].bindings;
+    activeModules['org.semanticsoft.vaaclipse.widgetset.DefaultWidgetset'].bindings = function(){
+      var props = oldBindings?oldBindings():{};
+      var embeddedProps = permProps[org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset.__softPermutationId];
+      for (var i = 0; i < embeddedProps.length; i++) {
+        var pair = embeddedProps[i];
+        props[pair[0]] = pair[1];
+      }
+      return props;
+    }
+    ;
+  }
+  ;
   var frameDoc;
   function getInstallLocationDoc(){
     setupInstallLocation();
     return frameDoc;
-  }
-
-  function getInstallLocation(){
-    setupInstallLocation();
-    return frameDoc.getElementsByTagName('body')[0];
   }
 
   function setupInstallLocation(){
@@ -108,48 +117,26 @@ function org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset(){
     }
 
     function installCode(code_0){
-      function removeScript(body_0, element){
-      }
-
-      var docbody = getInstallLocation();
       var doc = getInstallLocationDoc();
-      var script;
-      if (navigator.userAgent.indexOf('Chrome') > -1 && window.JSON) {
-        var scriptFrag = doc.createDocumentFragment();
-        scriptFrag.appendChild(doc.createTextNode('eval("'));
-        for (var i = 0; i < code_0.length; i++) {
-          var c = window.JSON.stringify(code_0[i]);
-          scriptFrag.appendChild(doc.createTextNode(c.substring(1, c.length - 1)));
+      var docbody = doc.body;
+      var script = doc.createElement('script');
+      script.language = 'javascript';
+      script.src = code_0;
+      if (org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset.__errFn) {
+        script.onerror = function(){
+          org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset.__errFn('org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset', new Error('Failed to load ' + code_0));
         }
-        scriptFrag.appendChild(doc.createTextNode('");'));
-        script = doc.createElement('script');
-        script.language = 'javascript';
-        script.appendChild(scriptFrag);
-        docbody.appendChild(script);
-        removeScript(docbody, script);
+        ;
       }
-       else {
-        for (var i = 0; i < code_0.length; i++) {
-          script = doc.createElement('script');
-          script.language = 'javascript';
-          script.text = code_0[i];
-          docbody.appendChild(script);
-          removeScript(docbody, script);
-        }
-      }
+      docbody.appendChild(script);
+      sendStats('moduleStartup', 'scriptTagAdded');
     }
 
-    org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset.onScriptDownloaded = function(code_0){
-      setupWaitForBodyLoad(function(){
-        installCode(code_0);
-      }
-      );
-    }
-    ;
     sendStats('moduleStartup', 'moduleRequested');
-    var script_0 = $doc_0.createElement('script');
-    script_0.src = filename;
-    $doc_0.getElementsByTagName('head')[0].appendChild(script_0);
+    setupWaitForBodyLoad(function(){
+      installCode(filename);
+    }
+    );
   }
 
   org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset.__startLoadingFragment = function(fragmentFile){
@@ -157,8 +144,9 @@ function org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset(){
   }
   ;
   org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset.__installRunAsyncCode = function(code_0){
-    var docbody = getInstallLocation();
-    var script = getInstallLocationDoc().createElement('script');
+    var doc = getInstallLocationDoc();
+    var docbody = doc.body;
+    var script = doc.createElement('script');
     script.language = 'javascript';
     script.text = code_0;
     docbody.appendChild(script);
@@ -326,8 +314,8 @@ function org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset(){
       for (var k in allowedValuesMap) {
         allowedValuesList[allowedValuesMap[k]] = k;
       }
-      if (__propertyErrorFunc) {
-        __propertyErrorFunc(propName, allowedValuesList, value_0);
+      if (__propertyErrorFunction) {
+        __propertyErrorFunction(propName, allowedValuesList, value_0);
       }
       throw null;
     }
@@ -345,40 +333,36 @@ function org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset(){
     values['modernie'] = {none:0, yes:1};
     providers['user.agent'] = function(){
       var ua = navigator.userAgent.toLowerCase();
-      if (function(){
-        return ua.indexOf('opera') != -1;
-      }
-      ())
-        return 'opera';
+      var docMode = $doc_0.documentMode;
       if (function(){
         return ua.indexOf('webkit') != -1 && ua.indexOf('trident') == -1;
       }
       ())
         return 'safari';
       if (function(){
-        return ua.indexOf('msie') != -1 && $doc_0.documentMode == 10;
+        return ua.indexOf('msie') != -1 && (docMode >= 10 && docMode < 11);
       }
       ())
         return 'ie10';
       if (function(){
-        return ua.indexOf('msie') != -1 && $doc_0.documentMode >= 9;
+        return ua.indexOf('msie') != -1 && (docMode >= 9 && docMode < 11);
       }
       ())
         return 'ie9';
       if (function(){
-        return ua.indexOf('msie') != -1 && $doc_0.documentMode >= 8;
+        return ua.indexOf('msie') != -1 && (docMode >= 8 && docMode < 11);
       }
       ())
         return 'ie8';
       if (function(){
-        return ua.indexOf('gecko') != -1;
+        return ua.indexOf('gecko') != -1 || docMode >= 11;
       }
       ())
         return 'gecko1_8';
-      return 'unknown';
+      return '';
     }
     ;
-    values['user.agent'] = {gecko1_8:0, ie10:1, ie8:2, ie9:3, opera:4, safari:5};
+    values['user.agent'] = {gecko1_8:0, ie10:1, ie8:2, ie9:3, safari:4};
     __gwt_isKnownPropertyValue = function(propName, propValue){
       return propValue in values[propName];
     }
@@ -401,13 +385,12 @@ function org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset(){
     }
     var strongName;
     try {
-      unflattenKeylistIntoAnswers(['none', 'gecko1_8'], '36A42E83A1F505E96456E463D7CEC4A9');
-      unflattenKeylistIntoAnswers(['yes', 'gecko1_8'], '36A42E83A1F505E96456E463D7CEC4A9' + ':1');
-      unflattenKeylistIntoAnswers(['none', 'ie10'], '36A42E83A1F505E96456E463D7CEC4A9' + ':2');
-      unflattenKeylistIntoAnswers(['none', 'ie8'], '36A42E83A1F505E96456E463D7CEC4A9' + ':3');
-      unflattenKeylistIntoAnswers(['none', 'ie9'], '36A42E83A1F505E96456E463D7CEC4A9' + ':4');
-      unflattenKeylistIntoAnswers(['none', 'opera'], '36A42E83A1F505E96456E463D7CEC4A9' + ':5');
-      unflattenKeylistIntoAnswers(['none', 'safari'], '36A42E83A1F505E96456E463D7CEC4A9' + ':6');
+      unflattenKeylistIntoAnswers(['none', 'gecko1_8'], '429D8416841C137355220DCD53F4C554');
+      unflattenKeylistIntoAnswers(['yes', 'gecko1_8'], '429D8416841C137355220DCD53F4C554' + ':1');
+      unflattenKeylistIntoAnswers(['none', 'ie10'], '429D8416841C137355220DCD53F4C554' + ':2');
+      unflattenKeylistIntoAnswers(['none', 'ie8'], '429D8416841C137355220DCD53F4C554' + ':3');
+      unflattenKeylistIntoAnswers(['none', 'ie9'], '429D8416841C137355220DCD53F4C554' + ':4');
+      unflattenKeylistIntoAnswers(['none', 'safari'], '429D8416841C137355220DCD53F4C554' + ':5');
       strongName = answers[computePropValue('modernie')][computePropValue('user.agent')];
       var idx = strongName.indexOf(':');
       if (idx != -1) {
@@ -439,6 +422,7 @@ function org_semanticsoft_vaaclipse_widgetset_DefaultWidgetset(){
     installOneStylesheet('contextmenu-widget/contextmenu.css');
     installOneStylesheet('fi_jasoft_dragdroplayouts/dragdroplayouts.css');
     installOneStylesheet('org_semanticsoft_vaaclipse/vaaclipse.css');
+    installOneStylesheet('grid-util.css?v=1.0.8a');
     sendStats('loadExternalRefs', 'end');
   }
 
