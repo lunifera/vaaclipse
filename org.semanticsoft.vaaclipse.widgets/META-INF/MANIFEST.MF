@@ -9,7 +9,8 @@ Require-Bundle: com.vaadin.client;bundle-version="[7.5.7,7.7.0)",
  com.vaadin.themes;bundle-version="[7.5.7,7.7.0)",
  org.semanticsoft.vaaclipse.vaadin.addon.dndlayout;bundle-version="1.1.1",
  org.json;bundle-version="0.0.20080701",
- org.jsoup;bundle-version="1.7.2"
+ org.jsoup;bundle-version="1.7.2",
+ org.lunifera.dependencies.bundle.vaadin.addon.dragdroplayouts;bundle-version="1.2.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.semanticsoft.vaaclipse.widgets,
  org.semanticsoft.vaaclipse.widgets.common
