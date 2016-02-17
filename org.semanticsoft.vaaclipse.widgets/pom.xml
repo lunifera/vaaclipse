@@ -17,11 +17,4 @@
 			</resource>
 		</resources>
 	</build>
-	<dependencies>
-		<dependency>
-			<groupId>org.lunifera.dependencies</groupId>
-			<artifactId>org.lunifera.dependencies.bundle.vaadin.addon.dragdroplayouts</artifactId>
-			<version>1.2.1</version>
-		</dependency>
-	</dependencies>
 </project>
