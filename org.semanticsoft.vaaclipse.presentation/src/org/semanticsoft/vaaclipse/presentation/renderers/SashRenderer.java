@@ -20,13 +20,13 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainerElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
-import org.eclipse.e4.ui.services.internal.events.EventBroker;
 import org.eclipse.e4.ui.workbench.UIEvents;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
@@ -47,7 +47,7 @@ import com.vaadin.ui.VerticalLayout;
 public class SashRenderer extends VaadinRenderer {
 
 	@Inject
-	EventBroker eventBroker;
+	IEventBroker eventBroker;
 
 	@Inject
 	Logger logger;
@@ -218,13 +218,34 @@ public class SashRenderer extends VaadinRenderer {
 				sashWeightHandler);
 		eventBroker.subscribe(UIEvents.UIElement.TOPIC_VISIBLE,
 				visibilityHandler);
+		eventBroker.subscribe(UIEvents.ElementContainer.TOPIC_CHILDREN,
+				childrenMoveUpdater);
 	}
 
 	@PreDestroy
 	public void preDestroy() {
 		eventBroker.unsubscribe(sashWeightHandler);
 		eventBroker.unsubscribe(visibilityHandler);
+		eventBroker.unsubscribe(childrenMoveUpdater);
 	}
+
+	private EventHandler childrenMoveUpdater = new EventHandler() {
+		public void handleEvent(Event event) {
+			// Ensure that this event is for a MMenuItem
+			if (!(event.getProperty(UIEvents.EventTags.ELEMENT) instanceof MPartSashContainer))
+				return;
+
+			MPartSashContainer sash = (MPartSashContainer) event
+					.getProperty(UIEvents.EventTags.ELEMENT);
+			String type = (String) event.getProperty(UIEvents.EventTags.TYPE);
+
+			// on move, we unrender an render the UI again
+			//
+			if (UIEvents.EventTypes.MOVE.equals(type)) {
+//				refreshSashContainer(sash);
+			}
+		}
+	};
 
 	@Override
 	public void hookControllerLogic(MUIElement element) {

@@ -242,6 +242,8 @@ public class StackRenderer extends VaadinRenderer {
 				selectElementHandler);
 		eventBroker.subscribe(UIEvents.UILabel.TOPIC_ALL, itemUpdater);
 		eventBroker.subscribe(UIEvents.Dirtyable.TOPIC_DIRTY, itemUpdater);
+		eventBroker.subscribe(UIEvents.ElementContainer.TOPIC_CHILDREN,
+				childrenMoveUpdater);
 	}
 
 	@PreDestroy
@@ -249,7 +251,30 @@ public class StackRenderer extends VaadinRenderer {
 		eventBroker.unsubscribe(tagListener);
 		eventBroker.unsubscribe(selectElementHandler);
 		eventBroker.unsubscribe(itemUpdater);
+		eventBroker.unsubscribe(childrenMoveUpdater);
 	}
+
+	// TODO for later use
+	private EventHandler childrenMoveUpdater = new EventHandler() {
+		public void handleEvent(Event event) {
+			// Ensure that this event is for a MMenuItem
+			if (!(event.getProperty(UIEvents.EventTags.ELEMENT) instanceof MPartStack))
+				return;
+
+			@SuppressWarnings("unchecked")
+			MElementContainer<MUIElement> stack = (MElementContainer<MUIElement>) event
+					.getProperty(UIEvents.EventTags.ELEMENT);
+			String type = (String) event.getProperty(UIEvents.EventTags.TYPE);
+
+			if (UIEvents.EventTypes.MOVE.equals(type)
+					) {
+				StackWidget stackWidget = (StackWidget) stack.getWidget();
+				stackWidget.removeAllComponents();
+
+				processContents(stack);
+			}
+		}
+	};
 
 	@Override
 	public void createWidget(MUIElement element,
@@ -328,6 +353,7 @@ public class StackRenderer extends VaadinRenderer {
 		vaatab2Element.put((Component) element.getWidget(), element);
 	}
 
+	@SuppressWarnings("serial")
 	@Override
 	public void hookControllerLogic(final MUIElement element) {
 		final StackWidget sw = (StackWidget) element.getWidget();
@@ -373,8 +399,7 @@ public class StackRenderer extends VaadinRenderer {
 			});
 		}
 
-		sw.addListener(new SelectedTabChangeListener() {
-
+		sw.addSelectedTabChangeListener(new SelectedTabChangeListener() {
 			public void selectedTabChange(SelectedTabChangeEvent event) {
 				MStackElement stackElement = vaatab2Element.get(sw
 						.getSelectedTab());

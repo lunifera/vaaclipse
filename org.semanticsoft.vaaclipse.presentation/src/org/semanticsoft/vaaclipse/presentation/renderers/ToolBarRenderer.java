@@ -32,9 +32,14 @@ import org.eclipse.e4.ui.model.application.ui.menu.MToolBar;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarContribution;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarSeparator;
+import org.eclipse.e4.ui.workbench.UIEvents;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
+import org.osgi.service.event.Event;
+import org.osgi.service.event.EventHandler;
 import org.semanticsoft.vaaclipse.presentation.utils.GuiUtils;
+import org.semanticsoft.vaaclipse.publicapi.resources.ResourceHelper;
 
+import com.vaadin.server.Resource;
 import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.AbstractOrderedLayout;
 import com.vaadin.ui.Component;
@@ -249,4 +254,78 @@ public class ToolBarRenderer extends BasicMenuToolbarTrimbarRenderer {
 		toolbarWidget.requestRepaint();
 	}
 
+	@Override
+	public void setVisible(MUIElement changedElement, boolean visible) {
+		((AbstractOrderedLayout) changedElement.getWidget())
+				.setVisible(visible);
+	}
+
+	@PostConstruct
+	public void postConstruct() {
+		eventBroker.subscribe(UIEvents.UILabel.TOPIC_ALL, itemUpdater);
+		eventBroker.subscribe(UIEvents.Menu.TOPIC_ENABLED, itemUpdater);
+		eventBroker.subscribe(UIEvents.ElementContainer.TOPIC_CHILDREN,
+				childrenMoveUpdater);
+	}
+
+	@PreDestroy
+	public void preDestroy() {
+		eventBroker.unsubscribe(itemUpdater);
+		eventBroker.unsubscribe(childrenMoveUpdater);
+	}
+
+	private EventHandler itemUpdater = new EventHandler() {
+		public void handleEvent(Event event) {
+			// Ensure that this event is for a MMenuItem
+			if (!(event.getProperty(UIEvents.EventTags.ELEMENT) instanceof MToolBar))
+				return;
+
+			MToolBar model = (MToolBar) event
+					.getProperty(UIEvents.EventTags.ELEMENT);
+			AbstractOrderedLayout ici = (AbstractOrderedLayout) model
+					.getWidget();
+			if (ici == null) {
+				return;
+			}
+
+			String attName = (String) event
+					.getProperty(UIEvents.EventTags.ATTNAME);
+			Object newValue = event.getProperty(UIEvents.EventTags.NEW_VALUE);
+			if (UIEvents.UILabel.ICONURI.equals(attName)) {
+				Resource icon = ResourceHelper
+						.createResource((String) newValue);
+				ici.setIcon(icon);
+			} else if (UIEvents.UILabel.TOOLTIP.equals(attName)) {
+				ici.setDescription((String) newValue);
+			} else if (UIEvents.Item.ENABLED.equals(attName)) {
+				ici.setEnabled((boolean) newValue);
+			}
+		}
+	};
+
+	private EventHandler childrenMoveUpdater = new EventHandler() {
+		@SuppressWarnings("unchecked")
+		public void handleEvent(Event event) {
+			// Ensure that this event is for a MMenuItem
+			if (!(event.getProperty(UIEvents.EventTags.ELEMENT) instanceof MToolBar))
+				return;
+
+			MElementContainer<MUIElement> toolbar = (MElementContainer<MUIElement>) event
+					.getProperty(UIEvents.EventTags.ELEMENT);
+
+			String type = (String) event.getProperty(UIEvents.EventTags.TYPE);
+
+			// on move, we unrender an render the UI again
+			//
+			if (UIEvents.EventTypes.MOVE.equals(type)) {
+				for (MUIElement item : toolbar.getChildren()) {
+					removeChildGui(item, toolbar);
+				}
+
+				for (MUIElement item : toolbar.getChildren()) {
+					addChildGui(item, toolbar);
+				}
+			}
+		}
+	};
 }

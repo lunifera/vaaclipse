@@ -132,6 +132,7 @@ public class GenericPresentationEngine implements PresentationEngine {
 	};
 
 	private EventHandler toBeRenderedHandler = new EventHandler() {
+		@SuppressWarnings("unchecked")
 		public void handleEvent(Event event) {
 
 			MUIElement changedElement = (MUIElement) event
@@ -146,12 +147,6 @@ public class GenericPresentationEngine implements PresentationEngine {
 
 			if (parentRenderer == null)
 				return;
-
-			// Handle Detached Windows
-			if (parent == null) {
-				parent = (MElementContainer<?>) ((EObject) changedElement)
-						.eContainer();
-			}
 
 			// If the parent isn't displayed who cares?
 			if (!(parent instanceof MApplication)
@@ -386,6 +381,7 @@ public class GenericPresentationEngine implements PresentationEngine {
 		return modelService.getContainingContext(parent);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void removeGui(MUIElement element) {
 

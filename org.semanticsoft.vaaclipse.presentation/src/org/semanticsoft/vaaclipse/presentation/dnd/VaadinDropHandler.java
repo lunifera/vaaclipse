@@ -22,8 +22,6 @@ import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicFactoryImpl;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
-import org.eclipse.emf.ecore.EObject;
-
 import org.semanticsoft.commons.geom.GeomUtils;
 import org.semanticsoft.commons.geom.Side;
 import org.semanticsoft.commons.geom.Vector;
@@ -64,6 +62,7 @@ public class VaadinDropHandler implements DropHandler {
 		return AcceptAll.get();
 	}
 
+	@SuppressWarnings("restriction")
 	public void drop(DragAndDropEvent event) {
 		if (!(event.getTransferable() instanceof LayoutBoundTransferable))
 			return;

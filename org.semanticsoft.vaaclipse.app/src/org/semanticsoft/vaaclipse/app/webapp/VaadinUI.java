@@ -50,8 +50,11 @@ import org.eclipse.e4.ui.workbench.lifecycle.PostContextCreate;
 import org.eclipse.e4.ui.workbench.lifecycle.ProcessAdditions;
 import org.eclipse.e4.ui.workbench.lifecycle.ProcessRemovals;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.osgi.service.datalocation.Location;
 import org.osgi.service.event.EventHandler;
@@ -60,6 +63,7 @@ import org.semanticsoft.vaaclipse.app.VaadinE4Application;
 import org.semanticsoft.vaaclipse.app.servlet.OSGiServletService;
 import org.semanticsoft.vaaclipse.app.servlet.VaadinExecutorServiceImpl;
 import org.semanticsoft.vaaclipse.publicapi.authentication.AuthenticationConstants;
+import org.semanticsoft.vaaclipse.publicapi.events.IWidgetModelAssociations;
 import org.semanticsoft.vaaclipse.publicapi.theme.Theme;
 import org.semanticsoft.vaaclipse.publicapi.theme.ThemeConstants;
 
@@ -104,29 +108,28 @@ public class VaadinUI extends UI {
 
 	public VaadinUI() {
 	}
-	
-	public IEclipseContext getRootContext()
-	{
+
+	public IEclipseContext getRootContext() {
 		return appContext;
 	}
 
 	private void setThemeInternal(String themeId) {
-		throw new RuntimeException("The changing theme in runtime is not supported by Vaadin 7");
+		throw new RuntimeException(
+				"The changing theme in runtime is not supported by Vaadin 7");
 	}
-	
+
 	@Override
 	public void init(VaadinRequest request) {
 		context = VaadinE4Application.getInstance().getAppContext();
 		logger = VaadinE4Application.getInstance().getLogger();
-		
+
 		String sessionId = getSession().getSession().getId();
 		Object[] prevUser = tempUserStore.remove(sessionId);
-		if (prevUser != null)
-		{
+		if (prevUser != null) {
 			this.user = prevUser[0];
 			this.userClass = (Class<Object>) prevUser[1];
 		}
-		
+
 		// -------------------------------------
 		prepareEnvironment(context);
 
@@ -147,7 +150,7 @@ public class VaadinUI extends UI {
 						}
 					}
 				});
-		
+
 		String authProvider = VaadinE4Application.getInstance()
 				.getApplicationAuthenticationProvider();
 
@@ -156,7 +159,6 @@ public class VaadinUI extends UI {
 			e4Workbench = createE4Workbench(context);
 			e4Workbench.createAndRunUI(e4Workbench.getApplication());
 		} else {
-			
 
 			IContributionFactory contributionFactory = (IContributionFactory) appContext
 					.get(IContributionFactory.class.getName());
@@ -165,41 +167,41 @@ public class VaadinUI extends UI {
 			VerticalLayout content = new VerticalLayout();
 			content.setSizeFull();
 			setContent(content);
-			
+
 			authConext.set(ComponentContainer.class, content);
 			authConext.set(VerticalLayout.class, content);
 			Object authProviderObj = contributionFactory.create(authProvider,
 					authConext);
 		}
-		
+
 		eventBroker.subscribe(
 				AuthenticationConstants.Events.Authentication.name,
 				new EventHandler() {
 					@SuppressWarnings("unchecked")
 					@Override
-					public void handleEvent(
-							org.osgi.service.event.Event event) {
-						
+					public void handleEvent(org.osgi.service.event.Event event) {
+
 						user = event.getProperty(EventUtils.DATA);
-						userClass = (Class<Object>) event.getProperty(AuthenticationConstants.Events.Authentication.userClass);
-						
-						if (e4Workbench != null)
-						{
-							String sessionId = getSession().getSession().getId();
-							tempUserStore.put(sessionId, new Object[] {user, userClass});
+						userClass = (Class<Object>) event
+								.getProperty(AuthenticationConstants.Events.Authentication.userClass);
+
+						if (e4Workbench != null) {
+							String sessionId = getSession().getSession()
+									.getId();
+							tempUserStore.put(sessionId, new Object[] { user,
+									userClass });
 							e4Workbench.close();
-						}
-						else
-						{
+						} else {
 							e4Workbench = createE4Workbench(context);
 							e4Workbench.createAndRunUI(e4Workbench
-									.getApplication());	
+									.getApplication());
 						}
-						
+
 					}
 				});
-		
-		VaadinExecutorServiceImpl man = (VaadinExecutorServiceImpl) appContext.get(VaadinExecutorService.class);
+
+		VaadinExecutorServiceImpl man = (VaadinExecutorServiceImpl) appContext
+				.get(VaadinExecutorService.class);
 		man.exec();
 	}
 
@@ -212,7 +214,9 @@ public class VaadinUI extends UI {
 		appContext.set("e4ApplicationInstanceId", UUID.randomUUID().toString());
 		appContext.set("vaadinUI", this);
 		appContext.set(UI.class, this);
-		appContext.set(VaadinExecutorService.class, ((OSGiServletService)getSession().getService()).getExecutorService());
+		appContext.set(VaadinExecutorService.class,
+				((OSGiServletService) getSession().getService())
+						.getExecutorService());
 		appContext.set(UISynchronize.class, new UISynchronize() {
 
 			public void syncExec(Runnable runnable) {
@@ -223,6 +227,9 @@ public class VaadinUI extends UI {
 				runnable.run();
 			}
 		});
+
+		appContext.set(IWidgetModelAssociations.class,
+				new WidgetModelAssociations());
 
 		factory = (IContributionFactory) appContext
 				.get(IContributionFactory.class.getName());
@@ -248,7 +255,7 @@ public class VaadinUI extends UI {
 		fixNullElementIds(appModel);
 		appModel.setContext(appContext);
 		appContext.set(MApplication.class.getName(), appModel);
-		
+
 		// ContextInjectionFactory.setDefault(appContext);
 		if (lcManager != null) {
 			ContextInjectionFactory.invoke(lcManager, ProcessAdditions.class,
@@ -403,9 +410,8 @@ public class VaadinUI extends UI {
 		}
 		eclipseContext.set(E4Workbench.PRESENTATION_URI_ARG, presentationURI);
 		eclipseContext.set(UI.class, this);
-		
-		if (user != null)
-		{
+
+		if (user != null) {
 			if (userClass == null)
 				userClass = (Class<Object>) user.getClass();
 			eclipseContext.set(userClass, user);
@@ -460,11 +466,38 @@ public class VaadinUI extends UI {
 
 		return eclipseContext;
 	}
-	
+
 	@Override
 	public void detach() {
 		if (e4Workbench != null)
 			e4Workbench.close();
 		super.detach();
+	}
+
+	private class WidgetModelAssociations implements IWidgetModelAssociations {
+
+		@Override
+		public MUIElement getElement(Object component) {
+
+			MApplication mApp = appContext.get(MApplication.class);
+			TreeIterator<Object> iterator = EcoreUtil.getAllProperContents(
+					(EObject) mApp, true);
+			while (iterator.hasNext()) {
+				EObject eObject = (EObject) iterator.next();
+				if (eObject instanceof MUIElement) {
+					MUIElement uiElement = (MUIElement) eObject;
+					if (uiElement.getWidget() == component) {
+						return uiElement;
+					}
+				}
+			}
+
+			return null;
+		}
+
+		@Override
+		public Object getWidget(MUIElement element) {
+			return element.getWidget();
+		}
 	}
 }

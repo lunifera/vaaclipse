@@ -26,6 +26,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MDirectMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MHandledItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MHandledMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MItem;
+import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
 //import org.eclipse.e4.ui.model.application.ui.menu.MOpaqueMenuItem;
 import org.eclipse.e4.ui.workbench.UIEvents;
@@ -34,6 +35,7 @@ import org.osgi.service.event.EventHandler;
 import org.semanticsoft.vaaclipse.publicapi.resources.ResourceHelper;
 
 import com.vaadin.server.Resource;
+import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.MenuBar.Command;
 import com.vaadin.ui.MenuBar.MenuItem;
 
@@ -92,17 +94,65 @@ public class MenuItemRenderer extends ItemRenderer {
 		}
 	};
 
+	private EventHandler selectedUpdater = new EventHandler() {
+		public void handleEvent(Event event) {
+			// Ensure that this event is for a MMenuItem
+			if (!(event.getProperty(UIEvents.EventTags.ELEMENT) instanceof MMenuItem))
+				return;
+
+			MMenuItem itemModel = (MMenuItem) event
+					.getProperty(UIEvents.EventTags.ELEMENT);
+			MenuItem ici = (MenuItem) itemModel.getWidget();
+			if (ici != null) {
+				Boolean newValue = (Boolean) event
+						.getProperty(UIEvents.EventTags.NEW_VALUE);
+				ici.setChecked(newValue);
+			}
+		}
+	};
+
 	@PostConstruct
 	public void postConstruct() {
 		eventBroker.subscribe(UIEvents.UILabel.TOPIC_ALL, itemUpdater);
 		eventBroker.subscribe(UIEvents.Item.TOPIC_ENABLED, enabledUpdater);
+		eventBroker.subscribe(UIEvents.Item.TOPIC_SELECTED, selectedUpdater);
+		eventBroker.subscribe(UIEvents.ElementContainer.TOPIC_CHILDREN,
+				childrenMoveUpdater);
 	}
 
 	@PreDestroy
 	public void preDestroy() {
 		eventBroker.unsubscribe(itemUpdater);
 		eventBroker.unsubscribe(enabledUpdater);
+		eventBroker.unsubscribe(selectedUpdater);
+		eventBroker.unsubscribe(childrenMoveUpdater);
 	}
+	
+	private EventHandler childrenMoveUpdater = new EventHandler() {
+		@SuppressWarnings("unchecked")
+		public void handleEvent(Event event) {
+			// Ensure that this event is for a MMenuItem
+			if (!(event.getProperty(UIEvents.EventTags.ELEMENT) instanceof MMenu))
+				return;
+
+			MElementContainer<MUIElement> menu = (MElementContainer<MUIElement>) event
+					.getProperty(UIEvents.EventTags.ELEMENT);
+
+			String type = (String) event.getProperty(UIEvents.EventTags.TYPE);
+
+			// on move, we unrender an render the UI again
+			//
+			if (UIEvents.EventTypes.MOVE.equals(type)) {
+				for (MUIElement item : menu.getChildren()) {
+					removeChildGui(item, menu);
+				}
+
+				for (MUIElement item : menu.getChildren()) {
+					createWidget(item, menu);
+				}
+			}
+		}
+	};
 
 	@Override
 	public void createWidget(MUIElement element,
@@ -152,6 +202,17 @@ public class MenuItemRenderer extends ItemRenderer {
 
 			updateItemEnablement(model);
 			item.setEnabled(model.isEnabled());
+
+			// set the check mode
+			switch (model.getType()) {
+			case CHECK:
+				item.setCheckable(true);
+				item.setChecked(model.isSelected());
+				break;
+			default:
+				item.setCheckable(false);
+				break;
+			}
 
 			registerEnablementUpdaters(model);
 		}
@@ -206,5 +267,19 @@ public class MenuItemRenderer extends ItemRenderer {
 	@Override
 	public void setVisible(MUIElement changedElement, boolean visible) {
 		((MenuItem) changedElement.getWidget()).setVisible(visible);
+	}
+	
+	@Override
+	public void removeChildGui(MUIElement element,
+			MElementContainer<MUIElement> parent) {
+		MenuItem childItem = (MenuItem) element.getWidget();
+
+		if (parent.getWidget() instanceof MenuBar) {
+			MenuBar bar = (MenuBar) parent.getWidget();
+			bar.removeItem(childItem);
+		} else if (parent.getWidget() instanceof MenuItem) {
+			MenuItem parentItem = (MenuItem) parent.getWidget();
+			parentItem.removeChild(childItem);
+		}
 	}
 }

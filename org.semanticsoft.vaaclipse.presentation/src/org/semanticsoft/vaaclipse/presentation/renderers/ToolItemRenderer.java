@@ -230,10 +230,16 @@ public class ToolItemRenderer extends ItemRenderer {
 
 		eclipseContext.set(MItem.class, item);
 		setupContext(eclipseContext, item);
-		return (Boolean) ContextInjectionFactory.invoke(item.getObject(),
-				CanExecute.class, eclipseContext, true);
+
+		if (item.getObject() == null) {
+			return false;
+		} else {
+			return (Boolean) ContextInjectionFactory.invoke(item.getObject(),
+					CanExecute.class, eclipseContext, true);
+		}
 	}
 
+	@SuppressWarnings("serial")
 	@Override
 	public void hookControllerLogic(MUIElement me) {
 		if (me instanceof MDirectToolItem) {
@@ -267,6 +273,7 @@ public class ToolItemRenderer extends ItemRenderer {
 			final Button button = (Button) item.getWidget();
 			button.addClickListener(new ClickListener() {
 
+				@SuppressWarnings("unchecked")
 				@Override
 				public void buttonClick(ClickEvent event) {
 					if (item.getType() == ItemType.CHECK) {
@@ -296,8 +303,5 @@ public class ToolItemRenderer extends ItemRenderer {
 			context.set(MDirectToolItem.class, (MDirectToolItem) item);
 		else if (item instanceof MHandledToolItem)
 			context.set(MHandledToolItem.class, (MHandledToolItem) item);
-		// TODO luna - check this
-		// else if (item instanceof MOpaqueToolItem)
-		// context.set(MOpaqueToolItem.class, (MOpaqueToolItem) item);
 	}
 }

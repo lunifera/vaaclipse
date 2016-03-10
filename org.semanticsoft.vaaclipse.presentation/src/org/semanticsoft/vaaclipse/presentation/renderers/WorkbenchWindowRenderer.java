@@ -140,16 +140,25 @@ public class WorkbenchWindowRenderer extends VaadinRenderer {
 			Component currentMainWindow = vaadinUI.getContent();
 			if (element.getTags().contains(Tags.MAIN_WINDOW)) {
 				Panel window = new Panel();
-				window.setContent(new TrimmedWindowContent());
+
+				TrimmedWindowContent content = new TrimmedWindowContent();
+				window.setContent(content);
 				vaadinUI.getPage().setTitle(mWindow.getLocalizedLabel());
 				element.setWidget(window);
 				((MWindow) element).getContext().set(Panel.class, window);
 				window.setSizeFull();
+				
+				// register the content as a rootLayoutClickNotifier for later
+				// use.
+				// this content allows to register layoutClickedListeners to be
+				// added.
+				app.getContext().set("rootLayoutClickNotifier", content);
 
 				vaadinUI.setContent(window);
 
 				app.setSelectedElement(mWindow);
 				mWindow.getContext().activate();
+
 			} else {// case child windows
 				if (currentMainWindow != null) {
 					Window window = new Window();
@@ -250,6 +259,7 @@ public class WorkbenchWindowRenderer extends VaadinRenderer {
 		}
 	}
 
+	@SuppressWarnings("serial")
 	@Override
 	public void hookControllerLogic(final MUIElement element) {
 		if (element instanceof MWindow) {
@@ -262,8 +272,7 @@ public class WorkbenchWindowRenderer extends VaadinRenderer {
 																// that)
 				final Window window = (Window) mWindow.getWidget();
 
-				window.addListener(new Window.ResizeListener() {
-
+				window.addResizeListener(new Window.ResizeListener() {
 					@Override
 					public void windowResized(ResizeEvent e) {
 						mWindow.setWidth((int) window.getWidth());

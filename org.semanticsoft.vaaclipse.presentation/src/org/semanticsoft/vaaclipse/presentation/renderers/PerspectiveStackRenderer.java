@@ -92,6 +92,7 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 	@Optional
 	private IPerspectiveHandler perspectiveRegistry;
 
+	@SuppressWarnings("serial")
 	private static class PerspectiveContextMenu extends ContextMenu {
 		private ContextMenuItem showTextItem;
 		private ContextMenuItem closeItem;
@@ -148,6 +149,7 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 	static final String PERSPECTIVE_ICON = "PerspectiveIcon";
 
 	private final EventHandler tagListener = new EventHandler() {
+		@SuppressWarnings("unused")
 		@Override
 		public void handleEvent(Event event) {
 			Object changedObj = event.getProperty(EventTags.ELEMENT);
@@ -197,6 +199,7 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 	};
 
 	private EventHandler selectPerspectiveHandler = new EventHandler() {
+		@SuppressWarnings("unchecked")
 		public void handleEvent(Event event) {
 			Object element = event.getProperty(UIEvents.EventTags.ELEMENT);
 
@@ -206,6 +209,7 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 			MPerspectiveStack stack = (MPerspectiveStack) element;
 			if (stack.getRenderer() != PerspectiveStackRenderer.this)
 				return;
+			@SuppressWarnings("unused")
 			PerspectiveStackRenderer psr = (PerspectiveStackRenderer) stack
 					.getRenderer();
 
@@ -213,6 +217,7 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 			MUIElement oldSel = (MUIElement) event
 					.getProperty(UIEvents.EventTags.OLD_VALUE);
 			if (oldSel != null) {
+				@SuppressWarnings("unused")
 				List<MUIElement> goingHidden = new ArrayList<MUIElement>();
 			}
 
@@ -313,6 +318,8 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 				localizeLabel);
 		eventBroker.subscribe(UIEvents.UILabel.TOPIC_LOCALIZED_TOOLTIP,
 				localizeTooltip);
+		eventBroker.subscribe(UIEvents.ElementContainer.TOPIC_CHILDREN,
+				childrenMoveUpdater);
 	}
 
 	@PreDestroy
@@ -321,7 +328,30 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 		eventBroker.unsubscribe(tagListener);
 		eventBroker.unsubscribe(localizeLabel);
 		eventBroker.unsubscribe(localizeTooltip);
+		eventBroker.unsubscribe(childrenMoveUpdater);
 	}
+
+	private EventHandler childrenMoveUpdater = new EventHandler() {
+		@SuppressWarnings("unchecked")
+		public void handleEvent(Event event) {
+			// Ensure that this event is for a MMenuItem
+			if (!(event.getProperty(UIEvents.EventTags.ELEMENT) instanceof MPerspectiveStack))
+				return;
+
+			MElementContainer<MUIElement> stack = (MElementContainer<MUIElement>) event
+					.getProperty(UIEvents.EventTags.ELEMENT);
+			String type = (String) event.getProperty(UIEvents.EventTags.TYPE);
+
+			// on move, we unrender an render the UI again
+			//
+			if (UIEvents.EventTypes.MOVE.equals(type)) {
+				MUIElement newValue = (MUIElement) event
+						.getProperty(UIEvents.EventTags.NEW_VALUE);
+				removeChildGui(newValue, stack);
+				addChildGui(newValue, stack);
+			}
+		}
+	};
 
 	@Override
 	public boolean isLazy() {
@@ -339,6 +369,7 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 		element.setWidget(perspectiveStackContent);
 	}
 
+	@SuppressWarnings("serial")
 	private void initializePerspectiveSwticherPanel(
 			MPerspectiveStack perspectiveStack) {
 		if (perspectiveSwitcherPanel != null)
@@ -395,6 +426,7 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 		}
 	}
 
+	@SuppressWarnings("serial")
 	private Component createPerspectiveButton(final MPerspective perspective) {
 		if (!perspective.isVisible())
 			return null;
@@ -412,10 +444,10 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 		}
 
 		button.addListener(new ClickListener() {
-
 			public void buttonClick(ClickEvent event) {
-				MPerspectiveStack perspectiveStack = (MPerspectiveStack) (MElementContainer<?>) perspective
-						.getParent();
+				// MPerspectiveStack perspectiveStack = (MPerspectiveStack)
+				// (MElementContainer<?>) perspective
+				// .getParent();
 				switchPerspective(perspective);
 			}
 		});
@@ -729,8 +761,12 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 					((StackWidget) topLeftStack.getWidget()).setState(1);
 				else if (ph.getTags().contains(IPresentationEngine.MINIMIZED))
 					((StackWidget) topLeftStack.getWidget()).setState(-1);
-				else
-					((StackWidget) topLeftStack.getWidget()).setState(0);
+				else {
+					if (((StackWidget) topLeftStack.getWidget()) != null) {
+						((StackWidget) topLeftStack.getWidget()).setState(0);
+					}
+				}
+
 			}
 		}
 

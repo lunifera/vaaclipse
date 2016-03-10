@@ -33,14 +33,19 @@ import org.eclipse.e4.ui.model.application.ui.menu.MDirectToolItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MHandledItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
+import org.eclipse.e4.ui.services.internal.events.EventBroker;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.semanticsoft.vaaclipse.api.VaadinExecutorService;
+import org.semanticsoft.vaaclipse.publicapi.events.VaaclipseUiEvents;
 
 import com.vaadin.ui.MenuBar.Command;
 import com.vaadin.ui.MenuBar.MenuItem;
 
 @SuppressWarnings("restriction")
 public abstract class ItemRenderer extends VaadinRenderer {
+
+	@Inject
+	EventBroker eventBroker;
 
 	@Inject
 	EModelService modelService;
@@ -181,6 +186,8 @@ public abstract class ItemRenderer extends VaadinRenderer {
 		setupContext(eclipseContext, item);
 		service.executeHandler(command);
 		eclipseContext.remove(MItem.class.getName());
+
+		eventBroker.send(VaaclipseUiEvents.Item.TOPIC_EXECUTED, item);
 	}
 
 	public void executeItem(final MItem item) {
@@ -206,6 +213,8 @@ public abstract class ItemRenderer extends VaadinRenderer {
 			}
 			eclipseContext.remove(MItem.class);
 		}
+
+		eventBroker.send(VaaclipseUiEvents.Item.TOPIC_EXECUTED, item);
 	}
 
 	protected void setupContext(IEclipseContext context, MItem item) {

@@ -103,4 +103,9 @@ public class VaadinExecutorServiceImpl implements VaadinExecutorService {
 		this.keys.clear();
 		this.runnable2Key.clear();
 	}
+
+	@Override
+	public void dispose() {
+		
+	}
 }
