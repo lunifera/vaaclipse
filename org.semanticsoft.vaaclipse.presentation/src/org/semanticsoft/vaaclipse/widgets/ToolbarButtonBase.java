@@ -76,4 +76,15 @@ public class ToolbarButtonBase extends Button {
 			this.addStyleName("icononly");
 	}
 
+	public void setIconURI(String iconURI) {
+
+		// clear
+		this.setIcon(null);
+
+		// setup icon and text
+		if (iconURI != null) {
+			Resource icon = ResourceHelper.createResource(iconURI);
+			this.setIcon(icon);
+		}
+	}
 }

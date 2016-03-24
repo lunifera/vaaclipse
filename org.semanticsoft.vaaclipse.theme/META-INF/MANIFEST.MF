@@ -10,8 +10,13 @@ Require-Bundle: org.semanticsoft.vaaclipse.publicapi;bundle-version="2.0.0",
  org.eclipse.equinox.registry;bundle-version="3.5.200",
  org.eclipse.e4.core.services;bundle-version="1.0.0",
  org.eclipse.e4.core.contexts;bundle-version="1.1.0",
- org.eclipse.e4.core.di;bundle-version="1.1.0"
-Import-Package: javax.inject;version="1.0.0", javax.annotation;version="[1.1.0,1.2.0)"
+ org.eclipse.e4.core.di;bundle-version="1.1.0",
+ org.apache.commons.io;bundle-version="2.4.0"
+Import-Package: javax.annotation;version="[1.1.0,1.2.0)",
+ javax.inject;version="1.0.0",
+ org.osgi.framework;version="1.8.0",
+ org.osgi.framework.wiring;version="1.2.0",
+ org.slf4j;version="1.7.2"
 Service-Component: OSGI-INF/themeManager.xml,
  OSGI-INF/themeEngine.xml
 Bundle-ActivationPolicy: lazy

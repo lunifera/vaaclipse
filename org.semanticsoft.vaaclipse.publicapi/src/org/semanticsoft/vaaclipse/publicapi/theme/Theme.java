@@ -42,6 +42,12 @@ public interface Theme extends ThemeEntry {
 	InputStream getCssAsStream();
 
 	/**
+	 * Returns all image URIs contained in any of the registered resource
+	 * locations.
+	 */
+	List<String> getImageURIs();
+	
+	/**
 	 * Get theme resource as stream
 	 * 
 	 * @param themeResourceUri

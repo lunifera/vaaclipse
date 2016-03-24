@@ -12,6 +12,8 @@ package org.semanticsoft.vaaclipse.presentation.dnd;
 
 import javax.inject.Inject;
 
+import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.advanced.MArea;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
@@ -22,9 +24,12 @@ import org.eclipse.e4.ui.model.application.ui.basic.MStackElement;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.model.application.ui.basic.impl.BasicFactoryImpl;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.semanticsoft.commons.geom.GeomUtils;
 import org.semanticsoft.commons.geom.Side;
 import org.semanticsoft.commons.geom.Vector;
+import org.semanticsoft.vaaclipse.publicapi.change.ChangeCommand;
 import org.semanticsoft.vaaclipse.widgets.StackWidget;
 
 import com.vaadin.event.dd.DragAndDropEvent;
@@ -50,6 +55,13 @@ public class VaadinDropHandler implements DropHandler {
 	EModelService modelService;
 
 	@Inject
+	MApplication app;
+
+	@Inject
+	@Optional
+	private EditingDomain editingDomain;
+
+	@Inject
 	public VaadinDropHandler(MPartStack targetPartStack) {
 		this.targetPartStack = targetPartStack;
 		targetTabSheet = (StackWidget) targetPartStack.getWidget();
@@ -62,11 +74,20 @@ public class VaadinDropHandler implements DropHandler {
 		return AcceptAll.get();
 	}
 
-	@SuppressWarnings("restriction")
-	public void drop(DragAndDropEvent event) {
+	public void drop(final DragAndDropEvent event) {
 		if (!(event.getTransferable() instanceof LayoutBoundTransferable))
 			return;
 
+		ChangeCommand command = new ChangeCommand("Drop part", ((EObject) app).eResource()) {
+			@Override
+			protected void doExecute() {
+				doDrop(event);
+			}
+		};
+		editingDomain.getCommandStack().execute(command);
+	}
+
+	protected void doDrop(DragAndDropEvent event) {
 		LayoutBoundTransferable transferable = (LayoutBoundTransferable) event
 				.getTransferable();
 		TabSheetTargetDetails details = (TabSheetTargetDetails) event

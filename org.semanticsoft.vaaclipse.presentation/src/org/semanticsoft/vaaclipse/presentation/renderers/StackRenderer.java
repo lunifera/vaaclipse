@@ -38,10 +38,12 @@ import org.eclipse.e4.ui.workbench.UIEvents.EventTags;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 import org.semanticsoft.vaaclipse.api.VaadinExecutorService;
 import org.semanticsoft.vaaclipse.presentation.dnd.VaadinDropHandler;
+import org.semanticsoft.vaaclipse.publicapi.change.SimpleCommand;
 import org.semanticsoft.vaaclipse.publicapi.resources.ResourceHelper;
 import org.semanticsoft.vaaclipse.widgets.StackWidget;
 import org.semanticsoft.vaaclipse.widgets.StackWidget.StateListener;
@@ -63,6 +65,8 @@ public class StackRenderer extends VaadinRenderer {
 	private EventBroker eventBroker;
 	@Inject
 	private EModelService modelService;
+	@Inject
+	private EditingDomain editingDomain;
 	@Inject
 	private EPartService partService;
 	private Map<Component, MStackElement> vaatab2Element = new HashMap<Component, MStackElement>();
@@ -266,8 +270,7 @@ public class StackRenderer extends VaadinRenderer {
 					.getProperty(UIEvents.EventTags.ELEMENT);
 			String type = (String) event.getProperty(UIEvents.EventTags.TYPE);
 
-			if (UIEvents.EventTypes.MOVE.equals(type)
-					) {
+			if (UIEvents.EventTypes.MOVE.equals(type)) {
 				StackWidget stackWidget = (StackWidget) stack.getWidget();
 				stackWidget.removeAllComponents();
 
@@ -401,19 +404,35 @@ public class StackRenderer extends VaadinRenderer {
 
 		sw.addSelectedTabChangeListener(new SelectedTabChangeListener() {
 			public void selectedTabChange(SelectedTabChangeEvent event) {
-				MStackElement stackElement = vaatab2Element.get(sw
+				final MStackElement stackElement = vaatab2Element.get(sw
 						.getSelectedTab());
 				if (stackElement != null) {
 					if (ignoreTabSelChanges)
 						return;
 
-					MPartStack stack = (MPartStack) (MElementContainer<?>) stackElement
+					final MPartStack stack = (MPartStack) (MElementContainer<?>) stackElement
 							.getParent();
 					if (stack != null
 							&& stack.getSelectedElement() != stackElement) {
-						stack.setSelectedElement(stackElement);
 
-						activateStack(stack);
+						SimpleCommand command = new SimpleCommand(
+								"Switch stack element") {
+							final MStackElement oldStackElement = stack
+									.getSelectedElement();
+
+							@Override
+							protected void doUndo() {
+								stack.setSelectedElement(oldStackElement);
+								activateStack(stack);
+							}
+							
+							@Override
+							protected void doExecute() {
+								stack.setSelectedElement(stackElement);
+								activateStack(stack);
+							}
+						};
+						editingDomain.getCommandStack().execute(command);
 					}
 				}
 			}

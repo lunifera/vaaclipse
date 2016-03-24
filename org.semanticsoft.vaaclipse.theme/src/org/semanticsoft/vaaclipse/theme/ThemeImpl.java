@@ -4,15 +4,36 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.framework.wiring.BundleWiring;
 import org.semanticsoft.vaaclipse.publicapi.theme.Theme;
 import org.semanticsoft.vaaclipse.publicapi.theme.ThemeContribution;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ThemeImpl extends ThemeEntryImpl implements Theme {
+
+	private static final String PLATFORM_PLUGIN = "platform:/plugin/";
+
+	private static final String PLATFORM_RESOURCE = "platform:/resource/";
+
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(ThemeImpl.class);
+
+	private static List<String> imageExtensions = new ArrayList<String>();
+	static {
+		imageExtensions.add("png");
+		imageExtensions.add("gif");
+		imageExtensions.add("jpg");
+		imageExtensions.add("jpeg");
+	}
 
 	private String label;
 	private String description;
@@ -123,6 +144,7 @@ public class ThemeImpl extends ThemeEntryImpl implements Theme {
 				in = u.openStream();
 				break;
 			} catch (Exception ex) {
+				LOGGER.error("{}", ex);
 			}
 
 		}
@@ -212,6 +234,65 @@ public class ThemeImpl extends ThemeEntryImpl implements Theme {
 		}
 	}
 
+	@Override
+	public List<String> getImageURIs() {
+		List<String> result = new ArrayList<String>();
+		for (String uri : getAllResourceLocationURIs()) {
+			PathPair pair = parsePathPair(uri);
+			if (pair == null) {
+				continue;
+			}
+
+			Bundle target = findBundle(pair.bundle);
+			BundleWiring wiring = target.adapt(BundleWiring.class);
+			Collection<String> resources = wiring.listResources(pair.folder,
+					"*", BundleWiring.LISTRESOURCES_RECURSE);
+			for (String path : resources) {
+				if (path.contains(".")) {
+					String extension = path.substring(path.lastIndexOf(".") + 1);
+					if (imageExtensions.contains(extension)) {
+						result.add("platform:/plugin/" + pair.bundle +"/" + path);
+					}
+				}
+			}
+		}
+		return result;
+	}
+
+	private Bundle findBundle(String bundleName) {
+		for (Bundle b : FrameworkUtil.getBundle(getClass()).getBundleContext()
+				.getBundles()) {
+			if (b.getSymbolicName().equals(bundleName)) {
+				return b;
+			}
+		}
+		return null;
+	}
+
+	private PathPair parsePathPair(String uri) {
+		PathPair pair = null;
+		if (uri.startsWith(PLATFORM_RESOURCE)) {
+			pair = new PathPair();
+			// eg platform:/resource/org.my.foo.bundle/images/obj16
+			String result = uri.replace(PLATFORM_RESOURCE, "");
+			pair.bundle = result.substring(0, result.indexOf("/"));
+			String folder = result = result.substring(result.indexOf("/"),
+					result.length());
+			pair.folder = folder;
+		} else if (uri.startsWith(PLATFORM_PLUGIN)) {
+			// eg platform:/plugin/org.my.foo.bundle/images/obj16
+			pair = new PathPair();
+			String result = uri.replace(PLATFORM_PLUGIN, "");
+			pair.bundle = result.substring(0, result.indexOf("/"));
+			String folder = result = result.substring(result.indexOf("/"),
+					result.length());
+			pair.folder = folder;
+		}
+
+		LOGGER.error("Not a valid URI: " + uri);
+		return pair;
+	}
+
 	private StringBuffer buildStringBuffer(List<ThemeContributionImpl> list,
 			Map<String, List<ThemeContributionImpl>> bindedContributionsBefore,
 			Map<String, List<ThemeContributionImpl>> bindedContributionsAfter) {
@@ -258,5 +339,10 @@ public class ThemeImpl extends ThemeEntryImpl implements Theme {
 		} while (restBefore != restAfter);
 
 		return list;
+	}
+
+	private static class PathPair {
+		private String bundle;
+		private String folder;
 	}
 }

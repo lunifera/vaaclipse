@@ -36,6 +36,7 @@ import org.eclipse.e4.ui.workbench.IPresentationEngine;
 import org.eclipse.e4.ui.workbench.UIEvents;
 import org.eclipse.e4.ui.workbench.UIEvents.EventTags;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
@@ -45,6 +46,7 @@ import org.semanticsoft.vaaclipse.presentation.engine.GenericPresentationEngine;
 import org.semanticsoft.vaaclipse.presentation.utils.Commons;
 import org.semanticsoft.vaaclipse.presentation.utils.HierarchyUtils;
 import org.semanticsoft.vaaclipse.publicapi.authentication.AuthenticationConstants;
+import org.semanticsoft.vaaclipse.publicapi.change.SimpleCommand;
 import org.semanticsoft.vaaclipse.publicapi.model.Tags;
 import org.semanticsoft.vaaclipse.publicapi.perspective.IPerspectiveHandler;
 import org.semanticsoft.vaaclipse.publicapi.resources.BundleResource;
@@ -91,6 +93,10 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 	@Inject
 	@Optional
 	private IPerspectiveHandler perspectiveRegistry;
+
+	@Inject
+	@Optional
+	private EditingDomain editingDomain;
 
 	@SuppressWarnings("serial")
 	private static class PerspectiveContextMenu extends ContextMenu {
@@ -270,6 +276,26 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 		}
 	};
 
+	private EventHandler iconURI = new EventHandler() {
+		@Override
+		public void handleEvent(Event event) {
+			Object element = event.getProperty(UIEvents.EventTags.ELEMENT);
+
+			if (!(element instanceof MPerspective))
+				return;
+
+			MPerspective perspective = (MPerspective) element;
+
+			String newValue = (String) event
+					.getProperty(UIEvents.EventTags.NEW_VALUE);
+
+			TwoStateToolbarButton button = perspective_button.get(perspective);
+			if (button != null) {
+				button.setIconURI(newValue);
+			}
+		}
+	};
+
 	private EventHandler localizeTooltip = new EventHandler() {
 		@Override
 		public void handleEvent(Event event) {
@@ -318,6 +344,9 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 				localizeLabel);
 		eventBroker.subscribe(UIEvents.UILabel.TOPIC_LOCALIZED_TOOLTIP,
 				localizeTooltip);
+		eventBroker.subscribe(UIEvents.UILabel.TOPIC_LABEL, localizeLabel);
+		eventBroker.subscribe(UIEvents.UILabel.TOPIC_TOOLTIP, localizeTooltip);
+		eventBroker.subscribe(UIEvents.UILabel.TOPIC_ICONURI, iconURI);
 		eventBroker.subscribe(UIEvents.ElementContainer.TOPIC_CHILDREN,
 				childrenMoveUpdater);
 	}
@@ -328,6 +357,7 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 		eventBroker.unsubscribe(tagListener);
 		eventBroker.unsubscribe(localizeLabel);
 		eventBroker.unsubscribe(localizeTooltip);
+		eventBroker.unsubscribe(iconURI);
 		eventBroker.unsubscribe(childrenMoveUpdater);
 	}
 
@@ -445,10 +475,21 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 
 		button.addListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				// MPerspectiveStack perspectiveStack = (MPerspectiveStack)
-				// (MElementContainer<?>) perspective
-				// .getParent();
-				switchPerspective(perspective);
+				SimpleCommand command = new SimpleCommand("Switch perspective") {
+					final MPerspective oldPerspective = activePerspective;
+					final MPerspective newPerspective = perspective;
+
+					@Override
+					protected void doExecute() {
+						switchPerspective(newPerspective);
+					}
+
+					@Override
+					protected void doUndo() {
+						switchPerspective(oldPerspective);
+					}
+				};
+				editingDomain.getCommandStack().execute(command);
 			}
 		});
 

@@ -83,6 +83,10 @@ public class SashRenderer extends VaadinRenderer {
 				MPartSashContainer sash = (MPartSashContainer) (MElementContainer<?>) changedElement
 						.getParent();
 
+				if(sash.getRenderer() == null) {
+					return;
+				}
+				
 				((SashRenderer) sash.getRenderer()).refreshSashContainer(sash);
 
 				boolean visible = false;
@@ -361,8 +365,9 @@ public class SashRenderer extends VaadinRenderer {
 								// deleted (when this code will be proved that
 								// all ok).
 								setWeights(sash);
-							} else
+							} else {
 								logger.error("Changing SashContainer child weights is failed. User changes is not processed correctly");
+							}
 
 							// and last thing what we must do - tell the
 							// WorkbenchWindow to recalculate bounds of it
@@ -377,8 +382,9 @@ public class SashRenderer extends VaadinRenderer {
 							windowContent.invalidateBounds();
 						}
 					});
-				} else
+				} else {
 					logger.error("Error in  widget hierarchy detected - if sash container has more than one element its child widget must has SashWidget as a parent");
+				}
 			}
 		}
 	}
