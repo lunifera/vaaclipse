@@ -425,7 +425,7 @@ public class StackRenderer extends VaadinRenderer {
 								stack.setSelectedElement(oldStackElement);
 								activateStack(stack);
 							}
-							
+
 							@Override
 							protected void doExecute() {
 								stack.setSelectedElement(stackElement);

@@ -475,7 +475,10 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 
 		button.addListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
-				SimpleCommand command = new SimpleCommand("Switch perspective") {
+				SimpleCommand command = new SimpleCommand(
+						"Switch perspective: "
+								+ activePerspective.getLocalizedLabel()
+								+ " <--> " + perspective.getLocalizedLabel()) {
 					final MPerspective oldPerspective = activePerspective;
 					final MPerspective newPerspective = perspective;
 
