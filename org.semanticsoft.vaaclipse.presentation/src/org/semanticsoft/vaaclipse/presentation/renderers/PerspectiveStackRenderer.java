@@ -238,7 +238,12 @@ public class PerspectiveStackRenderer extends VaadinRenderer {
 			((VerticalLayout) stack.getWidget()).removeAllComponents();
 
 			if (stack.getSelectedElement() != null) {
+				if (stack.getSelectedElement().getWidget() == null) {
+					engine.createGui(stack.getSelectedElement());
+				}
+
 				showElementRecursive(stack.getSelectedElement());
+
 				((VerticalLayout) stack.getWidget())
 						.addComponent((Component) stack.getSelectedElement()
 								.getWidget());
